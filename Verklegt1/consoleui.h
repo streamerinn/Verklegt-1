@@ -11,6 +11,8 @@ public:
 
 private:
     PerformerService _service;
+    void displayListOfScientists();
+    void readScientists(vector <Performer> &performers);
 };
 
 #endif // CONSOLEUI_H

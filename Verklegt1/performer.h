@@ -10,6 +10,7 @@ class Performer
 public:
     Performer();   
     Performer(string name, string gender, int dateOfBirth, int dateOfDeath);
+    void readScientists(vector <Performer> &performers);
 
     string getName()
     {
