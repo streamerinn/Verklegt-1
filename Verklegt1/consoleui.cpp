@@ -28,6 +28,9 @@ void ConsoleUI::run()
         for(size_t i = 0; i < performers.size(); i++)
         {
             cout << performers[i].getName() << endl;
+            cout << performers[i].getGender() << endl;
+            cout << performers[i].getBorne() << endl;
+            cout << performers[i].getDied() << endl;
         }
      }
      else if(command == "add")

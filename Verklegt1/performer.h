@@ -16,15 +16,27 @@ public:
         return _name;
     }
 
-    int getAge() const
+    string getGender()
     {
-        return _age;
+        return _gender;
+    }
+
+    int getDateOfBirth() const
+    {
+        return _date_of_birth;
+    }
+
+    int getDateOfDeath() const
+    {
+        return _date_of_death;
     }
 
 private:
 
     string _name;
-    int _age;
+    string _gender;
+    int _date_of_birth;
+    int _date_of_death;
 };
 
 #endif // PERFORMER_H
