@@ -29,8 +29,8 @@ void ConsoleUI::run()
         {
             cout << performers[i].getName() << endl;
             cout << performers[i].getGender() << endl;
-            cout << performers[i].getBorne() << endl;
-            cout << performers[i].getDied() << endl;
+            cout << performers[i].getDateOfBirth() << endl;
+            cout << performers[i].getDateOfDeath() << endl;
         }
      }
      else if(command == "add")

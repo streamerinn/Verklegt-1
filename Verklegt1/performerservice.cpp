@@ -11,7 +11,7 @@ vector<Performer> PerformerService::getPerformers(/* TODO: parameters */)
 {
     vector<Performer> performers;
 
-    Performer p("Duran Duran", 40);
+    Performer p("Charles Babbage", 1791);
     Performer p2("Madonna", 55);
 
     performers.push_back(p);

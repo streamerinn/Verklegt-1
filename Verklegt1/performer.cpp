@@ -5,8 +5,8 @@ Performer::Performer()
 
 }
 
-Performer::Performer(string name, int age)
+Performer::Performer(string name, int dateOfBirth)
 {
     _name = name;
-    _age = age;
+    _date_of_birth = dateOfBirth;
 }
