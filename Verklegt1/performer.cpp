@@ -2,7 +2,10 @@
 
 Performer::Performer()
 {
-
+    _name = ' ';
+    _gender = ' ';
+    _dateOfBirth = 0;
+    _dateOfDeath = 0;
 }
 
 Performer::Performer(string name, string gender, int dateOfBirth, int dateOfDeath)

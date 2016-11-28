@@ -2,12 +2,15 @@
 #define CONSOLEUI_H
 
 #include "performerservice.h"
+#include "performer.h"
 
 class ConsoleUI
 {
 public:
     ConsoleUI();
     void run();
+
+    friend istream& operator >> (istream& in, Performer& rhs);
 
 private:
     PerformerService _service;
