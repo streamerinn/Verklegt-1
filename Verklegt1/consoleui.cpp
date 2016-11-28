@@ -11,23 +11,33 @@ ConsoleUI::ConsoleUI()
 
 }
 
-
 void ConsoleUI::displayListOfScientists()
 {
-    vector<Performer> performers = _service.getPerformers();
+    vector<Scientist> scientists = _service.getScientists();
 
-    for(size_t i = 0; i < performers.size(); i++)
+    for(size_t i = 0; i < scientists.size(); i++)
     {
-        cout << performers[i].getName() << endl;
-        cout << performers[i].getGender() << endl;
-        cout << performers[i].getDateOfBirth() << endl;
-        cout << performers[i].getDateOfDeath() << endl;
+        cout << scientists[i].getName() << endl;
+        cout << scientists[i].getGender() << endl;
+        cout << scientists[i].getDateOfBirth() << endl;
+        cout << scientists[i].getDateOfDeath() << endl;
     }
 }
-
-void ConsoleUI::readScientists(vector <Performer> &performers)
+/*
+istream& operator >> (istream& in, Scientist& rhs) //overload-ar cin operatorinn;
 {
-    Performer temp;
+    in >> rhs._name;
+    in >> rhs._gender;
+    in >> rhs._dateOfBirth;
+    in >> rhs._dateOfDeath;
+
+    return in;
+}
+*/
+
+/*void ConsoleUI::readScientists(vector <Scientist> &scientists)
+{
+    Scientist temp;
 
     cout << "Reading Scientists: " << endl;
 
@@ -39,20 +49,10 @@ void ConsoleUI::readScientists(vector <Performer> &performers)
     cin >> temp._dateOfBirth;
     cout << "Please enter death date: " << endl;
     cin >> temp._dateOfDeath;
-    performers.push_back(temp);
+    scientists.push_back(temp);
     cout << endl;
 }
-
-istream& operator >> (istream& in, Performer& rhs) //overload-ar cin operatorinn;
-{
-    in >> rhs._name;
-    in >> rhs._gender;
-    in >> rhs._dateOfBirth;
-    in >> rhs._dateOfDeath;
-
-    return in;
-}
-
+*/
 void ConsoleUI::run()
 {
      cout << "Please enter one of the following commands" << endl;
@@ -68,7 +68,7 @@ void ConsoleUI::run()
      }
      else if(command == "add")
      {
-        //readScientists(performers);
-        //_service.addPerformer();
+        //readScientists(scientists);
+        //_service.addScientist();
      }
 }

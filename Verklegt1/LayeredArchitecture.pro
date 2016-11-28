@@ -11,14 +11,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     consoleui.cpp \
-    performerservice.cpp \
-    performer.cpp \
     dataaccess.cpp \
-    database.cpp
+    database.cpp \
+    scientist.cpp \
+    scientistservice.cpp
 
 HEADERS += \
     consoleui.h \
-    performerservice.h \
-    performer.h \
     dataaccess.h \
-    database.h
+    database.h \
+    scientistservice.h \
+    scientist.h

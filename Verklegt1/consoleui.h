@@ -1,8 +1,8 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
 
-#include "performerservice.h"
-#include "performer.h"
+#include "scientistservice.h"
+#include "scientist.h"
 
 class ConsoleUI
 {
@@ -10,12 +10,12 @@ public:
     ConsoleUI();
     void run();
 
-    friend istream& operator >> (istream& in, Performer& rhs);
+    friend istream& operator >> (istream& in, Scientist& rhs);
 
 private:
-    PerformerService _service;
+    ScientistService _service;
     void displayListOfScientists();
-    void readScientists(vector <Performer> &performers);
+    void readScientists(vector <Scientist> &scientists);
 };
 
 #endif // CONSOLEUI_H
