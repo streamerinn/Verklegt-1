@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
+#include "consoleui.h"
 
-int main(int argc, char *argv[])
+int main()
 {
-    cout << "Hello World " << endl;
+    ConsoleUI ui;
+
+    ui.run();
 
     return 0;
 }
