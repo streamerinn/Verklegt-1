@@ -9,7 +9,7 @@ class Performer
 {
 public:
     Performer();   
-    Performer(string name, int age);
+    Performer(string name, string gender, int dateOfBirth, int dateOfDeath);
 
     string getName()
     {
@@ -23,20 +23,20 @@ public:
 
     int getDateOfBirth() const
     {
-        return _date_of_birth;
+        return _dateOfBirth;
     }
 
     int getDateOfDeath() const
     {
-        return _date_of_death;
+        return _dateOfDeath;
     }
 
 private:
 
     string _name;
     string _gender;
-    int _date_of_birth;
-    int _date_of_death;
+    int _dateOfBirth;
+    int _dateOfDeath;
 };
 
 #endif // PERFORMER_H

@@ -11,8 +11,10 @@ vector<Performer> PerformerService::getPerformers(/* TODO: parameters */)
 {
     vector<Performer> performers;
 
-    Performer p("Charles Babbage", 1791);
-    Performer p2("Madonna", 55);
+
+    //harðkóðaðar upplýsingar til að prufa virkni clasans
+    Performer p("Charles Babbage", "male", 1791, 1871);
+    Performer p2("Ada Locelace", "female", 1815, 1852);
 
     performers.push_back(p);
     performers.push_back(p2);
