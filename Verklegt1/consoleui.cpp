@@ -49,17 +49,6 @@ void ConsoleUI::displayListOfScientists()
         cout << scientists[i].getDateOfDeath() << endl;
     }
 }
-/*
-istream& operator >> (istream& in, Scientist& rhs) //overload-ar cin operatorinn;
-{
-    in >> rhs._name;
-    in >> rhs._gender;
-    in >> rhs._dateOfBirth;
-    in >> rhs._dateOfDeath;
-
-    return in;
-}
-*/
 
 void ConsoleUI::readScientists()
 {
@@ -101,47 +90,20 @@ void ConsoleUI::readScientists()
 
 void ConsoleUI::createScientist()
 {
-     int choice;
-     cin >> choice;
 
-     if(choice == 2)
-     {
-        displayListOfScientists();
-     }
-     else if(choice == 1)
-     {
-         /*string name;
-         string gender;
-         int dateOfBirth;
-         int dateOfDeath;
+    char choice;
 
-         // Get name
-         cin.ignore();
-         cout << "Enter the scientist's name: ";
-         getline(cin,name);
+    while(choice != 'q' && choice != 'Q')
+    {
+        cin >> choice;
 
-
-         // Get gender
-         cout << "Enter the scientist's gender, press m for male and f for female: ";
-         cin >> gender;
-
-         // Get date of birth
-         cout << "Enter the scientist's date of birth: ";
-         cin >> dateOfBirth;
-
-         // Get dateOfDeath
-         cout << "Enter the scientist's date of death: ";
-         cin >> dateOfDeath;
-
-         Scientist newScientist = Scientist(name, gender, dateOfBirth, dateOfDeath);
-
-         cout << newScientist.getName();*/
-
-         //TODO: Villuchecka og bara senda áfram ef accurate
-         //TODO: gera business layer og tengja þetta saman
-
-        readScientists();
-
-        //_service.addScientist();
-     }
+        if(choice == '2')
+        {
+            displayListOfScientists();
+        }
+        else if(choice == '1')
+        {
+            readScientists();
+        }
+    }
 }
