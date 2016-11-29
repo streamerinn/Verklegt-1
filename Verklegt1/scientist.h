@@ -11,7 +11,7 @@ class Scientist
 public:
 
     //build föll
-    Scientist();
+    Scientist();    // Default constructor
     string getName();
     string getGender();
     int getDateOfBirth();
@@ -21,7 +21,6 @@ public:
 
     //les inn upplýsingar um Scientists
     //void readScientists(vector <Scientist> &scientists);
-
 
 private:
 

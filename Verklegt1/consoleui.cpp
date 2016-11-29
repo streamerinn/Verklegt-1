@@ -4,11 +4,37 @@
 
 using namespace std;
 
+const char TAB = '\t';
+
 //efsta lagið
 
 ConsoleUI::ConsoleUI()
 {
 
+}
+
+void ConsoleUI::WelcomeMenu()
+{
+
+    cout << endl;
+    cout << endl;
+    cout << TAB << "--------------------------------------------" << endl;
+    cout << TAB << " Welcome! This program will store or show" << endl;
+    cout << TAB << " famous computer scientists. " << endl;
+    cout << TAB <<"--------------------------------------------" << endl;
+    cout << endl;
+
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << TAB << "The list below shows you all possible features on what you can do." << endl;
+    cout << endl;
+
+    // Menu list
+    cout << TAB << "Press 1 to create a new scientist." << endl;
+    cout << TAB << "Press 2 to list all scientists." << endl;
+    cout << TAB << "Press 3 to search for a scientist." << endl;
+    cout << TAB << "Press Q to quit the program." << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << endl;
 }
 
 void ConsoleUI::displayListOfScientists()
@@ -33,9 +59,9 @@ istream& operator >> (istream& in, Scientist& rhs) //overload-ar cin operatorinn
 
     return in;
 }
-*/
-
-/*void ConsoleUI::readScientists(vector <Scientist> &scientists)
+/*
+/*
+void ConsoleUI::readScientists(vector <Scientist> &scientists)
 {
     Scientist temp;
 
@@ -55,18 +81,14 @@ istream& operator >> (istream& in, Scientist& rhs) //overload-ar cin operatorinn
 */
 void ConsoleUI::run()
 {
-     cout << "Please enter one of the following commands" << endl;
-     cout << "list - This will list all the performances in the system" << endl;
-     cout << "add - This will add a new performer" << endl;
+     int choice;
+     cin >> choice;
 
-     string command;
-     cin >> command;
-
-     if(command == "list")
+     if(choice == 2)
      {
         displayListOfScientists();
      }
-     else if(command == "add")
+     else if(choice == 1)
      {
         //readScientists(scientists);
         //_service.addScientist();

@@ -9,6 +9,7 @@ class ConsoleUI
 public:
     ConsoleUI();
     void run();
+    void WelcomeMenu();
 
     friend istream& operator >> (istream& in, Scientist& rhs);
 

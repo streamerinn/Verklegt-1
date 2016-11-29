@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 
+// Constructors
 Scientist::Scientist()
 {
     _name = ' ';
