@@ -90,6 +90,30 @@ void ConsoleUI::createScientist()
      }
      else if(choice == 1)
      {
+         string name;
+         string gender;
+         int dateOfBirth;
+         int dateOfDeath;
+
+         // Get name
+         cin.ignore();
+         cout << "Enter the scientist's name: ";
+         getline(cin,name);
+
+         // Get gender
+         cout << "Enter the scientist's gender, press m for male and f for female: ";
+         cin >> gender;
+
+         // Get date of birth
+         cout << "Enter the scientist's date of birth: ";
+         cin >> dateOfBirth;
+
+         // Get dateOfDeath
+         cout << "Enter the scientist's date of death: ";
+         cin >> dateOfDeath;
+
+         //TODO: gera business layer og tengja þetta saman
+
         //readScientists(scientists);
         //_service.addScientist();
      }
