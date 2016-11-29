@@ -11,9 +11,10 @@ class ScientistService
 private:
     vector<Scientist> scientists;
 public:
-    ScientistService(/*vector<Scientist> scientists*/);
+    ScientistService();
 
-    vector<Scientist> getScientists();
+    vector<Scientist> getScientists(/*TODO: paramleters */);
+    void init();
 };
 
 #endif // SCIENTISTSERVICE_H

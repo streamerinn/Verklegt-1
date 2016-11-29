@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "consoleui.h"
+#include "scientist.h"
 
 using namespace std;
 
@@ -37,11 +38,55 @@ void ConsoleUI::WelcomeMenu()
     cout << endl;
 }
 
-void ConsoleUI::readScientists(vector<Scientist>& scientists)
+void ConsoleUI::createScientist()
+{
+    service.init();
+    char choice;
+
+    while(choice != 'q' && choice != 'Q')
+    {
+        cin >> choice;
+
+        if(choice == '2')
+        {
+            displayListOfScientists();
+        }
+        else if(choice == '1')
+        {
+            readScientists();
+        }
+    }
+}
+
+void ConsoleUI::displayListOfScientists()
+{
+    vector<Scientist> scientists = service.getScientists();
+
+    for(unsigned int i = 0; i < scientists.size(); ++i)
+    {
+        cout << scientists[i].getName() << endl;
+        cout << scientists[i].getGender() << endl;
+        cout << scientists[i].getDateOfBirth() << endl;
+        cout << scientists[i].getDateOfDeath() << endl;
+        cout << endl;
+    }
+}
+/*void ConsoleUI::displayListOfPerformers()
+{
+    vector<Performer> performers = _service.getPerformers();
+
+    cout << "Performer name:" << endl;
+    cout << "===============" << endl;
+    for (size_t i = 0; i< performers.size(); ++i)
+    {
+        cout << performers[i].getName() << endl;
+    }
+}*/
+void ConsoleUI::readScientists()
 {
     Scientist temp;
 
-    /*vector<Scientist> scientists = service.getScientists();*/
+    vector<Scientist> scientists = service.getScientists();
 
     cout << "Reading Scientists: " << endl;
 
@@ -69,43 +114,10 @@ void ConsoleUI::readScientists(vector<Scientist>& scientists)
 
     scientists.push_back(temp);
 
-    // athuga hvort að það sem fer inn virki ekki öruglega
+    // athuga hvort að það sem fer inn virki ekki örugglega
     // það eru tveir scientists harðkóðaðir inn þessvegna er scientistinn sem þú setur inn númer 2
-    // cout << scientists[2].getName() << endl;
-    // cout << scientists[2].getGender() << endl;
+    cout << scientists[2].getName() << endl;
+    cout << scientists[2].getGender() << endl;
 }
 
-void ConsoleUI::displayListOfScientists(vector<Scientist>& scientists)
-{
-    /*vector<Scientist> scientists = service.getScientists();*/
 
-    for(size_t i = 0; i < scientists.size(); i++)
-    {
-        cout << scientists[i].getName() << endl;
-        cout << scientists[i].getGender() << endl;
-        cout << scientists[i].getDateOfBirth() << endl;
-        cout << scientists[i].getDateOfDeath() << endl;
-    }
-}
-
-void ConsoleUI::createScientist()
-{
-    vector<Scientist> scientists = service.getScientists();
-
-    char choice;
-
-    while(choice != 'q' && choice != 'Q')
-    {
-        cin >> choice;
-
-        if(choice == '2')
-        {
-            displayListOfScientists(scientists);
-            cout << "hvar er scientist-inn?";
-        }
-        else if(choice == '1')
-        {
-            readScientists(scientists);
-        }
-    }
-}
