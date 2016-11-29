@@ -79,7 +79,7 @@ void ConsoleUI::readScientists(vector <Scientist> &scientists)
     cout << endl;
 }
 */
-void ConsoleUI::run()
+void ConsoleUI::createScientist()
 {
      int choice;
      cin >> choice;

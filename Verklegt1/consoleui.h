@@ -8,7 +8,7 @@ class ConsoleUI
 {
 public:
     ConsoleUI();
-    void run();
+    void createScientist();
     void WelcomeMenu();
 
     friend istream& operator >> (istream& in, Scientist& rhs);

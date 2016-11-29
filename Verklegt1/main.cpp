@@ -9,8 +9,7 @@ int main()
     ConsoleUI ui;
 
     ui.WelcomeMenu();
-    ui.run();
-
+    ui.createScientist();
 
     return 0;
 }
