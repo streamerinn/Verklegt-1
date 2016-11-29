@@ -9,7 +9,7 @@ ScientistService::ScientistService()
 
 vector<Scientist> ScientistService::getScientists()/* TODO: parameters */
 {
-    vector<Scientist> scientists;
+
 
 
     //harðkóðaðar upplýsingar til að prufa virkni clasans

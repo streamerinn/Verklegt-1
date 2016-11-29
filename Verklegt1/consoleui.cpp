@@ -39,7 +39,7 @@ void ConsoleUI::WelcomeMenu()
 
 void ConsoleUI::displayListOfScientists()
 {
-    vector<Scientist> scientists = _service.getScientists();
+    vector<Scientist> scientists = service.getScientists();
 
     for(size_t i = 0; i < scientists.size(); i++)
     {
@@ -59,26 +59,31 @@ istream& operator >> (istream& in, Scientist& rhs) //overload-ar cin operatorinn
 
     return in;
 }
-/*
-/*
-void ConsoleUI::readScientists(vector <Scientist> &scientists)
+*/
+
+void ConsoleUI::readScientists()
 {
     Scientist temp;
 
+    vector<Scientist> scientists = service.getScientists();
+    /*
     cout << "Reading Scientists: " << endl;
-
+    string tempName;
     cout << "Please enter a name: " << endl;
-    cin >> temp._name;
+    cin >> tempName;
+    temp.setName(tempName);
     cout << "Please enter the gender: " << endl;
-    cin >> temp._gender;
+    cin >> tempGender
     cout << "Please enter date of birth: " << endl;
     cin >> temp._dateOfBirth;
     cout << "Please enter death date: " << endl;
     cin >> temp._dateOfDeath;
     scientists.push_back(temp);
     cout << endl;
+    */
+    cout << scientists[0].getName() << endl;
 }
-*/
+
 void ConsoleUI::createScientist()
 {
      int choice;
@@ -100,6 +105,7 @@ void ConsoleUI::createScientist()
          cout << "Enter the scientist's name: ";
          getline(cin,name);
 
+
          // Get gender
          cout << "Enter the scientist's gender, press m for male and f for female: ";
          cin >> gender;
@@ -112,6 +118,11 @@ void ConsoleUI::createScientist()
          cout << "Enter the scientist's date of death: ";
          cin >> dateOfDeath;
 
+         Scientist newScientist = Scientist(name, gender, dateOfBirth, dateOfDeath);
+
+         cout << newScientist.getName();
+
+         //TODO: Villuchecka og bara senda áfram ef accurate
          //TODO: gera business layer og tengja þetta saman
 
         //readScientists(scientists);

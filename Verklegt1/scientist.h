@@ -16,6 +16,10 @@ public:
     string getGender();
     int getDateOfBirth();
     int getDateOfDeath();
+    void setName(string name);
+    void setGender(string gender);
+    void setDateOfBirth(int birth);
+    void setDateOfDeath(int death);
 
     Scientist(string name, string gender, int dateOfBirth, int dateOfDeath);
 
@@ -24,6 +28,7 @@ public:
 
 private:
 
+    vector<Scientist> scientists;
     string _name;
     string _gender;
     int _dateOfBirth;

@@ -8,6 +8,8 @@ using namespace std;
 
 class ScientistService
 {
+private:
+    vector<Scientist> scientists;
 public:
     ScientistService();
 

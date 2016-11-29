@@ -14,9 +14,9 @@ public:
     friend istream& operator >> (istream& in, Scientist& rhs);
 
 private:
-    ScientistService _service;
+    ScientistService service;
     void displayListOfScientists();
-    void readScientists(vector <Scientist> &scientists);
+    void readScientists();
 };
 
 #endif // CONSOLEUI_H

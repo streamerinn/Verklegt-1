@@ -39,3 +39,7 @@ int Scientist::getDateOfDeath()
 {
     return _dateOfDeath;
 }
+
+void Scientist::setName(string name) {
+    _name = name;
+}
