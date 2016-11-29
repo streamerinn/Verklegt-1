@@ -91,9 +91,12 @@ void ConsoleUI::readScientists()
 
     cout << endl;
 
-    cout << temp.getName();
+    scientists.push_back(temp);
 
-    cout << scientists[0].getName() << endl;
+    // athuga hvort að það sem fer inn virki ekki öruglega
+    // það eru tveir scientists harðkóðaðir inn þessvegna er scientistinn sem þú setur inn númer 2
+    cout << scientists[2].getName() << endl;
+    cout << scientists[2].getGender() << endl;
 }
 
 void ConsoleUI::createScientist()
