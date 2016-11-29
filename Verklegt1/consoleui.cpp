@@ -21,7 +21,7 @@ void ConsoleUI::WelcomeMenu()
     cout << TAB << "--------------------------------------------" << endl;
     cout << TAB << " Welcome! This program will store or show" << endl;
     cout << TAB << " famous computer scientists. " << endl;
-    cout << TAB <<"--------------------------------------------" << endl;
+    cout << TAB << "--------------------------------------------" << endl;
     cout << endl;
 
     cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -37,11 +37,12 @@ void ConsoleUI::WelcomeMenu()
     cout << endl;
 }
 
-void ConsoleUI::readScientists(vector<Scientist>& scientists)
+void ConsoleUI::readScientists()
 {
     Scientist temp;
 
-    /*vector<Scientist> scientists = service.getScientists();*/
+    //vector<Scientist> scientists = service.getScientists();
+
 
     cout << "Reading Scientists: " << endl;
 
@@ -67,17 +68,17 @@ void ConsoleUI::readScientists(vector<Scientist>& scientists)
 
     cout << endl;
 
-    scientists.push_back(temp);
+    //scientists.push_back(temp);
 
-    // athuga hvort að það sem fer inn virki ekki öruglega
-    // það eru tveir scientists harðkóðaðir inn þessvegna er scientistinn sem þú setur inn númer 2
-    // cout << scientists[2].getName() << endl;
-    // cout << scientists[2].getGender() << endl;
+    //flytur upplýsingar inn í ScientistService
+    service.create(temp);
+
+
 }
 
-void ConsoleUI::displayListOfScientists(vector<Scientist>& scientists)
+void ConsoleUI::displayListOfScientists()
 {
-    /*vector<Scientist> scientists = service.getScientists();*/
+    vector<Scientist> scientists = service.getScientists();
 
     for(size_t i = 0; i < scientists.size(); i++)
     {
@@ -88,9 +89,8 @@ void ConsoleUI::displayListOfScientists(vector<Scientist>& scientists)
     }
 }
 
-void ConsoleUI::createScientist()
+void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
 {
-    vector<Scientist> scientists = service.getScientists();
 
     char choice;
 
@@ -100,12 +100,11 @@ void ConsoleUI::createScientist()
 
         if(choice == '2')
         {
-            displayListOfScientists(scientists);
-            cout << "hvar er scientist-inn?";
+            displayListOfScientists();
         }
         else if(choice == '1')
         {
-            readScientists(scientists);
+            readScientists();
         }
     }
 }

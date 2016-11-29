@@ -1,24 +1,29 @@
 #include "database.h"
 
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+//Default constructor
 DataBase::DataBase()
 {
 
 }
 
+// TODO: sækja úr textaskrá og skrifa í vector EINU SINNI
+// Það er dýrt að skrifa í og sækja ur textaskrá svo að það er best að takmarka það
 void DataBase::getInfo()
 {
-    string name;
 
-    ifstream info("info.txt");
+}
 
-    //les inn upplýsingar úr textaskjalinu
-    if(info.is_open())
-    {
-        /*while(!info.eof)
-        {
-            getline();
-        }*/
-    }
-
-
+// Upplýsingar eru byrjaðar að berast hingað frá consoleui
+// TODO: bæta scientistum inn í textaskrá
+// þetta ætti að gerast (eins og er) þannig að í hvert skipti sem add er keirt er bætt einum scientist inn í skránna
+void DataBase::returnInfo(Scientist scientist)
+{
+    //test til þess að athuga hvort að upplýsingarnar séu ekki öruglea að berast hingað
+    cout << scientist.getName();
 }

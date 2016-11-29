@@ -1,11 +1,14 @@
 #ifndef SCIENTIST_H
 #define SCIENTIST_H
 
+#include "scientist.h"
+
 #include <string>
 #include <vector>
 
 using namespace std;
 
+//entity clasi
 class Scientist
 {
 public:
