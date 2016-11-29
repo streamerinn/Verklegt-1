@@ -40,6 +40,22 @@ int Scientist::getDateOfDeath()
     return _dateOfDeath;
 }
 
-void Scientist::setName(string name) {
+void Scientist::setName(string name)
+{
     _name = name;
+}
+
+void Scientist::setGender(string gender)
+{
+    _gender = gender;
+}
+
+void Scientist::setDateOfBirth(int dateOfBirth)
+{
+    _dateOfBirth = dateOfBirth;
+}
+
+void Scientist::setDateOfDeath(int dateofDeath)
+{
+    _dateOfDeath = dateofDeath;
 }

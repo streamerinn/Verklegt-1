@@ -66,21 +66,33 @@ void ConsoleUI::readScientists()
     Scientist temp;
 
     vector<Scientist> scientists = service.getScientists();
-    /*
+
     cout << "Reading Scientists: " << endl;
+
     string tempName;
     cout << "Please enter a name: " << endl;
     cin >> tempName;
     temp.setName(tempName);
+
+    string tempGender;
     cout << "Please enter the gender: " << endl;
-    cin >> tempGender
+    cin >> tempGender;
+    temp.setGender(tempGender);
+
+    int tempDateOfBirth;
     cout << "Please enter date of birth: " << endl;
-    cin >> temp._dateOfBirth;
+    cin >> tempDateOfBirth;
+    temp.setDateOfBirth(tempDateOfBirth);
+
+    int tempDateOfDeath;
     cout << "Please enter death date: " << endl;
-    cin >> temp._dateOfDeath;
-    scientists.push_back(temp);
+    cin >> tempDateOfDeath;
+    temp.setDateOfDeath(tempDateOfDeath);
+
     cout << endl;
-    */
+
+    cout << temp.getName();
+
     cout << scientists[0].getName() << endl;
 }
 
@@ -95,7 +107,7 @@ void ConsoleUI::createScientist()
      }
      else if(choice == 1)
      {
-         string name;
+         /*string name;
          string gender;
          int dateOfBirth;
          int dateOfDeath;
@@ -120,12 +132,13 @@ void ConsoleUI::createScientist()
 
          Scientist newScientist = Scientist(name, gender, dateOfBirth, dateOfDeath);
 
-         cout << newScientist.getName();
+         cout << newScientist.getName();*/
 
          //TODO: Villuchecka og bara senda áfram ef accurate
          //TODO: gera business layer og tengja þetta saman
 
-        //readScientists(scientists);
+        readScientists();
+
         //_service.addScientist();
      }
 }
