@@ -4,7 +4,7 @@
 
 ScientistService::ScientistService()
 {
-
+    //_scientists = scientists;
 }
 
 vector<Scientist> ScientistService::getScientists()/* TODO: parameters */
@@ -12,12 +12,12 @@ vector<Scientist> ScientistService::getScientists()/* TODO: parameters */
 
 
 
-    //harðkóðaðar upplýsingar til að prufa virkni clasans
+    /*//harðkóðaðar upplýsingar til að prufa virkni clasans
     Scientist p("Charles Babbage", "male", 1791, 1871);
     Scientist p2("Ada Locelace", "female", 1815, 1852);
 
     scientists.push_back(p);
-    scientists.push_back(p2);
+    scientists.push_back(p2);*/
 
     //TODO: business logic
 

@@ -37,24 +37,11 @@ void ConsoleUI::WelcomeMenu()
     cout << endl;
 }
 
-void ConsoleUI::displayListOfScientists()
-{
-    vector<Scientist> scientists = service.getScientists();
-
-    for(size_t i = 0; i < scientists.size(); i++)
-    {
-        cout << scientists[i].getName() << endl;
-        cout << scientists[i].getGender() << endl;
-        cout << scientists[i].getDateOfBirth() << endl;
-        cout << scientists[i].getDateOfDeath() << endl;
-    }
-}
-
-void ConsoleUI::readScientists()
+void ConsoleUI::readScientists(vector<Scientist>& scientists)
 {
     Scientist temp;
 
-    vector<Scientist> scientists = service.getScientists();
+    /*vector<Scientist> scientists = service.getScientists();*/
 
     cout << "Reading Scientists: " << endl;
 
@@ -84,12 +71,26 @@ void ConsoleUI::readScientists()
 
     // athuga hvort að það sem fer inn virki ekki öruglega
     // það eru tveir scientists harðkóðaðir inn þessvegna er scientistinn sem þú setur inn númer 2
-    cout << scientists[2].getName() << endl;
-    cout << scientists[2].getGender() << endl;
+    // cout << scientists[2].getName() << endl;
+    // cout << scientists[2].getGender() << endl;
+}
+
+void ConsoleUI::displayListOfScientists(vector<Scientist>& scientists)
+{
+    /*vector<Scientist> scientists = service.getScientists();*/
+
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        cout << scientists[i].getName() << endl;
+        cout << scientists[i].getGender() << endl;
+        cout << scientists[i].getDateOfBirth() << endl;
+        cout << scientists[i].getDateOfDeath() << endl;
+    }
 }
 
 void ConsoleUI::createScientist()
 {
+    vector<Scientist> scientists = service.getScientists();
 
     char choice;
 
@@ -99,11 +100,12 @@ void ConsoleUI::createScientist()
 
         if(choice == '2')
         {
-            displayListOfScientists();
+            displayListOfScientists(scientists);
+            cout << "hvar er scientist-inn?";
         }
         else if(choice == '1')
         {
-            readScientists();
+            readScientists(scientists);
         }
     }
 }

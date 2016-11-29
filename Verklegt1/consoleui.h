@@ -15,8 +15,8 @@ public:
 
 private:
     ScientistService service;
-    void displayListOfScientists();
-    void readScientists();
+    void displayListOfScientists(vector<Scientist> &scientists);
+    void readScientists(vector<Scientist>& scientists);
 };
 
 #endif // CONSOLEUI_H
