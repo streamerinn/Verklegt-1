@@ -47,9 +47,14 @@ void ConsoleUI::readScientists()
     cout << "Reading Scientists: " << endl;
 
     string tempName;
+    string temp2Name;
     cout << "Please enter a name: " << endl;
-    cin >> tempName;
+    cin >> tempName >> temp2Name;
+    //getline(cin, tempName);
+    //cin.ignore(64,'\n');
+    //cin.clear();
     temp.setName(tempName);
+    temp.setsecondName(temp2Name);
 
     string tempGender;
     cout << "Please enter the gender: " << endl;
@@ -82,7 +87,7 @@ void ConsoleUI::displayListOfScientists()
 
     for(size_t i = 0; i < scientists.size(); i++)
     {
-        cout << scientists[i].getName() << endl;
+        cout << scientists[i].getName() << " " << scientists[i].getSecondName() << endl;
         cout << scientists[i].getGender() << endl;
         cout << scientists[i].getDateOfBirth() << endl;
         cout << scientists[i].getDateOfDeath() << endl;

@@ -12,6 +12,7 @@ class ScientistService
 private:
     vector<Scientist> scientists;
     DataBase data;
+
 public:
     ScientistService();
 

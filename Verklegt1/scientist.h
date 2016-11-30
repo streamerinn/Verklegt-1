@@ -16,10 +16,12 @@ public:
     //build föll
     Scientist();    // Default constructor
     string getName();
+    string getSecondName();
     string getGender();
     int getDateOfBirth();
     int getDateOfDeath();
     void setName(string name);
+    void setsecondName(string secondName);
     void setGender(string gender);
     void setDateOfBirth(int birth);
     void setDateOfDeath(int death);
@@ -33,6 +35,7 @@ private:
 
     vector<Scientist> scientists;
     string _name;
+    string _secondname;
     string _gender;
     int _dateOfBirth;
     int _dateOfDeath;
