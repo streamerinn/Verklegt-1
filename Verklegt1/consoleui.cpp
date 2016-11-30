@@ -1,4 +1,8 @@
+#include <iostream>
+#include <string>
 #include "consoleui.h"
+
+using namespace std;
 
 const char TAB = '\t';
 
@@ -28,6 +32,8 @@ void ConsoleUI::WelcomeMenu()
     cout << TAB << "Press 1 to create a new scientist." << endl;
     cout << TAB << "Press 2 to list all scientists." << endl;
     cout << TAB << "Press 3 to search for a scientist." << endl;
+    cout << TAB << "Press 4 to search for scientist born in specific year." << endl;
+    cout << TAB << "Press 5 to display list of males or females" << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
@@ -45,17 +51,26 @@ void ConsoleUI::readScientists()
     //string temp2Name;
     cout << "Please enter a name: " << endl;
     //cin >> tempName >> temp2Name;
-    cin.ignore (64, '\n');
+    cin.ignore(64,'\n');
     getline(cin, tempName);
-    //cin.ignore(64,'\n');
     //cin.clear();
     temp.setName(tempName);
     //temp.setsecondName(temp2Name);
 
     string tempGender;
-    cout << "Please enter the gender: " << endl;
-    cin >> tempGender;
-    temp.setGender(tempGender);
+    char gender;
+        cout << "Please enter the gender(M for male, F for female): " << endl;
+        cin >> gender;
+        if(gender == 'M'||gender=='m')
+        {
+            tempGender = "Male";
+            temp.setGender(tempGender);
+        }
+        else if(gender == 'F'||gender == 'f')
+        {
+            tempGender = "Female";
+            temp.setGender(tempGender);
+        }
 
     int tempDateOfBirth;
     cout << "Please enter date of birth: " << endl;
@@ -78,39 +93,45 @@ void ConsoleUI::readScientists()
 void ConsoleUI::displayListOfScientists()
 {
     vector<Scientist> scientists = service.getScientists();
-
-    for(size_t i = 0; i < scientists.size(); i++)
-    {
-        cout << scientists[i].getName() << " " << scientists[i].getSecondName() << endl;
-        cout << scientists[i].getGender() << endl;
-        cout << scientists[i].getDateOfBirth() << endl;
-        cout << scientists[i].getDateOfDeath() << endl;
-    }
-}
+     cout << "\t information about all listed scientist" << endl;
+     cout << "\t___________________________________________________________________________" << endl;
+     for(size_t i = 0; i < scientists.size(); i++)
+     {
+         cout << "\t |Name: " << scientists[i].getName() << endl;
+         cout << "\t |Gender: " << scientists[i].getGender() << endl;
+         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
+         cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+         cout << TAB << "----------------------------------------------------------------------------" << endl;
+     }
+ }
 
 void ConsoleUI::displayListOfScientistsYoung()
 {
     vector<Scientist> scientists = service.getScientistsYoung();
-
+    cout << "\t information about all listed scientist" << endl;
+    cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
-        cout << scientists[i].getName() << " " << scientists[i].getSecondName() << endl;
-        cout << scientists[i].getGender() << endl;
-        cout << scientists[i].getDateOfBirth() << endl;
-        cout << scientists[i].getDateOfDeath() << endl;
+        cout << "\t |Name: " << scientists[i].getName() << endl;
+        cout << "\t |Gender: " << scientists[i].getGender() << endl;
+        cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
+        cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+        cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
 
 void ConsoleUI::displayListOfScientistsOld()
 {
     vector<Scientist> scientists = service.getScientistsOld();
-
+    cout << "\t information about all listed scientist" << endl;
+    cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
-        cout << scientists[i].getName() << " " << scientists[i].getSecondName() << endl;
-        cout << scientists[i].getGender() << endl;
-        cout << scientists[i].getDateOfBirth() << endl;
-        cout << scientists[i].getDateOfDeath() << endl;
+        cout << "\t |Name: " << scientists[i].getName() << endl;
+        cout << "\t |Gender: " << scientists[i].getGender() << endl;
+        cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
+        cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+        cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
 
@@ -120,6 +141,7 @@ void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
 
     while(choice != 'q' && choice != 'Q')
     {
+        vector<Scientist> temp = service.getScientists();
         cin >> choice;
 
         if(choice == '2')
@@ -151,5 +173,101 @@ void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
         {
             readScientists();
         }
-    }
-}
+        else if(choice == '3')
+          {
+
+              string nafn;
+              cout << "Enter name of scientists you want to find: ";
+              cin >> nafn;
+              int counter = 0;
+              cout << "\t information about requested scientist" << endl;
+              cout << "\t___________________________________________________________________________" << endl;
+              for(size_t i = 0; i<temp.size() ;i++)
+              {
+                  if(temp[i].getName()== nafn)
+                  {
+                      cout << "\t |Name: " << temp[i].getName() << endl;
+                      cout << "\t |Gender: " << temp[i].getGender() << endl;
+                      cout << "\t |Born: " << temp[i].getDateOfBirth() << endl;
+                      cout << "\t |Died: " << temp[i].getDateOfDeath() << endl;
+                      counter ++;
+                  }
+
+              }
+              if(counter == 0)
+              {
+                  cout << "No scientist name " << nafn << " in our data, try again" << endl;
+              }
+
+          }
+          else if(choice == '4')
+          {
+              int year = 0;
+              cout << "Enter the the year of birth of the Scientist: ";
+              cin >> year;
+              int counter = 1;
+              cout << "\t All scientist born in year"<< year << endl;
+              cout << "\t___________________________________________________________________________" << endl;
+              for(size_t i = 0; i < temp.size(); i++)
+              {
+                  if(year==temp[i].getDateOfBirth())
+                  {
+                      cout << "\t |Scientist " << counter << " Born in year " << year << endl;
+                      cout << "\t |Name: " <<temp[i].getName() << endl;
+                      cout << "\t |Gender: " <<temp[i].getGender() << endl;
+                      cout << "\t |Born: " <<temp[i].getDateOfBirth() << endl;
+                      cout << "\t |Died: "<<temp[i].getDateOfDeath() << endl;
+                      counter ++;
+                  }
+              }
+              if(counter == 1)
+              {
+                  cout << "No Scientist in our data born that year, try again" << endl;
+              }
+          }
+          else if(choice == '5')
+          {
+              char sex;
+              cout << "Press F for list of females." << endl;
+              cout << "Press M for list of males." << endl;
+              cin >> sex;
+
+              if(sex == 'F'||sex=='f')
+              {
+                  int counter = 1;
+                  cout << "\t All women in our data" << endl;
+                  cout << "\t___________________________________________________________________________" << endl;
+                  for(size_t i = 0; i < temp.size();i++)
+                  {
+                      if(temp[i].getGender()=="Female")
+                      {
+                          cout << "\t|  Scientist #" << counter << endl;
+                          cout << "\t|  Name: " << temp[i].getName() << endl;
+                          cout << "\t|  Born: " << temp[i].getDateOfBirth() << endl;
+                          cout << "\t|  Died: " << temp[i].getDateOfDeath() << endl;
+                          cout << "\t| " << endl;
+                          counter++;
+                      }
+                  }
+              }
+              else if(sex=='M'||sex=='m')
+              {
+                  int counter = 1;
+                  cout << "\t All men in our data" << endl;
+                  cout << "\t___________________________________________________________________________" << endl;
+                  for(size_t i = 0; i < temp.size();i++)
+                  {
+                      if(temp[i].getGender()=="Male")
+                      {
+                          cout << "\t|  Scientist #" << counter << endl;
+                          cout << "\t|  Name: " << temp[i].getName() << endl;
+                          cout << "\t|  Born: " << temp[i].getDateOfBirth() << endl;
+                          cout << "\t|  Died: " << temp[i].getDateOfDeath() << endl;
+                          cout << "\t| " << endl;
+                          counter++;
+                      }
+                  }
+              }
+          }
+      }
+  }
