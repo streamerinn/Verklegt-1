@@ -34,8 +34,31 @@ struct ScientistComparisonOld
 
 ScientistService::ScientistService()
 {
+    scientists = data.readingTxt();
 
 }
+
+
+/*//bjarki her
+
+ifstream fallid;
+
+Scientist temp;
+
+skyra txt file
+lalala("dammdum.txt")
+
+if(txt file.open)
+{
+    while(afram)
+    {
+        vector.push_back(temp);
+    }
+}
+
+
+
+//haettir her*/
 
 vector<Scientist> ScientistService::getScientists()/* TODO: parameters, hann er public í .h*/
 {
@@ -59,6 +82,11 @@ vector<Scientist> ScientistService::getScientistsYoung()/* TODO: parameters, han
     //vil returna þennan scientist sorted
     return scientists;
 
+}
+
+vector<Scientist> ScientistService::thewholethang() //AAAAAAAAAAAAAAAAAAAAAAAAAAAH
+{
+    return scientists;
 }
 
 vector<Scientist> ScientistService::getScientistsOld()/* TODO: parameters, hann er public í .h*/

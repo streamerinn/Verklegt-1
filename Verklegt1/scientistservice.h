@@ -18,6 +18,7 @@ public:
     vector<Scientist> getScientists();
     vector<Scientist> getScientistsYoung();
     vector<Scientist> getScientistsOld();
+    vector<Scientist>thewholethang(); //er ad reyna ad couta allan vectorinn
     //void create(vector<Scientist> info);
     void create(Scientist scientist);
 };

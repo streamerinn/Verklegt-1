@@ -41,6 +41,14 @@ void ConsoleUI::features()
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
+
+   /* vector<Scientist> temp = service.getScientists();
+    // testing txt file
+    cout << "\t |Name: " << temp[0].getName() << endl;
+    cout << "\t |Gender: " << temp[0].getGender() << endl;
+    cout << "\t |Born: " << temp[0].getDateOfBirth() << endl;
+    cout << "\t |Died: " << temp[0].getDateOfDeath() << endl;
+    // no longer testing txt*/
 }
 
 
@@ -153,6 +161,7 @@ void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
 
         if(choice == '2')
         {
+
             char sort;
             cout << TAB << "How should the list be sorted?" << endl;
             cout << TAB << "Press 1 for alphabetical order." << endl;

@@ -3,7 +3,7 @@
 
 #include "scientist.h"
 
-
+#include <vector>
 #include <fstream>
 #include <string>
 
@@ -17,11 +17,13 @@ public:
 
     //sækir upplýsingar úr textasrká
     void getInfo();
+    vector<Scientist> readingTxt();
     void returnInfo(Scientist scientist);
 
 private:
 
     /*ScientistService info;*/
+    vector<Scientist> savedData;
 
 };
 
