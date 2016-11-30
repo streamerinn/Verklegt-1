@@ -1,6 +1,36 @@
 #include "scientistservice.h"
+#include <algorithm>
+
+using namespace std;
 
 //miðlagið
+
+//þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist
+//struct sér um að raða eftir nöfnum
+
+struct ScientistComparison
+{
+  bool operator() (Scientist i, Scientist j)
+  {
+     return (i.getName()<j.getName());
+  }
+};
+
+struct ScientistComparisonYoung
+{
+  bool operator() (Scientist i, Scientist j)
+  {
+     return (i.getDateOfBirth()>j.getDateOfBirth());
+  }
+};
+
+struct ScientistComparisonOld
+{
+  bool operator() (Scientist i, Scientist j)
+  {
+     return (i.getDateOfBirth()<j.getDateOfBirth());
+  }
+};
 
 ScientistService::ScientistService()
 {
@@ -9,38 +39,41 @@ ScientistService::ScientistService()
     //data = new DataBase();
 }
 
-/*vector<Scientist> ScientistService::getScientists() TODO: parameters
+vector<Scientist> ScientistService::getScientists()/* TODO: parameters, hann er public í .h*/
 {
 
-    //harðkóðaðar upplýsingar til að prufa virkni clasans
-    Scientist p("Charles Babbage", "male", 1791, 1871);
+    ScientistComparison cmp;
 
-}*/
+    std::sort(scientists.begin(), scientists.end(), cmp);
 
-/*void ScientistService::init()
+
+    //vil returna þennan scientist sorted
+    return scientists;
+
+}
+
+vector<Scientist> ScientistService::getScientistsYoung()/* TODO: parameters, hann er public í .h*/
 {
-    Scientist p("Charles Babbage", "male", 1791, 1871);
-    Scientist p2("Ada Locelace", "female", 1815, 1852);
-    Scientist p3("yiis yis", "female", 2015, 2052);
 
-    scientists.push_back(p);
-    scientists.push_back(p2);
-    scientists.push_back(p3);
-}*/
+    ScientistComparisonYoung cmpYoung;
 
-vector<Scientist> ScientistService::getScientists()/* TODO: parameters*/
+    std::sort(scientists.begin(), scientists.end(), cmpYoung);
+
+
+    //vil returna þennan scientist sorted
+    return scientists;
+
+}
+
+vector<Scientist> ScientistService::getScientistsOld()/* TODO: parameters, hann er public í .h*/
 {
-    /*//harðkóðaðar upplýsingar til að prufa virkni clasans
-    Scientist p("Charles Babbage", "male", 1791, 1871);
-    Scientist p2("Ada Locelace", "female", 1815, 1852);
-    Scientist p3("yiis yis", "female", 2015, 2052);
 
-    scientists.push_back(p);
-    scientists.push_back(p2);
-    scientists.push_back(p3);*/
+    ScientistComparisonOld cmpOld;
 
-    //TODO: business logic
+    std::sort(scientists.begin(), scientists.end(), cmpOld);
 
+
+    //vil returna þennan scientist sorted
     return scientists;
 
 }

@@ -16,6 +16,8 @@ public:
 private:
     ScientistService service;
     void displayListOfScientists();
+    void displayListOfScientistsYoung();
+    void displayListOfScientistsOld();
     void readScientists();
 };
 

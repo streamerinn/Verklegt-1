@@ -15,8 +15,9 @@ private:
 
 public:
     ScientistService();
-
     vector<Scientist> getScientists();
+    vector<Scientist> getScientistsYoung();
+    vector<Scientist> getScientistsOld();
     //void create(vector<Scientist> info);
     void create(Scientist scientist);
 };

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-//entity clasi
+//entity klasi
 class Scientist
 {
 public:

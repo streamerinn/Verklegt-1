@@ -43,7 +43,6 @@ void ConsoleUI::readScientists()
 
     //vector<Scientist> scientists = service.getScientists();
 
-
     cout << "Reading Scientists: " << endl;
 
     string tempName;
@@ -77,8 +76,6 @@ void ConsoleUI::readScientists()
 
     //flytur upplýsingar inn í ScientistService
     service.create(temp);
-
-
 }
 
 void ConsoleUI::displayListOfScientists()
@@ -94,9 +91,34 @@ void ConsoleUI::displayListOfScientists()
     }
 }
 
+void ConsoleUI::displayListOfScientistsYoung()
+{
+    vector<Scientist> scientists = service.getScientistsYoung();
+
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        cout << scientists[i].getName() << " " << scientists[i].getSecondName() << endl;
+        cout << scientists[i].getGender() << endl;
+        cout << scientists[i].getDateOfBirth() << endl;
+        cout << scientists[i].getDateOfDeath() << endl;
+    }
+}
+
+void ConsoleUI::displayListOfScientistsOld()
+{
+    vector<Scientist> scientists = service.getScientistsOld();
+
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        cout << scientists[i].getName() << " " << scientists[i].getSecondName() << endl;
+        cout << scientists[i].getGender() << endl;
+        cout << scientists[i].getDateOfBirth() << endl;
+        cout << scientists[i].getDateOfDeath() << endl;
+    }
+}
+
 void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
 {
-
     char choice;
 
     while(choice != 'q' && choice != 'Q')
@@ -105,7 +127,28 @@ void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
 
         if(choice == '2')
         {
-            displayListOfScientists();
+            char sort;
+            cout << TAB << "How should the list be sorted?" << endl;
+            cout << TAB << "Press 1 for alphabetical order." << endl;
+            cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
+            cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
+            cout << TAB << "" << endl;
+            cout << TAB << "----------------------------------------------------------------------------" << endl;
+
+            cin >> sort;
+
+            if(sort == '1')
+            {
+                displayListOfScientists();
+            }
+            if(sort == '2')
+            {
+                displayListOfScientistsYoung();
+            }
+            if(sort == '3')
+            {
+                displayListOfScientistsOld();
+            }
         }
         else if(choice == '1')
         {

@@ -1,5 +1,4 @@
 #include "database.h"
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -21,7 +20,7 @@ void DataBase::getInfo()
 
 }
 
-// Upplýsingar eru byrjaðar að berast hingað frá consoleui
+// Upplýsingar eru byrjaðar að berast hingað frá consoleu-i
 // TODO: bæta scientistum inn í textaskrá
 // þetta ætti að gerast (eins og er) þannig að í hvert skipti sem add er keirt er bætt einum scientist inn í skránna
 void DataBase::returnInfo(Scientist scientist)
