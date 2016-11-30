@@ -15,6 +15,7 @@ public:
     ConsoleUI();
     void createScientist();
     void WelcomeMenu();
+    void features();
 
     friend istream& operator >> (istream& in, Scientist& rhs);
 

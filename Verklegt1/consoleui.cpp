@@ -24,11 +24,15 @@ void ConsoleUI::WelcomeMenu()
     cout << TAB << "--------------------------------------------" << endl;
     cout << endl;
 
+}
+
+void ConsoleUI::features()
+{
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << "The list below shows you all possible features on what you can do." << endl;
     cout << endl;
 
-    // Menu list
+    cout << TAB << "press H to show all options" << endl; //eitthvað svona er sniðgt;
     cout << TAB << "Press 1 to create a new scientist." << endl;
     cout << TAB << "Press 2 to list all scientists." << endl;
     cout << TAB << "Press 3 to search for a scientist." << endl;
@@ -39,6 +43,7 @@ void ConsoleUI::WelcomeMenu()
     cout << endl;
 }
 
+
 void ConsoleUI::readScientists()
 {
     Scientist temp;
@@ -48,14 +53,10 @@ void ConsoleUI::readScientists()
     cout << "Reading Scientists: " << endl;
 
     string tempName;
-    //string temp2Name;
     cout << "Please enter a name: " << endl;
-    //cin >> tempName >> temp2Name;
     cin.ignore(64,'\n');
     getline(cin, tempName);
-    //cin.clear();
     temp.setName(tempName);
-    //temp.setsecondName(temp2Name);
 
     string tempGender;
     char gender;
@@ -143,6 +144,12 @@ void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
     {
         vector<Scientist> temp = service.getScientists();
         cin >> choice;
+
+        if(choice == 'h')
+        {
+            features();
+        }
+
 
         if(choice == '2')
         {

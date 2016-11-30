@@ -10,33 +10,31 @@ using namespace std;
 
 struct ScientistComparison
 {
-  bool operator() (Scientist i, Scientist j)
-  {
-     return (i.getName()<j.getName());
-  }
+    bool operator() (Scientist i, Scientist j)
+    {
+        return (i.getName()<j.getName());
+    }
 };
 
 struct ScientistComparisonYoung
 {
-  bool operator() (Scientist i, Scientist j)
-  {
-     return (i.getDateOfBirth()>j.getDateOfBirth());
-  }
+    bool operator() (Scientist i, Scientist j)
+    {
+        return (i.getDateOfBirth()>j.getDateOfBirth());
+    }
 };
 
 struct ScientistComparisonOld
 {
-  bool operator() (Scientist i, Scientist j)
-  {
-     return (i.getDateOfBirth()<j.getDateOfBirth());
-  }
+    bool operator() (Scientist i, Scientist j)
+    {
+        return (i.getDateOfBirth()<j.getDateOfBirth());
+    }
 };
 
 ScientistService::ScientistService()
 {
 
-    //_scientists = scientists;
-    //data = new DataBase();
 }
 
 vector<Scientist> ScientistService::getScientists()/* TODO: parameters, hann er public í .h*/
@@ -46,8 +44,6 @@ vector<Scientist> ScientistService::getScientists()/* TODO: parameters, hann er 
 
     std::sort(scientists.begin(), scientists.end(), cmp);
 
-
-    //vil returna þennan scientist sorted
     return scientists;
 
 }
@@ -71,7 +67,6 @@ vector<Scientist> ScientistService::getScientistsOld()/* TODO: parameters, hann 
     ScientistComparisonOld cmpOld;
 
     std::sort(scientists.begin(), scientists.end(), cmpOld);
-
 
     //vil returna þennan scientist sorted
     return scientists;
