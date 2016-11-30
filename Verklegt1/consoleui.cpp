@@ -1,8 +1,4 @@
-#include <iostream>
-#include <string>
 #include "consoleui.h"
-
-using namespace std;
 
 const char TAB = '\t';
 
@@ -47,14 +43,15 @@ void ConsoleUI::readScientists()
     cout << "Reading Scientists: " << endl;
 
     string tempName;
-    string temp2Name;
+    //string temp2Name;
     cout << "Please enter a name: " << endl;
-    cin >> tempName >> temp2Name;
-    //getline(cin, tempName);
+    //cin >> tempName >> temp2Name;
+    cin.ignore (64, '\n');
+    getline(cin, tempName);
     //cin.ignore(64,'\n');
     //cin.clear();
     temp.setName(tempName);
-    temp.setsecondName(temp2Name);
+    //temp.setsecondName(temp2Name);
 
     string tempGender;
     cout << "Please enter the gender: " << endl;

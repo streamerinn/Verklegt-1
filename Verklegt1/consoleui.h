@@ -1,8 +1,13 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
 
+#include <iostream>
+#include <string>
+
 #include "scientistservice.h"
 #include "scientist.h"
+
+using namespace std;
 
 class ConsoleUI
 {
