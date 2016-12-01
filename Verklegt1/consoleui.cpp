@@ -51,7 +51,6 @@ void ConsoleUI::features()
     // no longer testing txt*/
 }
 
-
 void ConsoleUI::readScientists()
 {
     Scientist temp;
@@ -66,12 +65,9 @@ void ConsoleUI::readScientists()
     {
         if(tempName.empty())
         {
-
-            getline(cin, tempName);
             cout << TAB << "You cannot enter a empty name. Please try again: " << endl;
-            cout << "You cannot enter a empty name. Please try again: " << endl;
+            cout << TAB;
             getline(cin, tempName);
-
         }
     }
     while(tempName.empty());
@@ -92,7 +88,7 @@ void ConsoleUI::readScientists()
             if(gender != 'M' && gender != 'm' && gender != 'F' && gender != 'f')
             {
                 cout << gender << " is not a walid option" << endl;
-                cout << "pleas enter a vaild option" << endl;
+                cout << "pleas enter a valid option" << endl;
 
             }
             if(gender == 'M'||gender=='m')
@@ -128,7 +124,6 @@ void ConsoleUI::readScientists()
     while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
 
     temp.setDateOfBirth(tempDateOfBirth);
-    cout << endl;
 
     cout << TAB << "Please enter date of death(Enter 13337 if the scientist is still alive): ";
 
@@ -139,22 +134,17 @@ void ConsoleUI::readScientists()
         {
             cout << TAB << "Not possible. A person cannot die before it is born. Please try again: ";
         }
-        else if(tempDateOfDeath == 13337)
-        {
-            std::string s = std::to_string(tempDateOfDeath);
-        }
-    }
-    while(tempDateOfDeath < tempDateOfBirth);
+    }while(tempDateOfDeath < tempDateOfBirth);
 
 
-        if(tempDateOfDeath > 2016)
+        if(tempDateOfDeath > 2016 && tempDateOfDeath !=13337)
         {
-            cout << "Not possible. A person cannot die beyond the current year." << endl;
+            cout << TAB << "Not possible. A person cannot die beyond the current year." << endl;
         }
 
     //while(tempDateOfDeath < tempDateOfBirth);
 
-    //temp.setDateOfDeath(tempDateOfDeath);
+    temp.setDateOfDeath(tempDateOfDeath);
 
     cout << endl;
 
@@ -176,20 +166,22 @@ void ConsoleUI::readScientists()
     service.create(temp);
 }
 
+
 void ConsoleUI::display(vector<Scientist> scientists) // hjálp
 {
     cout << "\t information about all listed scientist" << endl;
     cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
-        cout << "\t |Name: " << scientists[i].getName() << endl;
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-        cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+        if(scientists[i].getDateOfDeath() == 13337)
+           cout << "\t |Alive and kicking! " << endl;
+        else
+            cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
-
 
 void ConsoleUI::displayListOfScientists()
 {
@@ -201,7 +193,10 @@ void ConsoleUI::displayListOfScientists()
          cout << "\t |Name: " << scientists[i].getName() << endl;
          cout << "\t |Gender: " << scientists[i].getGender() << endl;
          cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-         cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+         if(scientists[i].getDateOfDeath() == 13337)
+            cout << "\t |Alive and kicking! " << endl;
+         else
+             cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
          cout << TAB << "----------------------------------------------------------------------------" << endl;
      }
  }
@@ -213,10 +208,12 @@ void ConsoleUI::displayListOfScientistsYoung()
     cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
-        cout << "\t |Name: " << scientists[i].getName() << endl;
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-        cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+        if(scientists[i].getDateOfDeath() == 13337)
+           cout << "\t |Alive and kicking! " << endl;
+        else
+            cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
@@ -228,14 +225,15 @@ void ConsoleUI::displayListOfScientistsOld()
     cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
-        cout << "\t |Name: " << scientists[i].getName() << endl;
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-        cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+        if(scientists[i].getDateOfDeath() == 13337)
+            cout << "\t |Alive and kicking! " << endl;
+        else
+            cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
-
 
 void ConsoleUI::searchName()
 {
@@ -247,13 +245,12 @@ void ConsoleUI::searchName()
      vector<Scientist> temp = service.searchName(name);
      if(temp.size() == 0)
      {
-         cout << "No scientist name " << name << " in our data, try again" << endl;
+         cout << "There is no scientist named " << name << " in our data, try again." << endl;
      }
      else
      {
          display(temp);
      }
-
 }
 
 void ConsoleUI::searchDateOfBirth()
@@ -280,7 +277,7 @@ void ConsoleUI::searchDateOfBirth()
     }
     if(counter == 1)
     {
-        cout << "No Scientist in our data born that year, try again" << endl;
+        cout << "No Scientist in our data is born in that year, try again" << endl;
     }
 }
 
@@ -388,7 +385,6 @@ void ConsoleUI::listOrSortScientist()
             cout << TAB << "Press 1 to search for a scientist witch a specific name" << endl;
             cout << TAB << "Press 2 to search for all scientists born a specific year" << endl;
             cout << TAB << "Press 3 to search for all scientists with a specific gender" << endl;
-
 
             cin >> searchOptions;
 

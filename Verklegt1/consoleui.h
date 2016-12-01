@@ -21,6 +21,7 @@ public:
     void searchName();
     void searchDateOfBirth();
     void searchGender();
+    void displayList();
 
     friend istream& operator >> (istream& in, Scientist& rhs);
 
