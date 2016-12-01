@@ -1,6 +1,7 @@
 #include "Scientist.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 
 // Constructors
 Scientist::Scientist()
@@ -75,3 +76,4 @@ void Scientist::setDateOfDeath(int dateofDeath)
 {
     _dateOfDeath = dateofDeath;
 }
+

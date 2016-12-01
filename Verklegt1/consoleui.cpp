@@ -62,14 +62,13 @@ void ConsoleUI::readScientists()
 
     string tempName;
     cout << "Please enter a name: " << endl;
-    getline(cin, tempName);
     cin.ignore(64,'\n');
     do
     {
         if(tempName.empty())
         {
-            cout << "You cannot enter a empty name. Please try again: " << endl;
             getline(cin, tempName);
+            cout << "You cannot enter a empty name. Please try again: " << endl;
         }
     }while(tempName.empty());
 
@@ -110,7 +109,7 @@ void ConsoleUI::readScientists()
 
     temp.setDateOfBirth(tempDateOfBirth);
 
-    cout << "Please enter death date: " << endl;
+    cout << "Please enter date of death(Enter 13337 if the scientist is still alive): " << endl;
 
     do
     {
@@ -118,6 +117,10 @@ void ConsoleUI::readScientists()
         if(tempDateOfDeath < tempDateOfBirth)
         {
             cout << "Not possible. A person cannot die before it is born. Please try again: " << endl;
+        }
+        else if(tempDateOfDeath == 13337)
+        {
+            std::string s = std::to_string(tempDateOfDeath);
         }
     }while(tempDateOfDeath < tempDateOfBirth);
 
