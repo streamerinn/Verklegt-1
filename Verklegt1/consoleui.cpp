@@ -62,8 +62,18 @@ void ConsoleUI::readScientists()
 
     string tempName;
     cout << "Please enter a name: " << endl;
-    cin.ignore(64,'\n');
     getline(cin, tempName);
+    cin.ignore(64,'\n');
+    do
+    {
+        if(tempName.empty())
+        {
+            cout << "You cannot enter a empty name. Please try again: " << endl;
+            getline(cin, tempName);
+        }
+    }while(tempName.empty());
+
+
     temp.setName(tempName);
 
     string tempGender;
@@ -178,7 +188,7 @@ void ConsoleUI::displayListOfScientistsOld()
     }
 }
 
-void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
+void ConsoleUI::listOrSortScientist() //vantar meira lýsandi nafn á fallinu
 {
     char choice;
 

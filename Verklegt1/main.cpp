@@ -8,7 +8,7 @@ int main()
 
     ui.WelcomeMenu();
     ui.features();
-    ui.createScientist();
+    ui.listOrSortScientist();
 
     return 0;
 }
