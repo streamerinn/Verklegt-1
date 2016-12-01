@@ -108,3 +108,17 @@ void ScientistService::create(Scientist scientist)
     data.returnInfo(scientist);
     scientists.push_back(scientist);
 }
+
+vector<Scientist> ScientistService::searchName(string name)
+{
+    vector<Scientist> temp;
+
+    for(size_t i = 0; i<scientists.size() ;i++)
+    {
+        if(scientists[i].getName()== name)
+        {
+            temp.push_back(scientists[i]);
+        }
+    }
+    return temp;
+}

@@ -21,6 +21,8 @@ public:
     vector<Scientist>thewholethang(); //er ad reyna ad couta allan vectorinn
     //void create(vector<Scientist> info);
     void create(Scientist scientist);
+
+    vector<Scientist> searchName(string name);
 };
 
 #endif // SCIENTISTSERVICE_H

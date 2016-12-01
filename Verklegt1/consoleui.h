@@ -12,15 +12,21 @@ using namespace std;
 class ConsoleUI
 {
 public:
-    ConsoleUI();
-    void listOrSortScientist();
+    ConsoleUI(); 
     void WelcomeMenu();
     void features();
+    void listOrSortScientist();
+    void searchName();
+    void searchDateOfBirth();
+    void searchGender();
 
     friend istream& operator >> (istream& in, Scientist& rhs);
 
 private:
     ScientistService service;
+
+    void display(vector<Scientist> scientists);
+
     void displayListOfScientists();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
