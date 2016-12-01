@@ -276,13 +276,13 @@ void ConsoleUI::sortScientist() //vantar meira lýsandi nafn á fallinu
               cout << "Enter the the year of birth of the Scientist: ";
               cin >> year;
               int counter = 1;
-              cout << "\t All scientist born in year"<< year << endl;
+              cout << "\t All scientist born in the year "<< year << endl;
               cout << "\t___________________________________________________________________________" << endl;
               for(size_t i = 0; i < temp.size(); i++)
               {
                   if(year==temp[i].getDateOfBirth())
                   {
-                      cout << "\t |Scientist " << counter << " Born in year " << year << endl;
+                      cout << "\t |Scientist #" << counter << " born in " << year << endl;
                       cout << "\t |Name: " <<temp[i].getName() << endl;
                       cout << "\t |Gender: " <<temp[i].getGender() << endl;
                       cout << "\t |Born: " <<temp[i].getDateOfBirth() << endl;
@@ -302,7 +302,7 @@ void ConsoleUI::sortScientist() //vantar meira lýsandi nafn á fallinu
               cout << "Press M for list of males." << endl;
               cin >> sex;
 
-              if(sex == 'F'||sex=='f')
+              if(sex == 'F' || sex == 'f')
               {
                   int counter = 1;
                   cout << "\t All women in our data" << endl;

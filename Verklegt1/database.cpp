@@ -62,9 +62,9 @@ void DataBase::returnInfo(Scientist scientist)
     fstream outputFile;
     outputFile.open("C:/Users/Leifur/Documents/Skolinn/VerklegtNamsskeid/Verklegt-1/build-LayeredArchitecture-Desktop_Qt_5_7_0_MinGW_32bit-Debug", ios::app);
 
-    outputFile << scientist.getName() << " " << scientist.getSecondName() << endl;
-    outputFile << scientist.getGender() << endl;
-    outputFile << scientist.getDateOfBirth() << endl;
-    outputFile << scientist.getDateOfDeath() << endl;
+    outputFile << scientist.getName() << " " << scientist.getSecondName() << ',';
+    outputFile << scientist.getGender() << ',';
+    outputFile << scientist.getDateOfBirth() << ',';
+    outputFile << scientist.getDateOfDeath() << ',';
 }
 
