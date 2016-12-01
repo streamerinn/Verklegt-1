@@ -24,6 +24,7 @@ public:
 
     vector<Scientist> searchName(string name);
     vector<Scientist> searchDateOfBirth(int year);
+    vector<Scientist> searchGender(char gender);
 };
 
 #endif // SCIENTISTSERVICE_H

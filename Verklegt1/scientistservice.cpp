@@ -136,3 +136,30 @@ vector<Scientist> ScientistService::searchDateOfBirth(int year)
     }
     return temp1;
 }
+
+vector<Scientist> ScientistService::searchGender(char gender)
+{
+    vector<Scientist> temp2;
+
+    if(gender == 'F'||gender== 'f')
+    {
+        for(size_t i = 0; i < scientists.size();i++)
+        {
+            if(scientists[i].getGender()== "Female")
+            {
+                temp2.push_back(scientists[i]);
+            }
+        }
+    }
+    else if(gender == 'M'||gender == 'm')
+    {
+        for(size_t i = 0; i < scientists.size();i++)
+        {
+            if(scientists[i].getGender()=="Male")
+            {
+                temp2.push_back(scientists[i]);
+            }
+        }
+    }
+    return temp2;
+}
