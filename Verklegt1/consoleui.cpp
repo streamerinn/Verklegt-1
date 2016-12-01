@@ -82,16 +82,50 @@ void ConsoleUI::readScientists()
         }
 
     int tempDateOfBirth;
+    int tempDateOfDeath;
     cout << "Please enter date of birth: " << endl;
-    cin >> tempDateOfBirth;
+
+    do
+    {
+        cin >> tempDateOfBirth;
+        if(tempDateOfBirth > 2016)
+        {
+            cout << "Invalid date. Please try again: " << endl;
+        }
+        else if(tempDateOfBirth < 0)
+        {
+            cout << "A person cannot have a negative date of birth. Please try again: " << endl;
+        }
+    }while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
+
     temp.setDateOfBirth(tempDateOfBirth);
 
-    int tempDateOfDeath;
     cout << "Please enter death date: " << endl;
-    cin >> tempDateOfDeath;
+
+    do
+    {
+        cin >> tempDateOfDeath;
+        if(tempDateOfDeath < tempDateOfBirth)
+        {
+            cout << "Not possible. A person cannot die before it is born. Please try again: " << endl;
+        }
+    }while(tempDateOfDeath < tempDateOfBirth);
+
     temp.setDateOfDeath(tempDateOfDeath);
 
     cout << endl;
+
+    char cont;
+    cout << "Do you want to add another scientist? Press Y/y for yes or N/n for no: ";
+    cin >> cont;
+    if(cont == 'y' || cont == 'Y')
+    {
+        readScientists();
+    }
+    else
+    {
+        features();
+    }
 
     //scientists.push_back(temp);
 
@@ -153,7 +187,7 @@ void ConsoleUI::createScientist() //vantar meira lýsandi nafn á fallinu
         vector<Scientist> temp = service.getScientists();
         cin >> choice;
 
-        if(choice == 'h')
+        if(choice == 'h' || 'H')
         {
             features();
         }
