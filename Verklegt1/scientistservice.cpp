@@ -116,6 +116,8 @@ vector<Scientist> ScientistService::searchName(string name)
     vector<Scientist> temp;
     size_t counter = 0;
     string scientist;
+    char tempSci;
+    char tempName;
 
     for(size_t i = 0; i < scientists.size(); i++)
     {
@@ -123,11 +125,17 @@ vector<Scientist> ScientistService::searchName(string name)
 
         for(size_t j = 0; j < scientist.size(); j++)
         {
-            if(scientist.at(j) == name[0])
+            tempSci = scientist.at(j);
+            tempName = name[0];
+
+            if(tempSci == tempName)
             {
                 for(size_t k = 0; k < name.size(); k++)
                 {
-                    if (scientist.at(j + k) == name[k])
+                    tempSci = scientist.at(j + k);
+                    tempName = name[k];
+
+                    if (tempSci == tempName)
                     {
                         counter++;
                     }
@@ -165,7 +173,7 @@ vector<Scientist> ScientistService::searchGender(char gender)
     {
         for(size_t i = 0; i < scientists.size();i++)
         {
-            if(scientists[i].getGender()== "Female")
+            if(scientists[i].getGender()== "female")
             {
                 temp2.push_back(scientists[i]);
             }
@@ -175,7 +183,7 @@ vector<Scientist> ScientistService::searchGender(char gender)
     {
         for(size_t i = 0; i < scientists.size();i++)
         {
-            if(scientists[i].getGender()=="Male")
+            if(scientists[i].getGender()=="male")
             {
                 temp2.push_back(scientists[i]);
             }

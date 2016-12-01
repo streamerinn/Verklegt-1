@@ -320,9 +320,9 @@ void ConsoleUI::listOrSortScientist()
             int searchOptions = 0;
 
             cout << TAB << "What do you want to search for?" << endl;
-            cout << TAB << "Press 1 to search for a scientist witch a specific name:" << endl;
-            cout << TAB << "Press 2 to search for all scientists born in a specific year:" << endl;
-            cout << TAB << "Press 3 to search for all scientists with a specific gender:" << endl;
+            cout << TAB << "Press 1 to search for a scientist witch a specific name." << endl;
+            cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
+            cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
 
             cout << TAB;
             cin >> searchOptions;
