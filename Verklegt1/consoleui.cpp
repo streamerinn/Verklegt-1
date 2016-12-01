@@ -286,7 +286,7 @@ void ConsoleUI::listOrSortScientist()
 
         else if(choice == "2")
         {
-            int sort;
+            string sort;
             cout << TAB << "How should the list be sorted?" << endl;
             cout << TAB << "Press 1 for alphabetical order." << endl;
             cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
@@ -294,20 +294,24 @@ void ConsoleUI::listOrSortScientist()
             cout << TAB << "Press any other number to go BACK to the menu." << endl;
             cout << TAB << "" << endl;
             cout << TAB << "----------------------------------------------------------------------------" << endl;
+            cout << TAB;
 
             cin >> sort;
-
-            if(sort == 1)
+            if(sort == "1")
             {
                 displayListOfScientistsAlpha();
             }
-            if(sort == 2)
+            else if(sort == "2")
             {
                 displayListOfScientistsYoung();
             }
-            if(sort == 3)
+            else if(sort == "3")
             {
                 displayListOfScientistsOld();
+            }
+            else
+            {
+                features();
             }
         }
 
