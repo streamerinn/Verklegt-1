@@ -12,7 +12,9 @@ using namespace std;
 class ConsoleUI
 {
 public:
+
     ConsoleUI(); 
+    void sortScientist();
     void WelcomeMenu();
     void features();
     void listOrSortScientist();

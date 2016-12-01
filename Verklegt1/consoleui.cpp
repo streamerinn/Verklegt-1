@@ -61,12 +61,17 @@ void ConsoleUI::readScientists()
     string tempName;
     cout << TAB << "Please enter a name: ";
     cin.ignore(64,'\n');
+    getline(cin, tempName);
     do
     {
         if(tempName.empty())
         {
+
             getline(cin, tempName);
             cout << TAB << "You cannot enter a empty name. Please try again: " << endl;
+            cout << "You cannot enter a empty name. Please try again: " << endl;
+            getline(cin, tempName);
+
         }
     }
     while(tempName.empty());
@@ -123,6 +128,7 @@ void ConsoleUI::readScientists()
     while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
 
     temp.setDateOfBirth(tempDateOfBirth);
+    cout << endl;
 
     cout << TAB << "Please enter date of death(Enter 13337 if the scientist is still alive): ";
 
@@ -140,7 +146,15 @@ void ConsoleUI::readScientists()
     }
     while(tempDateOfDeath < tempDateOfBirth);
 
-    temp.setDateOfDeath(tempDateOfDeath);
+
+        if(tempDateOfDeath > 2016)
+        {
+            cout << "Not possible. A person cannot die beyond the current year." << endl;
+        }
+
+    //while(tempDateOfDeath < tempDateOfBirth);
+
+    //temp.setDateOfDeath(tempDateOfDeath);
 
     cout << endl;
 
@@ -221,6 +235,7 @@ void ConsoleUI::displayListOfScientistsOld()
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
+
 
 void ConsoleUI::searchName()
 {
@@ -487,3 +502,4 @@ void ConsoleUI::listOrSortScientist()
         }
     }
 }
+
