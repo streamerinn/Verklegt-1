@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 #include "consoleui.h"
 
 using namespace std;
@@ -86,8 +87,8 @@ void ConsoleUI::readScientists()
 
             if(gender != 'M' && gender != 'm' && gender != 'F' && gender != 'f')
             {
-                cout << gender << " is not a walid option" << endl;
-                cout << "pleas enter a vaild option" << endl;
+                cout << TAB << gender << " is not a walid option" << endl;
+                cout << TAB <<"pleas enter a vaild option" << endl;
 
             }
             if(gender == 'M'||gender=='m')
@@ -104,65 +105,90 @@ void ConsoleUI::readScientists()
             }
         }
 
-    int tempDateOfBirth;
-    int tempDateOfDeath;
-    cout << TAB << "Please enter date of birth: ";
+        int tempDateOfBirth;
+            int tempDateOfDeath;
+            cout << TAB << "Please enter date of birth: ";
 
-    do
-    {
-        cin >> tempDateOfBirth;
-        if(tempDateOfBirth > 2016)
-        {
-            cout << TAB << "Invalid date. Please try again: " << endl;
-        }
-        else if(tempDateOfBirth < 0)
-        {
-            cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
-        }
-    }
-    while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
+            do
+            {
+                cin >> tempDateOfBirth;
+                if(tempDateOfBirth > 2016)
+                {
+                    cout << TAB << "Invalid date. Please try again: " << endl;
+                }
+                else if(tempDateOfBirth < 0)
+                {
+                    cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
+                }
+                else if(!cin)
+                {
+                    while((!cin))
+                    {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    cout << TAB << "Invalid date,This is not a year, try again" << endl;
+                    cout << TAB <<"Please enter date of birth: ";
+                    cin >> tempDateOfBirth;
+                    }
+                }
 
-    temp.setDateOfBirth(tempDateOfBirth);
+            }
+            while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
 
-    cout << TAB << "Please enter date of death(Enter 13337 if the scientist is still alive): ";
+            temp.setDateOfBirth(tempDateOfBirth);
+            cout << endl;
 
-    do
-    {
-        cin >> tempDateOfDeath;
-        if(tempDateOfDeath < tempDateOfBirth)
-        {
-            cout << TAB << "Not possible. A person cannot die before it is born. Please try again: ";
-        }
-        else if(tempDateOfDeath == 13337)
-        {
+            cout << TAB << "Please enter date of death(Enter 0 if the scientist is still alive): ";
 
-        }
-    }
-    while(tempDateOfDeath < tempDateOfBirth);
+            do
+           {
+                cin >> tempDateOfDeath;
+                if(!cin)
+                    {
+                        while((!cin))
+                        {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                        cout << TAB << "Invalid date,This is not a year, try again" << endl;
+                        cout << TAB << "Please enter date of death(Enter 13337 if the scientist is still alive): ";
+                        cin >> tempDateOfDeath;
+                        }
+                    }
+                else if((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0))
+                {
+                    cout << TAB << "Not possible. A person cannot die before it is born." << endl;
+                    cout << TAB << "Please enter date of death(Enter 0 if the scientist is still alive): ";
+                    cin.clear();
+                    cin >> tempDateOfDeath;
+                }
+
+            }
+            while((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0));
 
 
-    if(tempDateOfDeath > 2016 && tempDateOfDeath !=13337)
-    {
-            cout << "Not possible. A person cannot die beyond the current year." << endl;
-    }
+                if(tempDateOfDeath > 2016)
+                {
+                    cout << "Not possible. A person cannot die beyond the current year." << endl;
+                }
 
-    while(tempDateOfDeath < tempDateOfBirth);
+            //while(tempDateOfDeath < tempDateOfBirth);
 
-    temp.setDateOfDeath(tempDateOfDeath);
+            //temp.setDateOfDeath(tempDateOfDeath);
 
-    cout << endl;
+            cout << endl;
 
-    char cont;
-    cout << TAB << "Do you want to add another scientist? Press Y/y for yes or N/n for no: ";
-    cin >> cont;
-    if(cont == 'y' || cont == 'Y')
-    {
-        readScientists();
-    }
-    else
-    {
-        features();
-    }
+            char cont;
+            cout << TAB << "Do you want to add another scientist? Press Y/y for yes or N/n for no: ";
+            cin >> cont;
+            if(cont == 'y' || cont == 'Y')
+            {
+                readScientists();
+            }
+            else
+            {
+                features();
+            }
+
 
     //scientists.push_back(temp);
 
@@ -275,9 +301,9 @@ void ConsoleUI::searchGender()
 
 void ConsoleUI::listOrSortScientist()
 {
-    char choice;
+    string choice;
 
-    while(choice != 'q' && choice != 'Q')
+    while(choice != "q" && choice != "Q")
     {
         vector<Scientist> temp = service.getScientists();
 
@@ -285,44 +311,45 @@ void ConsoleUI::listOrSortScientist()
         cin >> choice;
         cout << endl;
 
-        if(choice == 'h' || choice == 'H')
+        if(choice == "h" || choice == "H")
         {
             features();
         }
 
-        else if(choice == '1')
+        else if(choice == "1")
         {
             cout << TAB << ">>> Reading Scientists <<<" << endl << endl;
             readScientists();
         }
 
-        else if(choice == '2')
+        else if(choice == "2")
         {
-            char sort;
+            int sort;
             cout << TAB << "How should the list be sorted?" << endl;
             cout << TAB << "Press 1 for alphabetical order." << endl;
             cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
             cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
+            cout << TAB << "Press any other number to go BACK to menu." << endl;
             cout << TAB << "" << endl;
             cout << TAB << "----------------------------------------------------------------------------" << endl;
 
             cin >> sort;
 
-            if(sort == '1')
+            if(sort == 1)
             {
                 displayListOfScientistsAlpha();
             }
-            if(sort == '2')
+            if(sort == 2)
             {
                 displayListOfScientistsYoung();
             }
-            if(sort == '3')
+            if(sort == 3)
             {
                 displayListOfScientistsOld();
             }
         }
 
-        else if(choice == '3')
+        else if(choice == "3")
         {
             int searchOptions = 0;
 
