@@ -13,7 +13,7 @@ int main()
     }
     ui.WelcomeMenu();
     ui.features();
-    ui.listOrSortScientist();
+    ui.sortScientist();
 
     return 0;
 }

@@ -13,7 +13,7 @@ class ConsoleUI
 {
 public:
     ConsoleUI();
-    void listOrSortScientist();
+    void sortScientist();
     void WelcomeMenu();
     void features();
 
