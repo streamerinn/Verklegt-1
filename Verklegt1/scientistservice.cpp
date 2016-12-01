@@ -151,7 +151,7 @@ vector<Scientist> ScientistService::searchGender(char gender)
     {
         for(size_t i = 0; i < scientists.size();i++)
         {
-            if(scientists[i].getGender()== "Female")
+            if(scientists[i].getGender()== "female")
             {
                 temp2.push_back(scientists[i]);
             }
@@ -161,7 +161,7 @@ vector<Scientist> ScientistService::searchGender(char gender)
     {
         for(size_t i = 0; i < scientists.size();i++)
         {
-            if(scientists[i].getGender()=="Male")
+            if(scientists[i].getGender()=="male")
             {
                 temp2.push_back(scientists[i]);
             }
