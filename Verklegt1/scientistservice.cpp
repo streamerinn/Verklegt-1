@@ -114,31 +114,17 @@ void ScientistService::create(Scientist scientist)
 vector<Scientist> ScientistService::searchName(string name)
 {
     vector<Scientist> temp;
-    size_t counter = 0;
     string scientist;
 
     for(size_t i = 0; i < scientists.size(); i++)
     {
         scientist = scientists[i].getName();
-
-        for(size_t j = 0; j < scientist.size(); j++)
-        {
-            if(scientist.at(j) == name[0])
-            {
-                for(size_t k = 0; k < name.size(); k++)
-                {
-                    if (scientist.at(j + k) == name[k])
-                    {
-                        counter++;
-                    }
-                }
-            }
-        }
-        if(counter == name.size())
+        transform(scientist.begin(), scientist.end(), scientist.begin(), ::tolower);
+        transform(name.begin(), name.end(), name.begin(), ::tolower);
+        if(scientist.find(name) !=string::npos)
         {
             temp.push_back(scientists[i]);
         }
-        counter = 0;
     }
     return temp;
 }

@@ -103,11 +103,11 @@ void ConsoleUI::readScientists()
                 {
                     while((!cin))
                     {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                    cout << TAB << "That is not a date, please try again: " << endl;
-                    cout << TAB << "Please enter date of birth: ";
-                    cin >> tempDateOfBirth;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                        cout << TAB << "That is not a date, please try again: " << endl;
+                        cout << TAB << "Please enter date of birth: ";
+                        cin >> tempDateOfBirth;
                     }
                 }
 
@@ -313,7 +313,7 @@ void ConsoleUI::listOrSortScientist()
 
         else if(choice == "3")
         {
-            int searchOptions = 0;
+            char searchOptions;
 
             cout << TAB << "What do you want to search for?" << endl;
             cout << TAB << "Press 1 to search for a scientist witch a specific name:" << endl;
@@ -323,15 +323,15 @@ void ConsoleUI::listOrSortScientist()
             cout << TAB;
             cin >> searchOptions;
 
-            if(searchOptions == 1)
+            if(searchOptions == '1')
             {
                 searchName();
             }
-            else if(searchOptions == 2)
+            else if(searchOptions == '2')
             {
                 searchDateOfBirth();
             }
-            else if(searchOptions == 3)
+            else if(searchOptions == '3')
             {
                 searchGender();
             }
