@@ -16,7 +16,6 @@ public:
     DataBase();
 
     //sækir upplýsingar úr textasrká
-    void getInfo();
     vector<Scientist> readingTxt();
     void returnInfo(Scientist scientist);
 

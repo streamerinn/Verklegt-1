@@ -1,4 +1,6 @@
 #include "database.h"
+#include <sstream>
+#include <iostream>
 
 using namespace std;
 
@@ -12,24 +14,39 @@ DataBase::DataBase()
 // Það er dýrt að skrifa í og sækja ur textaskrá svo að það er best að takmarka það
 vector<Scientist> DataBase::readingTxt()
 {
-    ifstream info;
-    Scientist aScientis;
-    info.open("info.txt");
+    vector<Scientist> scientistVector;
+    string line;
+    string name;
+    string gender;
+    string dateOfBirth;
+    string dateOfDeath;
+
+    ifstream info("C:\\Coding\\Qt\\Verklegt-1-master\\Verklegt-1\\Verklegt1\\list.txt");
+    //les inn upplýsingar úr textaskjalinu
     if(info.is_open())
     {
-        /*Scientist temp;
         while(!info.eof())
         {
-            savedData.push_back(temp);
-        }*/
+            while(getline(info, line))
+            {
+                stringstream linestream(line);
+                getline(linestream, name, ',');
+                getline(linestream, gender, ',');
+                getline(linestream, dateOfBirth, ',');
+                getline(linestream, dateOfDeath, ',');
 
-        /*while(info >> aScientis.getName() >> aScientist.getGender() >> aScientis.getDateOfBirth() >> aScientis.getDateOfDeath())
-        {
-            savedData.push_back(aScientist);
-        }*/
+                Scientist tempScientist(name, gender, stoi(dateOfBirth), stoi(dateOfDeath));
+
+                scientistVector.push_back(tempScientist);
+            }
+        }
     }
-    return savedData;
+    else
+    {
+        cout << "Unable to open file";
+    }
 
+    return scientistVector;
 }
 
 /*operator DataBase::redd()

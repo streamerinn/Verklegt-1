@@ -1,0 +1,4 @@
+Charles Babbage,male,1791,1871
+Ada Lovelace,female,1815,1852
+Donald E. Knuth,male,1938,1920
+Edsger W. Dijkstra,male,1930,2002
