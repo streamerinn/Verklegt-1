@@ -176,6 +176,7 @@ void ConsoleUI::display(vector<Scientist> scientists) // hjálp
     cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
+        cout << "\t |Name: " << scientists[i].getName() << endl;
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
         if(scientists[i].getDateOfDeath() == 13337)
