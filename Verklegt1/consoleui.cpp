@@ -26,6 +26,13 @@ void ConsoleUI::WelcomeMenu()
 void ConsoleUI::features()
 {
     cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << TAB << "     ___      ___      __________   ____   ___   ___     ___" << endl;
+    cout << TAB << "    /  \\\\    /  \\\\    |   ______|| |   \\\\ |  || |  ||   |  ||" << endl;
+    cout << TAB << "   /    \\\\  /    \\\\   |  ||__      |    \\\\|  || |  ||   |  ||" << endl;
+    cout << TAB << "  /  /\\  \\\\/  /\\  \\\\  |   ___||    |  |\\ \\|  || |  ||   |  ||" << endl;
+    cout << TAB << " /  // \\     // \\  \\\\ |  ||_____   |  ||\\    || |   \\\\_/   ||" << endl;
+    cout << TAB << "/__//   \\___//   \\__\\\\|_________|| |__|| \\___||  \\________//" << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << "The list below shows you all possible features on what you can do." << endl;
     cout << endl;
     cout << TAB << "press H to show all options" << endl; //eitthvað svona er sniðgt;
@@ -265,6 +272,12 @@ void ConsoleUI::searchGender()
     }
 }
 
+void ConsoleUI::searchRandomScientist()
+{
+    vector<Scientist> temp = service.searchRandom();
+    display(temp);
+}
+
 void ConsoleUI::listOrSortScientist()
 {
     string choice;
@@ -290,7 +303,7 @@ void ConsoleUI::listOrSortScientist()
 
         else if(choice == "2")
         {
-            int sort;
+            string sort;
             cout << TAB << "How should the list be sorted?" << endl;
             cout << TAB << "Press 1 for alphabetical order." << endl;
             cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
@@ -298,46 +311,55 @@ void ConsoleUI::listOrSortScientist()
             cout << TAB << "Press any other number to go BACK to the menu." << endl;
             cout << TAB << "" << endl;
             cout << TAB << "----------------------------------------------------------------------------" << endl;
+            cout << TAB;
 
             cin >> sort;
-
-            if(sort == 1)
+            if(sort == "1")
             {
                 displayListOfScientistsAlpha();
             }
-            if(sort == 2)
+            else if(sort == "2")
             {
                 displayListOfScientistsYoung();
             }
-            if(sort == 3)
+            else if(sort == "3")
             {
                 displayListOfScientistsOld();
+            }
+            else
+            {
+                features();
             }
         }
 
         else if(choice == "3")
         {
-            int searchOptions = 0;
+            char searchOptions;
 
             cout << TAB << "What do you want to search for?" << endl;
-            cout << TAB << "Press 1 to search for a scientist witch a specific name:" << endl;
-            cout << TAB << "Press 2 to search for all scientists born in a specific year:" << endl;
-            cout << TAB << "Press 3 to search for all scientists with a specific gender:" << endl;
+            cout << TAB << "Press 1 to search for a scientist witch a specific name." << endl;
+            cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
+            cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
+            cout << TAB << "Press 4 to search for a random Scientist." << endl;
 
             cout << TAB;
             cin >> searchOptions;
 
-            if(searchOptions == 1)
+            if(searchOptions == '1')
             {
                 searchName();
             }
-            else if(searchOptions == 2)
+            else if(searchOptions == '2')
             {
                 searchDateOfBirth();
             }
-            else if(searchOptions == 3)
+            else if(searchOptions == '3')
             {
                 searchGender();
+            }
+            else if(searchOptions == '4')
+            {
+                searchRandomScientist();
             }
         }
     }

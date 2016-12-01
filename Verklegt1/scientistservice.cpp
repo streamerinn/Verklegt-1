@@ -1,5 +1,4 @@
 #include "scientistservice.h"
-#include <algorithm>
 
 using namespace std;
 
@@ -39,28 +38,6 @@ ScientistService::ScientistService()
     scientists = data.readingTxt();
 
 }
-
-
-/*//bjarki her
-
-ifstream fallid;
-
-Scientist temp;
-
-skyra txt file
-lalala("dammdum.txt")
-
-if(txt file.open)
-{
-    while(afram)
-    {
-        vector.push_back(temp);
-    }
-}
-
-
-
-//haettir her*/
 
 vector<Scientist> ScientistService::getScientistsAlpha()/* TODO: parameters, hann er public í .h*/
 {
@@ -114,31 +91,17 @@ void ScientistService::create(Scientist scientist)
 vector<Scientist> ScientistService::searchName(string name)
 {
     vector<Scientist> temp;
-    size_t counter = 0;
     string scientist;
 
     for(size_t i = 0; i < scientists.size(); i++)
     {
         scientist = scientists[i].getName();
-
-        for(size_t j = 0; j < scientist.size(); j++)
-        {
-            if(scientist.at(j) == name[0])
-            {
-                for(size_t k = 0; k < name.size(); k++)
-                {
-                    if (scientist.at(j + k) == name[k])
-                    {
-                        counter++;
-                    }
-                }
-            }
-        }
-        if(counter == name.size())
+        transform(scientist.begin(), scientist.end(), scientist.begin(), ::tolower);
+        transform(name.begin(), name.end(), name.begin(), ::tolower);
+        if(scientist.find(name) !=string::npos)
         {
             temp.push_back(scientists[i]);
         }
-        counter = 0;
     }
     return temp;
 }
@@ -165,7 +128,7 @@ vector<Scientist> ScientistService::searchGender(char gender)
     {
         for(size_t i = 0; i < scientists.size();i++)
         {
-            if(scientists[i].getGender()== "Female")
+            if(scientists[i].getGender()== "female")
             {
                 temp2.push_back(scientists[i]);
             }
@@ -175,11 +138,22 @@ vector<Scientist> ScientistService::searchGender(char gender)
     {
         for(size_t i = 0; i < scientists.size();i++)
         {
-            if(scientists[i].getGender()=="Male")
+            if(scientists[i].getGender()=="male")
             {
                 temp2.push_back(scientists[i]);
             }
         }
     }
     return temp2;
+}
+
+vector<Scientist> ScientistService::searchRandom()
+{
+    vector<Scientist> temp3;
+    srand(time(0));
+                   // A simple random number generator using time
+                   // the reason for using %(scientist.size() - 1) is to be able to get the whole range of the vektor;
+    temp3.push_back(scientists[1+(rand()%(scientists.size() - 1))]);
+
+    return temp3;
 }

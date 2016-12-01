@@ -2,6 +2,12 @@
 #define SCIENTISTSERVICE_H
 
 #include <vector>
+#include <algorithm>
+
+//include til þess að gera randum number generator
+#include <cstdlib>
+#include <ctime>
+
 #include "scientist.h"
 #include "database.h"
 
@@ -15,17 +21,18 @@ private:
 
 public:
     ScientistService();
+
+    void create(Scientist scientist);
+
     vector<Scientist> getScientists();
     vector<Scientist> getScientistsAlpha();
     vector<Scientist> getScientistsYoung();
     vector<Scientist> getScientistsOld();
-    //vector<Scientist>thewholethang(); //er ad reyna ad couta allan vectorinn
-    //void create(vector<Scientist> info);
-    void create(Scientist scientist);
 
     vector<Scientist> searchName(string name);
     vector<Scientist> searchDateOfBirth(int year);
     vector<Scientist> searchGender(char gender);
+    vector<Scientist> searchRandom();
 };
 
 #endif // SCIENTISTSERVICE_H
