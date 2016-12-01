@@ -8,7 +8,7 @@ using namespace std;
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist
 //struct sér um að raða eftir nöfnum
 
-struct ScientistComparison
+struct ScientistComparisonAlpha
 {
     bool operator() (Scientist i, Scientist j)
     {
@@ -60,10 +60,10 @@ if(txt file.open)
 
 //haettir her*/
 
-vector<Scientist> ScientistService::getScientists()/* TODO: parameters, hann er public í .h*/
+vector<Scientist> ScientistService::getScientistsAlpha()/* TODO: parameters, hann er public í .h*/
 {
 
-    ScientistComparison cmp;
+    ScientistComparisonAlpha cmp;
 
     std::sort(scientists.begin(), scientists.end(), cmp);
 
@@ -84,7 +84,7 @@ vector<Scientist> ScientistService::getScientistsYoung()/* TODO: parameters, han
 
 }
 
-vector<Scientist> ScientistService::thewholethang() //AAAAAAAAAAAAAAAAAAAAAAAAAAAH
+vector<Scientist> ScientistService::getScientists() //AAAAAAAAAAAAAAAAAAAAAAAAAAAH
 {
     return scientists;
 }

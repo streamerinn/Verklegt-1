@@ -188,49 +188,23 @@ void ConsoleUI::display(vector<Scientist> scientists) // hjálp
 }
 
 
-void ConsoleUI::displayListOfScientists()
+void ConsoleUI::displayListOfScientistsAlpha()
 {
     vector<Scientist> scientists = service.getScientists();
-     cout << "\t information about all listed scientist" << endl;
-     cout << "\t___________________________________________________________________________" << endl;
-     for(size_t i = 0; i < scientists.size(); i++)
-     {
-         cout << "\t |Name: " << scientists[i].getName() << endl;
-         cout << "\t |Gender: " << scientists[i].getGender() << endl;
-         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-         cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
-         cout << TAB << "----------------------------------------------------------------------------" << endl;
-     }
+    display(scientists);
+
  }
 
 void ConsoleUI::displayListOfScientistsYoung()
 {
     vector<Scientist> scientists = service.getScientistsYoung();
-    cout << "\t information about all listed scientist" << endl;
-    cout << "\t___________________________________________________________________________" << endl;
-    for(size_t i = 0; i < scientists.size(); i++)
-    {
-        cout << "\t |Name: " << scientists[i].getName() << endl;
-        cout << "\t |Gender: " << scientists[i].getGender() << endl;
-        cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-        cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
-        cout << TAB << "----------------------------------------------------------------------------" << endl;
-    }
+    display(scientists);
 }
 
 void ConsoleUI::displayListOfScientistsOld()
 {
     vector<Scientist> scientists = service.getScientistsOld();
-    cout << "\t information about all listed scientist" << endl;
-    cout << "\t___________________________________________________________________________" << endl;
-    for(size_t i = 0; i < scientists.size(); i++)
-    {
-        cout << "\t |Name: " << scientists[i].getName() << endl;
-        cout << "\t |Gender: " << scientists[i].getGender() << endl;
-        cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-        cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
-        cout << TAB << "----------------------------------------------------------------------------" << endl;
-    }
+    display(scientists);
 }
 
 
@@ -336,7 +310,7 @@ void ConsoleUI::listOrSortScientist()
 
             if(sort == '1')
             {
-                displayListOfScientists();
+                displayListOfScientistsAlpha();
             }
             if(sort == '2')
             {
@@ -346,7 +320,7 @@ void ConsoleUI::listOrSortScientist()
             {
                 displayListOfScientistsOld();
             }
-        }       
+        }
 
         else if(choice == '3')
         {
