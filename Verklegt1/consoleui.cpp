@@ -26,6 +26,13 @@ void ConsoleUI::WelcomeMenu()
 void ConsoleUI::features()
 {
     cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << TAB << "     __       __      __________   ___    __   __      __" << endl;
+    cout << TAB << "    /  \\     /  \\     |   ______| |   \\  |  | |  |    |  |" << endl;
+    cout << TAB << "   /    \\   /    \\    |  |___     |    \\ |  | |  |    |  |" << endl;
+    cout << TAB << "  /  /\\  \\_/  /\\  \\   |   ___|    |  |\\ \\|  | |  |    |  |" << endl;
+    cout << TAB << " /  /  \\     /  \\  \\  |  |______  |  | \\    | |   \\__/   |" << endl;
+    cout << TAB << "/__/    \\___/    \\__\\ |_________| |__|  \\___|  \\________/ " << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << "The list below shows you all possible features on what you can do." << endl;
     cout << endl;
     cout << TAB << "press H to show all options" << endl; //eitthvað svona er sniðgt;
