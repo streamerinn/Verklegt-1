@@ -14,7 +14,6 @@ ConsoleUI::ConsoleUI()
 
 void ConsoleUI::WelcomeMenu()
 {
-
     cout << endl;
     cout << endl;
     cout << TAB << "--------------------------------------------" << endl;
@@ -22,7 +21,6 @@ void ConsoleUI::WelcomeMenu()
     cout << TAB << " famous computer scientists. " << endl;
     cout << TAB << "--------------------------------------------" << endl;
     cout << endl;
-
 }
 
 void ConsoleUI::features()
@@ -41,8 +39,6 @@ void ConsoleUI::features()
 void ConsoleUI::readScientists()
 {
     Scientist temp;
-
-    //vector<Scientist> scientists = service.getScientists();
 
     string tempName;
     cout << TAB << "Please enter a name: ";
@@ -72,8 +68,8 @@ void ConsoleUI::readScientists()
 
             if(gender != 'M' && gender != 'm' && gender != 'F' && gender != 'f')
             {
-                cout << TAB << gender << " is not a valid option" << endl;
-                cout << TAB <<"pleas enter a vaild option" << endl;
+                cout << TAB << gender << " That is not a valid option." << endl;
+                cout << TAB <<" Please enter a valid option: " << endl;
             }
             if(gender == 'M'||gender=='m')
             {
@@ -88,7 +84,6 @@ void ConsoleUI::readScientists()
                 validGender = true;
             }
         }
-
             int tempDateOfBirth;
             int tempDateOfDeath;
             cout << TAB << "Please enter date of birth: ";
