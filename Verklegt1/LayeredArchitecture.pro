@@ -22,3 +22,5 @@ HEADERS += \
     database.h \
     scientistservice.h \
     scientist.h
+
+OTHER_FILES += list.txt \

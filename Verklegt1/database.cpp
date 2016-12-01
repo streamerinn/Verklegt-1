@@ -10,6 +10,35 @@ DataBase::DataBase()
 
 }
 
+void DataBase::initTxtFile()
+{
+    ifstream infoRead("info.txt");
+
+    if(infoRead)
+    {
+        cout << "Database exists" << endl;
+    }
+    else
+    {
+        fstream info("info.txt", fstream::out);
+
+        info << "Charles Babbage" << ',' << "male" << ',' << "1791" << ',' << "1871" << endl;
+        info << "Ada Lovelace" << ',' << "female" << ',' << "1815" << ',' << "1852" << endl;
+        info << "Donald E. Knuth" << ',' << "male" << ',' << "1974" << ',' << "0" << endl;
+        info << "Edsger W. Dijkstra" << ',' << "male" << ',' << "1930" << ',' << "2002" << endl;
+        info << "Blaise Pascale" << ',' << "male" << ',' << "1623" << ',' << "1662" << endl;
+        info << "Herman Hollerith" << ',' << "male" << ',' << "1860" << ',' << "1929" << endl;
+        info << "Alan Turing" << ',' << "male" << ',' << "1912" << ',' << "1954" << endl;
+        info << "John von Neumann" << ',' << "male" << ',' << "1903" << ',' << "1957" << endl;
+        info << "Margaret Heafield Hamilton" << ',' << "female" << ',' << "1936" << ',' << "0" << endl;
+        info << "Dennis MacAlistair Ritchie" << ',' << "male" << ',' << "1941" << ',' << "2011" << endl;
+
+        info.close();
+
+        cout << "Database created" << endl;
+    }
+}
+
 // TODO: sækja úr textaskrá og skrifa í vector EINU SINNI
 // Það er dýrt að skrifa í og sækja ur textaskrá svo að það er best að takmarka það
 vector<Scientist> DataBase::readingTxt()
@@ -18,12 +47,14 @@ vector<Scientist> DataBase::readingTxt()
     string line;
     string name;
     string gender;
-    string dateOfBirth;
-    string dateOfDeath;
+    string dateOfBirthStr;
+    string dateOfDeathStr;
+    int dateOfBirth;
+    int dateOfDeath;
 
-    ifstream info("C:\\Coding\\Qt\\Verklegt-1-master\\Verklegt-1\\Verklegt1\\list.txt");
+    ifstream info("info.txt");
     //les inn upplýsingar úr textaskjalinu
-    if(info.is_open())
+    if(info.is_open() && info.good())
     {
         while(!info.eof())
         {
@@ -32,10 +63,16 @@ vector<Scientist> DataBase::readingTxt()
                 stringstream linestream(line);
                 getline(linestream, name, ',');
                 getline(linestream, gender, ',');
-                getline(linestream, dateOfBirth, ',');
-                getline(linestream, dateOfDeath, ',');
+                getline(linestream, dateOfBirthStr, ',');
+                getline(linestream, dateOfDeathStr, ',');
 
-                Scientist tempScientist(name, gender, stoi(dateOfBirth), stoi(dateOfDeath));
+                if(!dateOfBirthStr.empty() && !dateOfDeathStr.empty())
+                {
+                    dateOfBirth = stoi(dateOfBirthStr);
+                    dateOfDeath = stoi(dateOfDeathStr);
+                }
+
+                Scientist tempScientist(name, gender, dateOfBirth, dateOfDeath);
 
                 scientistVector.push_back(tempScientist);
             }
@@ -60,11 +97,11 @@ vector<Scientist> DataBase::readingTxt()
 void DataBase::returnInfo(Scientist scientist)
 {   
     fstream outputFile;
-    outputFile.open("C:/Users/Leifur/Documents/Skolinn/VerklegtNamsskeid/Verklegt-1/build-LayeredArchitecture-Desktop_Qt_5_7_0_MinGW_32bit-Debug", ios::app);
+    outputFile.open("info.txt", ios::app);
 
-    outputFile << scientist.getName() << " " << scientist.getSecondName() << ',';
+    outputFile << scientist.getName() << ',';
     outputFile << scientist.getGender() << ',';
     outputFile << scientist.getDateOfBirth() << ',';
-    outputFile << scientist.getDateOfDeath() << ',';
+    outputFile << scientist.getDateOfDeath() << endl;
 }
 
