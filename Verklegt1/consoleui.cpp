@@ -216,7 +216,7 @@ void ConsoleUI::display(vector<Scientist> scientists) // hjálp
 
 void ConsoleUI::displayListOfScientistsAlpha()
 {
-    vector<Scientist> scientists = service.getScientists();
+    vector<Scientist> scientists = service.getScientistsAlpha();
     display(scientists);
 
  }
