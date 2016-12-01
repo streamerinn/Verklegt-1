@@ -66,9 +66,7 @@ void ConsoleUI::readScientists()
 
             getline(cin, tempName);
             cout << TAB << "You cannot enter a empty name. Please try again: " << endl;
-            cout << "You cannot enter a empty name. Please try again: " << endl;
             getline(cin, tempName);
-
         }
     }
     while(tempName.empty());
@@ -125,7 +123,6 @@ void ConsoleUI::readScientists()
     while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
 
     temp.setDateOfBirth(tempDateOfBirth);
-    cout << endl;
 
     cout << TAB << "Please enter date of death(Enter 13337 if the scientist is still alive): ";
 
@@ -144,7 +141,7 @@ void ConsoleUI::readScientists()
     while(tempDateOfDeath < tempDateOfBirth);
 
 
-    if(tempDateOfDeath > 2016)
+    if(tempDateOfDeath > 2016 && tempDateOfDeath !=13337)
     {
             cout << "Not possible. A person cannot die beyond the current year." << endl;
     }
@@ -179,10 +176,12 @@ void ConsoleUI::display(vector<Scientist> scientists) // hjálp
     cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
-        cout << "\t |Name: " << scientists[i].getName() << endl;
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-        cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+        if(scientists[i].getDateOfDeath() == 13337)
+            cout << "\t |Still alive " << endl;
+        else
+            cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
