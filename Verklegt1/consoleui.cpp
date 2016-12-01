@@ -141,20 +141,20 @@ void ConsoleUI::readScientists()
         }
         else if(tempDateOfDeath == 13337)
         {
-            std::string s = std::to_string(tempDateOfDeath);
+
         }
     }
     while(tempDateOfDeath < tempDateOfBirth);
 
 
-        if(tempDateOfDeath > 2016)
-        {
+    if(tempDateOfDeath > 2016)
+    {
             cout << "Not possible. A person cannot die beyond the current year." << endl;
-        }
+    }
 
-    //while(tempDateOfDeath < tempDateOfBirth);
+    while(tempDateOfDeath < tempDateOfBirth);
 
-    //temp.setDateOfDeath(tempDateOfDeath);
+    temp.setDateOfDeath(tempDateOfDeath);
 
     cout << endl;
 
@@ -258,29 +258,19 @@ void ConsoleUI::searchName()
 
 void ConsoleUI::searchDateOfBirth()
 {
-    vector<Scientist> temp = service.getScientists();
 
     int year = 0;
     cout << "Enter the the year of birth of the Scientist: ";
     cin >> year;
-    int counter = 1;
-    cout << "\t All scientist born in year"<< year << endl;
-    cout << "\t___________________________________________________________________________" << endl;
-    for(size_t i = 0; i < temp.size(); i++)
-    {
-        if(year==temp[i].getDateOfBirth())
-        {
-            cout << "\t |Scientist " << counter << " Born in year " << year << endl;
-            cout << "\t |Name: " <<temp[i].getName() << endl;
-            cout << "\t |Gender: " <<temp[i].getGender() << endl;
-            cout << "\t |Born: " <<temp[i].getDateOfBirth() << endl;
-            cout << "\t |Died: "<<temp[i].getDateOfDeath() << endl;
-            counter ++;
-        }
-    }
-    if(counter == 1)
+
+    vector<Scientist> temp = service.searchDateOfBirth(year);
+    if(temp.size() == 0)
     {
         cout << "No Scientist in our data born that year, try again" << endl;
+    }
+    else
+    {
+        display(temp);
     }
 }
 

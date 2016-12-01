@@ -23,6 +23,7 @@ public:
     void create(Scientist scientist);
 
     vector<Scientist> searchName(string name);
+    vector<Scientist> searchDateOfBirth(int year);
 };
 
 #endif // SCIENTISTSERVICE_H

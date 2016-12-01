@@ -115,10 +115,24 @@ vector<Scientist> ScientistService::searchName(string name)
 
     for(size_t i = 0; i<scientists.size() ;i++)
     {
-        if(scientists[i].getName()== name)
+        if(scientists[i].getName() == name)
         {
             temp.push_back(scientists[i]);
         }
     }
     return temp;
+}
+
+vector<Scientist> ScientistService::searchDateOfBirth(int year)
+{
+    vector<Scientist> temp1;
+
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        if(scientists[i].getDateOfBirth() == year)
+        {
+            temp1.push_back(scientists[i]);
+        }
+    }
+    return temp1;
 }
