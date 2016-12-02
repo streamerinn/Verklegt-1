@@ -184,13 +184,26 @@ void ConsoleUI::display(vector<Scientist> scientists)
     cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
+        int tempAge;
+        if (scientists[i].getDateOfDeath() != 0)
+        {
+            tempAge = scientists[i].getDateOfDeath() - scientists[i].getDateOfBirth();
+        }
+        else
+        {
+            tempAge = 2016 - scientists[i].getDateOfBirth();
+        }
+
         cout << "\t |Name: " << scientists[i].getName() << endl;
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
+        cout << "\t |Age: " << tempAge << endl;
+
         if(scientists[i].getDateOfDeath() == 0)
             cout << "\t |Still alive " << endl;
         else
             cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
@@ -363,8 +376,11 @@ void ConsoleUI::listOrSortScientist()
             cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
             cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
             cout << TAB << "Press 4 to search for a random Scientist." << endl;
-
+            cout << TAB << "Press any other number to go BACK to the menu." << endl;
+            cout << TAB << "" << endl;
+            cout << TAB << "----------------------------------------------------------------------------" << endl;
             cout << TAB;
+
             cin >> searchOptions;
 
             if(searchOptions == '1')
@@ -382,6 +398,10 @@ void ConsoleUI::listOrSortScientist()
             else if(searchOptions == '4')
             {
                 searchRandomScientist();
+            }
+            else
+            {
+                features();
             }
         }
 
