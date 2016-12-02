@@ -158,6 +158,7 @@ void ConsoleUI::readScientists()
         {
             cout << TAB << "Not possible. A person cannot die beyond the current year." << endl;
         }
+        temp.setDateOfDeath(tempDateOfDeath);
 
     cout << endl;
 
@@ -196,12 +197,17 @@ void ConsoleUI::display(vector<Scientist> scientists)
         cout << "\t |Name: " << scientists[i].getName() << endl;
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
-        cout << "\t |Age: " << tempAge << endl;
 
         if(scientists[i].getDateOfDeath() == 0)
+        {
+            cout << "\t |Age: " << tempAge << endl;
             cout << "\t |Still alive " << endl;
+        }
         else
+        {
             cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+            cout << "\t |Died at the age of " << tempAge << endl;
+        }
 
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
