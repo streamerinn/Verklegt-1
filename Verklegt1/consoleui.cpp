@@ -341,8 +341,11 @@ void ConsoleUI::listOrSortScientist()
             cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
             cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
             cout << TAB << "Press 4 to search for a random Scientist." << endl;
-
+            cout << TAB << "Press any other number to go BACK to the menu." << endl;
+            cout << TAB << "" << endl;
+            cout << TAB << "----------------------------------------------------------------------------" << endl;
             cout << TAB;
+
             cin >> searchOptions;
 
             if(searchOptions == '1')
@@ -360,6 +363,10 @@ void ConsoleUI::listOrSortScientist()
             else if(searchOptions == '4')
             {
                 searchRandomScientist();
+            }
+            else
+            {
+                features();
             }
         }
     }
