@@ -59,6 +59,7 @@ void ConsoleUI::readScientists()
         if(tempName.empty())
         {
             cout << TAB << "You cannot enter a empty name. Please try again: ";
+            ws(cin);
             getline(cin, tempName);
         }
     }
@@ -74,7 +75,8 @@ void ConsoleUI::readScientists()
 
     while(validGender == false)
     {       
-        cin >> gender;
+        ws(cin);
+        getline(cin, gender);
 
         if(gender != "M" && gender != "m" && gender != "F" && gender != "f")
         {
@@ -95,36 +97,36 @@ void ConsoleUI::readScientists()
         }
     }
 
-    int tempDateOfBirth = 0;
-    int tempDateOfDeath = 0;
+    int tempDateOfBirth = 2017;
+    int tempDateOfDeath = -1;
     cout << TAB << "Please enter date of birth: ";
 
-        do
+    do
+    {
+        cin >> tempDateOfBirth;
+        if(tempDateOfBirth > 2016)
         {
+            cout << TAB << "Invalid date. Please try again: " << endl;
             cin >> tempDateOfBirth;
-            if(tempDateOfBirth > 2016)
+        }
+        else if(tempDateOfBirth < 0)
+        {
+            cout << TAB << "A person cannot have a negative date of birth. Please try again: " << endl;
+            cin >> tempDateOfBirth;
+        }
+        if(!cin)
+        {
+            while((!cin))
             {
-                cout << TAB << "Invalid date. Please try again: " << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << TAB << "That is not a date, please try again: " << endl;
+                cout << TAB << "Please enter date of birth: ";
                 cin >> tempDateOfBirth;
-            }
-            else if(tempDateOfBirth < 0)
-            {
-                cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
-                cin >> tempDateOfBirth;
-            }
-            if(!cin)
-            {
-                while((!cin))
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                    cout << TAB << "That is not a date, please try again: " << endl;
-                    cout << TAB << "Please enter date of birth: ";
-                    cin >> tempDateOfBirth;
-                }
             }
         }
-        while(tempDateOfBirth > 2016 && tempDateOfBirth < 0);
+    }
+    while(tempDateOfBirth > 2016 && tempDateOfBirth < 0);
 
 
     temp.setDateOfBirth(tempDateOfBirth);
@@ -176,8 +178,6 @@ void ConsoleUI::readScientists()
         features();
     }
     service.create(temp);
-
-    cin.ignore(); // kemur í veg fyrir invalid input
 }
 
 void ConsoleUI::display(vector<Scientist> scientists)
@@ -330,13 +330,8 @@ void ConsoleUI::listOrSortScientist()
         vector<Scientist> temp = service.getScientists();
 
         cout << TAB << "Please choose a feature: ";
-
+        ws(cin);
         getline(cin, CHOICE);
-
-        cout << "choice is: " << CHOICE[0];
-
-
-        cout << endl;
 
         if(CHOICE.length() > 1)
         {
@@ -351,6 +346,7 @@ void ConsoleUI::listOrSortScientist()
 
             else if(CHOICE[0] == '1')
             {
+                cout << endl;
                 cout << TAB << ">>> Reading Scientists <<<" << endl << endl;
                 readScientists();
             }
@@ -358,6 +354,7 @@ void ConsoleUI::listOrSortScientist()
             else if(CHOICE[0] == '2')
             {
                 char sort;
+                cout << endl;
                 cout << TAB << "How should the list be sorted?" << endl;
                 cout << TAB << "Press 1 for alphabetical order." << endl;
                 cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
@@ -390,6 +387,7 @@ void ConsoleUI::listOrSortScientist()
             {
                 char searchOptions;
 
+                cout << endl;
                 cout << TAB << "What do you want to search for?" << endl;
                 cout << TAB << "Press 1 to search for a scientist witch a specific name." << endl;
                 cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
