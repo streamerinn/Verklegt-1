@@ -100,20 +100,6 @@ vector<Scientist> ScientistService::searchName(string name)
     return temp;
 }
 
-vector<Scientist> ScientistService::searchDateOfBirth(int year)
-{
-    vector<Scientist> temp1;
-
-    for(size_t i = 0; i < scientists.size(); i++)
-    {
-        if(scientists[i].getDateOfBirth() == year)
-        {
-            temp1.push_back(scientists[i]);
-        }
-    }
-    return temp1;
-}
-
 vector<Scientist> ScientistService::searchGender(char gender)
 {
     vector<Scientist> temp2;
@@ -122,7 +108,7 @@ vector<Scientist> ScientistService::searchGender(char gender)
     {
         for(size_t i = 0; i < scientists.size();i++)
         {
-            if(scientists[i].getGender()== "female")
+            if(scientists[i].getGender()== "Female")
             {
                 temp2.push_back(scientists[i]);
             }
@@ -132,13 +118,27 @@ vector<Scientist> ScientistService::searchGender(char gender)
     {
         for(size_t i = 0; i < scientists.size();i++)
         {
-            if(scientists[i].getGender()=="male")
+            if(scientists[i].getGender()=="Male")
             {
                 temp2.push_back(scientists[i]);
             }
         }
     }
     return temp2;
+}
+
+vector<Scientist> ScientistService::searchDateOfBirth(int birthYear)
+{
+    vector<Scientist> temp1;
+
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        if(scientists[i].getDateOfBirth() == birthYear)
+        {
+            temp1.push_back(scientists[i]);
+        }
+    }
+    return temp1;
 }
 
 vector<Scientist> ScientistService::searchRandom()
@@ -150,4 +150,18 @@ vector<Scientist> ScientistService::searchRandom()
     temp3.push_back(scientists[1+(rand()%(scientists.size() - 1))]);
 
     return temp3;
+}
+
+vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
+{
+    vector<Scientist> temp4;
+
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        if(scientists[i].getDateOfDeath())
+        {
+            temp4.push_back(scientists[i]);
+        }
+    }
+    return temp4;
 }

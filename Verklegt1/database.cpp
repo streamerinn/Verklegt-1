@@ -22,16 +22,16 @@ void DataBase::initTxtFile()
     {
         fstream info("info.txt", fstream::out);
 
-        info << "Charles Babbage" << ',' << "male" << ',' << "1791" << ',' << "1871" << endl;
-        info << "Ada Lovelace" << ',' << "female" << ',' << "1815" << ',' << "1852" << endl;
-        info << "Donald E. Knuth" << ',' << "male" << ',' << "1974" << ',' << "0" << endl;
-        info << "Edsger W. Dijkstra" << ',' << "male" << ',' << "1930" << ',' << "2002" << endl;
-        info << "Blaise Pascale" << ',' << "male" << ',' << "1623" << ',' << "1662" << endl;
-        info << "Herman Hollerith" << ',' << "male" << ',' << "1860" << ',' << "1929" << endl;
-        info << "Alan Turing" << ',' << "male" << ',' << "1912" << ',' << "1954" << endl;
-        info << "John von Neumann" << ',' << "male" << ',' << "1903" << ',' << "1957" << endl;
-        info << "Margaret Heafield Hamilton" << ',' << "female" << ',' << "1936" << ',' << "0" << endl;
-        info << "Dennis MacAlistair Ritchie" << ',' << "male" << ',' << "1941" << ',' << "2011" << endl;
+        info << "Charles Babbage" << ',' << "Male" << ',' << "1791" << ',' << "1871" << endl;
+        info << "Ada Lovelace" << ',' << "Female" << ',' << "1815" << ',' << "1852" << endl;
+        info << "Donald E. Knuth" << ',' << "Male" << ',' << "1974" << ',' << "0" << endl;
+        info << "Edsger W. Dijkstra" << ',' << "Male" << ',' << "1930" << ',' << "2002" << endl;
+        info << "Blaise Pascale" << ',' << "Male" << ',' << "1623" << ',' << "1662" << endl;
+        info << "Herman Hollerith" << ',' << "Male" << ',' << "1860" << ',' << "1929" << endl;
+        info << "Alan Turing" << ',' << "Male" << ',' << "1912" << ',' << "1954" << endl;
+        info << "John von Neumann" << ',' << "Male" << ',' << "1903" << ',' << "1957" << endl;
+        info << "Margaret Heafield Hamilton" << ',' << "Female" << ',' << "1936" << ',' << "0" << endl;
+        info << "Dennis MacAlistair Ritchie" << ',' << "Male" << ',' << "1941" << ',' << "2011" << endl;
 
         info.close();
 

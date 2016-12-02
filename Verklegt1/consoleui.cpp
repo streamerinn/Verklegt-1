@@ -39,13 +39,14 @@ void ConsoleUI::features()
     cout << TAB << "Press 1 to create a new scientist." << endl;
     cout << TAB << "Press 2 to list all scientists." << endl;
     cout << TAB << "Press 3 to search for a scientist." << endl;
+    cout << TAB << "Press 4 to get the database stats" << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
+
 void ConsoleUI::readScientists()
 {
-
     Scientist temp;
 
     string tempName;
@@ -278,11 +279,32 @@ void ConsoleUI::searchRandomScientist()
     display(temp);
 }
 
+void ConsoleUI::stats()
+{
+    size_t dead;
+
+    vector<Scientist> males = service.searchGender('M');
+    vector<Scientist> females = service.searchGender('F');
+    vector<Scientist> alive = service.searchDateOfDeath(0);
+    vector<Scientist> total = service.getScientists();
+
+    dead = total.size() - alive.size();
+
+    cout << TAB << "---------------------------" << endl;
+    cout << TAB << "The database consists of:" << endl;
+    cout << TAB << males.size() << " male scientists" << endl;
+    cout << TAB << females.size() << " female scientists" << endl;
+    cout << TAB << alive.size() << " alive scientists" << endl;
+    cout << TAB << dead << " dead scientists" << endl;
+    cout << TAB << "----------------------------" << endl << endl;
+
+}
+
 void ConsoleUI::listOrSortScientist()
 {
-    string choice;
+    char choice;
 
-    while(choice != "q" && choice != "Q")
+    while(choice != 'q' && choice != 'Q')
     {
         vector<Scientist> temp = service.getScientists();
 
@@ -290,20 +312,20 @@ void ConsoleUI::listOrSortScientist()
         cin >> choice;
         cout << endl;
 
-        if(choice == "h" || choice == "H")
+        if(choice == 'h' || choice == 'H')
         {
             features();
         }
 
-        else if(choice == "1")
+        else if(choice == '1')
         {
             cout << TAB << ">>> Reading Scientists <<<" << endl << endl;
             readScientists();
         }
 
-        else if(choice == "2")
+        else if(choice == '2')
         {
-            string sort;
+            char sort;
             cout << TAB << "How should the list be sorted?" << endl;
             cout << TAB << "Press 1 for alphabetical order." << endl;
             cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
@@ -314,15 +336,15 @@ void ConsoleUI::listOrSortScientist()
             cout << TAB;
 
             cin >> sort;
-            if(sort == "1")
+            if(sort == '1')
             {
                 displayListOfScientistsAlpha();
             }
-            else if(sort == "2")
+            else if(sort == '2')
             {
                 displayListOfScientistsYoung();
             }
-            else if(sort == "3")
+            else if(sort == '3')
             {
                 displayListOfScientistsOld();
             }
@@ -332,7 +354,7 @@ void ConsoleUI::listOrSortScientist()
             }
         }
 
-        else if(choice == "3")
+        else if(choice == '3')
         {
             char searchOptions;
 
@@ -362,6 +384,12 @@ void ConsoleUI::listOrSortScientist()
                 searchRandomScientist();
             }
         }
+
+        else if(choice == '4')
+        {
+            stats();
+        }
+
     }
 }
 

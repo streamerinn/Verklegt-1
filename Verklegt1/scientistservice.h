@@ -26,8 +26,10 @@ public:
     vector<Scientist> getScientistsOld();
 
     vector<Scientist> searchName(string name);
-    vector<Scientist> searchDateOfBirth(int year);
     vector<Scientist> searchGender(char gender);
+    vector<Scientist> searchDateOfBirth(int birthYear);
+    vector<Scientist> searchDateOfDeath(int deathYear);
+
     vector<Scientist> searchRandom();
 
 private:
