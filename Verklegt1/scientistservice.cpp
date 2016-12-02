@@ -1,7 +1,7 @@
 #include "scientistservice.h"
 
-//þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist
-//struct sér um að raða eftir nöfnum
+//þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
+//struct sér um að raða eftir nöfnum.
 struct ScientistComparisonAlpha
 {
     bool operator() (Scientist i, Scientist j)
@@ -11,8 +11,7 @@ struct ScientistComparisonAlpha
         transform(iName.begin(), iName.end(), iName.begin(), ::tolower);
         transform(jName.begin(), jName.end(), jName.begin(), ::tolower);
 
-
-               return (iName<jName);
+        return (iName<jName);
     }
 };
 
@@ -41,30 +40,24 @@ ScientistService::ScientistService()
     DataBase db;
     db.initTxtFile();
     scientists = data.readingTxt();
-
 }
 
-vector<Scientist> ScientistService::getScientistsAlpha()/* TODO: parameters, hann er public í .h*/
+vector<Scientist> ScientistService::getScientistsAlpha()
 {
-
     ScientistComparisonAlpha cmp;
 
     sort(scientists.begin(), scientists.end(), cmp);
 
     return scientists;
-
 }
 
-vector<Scientist> ScientistService::getScientistsYoung()/* TODO: parameters, hann er public í .h*/
+vector<Scientist> ScientistService::getScientistsYoung()
 {
-
     ScientistComparisonYoung cmpYoung;
 
     std::sort(scientists.begin(), scientists.end(), cmpYoung);
 
-    // vil returna þessum scientist sorted
     return scientists;
-
 }
 
 vector<Scientist> ScientistService::getScientists()
@@ -74,18 +67,15 @@ vector<Scientist> ScientistService::getScientists()
 
 vector<Scientist> ScientistService::getScientistsOld()
 {
-
     ScientistComparisonOld cmpOld;
 
     std::sort(scientists.begin(), scientists.end(), cmpOld);
 
-    //vil returna þennan scientist sorted
     return scientists;
-
 }
 
-//Skilar einum scientist inn í vectorinn
-//Skilar einum scientist í database, þar sem hann verður sendur inn í textaskrá
+//Skilar einum scientist inn í vectorinn.
+//Skilar einum scientist í database, þar sem hann verður sendur inn í textaskrá.
 void ScientistService::create(Scientist scientist)
 {
     data.returnInfo(scientist);
