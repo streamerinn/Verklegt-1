@@ -6,7 +6,13 @@ struct ScientistComparisonAlpha
 {
     bool operator() (Scientist i, Scientist j)
     {
-        return (i.getName()<j.getName());
+        string iName = i.getName();
+        string jName = j.getName();
+        transform(iName.begin(), iName.end(), iName.begin(), ::tolower);
+        transform(jName.begin(), jName.end(), jName.begin(), ::tolower);
+
+
+               return (iName<jName);
     }
 };
 
@@ -14,7 +20,9 @@ struct ScientistComparisonYoung
 {
     bool operator() (Scientist i, Scientist j)
     {
-        return (i.getDateOfBirth()>j.getDateOfBirth());
+        int iAge = i.getDateOfDeath()-i.getDateOfBirth();
+        int jAge = j.getDateOfDeath()-j.getDateOfBirth();
+        return (iAge<jAge);
     }
 };
 
@@ -22,7 +30,9 @@ struct ScientistComparisonOld
 {
     bool operator() (Scientist i, Scientist j)
     {
-        return (i.getDateOfBirth()<j.getDateOfBirth());
+        int iAge = i.getDateOfDeath()-i.getDateOfBirth();
+        int jAge = j.getDateOfDeath()-j.getDateOfBirth();
+        return (jAge<iAge);
     }
 };
 
@@ -39,7 +49,7 @@ vector<Scientist> ScientistService::getScientistsAlpha()/* TODO: parameters, han
 
     ScientistComparisonAlpha cmp;
 
-    std::sort(scientists.begin(), scientists.end(), cmp);
+    sort(scientists.begin(), scientists.end(), cmp);
 
     return scientists;
 
