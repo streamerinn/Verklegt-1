@@ -147,7 +147,11 @@ void ConsoleUI::readScientists()
                 cin >> tempDateOfDeath;
             }
         }
+<<<<<<< HEAD
         else if(((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0)) || (tempDateOfDeath > 2017))
+=======
+        else if((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0) || (tempDateOfDeath < 2017))
+>>>>>>> 6783e195b86e231a55eb52b08ddf05223db008ca
         {
             cout << TAB << "Not possible. A person cannot die before it is born, try again: ";
             cin >> tempDateOfDeath;
