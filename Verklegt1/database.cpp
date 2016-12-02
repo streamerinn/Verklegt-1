@@ -18,7 +18,7 @@ void DataBase::initTxtFile()
     {
         cout << "Database exists" << endl;
     }
-    else
+    else    // ef info skráin er ekki til búum við hana til og setjum þetta fólk inn í hana
     {
         fstream info("info.txt", fstream::out);
 

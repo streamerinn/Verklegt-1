@@ -1,9 +1,5 @@
 #include "scientistservice.h"
 
-using namespace std;
-
-//miðlagið
-
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist
 //struct sér um að raða eftir nöfnum
 struct ScientistComparisonAlpha

@@ -15,10 +15,6 @@ using namespace std;
 
 class ScientistService
 {
-private:
-    vector<Scientist> scientists;
-    DataBase data;
-
 public:
     ScientistService();
 
@@ -33,6 +29,10 @@ public:
     vector<Scientist> searchDateOfBirth(int year);
     vector<Scientist> searchGender(char gender);
     vector<Scientist> searchRandom();
+
+private:
+    vector<Scientist> scientists;
+    DataBase data;
 };
 
 #endif // SCIENTISTSERVICE_H

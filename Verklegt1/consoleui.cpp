@@ -9,17 +9,17 @@ const char TAB = '\t';
 
 ConsoleUI::ConsoleUI()
 {
-
+    WelcomeMenu();
 }
 
 void ConsoleUI::WelcomeMenu()
 {
     cout << endl;
     cout << endl;
-    cout << TAB << "--------------------------------------------" << endl;
-    cout << TAB << " Welcome! This program will store or show" << endl;
-    cout << TAB << " famous computer scientists. " << endl;
-    cout << TAB << "--------------------------------------------" << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << TAB << TAB << TAB << " Welcome! This program will store or show" << endl;
+    cout << TAB << TAB << TAB << "      famous computer scientists. " << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
 
