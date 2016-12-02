@@ -145,8 +145,8 @@ vector<Scientist> ScientistService::searchRandom()
 {
     vector<Scientist> temp3;
     srand(time(0));
-                   // A simple random number generator using time
-                   // the reason for using %(scientist.size() - 1) is to be able to get the whole range of the vektor;
+                   // Virkni sem býr til slembitölur með hjálp time.
+                   // Ástæðan fyrir að nota %(scientist.size() - 1) er til að ná í allt "rangeið" úr vektornum.
     temp3.push_back(scientists[1+(rand()%(scientists.size() - 1))]);
 
     return temp3;
