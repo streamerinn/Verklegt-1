@@ -14,26 +14,28 @@ class ConsoleUI
 public:
 
     ConsoleUI(); 
-    void sortScientist();
+
     void WelcomeMenu();
     void features();
     void listOrSortScientist();
-    void searchName();
-    void searchDateOfBirth();
-    void searchGender();
-    void displayList();
-
-    friend istream& operator >> (istream& in, Scientist& rhs);
 
 private:
+
     ScientistService service;
 
     void display(vector<Scientist> scientists);
+    void readScientists();
 
     void displayListOfScientistsAlpha();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
-    void readScientists();
+
+    void searchName();
+    void searchDateOfBirth();
+    void searchGender();
+    void searchRandomScientist();
+
+    void stats();
 };
 
 #endif // CONSOLEUI_H

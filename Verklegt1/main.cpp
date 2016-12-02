@@ -6,8 +6,6 @@ int main()
 {
     ConsoleUI ui;
 
-
-    ui.WelcomeMenu();
     ui.features();
     ui.listOrSortScientist();
 

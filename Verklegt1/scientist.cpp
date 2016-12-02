@@ -3,7 +3,6 @@
 #include <string>
 #include <sstream>
 
-// Constructors
 Scientist::Scientist()
 {
     _name = ' ';
@@ -20,18 +19,9 @@ Scientist::Scientist(string name, string gender, int dateOfBirth, int dateOfDeat
     _dateOfDeath = dateOfDeath;
 }
 
-//get föll
 string Scientist::getName()
 {
     return _name;
-
-}
-
-string Scientist::getSecondName()
-{
-
-    return _secondname;
-
 }
 
 string Scientist::getGender()
@@ -52,14 +42,6 @@ int Scientist::getDateOfDeath()
 void Scientist::setName(string name)
 {
     _name = name;
-
-
-}
-
-void Scientist::setsecondName(string secondname)
-{
-    _secondname = secondname;
-
 }
 
 void Scientist::setGender(string gender)
