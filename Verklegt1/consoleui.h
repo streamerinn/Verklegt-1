@@ -14,16 +14,10 @@ class ConsoleUI
 public:
 
     ConsoleUI(); 
-    //void sortScientist();
+
     void WelcomeMenu();
     void features();
     void listOrSortScientist();
-    //void searchName();
-    //void searchDateOfBirth();
-    //void searchGender();
-    //void searchRandomScientist();
-    //void displayList();
-
 
 private:
 

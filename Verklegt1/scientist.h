@@ -8,12 +8,11 @@
 
 using namespace std;
 
-//entity klasi.
 class Scientist
 {
 public:
 
-    Scientist();    // Default constructor
+    Scientist();
     string getName();
     string getGender();
     int getDateOfBirth();
