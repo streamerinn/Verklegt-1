@@ -14,26 +14,32 @@ class ConsoleUI
 public:
 
     ConsoleUI(); 
-    void sortScientist();
+    //void sortScientist();
     void WelcomeMenu();
     void features();
     void listOrSortScientist();
+    //void searchName();
+    //void searchDateOfBirth();
+    //void searchGender();
+    //void searchRandomScientist();
+    //void displayList();
+
+
+private:
+
+    ScientistService service;
+
+    void display(vector<Scientist> scientists);
+    void readScientists();
+
+    void displayListOfScientistsAlpha();
+    void displayListOfScientistsYoung();
+    void displayListOfScientistsOld();    
+
     void searchName();
     void searchDateOfBirth();
     void searchGender();
     void searchRandomScientist();
-    void displayList();
-
-
-private:
-    ScientistService service;
-
-    void display(vector<Scientist> scientists);
-
-    void displayListOfScientistsAlpha();
-    void displayListOfScientistsYoung();
-    void displayListOfScientistsOld();
-    void readScientists();
 };
 
 #endif // CONSOLEUI_H

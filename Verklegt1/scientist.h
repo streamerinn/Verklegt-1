@@ -33,7 +33,7 @@ public:
 
 private:
 
-    vector<Scientist> scientists;
+    vector<Scientist> _scientists;
     string _name;
     string _secondname;
     string _gender;

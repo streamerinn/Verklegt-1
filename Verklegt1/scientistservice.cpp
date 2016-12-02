@@ -6,7 +6,6 @@ using namespace std;
 
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist
 //struct sér um að raða eftir nöfnum
-
 struct ScientistComparisonAlpha
 {
     bool operator() (Scientist i, Scientist j)
@@ -57,18 +56,17 @@ vector<Scientist> ScientistService::getScientistsYoung()/* TODO: parameters, han
 
     std::sort(scientists.begin(), scientists.end(), cmpYoung);
 
-
-    //vil returna þennan scientist sorted
+    // vil returna þessum scientist sorted
     return scientists;
 
 }
 
-vector<Scientist> ScientistService::getScientists() //AAAAAAAAAAAAAAAAAAAAAAAAAAAH
+vector<Scientist> ScientistService::getScientists()
 {
     return scientists;
 }
 
-vector<Scientist> ScientistService::getScientistsOld()/* TODO: parameters, hann er public í .h*/
+vector<Scientist> ScientistService::getScientistsOld()
 {
 
     ScientistComparisonOld cmpOld;
