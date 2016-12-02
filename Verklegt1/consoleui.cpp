@@ -52,6 +52,7 @@ void ConsoleUI::readScientists()
     string tempName;
     cout << TAB << "Please enter a name: ";
 
+    cin.ignore();
     getline(cin, tempName);
     do
     {
@@ -68,25 +69,25 @@ void ConsoleUI::readScientists()
     bool validGender = false;
     string tempGender;
 
-    char gender;
+    string gender;
     cout << TAB << "Please enter the gender(M for male, F for female): ";
 
     while(validGender == false)
-    {
+    {       
         cin >> gender;
 
-        if(gender != 'M' && gender != 'm' && gender != 'F' && gender != 'f')
+        if(gender != "M" && gender != "m" && gender != "F" && gender != "f")
         {
             cout << TAB << gender << " is not a valid option" << endl;
             cout << TAB <<"Please enter a valid option: ";
         }
-        if(gender == 'M'||gender=='m')
+        if(gender == "M"||gender== "m")
         {
             tempGender = "Male";
             temp.setGender(tempGender);
             validGender = true;
         }
-        else if(gender == 'F'||gender == 'f')
+        else if(gender == "F" || gender == "f")
         {
             tempGender = "Female";
             temp.setGender(tempGender);
@@ -139,7 +140,7 @@ void ConsoleUI::readScientists()
             {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                cout << TAB << "Invalid date, that is not a year, try again:" << endl;
+                cout << TAB << "Invalid date, that is not a year, try again: " << endl;
                 cout << TAB << "Please enter a date of death(Enter 0 if the scientist is still alive): ";
                 cin >> tempDateOfDeath;
             }
@@ -259,7 +260,7 @@ void ConsoleUI::searchDateOfBirth()
     vector<Scientist> temp = service.searchDateOfBirth(year);
     if(temp.size() == 0)
     {
-        cout << TAB << "There is no scientist in our database with that date of birth, please try again:" << endl;
+        cout << TAB << "There is no scientist in our database with that date of birth, please try again: " << endl;
     }
     else
     {
@@ -271,6 +272,7 @@ void ConsoleUI::searchGender()
 {
     char gender;
     cout << TAB << "Please enter a gender(M for male, F for female): " << endl;
+    cout << TAB;
 
     cin >> gender;
 
@@ -279,11 +281,11 @@ void ConsoleUI::searchGender()
     {
         if(gender == 'M' || gender == 'm')
         {
-            cout << TAB << "There are no male scientists, try again:" << endl;
+            cout << TAB << "There are no male scientists. " << endl;
         }
         if(gender == 'F' || gender == 'f')
         {
-            cout << TAB << "There are no female scientists, try again:" << endl;
+            cout << TAB << "There are no female scientists. " << endl;
         }
     }
     else

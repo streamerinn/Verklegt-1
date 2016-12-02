@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 
-//include til þess að gera randum number generator
+//include til þess að útfæra randum number generator.
 #include <cstdlib>
 #include <ctime>
 

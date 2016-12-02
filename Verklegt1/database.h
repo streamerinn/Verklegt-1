@@ -15,7 +15,7 @@ class DataBase
 public:
     DataBase();
 
-    //sækir upplýsingar úr textasrká
+    //sækir upplýsingar úr textaskrá.
     void initTxtFile();
 
     void returnInfo(Scientist scientist);
