@@ -247,7 +247,7 @@ void ConsoleUI::searchGender()
 {
     char gender;
     cout << TAB << "Please enter a gender(M for male, F for female): " << endl;
-
+    cout << TAB;
     cin >> gender;
 
     vector<Scientist> temp = service.searchGender(gender);
