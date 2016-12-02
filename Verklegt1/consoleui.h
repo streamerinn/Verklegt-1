@@ -28,7 +28,7 @@ private:
 
     void displayListOfScientistsAlpha();
     void displayListOfScientistsYoung();
-    void displayListOfScientistsOld();    
+    void displayListOfScientistsOld();
 
     void searchName();
     void searchDateOfBirth();

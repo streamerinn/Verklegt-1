@@ -51,18 +51,18 @@ void ConsoleUI::readScientists()
 
     string tempName;
     cout << TAB << "Please enter a name: ";
-    cin.ignore(64,'\n');
+
     getline(cin, tempName);
     do
     {
         if(tempName.empty())
         {
-            getline(cin, tempName);
-            cout << TAB << "You cannot enter a empty name. Please try again: " << endl;
+            cout << TAB << "You cannot enter a empty name. Please try again: ";
             getline(cin, tempName);
         }
     }
     while(tempName.empty());
+
     temp.setName(tempName);
 
     bool validGender = false;
@@ -174,9 +174,9 @@ void ConsoleUI::readScientists()
     {
         features();
     }
-
-    //flytur upplýsingar inn í ScientistService
     service.create(temp);
+
+    cin.ignore(); // kemur í veg fyrir invalid input
 }
 
 void ConsoleUI::display(vector<Scientist> scientists)
@@ -321,101 +321,116 @@ void ConsoleUI::stats()
 
 void ConsoleUI::listOrSortScientist()
 {
-    char choice;
+    string CHOICE = "/0";
 
-    while(choice != 'q' && choice != 'Q')
+    while(CHOICE[0] != 'q' && CHOICE[0] != 'Q')
     {
         vector<Scientist> temp = service.getScientists();
 
         cout << TAB << "Please choose a feature: ";
-        cin >> choice;
+
+        getline(cin, CHOICE);
+
+        cout << "choice is: " << CHOICE[0];
+
+
         cout << endl;
 
-        if(choice == 'h' || choice == 'H')
+        if(CHOICE.length() > 1)
         {
-            features();
+            cout << TAB << "invalid input" << endl;
         }
-
-        else if(choice == '1')
+        else
         {
-            cout << TAB << ">>> Reading Scientists <<<" << endl << endl;
-            readScientists();
-        }
-
-        else if(choice == '2')
-        {
-            char sort;
-            cout << TAB << "How should the list be sorted?" << endl;
-            cout << TAB << "Press 1 for alphabetical order." << endl;
-            cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
-            cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
-            cout << TAB << "Press any other number to go BACK to the menu." << endl;
-            cout << TAB << "" << endl;
-            cout << TAB << "----------------------------------------------------------------------------" << endl;
-            cout << TAB;
-
-            cin >> sort;
-            if(sort == '1')
-            {
-                displayListOfScientistsAlpha();
-            }
-            else if(sort == '2')
-            {
-                displayListOfScientistsYoung();
-            }
-            else if(sort == '3')
-            {
-                displayListOfScientistsOld();
-            }
-            else
+            if(CHOICE[0] == 'h' || CHOICE[0] == 'H')
             {
                 features();
             }
-        }
 
-        else if(choice == '3')
-        {
-            char searchOptions;
-
-            cout << TAB << "What do you want to search for?" << endl;
-            cout << TAB << "Press 1 to search for a scientist witch a specific name." << endl;
-            cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
-            cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
-            cout << TAB << "Press 4 to search for a random Scientist." << endl;
-            cout << TAB << "Press any other number to go BACK to the menu." << endl;
-            cout << TAB << "" << endl;
-            cout << TAB << "----------------------------------------------------------------------------" << endl;
-            cout << TAB;
-
-            cin >> searchOptions;
-
-            if(searchOptions == '1')
+            else if(CHOICE[0] == '1')
             {
-                searchName();
+                cout << TAB << ">>> Reading Scientists <<<" << endl << endl;
+                readScientists();
             }
-            else if(searchOptions == '2')
+
+            else if(CHOICE[0] == '2')
             {
-                searchDateOfBirth();
+                char sort;
+                cout << TAB << "How should the list be sorted?" << endl;
+                cout << TAB << "Press 1 for alphabetical order." << endl;
+                cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
+                cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
+                cout << TAB << "Press any other number to go BACK to the menu." << endl;
+                cout << TAB << "" << endl;
+                cout << TAB << "----------------------------------------------------------------------------" << endl;
+                cout << TAB;
+
+                cin >> sort;
+                if(sort == '1')
+                {
+                    displayListOfScientistsAlpha();
+                }
+                else if(sort == '2')
+                {
+                    displayListOfScientistsYoung();
+                }
+                else if(sort == '3')
+                {
+                    displayListOfScientistsOld();
+                }
+                else
+                {
+                    features();
+                }
             }
-            else if(searchOptions == '3')
+
+            else if(CHOICE[0] == '3')
             {
-                searchGender();
+                char searchOptions;
+
+                cout << TAB << "What do you want to search for?" << endl;
+                cout << TAB << "Press 1 to search for a scientist witch a specific name." << endl;
+                cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
+                cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
+                cout << TAB << "Press 4 to search for a random Scientist." << endl;
+                cout << TAB << "Press any other number to go BACK to the menu." << endl;
+                cout << TAB << "" << endl;
+                cout << TAB << "----------------------------------------------------------------------------" << endl;
+                cout << TAB;
+
+                cin >> searchOptions;
+
+                if(searchOptions == '1')
+                {
+                    searchName();
+                }
+                else if(searchOptions == '2')
+                {
+                    searchDateOfBirth();
+                }
+                else if(searchOptions == '3')
+                {
+                    searchGender();
+                }
+                else if(searchOptions == '4')
+                {
+                    searchRandomScientist();
+                }
+                else
+                {
+                    features();
+                }
             }
-            else if(searchOptions == '4')
+
+            else if(CHOICE[0] == '4')
             {
-                searchRandomScientist();
+                stats();
             }
             else
             {
-                features();
+                cout << TAB << "invalid input" << endl;
             }
         }
-
-        else if(choice == '4')
-        {
-            stats();
-        }
-
     }
 }
 
