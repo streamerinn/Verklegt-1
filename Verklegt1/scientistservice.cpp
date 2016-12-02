@@ -118,7 +118,7 @@ vector<Scientist> ScientistService::searchGender(char gender)
 {
     vector<Scientist> temp2;
 
-    if(gender == 'F'||gender== 'f')
+    if(gender == 'F'||gender == 'f')
     {
         for(size_t i = 0; i < scientists.size();i++)
         {

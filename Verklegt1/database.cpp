@@ -18,7 +18,7 @@ void DataBase::initTxtFile()
     {
         cout << "Database exists" << endl;
     }
-    else    // ef info skráin er ekki til búum við hana til og setjum þetta fólk inn í hana
+    else    // ef info skráin er ekki til er hún sjálfkrafa búin til og fólki er bætt við.
     {
         fstream info("info.txt", fstream::out);
 
@@ -39,8 +39,6 @@ void DataBase::initTxtFile()
     }
 }
 
-// TODO: sækja úr textaskrá og skrifa í vector EINU SINNI
-// Það er dýrt að skrifa í og sækja ur textaskrá svo að það er best að takmarka það
 vector<Scientist> DataBase::readingTxt()
 {
     vector<Scientist> scientistVector;
@@ -85,15 +83,7 @@ vector<Scientist> DataBase::readingTxt()
 
     return scientistVector;
 }
-
-/*operator DataBase::redd()
-{
-
-}*/
-
-// Upplýsingar eru byrjaðar að berast hingað frá consoleu-i
-// TODO: bæta scientistum inn í textaskrá
-// þetta ætti að gerast (eins og er) þannig að í hvert skipti sem add er keirt er bætt einum scientist inn í skránna
+// Í hvert skipti sem readScientists er keyrt(í consoleUI) bætist einn scientist við í skrá.
 void DataBase::returnInfo(Scientist scientist)
 {   
     fstream outputFile;
