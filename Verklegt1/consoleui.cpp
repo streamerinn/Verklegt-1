@@ -183,13 +183,26 @@ void ConsoleUI::display(vector<Scientist> scientists)
     cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < scientists.size(); i++)
     {
+        int tempAge;
+        if (scientists[i].getDateOfDeath() != 0)
+        {
+            tempAge = scientists[i].getDateOfDeath() - scientists[i].getDateOfBirth();
+        }
+        else
+        {
+            tempAge = 2016 - scientists[i].getDateOfBirth();
+        }
+
         cout << "\t |Name: " << scientists[i].getName() << endl;
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
+        cout << "\t |Age: " << tempAge << endl;
+
         if(scientists[i].getDateOfDeath() == 0)
             cout << "\t |Still alive " << endl;
         else
             cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
+
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
