@@ -138,7 +138,7 @@ void ConsoleUI::readScientists()
             {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                cout << TAB << "Invalid date, that is not a year, try again:" << endl;
+                cout << TAB << "Invalid date, that is not a year, try again: " << endl;
                 cout << TAB << "Please enter a date of death(Enter 0 if the scientist is still alive): ";
                 cin >> tempDateOfDeath;
             }
@@ -258,7 +258,7 @@ void ConsoleUI::searchDateOfBirth()
     vector<Scientist> temp = service.searchDateOfBirth(year);
     if(temp.size() == 0)
     {
-        cout << TAB << "There is no scientist in our database with that date of birth, please try again:" << endl;
+        cout << TAB << "There is no scientist in our database with that date of birth, please try again: " << endl;
     }
     else
     {
@@ -279,11 +279,11 @@ void ConsoleUI::searchGender()
     {
         if(gender == 'M' || gender == 'm')
         {
-            cout << TAB << "There are no male scientists, try again:" << endl;
+            cout << TAB << "There are no male scientists. " << endl;
         }
         if(gender == 'F' || gender == 'f')
         {
-            cout << TAB << "There are no female scientists, try again:" << endl;
+            cout << TAB << "There are no female scientists. " << endl;
         }
     }
     else
@@ -357,7 +357,7 @@ void ConsoleUI::listOrSortScientist()
             char searchOptions;
 
             cout << TAB << "What do you want to search for?" << endl;
-            cout << TAB << "Press 1 to search for a scientist witch a specific name." << endl;
+            cout << TAB << "Press 1 to search for a scientist with a specific name." << endl;
             cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
             cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
             cout << TAB << "Press 4 to search for a random Scientist." << endl;

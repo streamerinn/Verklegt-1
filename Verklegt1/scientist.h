@@ -8,7 +8,7 @@
 
 using namespace std;
 
-//entity klasi
+//entity klasi.
 class Scientist
 {
 public:
@@ -25,9 +25,6 @@ public:
     void setDateOfDeath(int death);
 
     Scientist(string name, string gender, int dateOfBirth, int dateOfDeath);
-
-    //les inn upplýsingar um Scientists
-    //void readScientists(vector <Scientist> &scientists);
 
 private:
 

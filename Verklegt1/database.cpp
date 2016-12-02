@@ -51,7 +51,7 @@ vector<Scientist> DataBase::readingTxt()
     int dateOfDeath;
 
     ifstream info("info.txt");
-    //les inn upplýsingar úr textaskjalinu
+    //les inn upplýsingar úr textaskjalinu.
     if(info.is_open() && info.good())
     {
         while(!info.eof())

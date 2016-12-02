@@ -1,7 +1,7 @@
 #include "scientistservice.h"
 
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
-//struct sér um að raða eftir nöfnum.
+//struct sér um að raða eftir nöfnum og aldur.
 struct ScientistComparisonAlpha
 {
     bool operator() (Scientist i, Scientist j)
