@@ -5,18 +5,24 @@
 
 Scientist::Scientist()
 {
+    _id = 0;
     _name = ' ';
     _gender = ' ';
     _dateOfBirth = 0;
     _dateOfDeath = 0;
 }
 
-Scientist::Scientist(string name, string gender, int dateOfBirth, int dateOfDeath)
+Scientist::Scientist(int id, string name, string gender, int dateOfBirth, int dateOfDeath)
 {
+    _id = id;
     _name = name;
     _gender = gender;
     _dateOfBirth = dateOfBirth;
     _dateOfDeath = dateOfDeath;
+}
+int Scientist::getId()
+{
+    return _id;
 }
 
 string Scientist::getName()

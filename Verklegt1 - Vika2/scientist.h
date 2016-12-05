@@ -13,6 +13,7 @@ class Scientist
 public:
 
     Scientist();
+    int getId();
     string getName();
     string getGender();
     int getDateOfBirth();
@@ -23,11 +24,12 @@ public:
     void setDateOfBirth(int birth);
     void setDateOfDeath(int death);
 
-    Scientist(string name, string gender, int dateOfBirth, int dateOfDeath);
+    Scientist(int id, string name, string gender, int dateOfBirth, int dateOfDeath);
 
 private:
 
     vector<Scientist> _scientists;
+    int _id;
     string _name;
     string _gender;
     int _dateOfBirth;

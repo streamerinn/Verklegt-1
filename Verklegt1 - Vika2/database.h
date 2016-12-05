@@ -24,6 +24,7 @@ public:
 private:
     vector<Scientist> savedData;
     QSqlDatabase db;
+    QString dbName;
 
 };
 
