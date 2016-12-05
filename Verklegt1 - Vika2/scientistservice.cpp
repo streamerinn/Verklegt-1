@@ -37,8 +37,6 @@ struct ScientistComparisonOld
 
 ScientistService::ScientistService()
 {
-    DataBase db;
-    db.initTxtFile();
     scientists = data.readingTxt();
 }
 

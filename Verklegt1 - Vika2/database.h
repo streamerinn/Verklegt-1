@@ -2,6 +2,7 @@
 #define DATABASE_H
 
 #include "scientist.h"
+#include <QtSql>
 
 #include <vector>
 #include <fstream>
@@ -15,14 +16,15 @@ class DataBase
 public:
     DataBase();
 
-    //sækir upplýsingar úr textaskrá.
-    void initTxtFile();
+    vector<Scientist> readingTxt();
 
     void returnInfo(Scientist scientist);
-    vector<Scientist> readingTxt();
+
 
 private:
     vector<Scientist> savedData;
+    QSqlDatabase db;
+    QString dbName;
 
 };
 
