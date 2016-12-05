@@ -26,7 +26,7 @@ void DataBase::initTxtFile()
         info << "Ada Lovelace" << ',' << "Female" << ',' << "1815" << ',' << "1852" << endl;
         info << "Donald E. Knuth" << ',' << "Male" << ',' << "1974" << ',' << "0" << endl;
         info << "Edsger W. Dijkstra" << ',' << "Male" << ',' << "1930" << ',' << "2002" << endl;
-        info << "Blaise Pascale" << ',' << "Male" << ',' << "1623" << ',' << "1662" << endl;
+        info << "Blaise Pascal" << ',' << "Male" << ',' << "1623" << ',' << "1662" << endl;
         info << "Herman Hollerith" << ',' << "Male" << ',' << "1860" << ',' << "1929" << endl;
         info << "Alan Turing" << ',' << "Male" << ',' << "1912" << ',' << "1954" << endl;
         info << "John von Neumann" << ',' << "Male" << ',' << "1903" << ',' << "1957" << endl;

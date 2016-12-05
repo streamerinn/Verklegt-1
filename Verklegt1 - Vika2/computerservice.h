@@ -1,0 +1,39 @@
+#ifndef COMPURSERVICE_H
+#define COMPURSERVICE_H
+
+#include "computer.h"
+#include <vector>
+#include <algorithm>
+
+#include <cstdlib>
+#include <ctime>
+
+
+using namespace std;
+
+class ComputerService
+{
+public:
+    ComputerService();
+
+    void create(Computer computer);
+
+    vector<Computer> getComputers();
+    vector<Computer> getComputersAlpha();
+    vector<Computer> getComputersYoung();
+    vector<Computer> getComputersOld();
+    vector<Computer> getComputersBuiltOrNot();
+
+    vector<Computer> searchComputerName(string name);
+    vector<Computer> searchYearOfBuild(int buildYear);
+    vector<Computer> searchType(char type);
+    vector<Computer> searchBuilt(char built);
+
+    vector<Computer> searchRandomComputer();
+
+
+private:
+    vector<Computer> computers;
+};
+
+#endif // COMPURSERVICE_H
