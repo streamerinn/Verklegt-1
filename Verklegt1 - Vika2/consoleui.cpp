@@ -35,15 +35,33 @@ void ConsoleUI::features()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << "The list below shows you all possible features on what you can do." << endl;
     cout << endl;
-    cout << TAB << "press H to show all options" << endl; //eitthvað svona er sniðgt;
+    cout << TAB << "press H to show all options." << endl; //eitthvað svona er sniðgt;
     cout << TAB << "Press 1 to create a new scientist." << endl;
     cout << TAB << "Press 2 to list all scientists." << endl;
     cout << TAB << "Press 3 to search for a scientist." << endl;
-    cout << TAB << "Press 4 to get the database stats" << endl;
+    cout << TAB << "Press 4 to get the database stats." << endl;
+    cout << TAB << "Press 5 to add a computer." << endl;
+    cout << TAB << "Press 6 to search for a computer. " << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
+/*
+void ConsoleUI::readComputers()
+{
+    //TODO
+}
+
+void ConsoleUI::displayComputers(vector<Computer> computers)
+{
+    //TODO
+}
+
+void ConsoleUI::searchComputer()
+{
+    //TODO
+}
+*/
 
 void ConsoleUI::readScientists()
 {
@@ -442,6 +460,14 @@ void ConsoleUI::listOrSortScientist()
             else if(CHOICE[0] == '4')
             {
                 stats();
+            }
+            else if(CHOICE[0] == '5')
+            {
+                //readComputers();
+            }
+            else if(CHOICE[0] == '6')
+            {
+                //searchComputer();
             }
             else if(CHOICE[0] == 'q' || CHOICE[0] == 'Q')
             {

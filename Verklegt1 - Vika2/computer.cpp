@@ -1,6 +1,7 @@
 #include "computer.h"
 #include <string>
 #include <iostream>
+#include <sstream>
 
 Computer::Computer()
 {

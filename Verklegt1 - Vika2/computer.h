@@ -2,6 +2,7 @@
 #define COMPUTER_H
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -24,6 +25,9 @@ public:
     Computer(int ID, string name, char type, int yearBuilt, string built);
 
  private:
+
+    vector<Computer> _computers;
+
     int _ID;
     string _name;
     char _type;
