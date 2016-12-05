@@ -115,58 +115,70 @@ void ConsoleUI::readScientists()
         }
      }while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
 
-     do
-     {
-        if(!cin)
+    do
         {
-            while((!cin))
+            if(tempDateOfBirth > 2016)
             {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                cout << TAB << "That is not a date, please try again: ";
+                cout << TAB << "Invalid date. Please try again: ";
                 cin >> tempDateOfBirth;
             }
-        }
-    }while(tempDateOfBirth > 2016 && tempDateOfBirth < 0);
-
-    temp.setDateOfBirth(tempDateOfBirth);
-
-    cout << TAB << "Please enter a year of death(Enter 0 if the scientist is still alive): ";
-    cin >> tempDateOfDeath;
-
-    do
-    {
-        if(!cin)
-        {
-            while((!cin))
+            else if(tempDateOfBirth < 0)
             {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                cout << TAB << "Invalid date, that is not a year, try again: " << endl;
-                cout << TAB << "Please enter a year of death(Enter 0 if the scientist is still alive): ";
+                cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
+                cin >> tempDateOfBirth;
+            }
+         }while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
+
+         do
+         {
+            if(!cin)
+            {
+                while((!cin))
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    cout << TAB << "That is not a date, please try again: ";
+                    cin >> tempDateOfBirth;
+                }
+            }
+        }while(tempDateOfBirth > 2016 && tempDateOfBirth < 0);
+
+        temp.setDateOfBirth(tempDateOfBirth);
+
+        cout << TAB << "Please enter a year of death(Enter 0 if the scientist is still alive): ";
+        cin >> tempDateOfDeath;
+
+        do
+        {
+
+            if(!cin)
+            {
+                while((!cin))
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    cout << TAB << "Invalid date, that is not a year, try again: ";
+                    cin >> tempDateOfDeath;
+                }
+            }
+            else if((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0) && (tempDateOfDeath < 2017))
+            {
+                cout << TAB << "Not possible. A person cannot die before it is born, try again: ";
                 cin >> tempDateOfDeath;
+                cin.clear();
             }
         }
-        else if(((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0)) || (tempDateOfDeath > 2017))
-        {
-            cout << TAB << "Not possible. A person cannot die before it is born, try again: ";
-            cin >> tempDateOfDeath;
-            cout << TAB << "Please enter a year of death(Enter 0 if the scientist is still alive): ";
-            cin.clear();
-            cin >> tempDateOfDeath;
-        }
-    }
-    while((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0));
+        while((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0));
 
-    do
-    {
-        if(tempDateOfDeath > 2016)
+        do
         {
-            cout << TAB << "Not possible. A person cannot die beyond the current year, try again: ";
-            cin >> tempDateOfDeath;
-        }
+            if(tempDateOfDeath > 2016)
+            {
+                cout << TAB << "Not possible. A person cannot die beyond the current year, try again: ";
+                cin >> tempDateOfDeath;
+            }
 
-    }while((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0));
+        }while((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0));
 
     temp.setDateOfDeath(tempDateOfDeath);
     cout << endl;
