@@ -8,6 +8,9 @@
 #include <fstream>
 #include <string>
 
+#include <sstream>
+#include <iostream>
+
 using namespace std;
 
 class DataBase
@@ -19,6 +22,8 @@ public:
     vector<Scientist> readingTxt();
 
     void returnInfo(Scientist scientist);
+
+    void insertTable(Scientist scientist);
 
 
 private:

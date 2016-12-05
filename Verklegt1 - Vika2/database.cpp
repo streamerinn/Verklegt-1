@@ -58,3 +58,22 @@ void DataBase::returnInfo(Scientist scientist)
     outputFile << scientist.getDateOfDeath() << endl;
 }
 
+void DataBase::insertTable(Scientist scientist)
+{
+    db.open();
+    QSqlQuery query(db);
+
+    query.exec("INSERT INTO SCIENIST");
+
+     //upplýsingar um scientist koma hingað og eru síðan settar inn í gagnasagnið
+
+    query.value("id").toUInt() = scientist.getId();
+    query.value("name").toString().toStdString() = scientist.getName();
+    query.value("gender").toString().toStdString() = scientist.getGender();
+    query.value("birthDate").toUInt() = scientist.getDateOfBirth();
+    query.value("deathDate").toUInt() = scientist.getDateOfDeath();
+}
+
+
+
+
