@@ -11,26 +11,26 @@ class Computer
 public:
     Computer();
     int getID();
-    string getName();
-    char getType();
+    string getComputerName();
+    string getType();
     int getYearBuilt();
     string getBuilt();
 
     void setID(int ID);
-    void setName(string name);
-    void setType(char type);
+    void setName(string computerName);
+    void setType(string type);
     void setYearBuilt(int yearbuilt);
     void setBuilt(string built);
 
-    Computer(int ID, string name, char type, int yearBuilt, string built);
+    Computer(int ID, string computerName, char type, int yearBuilt, string built);
 
  private:
 
     vector<Computer> _computers;
 
     int _ID;
-    string _name;
-    char _type;
+    string _computerName;
+    string _type;
     int _yearBuilt;
     string _built;
 };

@@ -1,10 +1,15 @@
-#include "scientistservice.h"
+#include "computerservice.h"
+
+CompurService::CompurService()
+{
+
+}
 
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
 //struct sér um að raða eftir nöfnum og aldur.
-struct ScientistComparisonAlpha
+struct ComputerComparisonAlpha
 {
-    bool operator() (Scientist i, Scientist j)
+    bool operator() (Computer i, Computer j)
     {
         string iName = i.getName();
         string jName = j.getName();
@@ -15,83 +20,84 @@ struct ScientistComparisonAlpha
     }
 };
 
-struct ScientistComparisonYoung
+struct ComputerComparisonYoung
 {
-    bool operator() (Scientist i, Scientist j)
+    bool operator() (Computer i, Computer j)
     {
-        int iAge = i.getDateOfDeath()-i.getDateOfBirth();
-        int jAge = j.getDateOfDeath()-j.getDateOfBirth();
-        return (iAge<jAge);
+        int iBuildYear = i.getDateOfBuild();
+        int jBuildYear = j.getDateOfBuild();
+        return (iBuildYear<jBuildYear);
     }
 };
 
-struct ScientistComparisonOld
+struct ComputerComparisonOld
 {
-    bool operator() (Scientist i, Scientist j)
+    bool operator() (Computer i, Computer j)
     {
-        int iAge = i.getDateOfDeath()-i.getDateOfBirth();
-        int jAge = j.getDateOfDeath()-j.getDateOfBirth();
-        return (jAge<iAge);
+        int iBuildYear = i.getDateOfBuild();
+        int jBuildYear = j.getDateOfBuild();
+        return (jBuildYear<iBuildYear);
     }
 };
 
-ScientistService::ScientistService()
+ComputerService::ComputerService()
 {
-    scientists = data.readingTxt();
+    /*DataBase db;
+    db.initTxtFile();
+    scientists = data.readingTxt();*/
 }
 
-vector<Scientist> ScientistService::getScientistsAlpha()
+vector<Computer> ComputerService::getComputersAlpha()
 {
-    ScientistComparisonAlpha cmp;
+    computerComparisonAlpha cmp;
 
-    sort(scientists.begin(), scientists.end(), cmp);
+    sort(computers.begin(), computers.end(), cmp);
 
-    return scientists;
+    return computers;
 }
 
-vector<Scientist> ScientistService::getScientistsYoung()
+vector<Computor> ComputerService::getComputersYoung()
 {
-    ScientistComparisonYoung cmpYoung;
+    computerComparisonYoung cmpYoung;
 
-    std::sort(scientists.begin(), scientists.end(), cmpYoung);
+    sort(computers.begin(), computers.end(), cmpYoung);
 
-    return scientists;
+    return computers;
 }
 
-vector<Scientist> ScientistService::getScientists()
+vector<Scientist> ComputerService::getScientists()
 {
-    return scientists;
+    return computers;
 }
 
-vector<Scientist> ScientistService::getScientistsOld()
+vector<Scientist> ComputerService::getScientistsOld()
 {
-    ScientistComparisonOld cmpOld;
+    computerComparisonOld cmpOld;
 
-    std::sort(scientists.begin(), scientists.end(), cmpOld);
+    std::sort(computers.begin(), computers.end(), cmpOld);
 
-    return scientists;
+    return computers;
 }
 
 //Skilar einum scientist inn í vectorinn.
 //Skilar einum scientist í database, þar sem hann verður sendur inn í textaskrá.
-void ScientistService::create(Scientist scientist)
+void ComputerService::create(Computer computer)
 {
-    data.returnInfo(scientist); // textskráin
-    data.insertTable(scientist);
-    scientists.push_back(scientist);
+    //data.returnInfo(scientist);
+    computers.push_back(computer);
 }
 
-vector<Scientist> ScientistService::searchName(string name)
+vector<Scientist> ComputerService::searchComputerName(string computerName)
 {
-    vector<Scientist> temp;
-    string scientist;
+    vector<Computer> temp;
+    string computer;
 
-    for(size_t i = 0; i < scientists.size(); i++)
+    for(size_t i = 0; i < computers.size(); i++)
     {
-        scientist = scientists[i].getName();
-        transform(scientist.begin(), scientist.end(), scientist.begin(), ::tolower);
-        transform(name.begin(), name.end(), name.begin(), ::tolower);
-        if(scientist.find(name) !=string::npos)
+        computer = computers[i].getComputerName();
+        transform(computer.begin(), computer.end(), computer.begin(), ::tolower);
+        transform(computerName.begin(), computerName.end(), computerName.begin(), ::tolower);
+        if(scientist.find(computerName) !=string::npos)
         {
             temp.push_back(scientists[i]);
         }
@@ -163,4 +169,4 @@ vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
         }
     }
     return temp4;
-}
+}*/
