@@ -1,6 +1,7 @@
 #include "database.h"
 #include <sstream>
 #include <iostream>
+#include <QtSql>
 
 using namespace std;
 
@@ -12,6 +13,10 @@ DataBase::DataBase()
 
 void DataBase::initTxtFile()
 {
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbName = "Skil2DB.sqlite";
+    db.setDatabaseName(dbName);
     ifstream infoRead("info.txt");
 
     if(infoRead)

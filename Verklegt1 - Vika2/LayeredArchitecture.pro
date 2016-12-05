@@ -1,5 +1,6 @@
 QT += core
 QT -= gui
+QT += core sql
 
 CONFIG += c++11
 
@@ -20,5 +21,3 @@ HEADERS += \
     database.h \
     scientistservice.h \
     scientist.h
-
-OTHER_FILES += list.txt \
