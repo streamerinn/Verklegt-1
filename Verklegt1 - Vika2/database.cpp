@@ -61,17 +61,36 @@ void DataBase::returnInfo(Scientist scientist)
 void DataBase::insertTable(Scientist scientist)
 {
     db.open();
-    QSqlQuery query(db);
+    QSqlQuery query;
+    query = QSqlQuery(db);
+    QString name = QString::fromStdString(scientist.getName());
+    QString gender = QString::fromStdString(scientist.getGender());
+    QString birth = QString::number(scientist.getDateOfBirth());
+    QString death = QString::number(scientist.getDateOfDeath());
 
-    query.exec("INSERT INTO SCIENIST");
+    query.prepare("INSERT INTO Scientists (Name, Gender, Born, Died) VALUES (:name, :gender, :born, :died)");
+    query.bindValue(":name", name);
+    query.bindValue(":gender", gender);
+    query.bindValue(":born", birth);
+    query.bindValue(":died", death);
+    query.exec();
+
+
+
+    //query.exec("INSERT INTO Scientists (Name, Gender, Born, Died)" + "VALUES ('" + name + "','" + gender + "','" + birth + "','" + death + "')");
+    //query.prepare("INSERT INTO Scientists (Name, Gender, Born, Died) VALUES (:name, :gender, :born, :died)");
+
+    //query.bindValue(":name",QString::fromStdString(scientist.getName()));
+    //query.value("name").toString().toStdString() = scientist.getName();
+    //query.value("gender").toString().toStdString() = scientist.getGender();
+    //query.value("birthDate").toUInt() = scientist.getDateOfBirth();
+    //query.value("deathDate").toUInt() = scientist.getDateOfDeath();
+
+    //query.exec();
 
      //upplýsingar um scientist koma hingað og eru síðan settar inn í gagnasagnið
 
-    query.value("id").toUInt() = scientist.getId();
-    query.value("name").toString().toStdString() = scientist.getName();
-    query.value("gender").toString().toStdString() = scientist.getGender();
-    query.value("birthDate").toUInt() = scientist.getDateOfBirth();
-    query.value("deathDate").toUInt() = scientist.getDateOfDeath();
+
 }
 
 
