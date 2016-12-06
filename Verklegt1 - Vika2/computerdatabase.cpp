@@ -27,9 +27,9 @@ vector<Computer> ComputerDatabase::computerDB()
     {
         int id = query.value("id").toUInt();
         string computerName = query.value("name").toString().toStdString();
-        string type = query.value("type").toString().toStdString();
+       // string type = query.value("type").toString().toStdString();
         int yearBuilt;
-        bool built = query.value("built").toBool();
+
 
         if(!query.value("yearBuilt").isNull())
         {
@@ -39,6 +39,8 @@ vector<Computer> ComputerDatabase::computerDB()
         {
             yearBuilt = 0;
         }
+        string type = query.value("type").toString().toStdString();
+        int built = query.value("built").toUInt();
 
         computerVector.push_back(Computer(id, computerName, type, yearBuilt, built));
     }
@@ -56,7 +58,7 @@ void ComputerDatabase::insertRow(Computer computer)
     QString yearBuilt = QString::number(computer.getYearBuilt());
     QString built = QString::number(computer.getBuilt());
 
-    query.prepare("INSERT INTO Computers (name, type, yearBuilt, built) VALUES (:name, :type, :yearBuilt, :built)");
+    query.prepare("INSERT INTO Computers (name, yearBuilt, type, built) VALUES (:name, :yearBuilt, :type, :built)");
     query.bindValue(":name", name);
     query.bindValue(":type", type);
     query.bindValue(":yearBuilt", yearBuilt);
