@@ -42,7 +42,8 @@ void ConsoleUI::features()
     cout << TAB << "Press 3 to search for a scientist." << endl;
     cout << TAB << "Press 4 to get the database stats." << endl;
     cout << TAB << "Press 5 to add a computer." << endl;
-    cout << TAB << "Press 6 to search for a computer. " << endl;
+    cout << TAB << "Press 6 to list all computers. " << endl;
+    cout << TAB << "Press 7 to search for a computer. " << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
@@ -52,15 +53,16 @@ void ConsoleUI::readComputers()
 {
     Computer temp;
 
-    string tempComputerName;
+    string tempComputerName = " ";
     int tempYearBuilt;
-    char tempType, tempBuilt;
+    char tempBuilt = ' ';
+    string tempType;
 
     // Get name.
     cout << TAB << "Please enter a computer name: ";
 
     getline(cin, tempComputerName);
-    do
+    while(tempComputerName.empty())
     {
         if(tempComputerName.empty())
         {
@@ -68,14 +70,46 @@ void ConsoleUI::readComputers()
             ws(cin);
             getline(cin, tempComputerName);
         }
-    }while(tempComputerName.empty());
+    }
 
     temp.setName(tempComputerName);
 
     // Get computer type.
-    cout << TAB << "Please enter what type the computer is (Enter 'M' for Mechanical, 'E' for Electronic or 'T' for Transistor): ";
-    cin >> tempType;
 
+    bool validType = false;
+    string type;
+
+    cout << TAB << "Please enter what type the computer is (Enter 'M' for Mechanical, 'E' for Electronic or 'T' for Transistor): ";
+
+    while(validType == false)
+    {
+        ws(cin);
+        getline(cin, type);
+
+        if(type != "M" && type != "m" && type != "E" && type != "e" && type != "T" && type != "t")
+        {
+            cout << TAB << type << " is not a valid option" << endl;
+            cout << TAB <<"Please enter a valid option: ";
+        }
+        if(type == "M"||type == "m")
+        {
+            tempType = "Mechanical";
+            temp.setType(tempType);
+            validType = true;
+        }
+        else if(type == "E" || type == "e")
+        {
+            tempType = "Electronic";
+            temp.setType(tempType);
+            validType = true;
+        }
+        else if(type == "T" || type == "t")
+        {
+            tempType = "Transistor";
+            temp.setType(tempType);
+            validType = true;
+        }
+    }
     temp.setType(tempType);
 
     // Get if the computer was built or not.
@@ -83,17 +117,15 @@ void ConsoleUI::readComputers()
     cin >> tempBuilt;
     if(tempBuilt == 'y' || tempBuilt == 'Y')
     {
+        cout << "Made it" << endl;
         cout << "When was it built? (Enter -1 if not sure.)";
         cin >> tempYearBuilt;
     }
     else
     {
-        tempYearBuilt = 0;
+        tempBuilt = 0;
     }
-
     temp.setBuilt(tempBuilt);
-
-
 }
 
 void ConsoleUI::displayComputers(vector<Computer> computers)
@@ -271,7 +303,6 @@ void ConsoleUI::readScientists()
     {
         features();
     }
-
 }
 
 void ConsoleUI::display(vector<Scientist> scientists)
@@ -554,7 +585,14 @@ void ConsoleUI::listingAndSorting()
                 {
                     features();
                 }
-
+            }
+            else if(CHOICE[0] == '7')
+            {
+                // TODO
+            }
+            else if(CHOICE[0] == '8')
+            {
+                // TODO
             }
             else if(CHOICE[0] == 'q' || CHOICE[0] == 'Q')
             {
