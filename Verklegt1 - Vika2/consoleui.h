@@ -19,7 +19,7 @@ public:
 
     void WelcomeMenu();
     void features();
-    void listOrSortScientist();
+    void listingAndSorting();
 
 private:
 
@@ -30,6 +30,7 @@ private:
     void readComputers();
     void readScientists();
 
+    void displaySortOptions();
     void displayListOfScientistsAlpha();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();

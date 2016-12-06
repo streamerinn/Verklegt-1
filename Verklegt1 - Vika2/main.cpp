@@ -7,7 +7,7 @@ int main()
     ConsoleUI ui;
 
     ui.features();
-    ui.listOrSortScientist();
+    ui.listingAndSorting();
 
     return 0;
 }

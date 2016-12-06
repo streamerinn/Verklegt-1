@@ -412,14 +412,20 @@ void ConsoleUI::stats()
     cout << TAB << "----------------------------" << endl << endl;
 
 }
-
-/*void ConsoleUI::listOrSortComputer()
+void ConsoleUI::displaySortOptions()
 {
-
+    cout << endl;
+    cout << TAB << "How should the list be sorted?" << endl;
+    cout << TAB << "Press 1 for alphabetical order." << endl;
+    cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
+    cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
+    cout << TAB << "Press any other number to go BACK to the menu." << endl;
+    cout << TAB << "" << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << TAB;
 }
-*/
 
-void ConsoleUI::listOrSortScientist()
+void ConsoleUI::listingAndSorting()
 {
     string CHOICE = "/0";
 
@@ -452,15 +458,8 @@ void ConsoleUI::listOrSortScientist()
             else if(CHOICE[0] == '2')
             {
                 char sort;
-                cout << endl;
-                cout << TAB << "How should the list be sorted?" << endl;
-                cout << TAB << "Press 1 for alphabetical order." << endl;
-                cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
-                cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
-                cout << TAB << "Press any other number to go BACK to the menu." << endl;
-                cout << TAB << "" << endl;
-                cout << TAB << "----------------------------------------------------------------------------" << endl;
-                cout << TAB;
+
+                displaySortOptions();
 
                 cin >> sort;
                 if(sort == '1')
@@ -523,6 +522,37 @@ void ConsoleUI::listOrSortScientist()
             else if(CHOICE[0] == '4')
             {
                 stats();
+            }
+            else if (CHOICE[0] == '5')
+            {
+                cout << endl;
+                cout << TAB << ">>> Reading Computer(s) <<<" << endl << endl;
+                readComputers();
+            }
+            else if (CHOICE[0] == '6')
+            {
+                int sortComputer;
+                displaySortOptions();
+
+                cin >> sortComputer;
+
+                if(sortComputer == '1')
+                {
+                    // TODO - Display List of computers.
+                }
+                else if(sortComputer == '2')
+                {
+                    // TODO - Display list from youngest to oldest computers?
+                }
+                else if(sortComputer == '3')
+                {
+                    // TODO - Display list from oldest to youngest?
+                }
+                else
+                {
+                    features();
+                }
+
             }
             else if(CHOICE[0] == 'q' || CHOICE[0] == 'Q')
             {
