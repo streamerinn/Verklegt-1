@@ -176,3 +176,8 @@ vector<Computer> ComputerService::searchBuilt(const char built)
     }
     return temp4;
 }
+
+int ComputerService::getConnections()
+{
+    return data.countConnections();
+}

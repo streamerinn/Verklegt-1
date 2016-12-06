@@ -433,7 +433,8 @@ void ConsoleUI::stats()
     vector<Scientist> females = sService.searchGender('F');
     vector<Scientist> alive = sService.searchDateOfDeath(0);
     vector<Scientist> total = sService.getScientists();
-
+    vector<Computer> computers = cService.getComputers();
+    int totalConnections = cService.getConnections();
     dead = total.size() - alive.size();
 
     cout << TAB << "---------------------------" << endl;
@@ -442,6 +443,8 @@ void ConsoleUI::stats()
     cout << TAB << females.size() << " female scientists" << endl;
     cout << TAB << alive.size() << " alive scientists" << endl;
     cout << TAB << dead << " dead scientists" << endl;
+    cout << TAB << computers.size() << " computers" << endl;
+    cout << TAB << totalConnections << " connections" << endl;
     cout << TAB << "----------------------------" << endl << endl;
 
 }

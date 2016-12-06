@@ -32,6 +32,7 @@ public:
 
     vector<Computer> searchRandomComputer();
 
+    int getConnections(); // returns how many connections there are
 
 private:
     vector<Computer> computers;
