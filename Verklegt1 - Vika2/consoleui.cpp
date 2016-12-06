@@ -18,7 +18,7 @@ void ConsoleUI::WelcomeMenu()
     cout << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << TAB << TAB << " Welcome! This program will store or show" << endl;
-    cout << TAB << TAB << TAB << "      famous computer scientists. " << endl;
+    cout << TAB << TAB << TAB << " famous computer scientists and computers. " << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
@@ -36,7 +36,7 @@ void ConsoleUI::features()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << "The list below shows you all possible features on what you can do." << endl;
     cout << endl;
-    cout << TAB << "press H to show all options." << endl; //eitthvað svona er sniðgt;
+    cout << TAB << "press H to show all options." << endl;
     cout << TAB << "Press 1 to create a new scientist." << endl;
     cout << TAB << "Press 2 to list all scientists." << endl;
     cout << TAB << "Press 3 to search for a scientist." << endl;
@@ -47,23 +47,79 @@ void ConsoleUI::features()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
-/*
+
 void ConsoleUI::readComputers()
 {
-    //TODO
+    Computer temp;
+
+    string tempComputerName;
+    int tempYearBuilt;
+    char tempType, tempBuilt;
+
+    // Get name.
+    cout << TAB << "Please enter a computer name: ";
+
+    getline(cin, tempComputerName);
+    do
+    {
+        if(tempComputerName.empty())
+        {
+            cout << TAB << "You cannot enter an empty computer name. Please try again: ";
+            ws(cin);
+            getline(cin, tempComputerName);
+        }
+    }while(tempComputerName.empty());
+
+    temp.setName(tempComputerName);
+
+    // Get computer type.
+    cout << TAB << "Please enter what type the computer is (Enter 'M' for Mechanical, 'E' for Electronic or 'T' for Transistor): ";
+    cin >> tempType;
+
+    temp.setType(tempType);
+
+    // Get if the computer was built or not.
+    cout << TAB << "Please enter if the computer was built or not(Enter Y for yes or N for no): ";
+    cin >> tempBuilt;
+    if(tempBuilt == 'y' || tempBuilt == 'Y')
+    {
+        cout << "When was it built? (Enter -1 if not sure.)";
+        cin >> tempYearBuilt;
+    }
+    else
+    {
+        tempYearBuilt = 0;
+    }
+
+    temp.setBuilt(tempBuilt);
+
+
 }
 
 void ConsoleUI::displayComputers(vector<Computer> computers)
 {
-    //TODO
+    cout << "\t Information about all listed computers"  << endl;
+    cout << "\t___________________________________________________________________________" << endl;
+    for(size_t i = 0; i < computers.size(); i++)
+    {
+        cout << "\t |Name: " << computers[i].getComputerName() << endl;
+        cout << "\t |Type: " << computers[i].getType() << endl;
+        cout << "\t |Built: " << computers[i].getYearBuilt() << endl;
+    }
 }
-
+/*
 void ConsoleUI::searchComputer()
 {
     //TODO
 }
 */
 
+// Tengja saman scientis(t) við computer(s) og vice versa
+/*void ConsoleUI::link()
+{
+    // TODO
+}
+*/
 void ConsoleUI::readScientists()
 {
     Scientist temp;
@@ -358,8 +414,20 @@ void ConsoleUI::stats()
     cout << TAB << "----------------------------" << endl << endl;
 
 }
+void ConsoleUI::displaySortOptions()
+{
+    cout << endl;
+    cout << TAB << "How should the list be sorted?" << endl;
+    cout << TAB << "Press 1 for alphabetical order." << endl;
+    cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
+    cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
+    cout << TAB << "Press any other number to go BACK to the menu." << endl;
+    cout << TAB << "" << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << TAB;
+}
 
-void ConsoleUI::listOrSortScientist()
+void ConsoleUI::listingAndSorting()
 {
     string CHOICE = "/0";
 
@@ -385,22 +453,15 @@ void ConsoleUI::listOrSortScientist()
             else if(CHOICE[0] == '1')
             {
                 cout << endl;
-                cout << TAB << ">>> Reading Scientists <<<" << endl << endl;
+                cout << TAB << ">>> Reading Scientist(s) <<<" << endl << endl;
                 readScientists();
             }
 
             else if(CHOICE[0] == '2')
             {
                 char sort;
-                cout << endl;
-                cout << TAB << "How should the list be sorted?" << endl;
-                cout << TAB << "Press 1 for alphabetical order." << endl;
-                cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
-                cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
-                cout << TAB << "Press any other number to go BACK to the menu." << endl;
-                cout << TAB << "" << endl;
-                cout << TAB << "----------------------------------------------------------------------------" << endl;
-                cout << TAB;
+
+                displaySortOptions();
 
                 cin >> sort;
                 if(sort == '1')
@@ -464,13 +525,36 @@ void ConsoleUI::listOrSortScientist()
             {
                 stats();
             }
-            else if(CHOICE[0] == '5')
+            else if (CHOICE[0] == '5')
             {
-                //readComputers();
+                cout << endl;
+                cout << TAB << ">>> Reading Computer(s) <<<" << endl << endl;
+                readComputers();
             }
-            else if(CHOICE[0] == '6')
+            else if (CHOICE[0] == '6')
             {
-                //searchComputer();
+                int sortComputer;
+                displaySortOptions();
+
+                cin >> sortComputer;
+
+                if(sortComputer == '1')
+                {
+                    // TODO - Display List of computers.
+                }
+                else if(sortComputer == '2')
+                {
+                    // TODO - Display list from youngest to oldest computers?
+                }
+                else if(sortComputer == '3')
+                {
+                    // TODO - Display list from oldest to youngest?
+                }
+                else
+                {
+                    features();
+                }
+
             }
             else if(CHOICE[0] == 'q' || CHOICE[0] == 'Q')
             {

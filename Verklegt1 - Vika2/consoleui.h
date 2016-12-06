@@ -6,6 +6,8 @@
 
 #include "scientistservice.h"
 #include "scientist.h"
+#include "computerservice.h"
+#include "computer.h"
 
 #include "computer.h"
 #include "computerservice.h"
@@ -20,7 +22,7 @@ public:
 
     void WelcomeMenu();
     void features();
-    void listOrSortScientist();
+    void listingAndSorting();
 
 private:
 
@@ -28,10 +30,11 @@ private:
     ComputerService cService;
 
     void display(vector<Scientist> scientists);
-    //void displayComputers(vector<Computer> computers);
+    void displayComputers(vector<Computer> computers);
     void readComputers();
     void readScientists();
 
+    void displaySortOptions();
     void displayListOfScientistsAlpha();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();

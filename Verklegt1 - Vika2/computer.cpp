@@ -56,7 +56,7 @@ void Computer::setName(string computerName)
     _computerName = computerName;
 }
 
-void Computer::setType(string type)
+void Computer::setType(char type)
 {
     _type = type;
 }

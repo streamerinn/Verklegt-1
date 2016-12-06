@@ -18,7 +18,7 @@ public:
 
     void setID(int id);
     void setName(string computerName);
-    void setType(string type);
+    void setType(char type);
     void setYearBuilt(int yearbuilt);
     void setBuilt(int built);
 
