@@ -11,16 +11,18 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     consoleui.cpp \
-    database.cpp \
     scientist.cpp \
     scientistservice.cpp \
     computer.cpp \
-    computerservice.cpp
+    computerservice.cpp \
+    scientistdatabase.cpp \
+    computerdatabase.cpp
 
 HEADERS += \
     consoleui.h \
-    database.h \
     scientistservice.h \
     scientist.h \
     computer.h \
-    computerservice.h
+    computerservice.h \
+    scientistdatabase.h \
+    computerdatabase.h

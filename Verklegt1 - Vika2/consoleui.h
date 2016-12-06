@@ -7,6 +7,9 @@
 #include "scientistservice.h"
 #include "scientist.h"
 
+#include "computer.h"
+#include "computerservice.h"
+
 using namespace std;
 
 class ConsoleUI
@@ -21,7 +24,8 @@ public:
 
 private:
 
-    ScientistService service;
+    ScientistService sService;
+    ComputerService cService;
 
     void display(vector<Scientist> scientists);
     //void displayComputers(vector<Computer> computers);

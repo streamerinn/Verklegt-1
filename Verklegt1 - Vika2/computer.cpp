@@ -5,16 +5,16 @@
 
 Computer::Computer()
 {
-    _ID = 0;
+    _id = 0;
     _computerName = ' ';
     _type = ' ';
     _yearBuilt = 0;
-    _built = ' ';
+    _built = 0;
 }
 
-Computer::Computer(int ID, string computerName, char type, int yearBuilt, string built)
+Computer::Computer(int id, string computerName, string type, int yearBuilt, int built)
 {
-    _ID = ID;
+    _id = id;
     _computerName = computerName;
     _type = type;
     _yearBuilt = yearBuilt;
@@ -23,7 +23,7 @@ Computer::Computer(int ID, string computerName, char type, int yearBuilt, string
 
 int Computer::getID()
 {
-    return _ID;
+    return _id;
 }
 
 string Computer::getComputerName()
@@ -41,14 +41,14 @@ int Computer::getYearBuilt()
     return _yearBuilt;
 }
 
-string Computer::getBuilt()
+int Computer::getBuilt()
 {
     return _built;
 }
 
-void Computer::setID(int ID)
+void Computer::setID(int id)
 {
-    _ID = ID;
+    _id = id;
 }
 
 void Computer::setName(string computerName)
@@ -66,7 +66,7 @@ void Computer::setYearBuilt(int yearbuilt)
     _yearBuilt = yearbuilt;
 }
 
-void Computer::setBuilt(string built)
+void Computer::setBuilt(int built)
 {
     _built = built;
 }

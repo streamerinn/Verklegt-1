@@ -2,6 +2,7 @@
 #define COMPURSERVICE_H
 
 #include "computer.h"
+//#include "database.h"
 #include <vector>
 #include <algorithm>
 
@@ -34,6 +35,7 @@ public:
 
 private:
     vector<Computer> computers;
+    //DataBase data;
 };
 
 #endif // COMPURSERVICE_H

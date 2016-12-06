@@ -9,7 +9,7 @@
 #include <ctime>
 
 #include "scientist.h"
-#include "database.h"
+#include "scientistdatabase.h"
 
 using namespace std;
 
@@ -34,7 +34,7 @@ public:
 
 private:
     vector<Scientist> scientists;
-    DataBase data;
+    ScientistDatabase data;
 };
 
 #endif // SCIENTISTSERVICE_H

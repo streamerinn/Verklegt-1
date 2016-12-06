@@ -202,6 +202,8 @@ void ConsoleUI::readScientists()
     temp.setDateOfDeath(tempDateOfDeath);
     cout << endl;
 
+    sService.create(temp);
+
     char cont;
     cout << TAB << "Do you want to add another scientist? Press Y/y for yes or N/n for no: ";
     cin >> cont;
@@ -213,7 +215,7 @@ void ConsoleUI::readScientists()
     {
         features();
     }
-    service.create(temp);
+
 }
 
 void ConsoleUI::display(vector<Scientist> scientists)
@@ -253,19 +255,19 @@ void ConsoleUI::display(vector<Scientist> scientists)
 
 void ConsoleUI::displayListOfScientistsAlpha()
 {
-    vector<Scientist> scientists = service.getScientistsAlpha();
+    vector<Scientist> scientists = sService.getScientistsAlpha();
     display(scientists);
 }
 
 void ConsoleUI::displayListOfScientistsYoung()
 {
-    vector<Scientist> scientists = service.getScientistsYoung();
+    vector<Scientist> scientists = sService.getScientistsYoung();
     display(scientists);
 }
 
 void ConsoleUI::displayListOfScientistsOld()
 {
-    vector<Scientist> scientists = service.getScientistsOld();
+    vector<Scientist> scientists = sService.getScientistsOld();
     display(scientists);
 }
 
@@ -276,7 +278,7 @@ void ConsoleUI::searchName()
      cin.ignore();
      getline(cin, name);
 
-     vector<Scientist> temp = service.searchName(name);
+     vector<Scientist> temp = sService.searchName(name);
      if(temp.size() == 0)
      {
          cout << TAB << "There is no scientist with the name " << name << " in our data, please try again: " << endl;
@@ -293,7 +295,7 @@ void ConsoleUI::searchDateOfBirth()
     cout << TAB << "Enter the scientists year of birth: ";
     cin >> year;
 
-    vector<Scientist> temp = service.searchDateOfBirth(year);
+    vector<Scientist> temp = sService.searchDateOfBirth(year);
     if(temp.size() == 0)
     {
         cout << TAB << "There is no scientist in our database with that date of birth, please try again: " << endl;
@@ -312,7 +314,7 @@ void ConsoleUI::searchGender()
 
     cin >> gender;
 
-    vector<Scientist> temp = service.searchGender(gender);
+    vector<Scientist> temp = sService.searchGender(gender);
     if(temp.size() == 0)
     {
         if(gender == 'M' || gender == 'm')
@@ -332,7 +334,7 @@ void ConsoleUI::searchGender()
 
 void ConsoleUI::searchRandomScientist()
 {
-    vector<Scientist> temp = service.searchRandom();
+    vector<Scientist> temp = sService.searchRandom();
     display(temp);
 }
 
@@ -340,10 +342,10 @@ void ConsoleUI::stats()
 {
     size_t dead;
 
-    vector<Scientist> males = service.searchGender('M');
-    vector<Scientist> females = service.searchGender('F');
-    vector<Scientist> alive = service.searchDateOfDeath(0);
-    vector<Scientist> total = service.getScientists();
+    vector<Scientist> males = sService.searchGender('M');
+    vector<Scientist> females = sService.searchGender('F');
+    vector<Scientist> alive = sService.searchDateOfDeath(0);
+    vector<Scientist> total = sService.getScientists();
 
     dead = total.size() - alive.size();
 
@@ -363,7 +365,7 @@ void ConsoleUI::listOrSortScientist()
 
     while(CHOICE[0] != 'q' && CHOICE[0] != 'Q')
     {
-        vector<Scientist> temp = service.getScientists();
+        vector<Scientist> temp = sService.getScientists();
 
         cout << TAB << "Please choose a feature: ";
         ws(cin);

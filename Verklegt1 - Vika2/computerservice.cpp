@@ -2,7 +2,7 @@
 
 ComputerService::ComputerService()
 {
-
+    //computers = data.computerDB();
 }
 
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.

@@ -1,25 +1,28 @@
-#include "database.h"
+#include "scientistdatabase.h"
 #include <sstream>
 #include <iostream>
 
 using namespace std;
 
 //Default constructor
-DataBase::DataBase()
+ScientistDatabase::ScientistDatabase()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
     dbName = "Skil2DB.sqlite";
+    db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(dbName);
+    db.open();
+}
+//Destructor
+ScientistDatabase::~ScientistDatabase()
+{
+    QSqlDatabase::removeDatabase(dbName);
+    db.close();
 }
 
-vector<Scientist> DataBase::readingTxt()
+vector<Scientist> ScientistDatabase::scientistDB()
 {
     vector<Scientist> sVector;
 
-
-    //db.setDatabaseName(dbName);
-
-    db.open();
     QSqlQuery query(db);
 
     query.exec("SELECT * FROM Scientists");
@@ -30,45 +33,33 @@ vector<Scientist> DataBase::readingTxt()
         string name = query.value("name").toString().toStdString();
         string gender = query.value("gender").toString().toStdString();
         int dateOfBirth = query.value("birthDate").toUInt();
-        int dateOfDeath = query.value("deathDate").toUInt();
+        int dateOfDeath;
+
+        if(!query.value("deathDate").isNull())
+        {
+            dateOfDeath = query.value("deathDate").toUInt();
+        }
+        else
+        {
+            dateOfDeath = 0;
+        }
 
         sVector.push_back(Scientist(id, name, gender, dateOfBirth, dateOfDeath));
     }
-    db.close();
-    QSqlDatabase::removeDatabase(dbName);
 
     return sVector;
 }
 
-/*vector<Scientist> DataBase::dbScientists(vector<Scientist> sv)
+void ScientistDatabase::insertRow(Scientist scientist)
 {
-    vector<Scientist> scientistVector = sv;
+    QSqlQuery query(db);
 
-    return scientistVector;
-}*/
-// Í hvert skipti sem readScientists er keyrt(í consoleUI) bætist einn scientist við í skrá.
-void DataBase::returnInfo(Scientist scientist)
-{   
-    fstream outputFile;
-    outputFile.open("info.txt", ios::app);
-
-    outputFile << scientist.getName() << ',';
-    outputFile << scientist.getGender() << ',';
-    outputFile << scientist.getDateOfBirth() << ',';
-    outputFile << scientist.getDateOfDeath() << endl;
-}
-
-void DataBase::insertTable(Scientist scientist)
-{
-    db.open();
-    QSqlQuery query;
-    query = QSqlQuery(db);
     QString name = QString::fromStdString(scientist.getName());
     QString gender = QString::fromStdString(scientist.getGender());
     QString birth = QString::number(scientist.getDateOfBirth());
     QString death = QString::number(scientist.getDateOfDeath());
 
-    query.prepare("INSERT INTO Scientists (Name, Gender, Born, Died) VALUES (:name, :gender, :born, :died)");
+    query.prepare("INSERT INTO Scientists (name, gender, birthDate, deathDate) VALUES (:name, :gender, :born, :died)");
     query.bindValue(":name", name);
     query.bindValue(":gender", gender);
     query.bindValue(":born", birth);

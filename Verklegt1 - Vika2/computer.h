@@ -14,25 +14,25 @@ public:
     string getComputerName();
     string getType();
     int getYearBuilt();
-    string getBuilt();
+    int getBuilt();
 
-    void setID(int ID);
+    void setID(int id);
     void setName(string computerName);
     void setType(string type);
     void setYearBuilt(int yearbuilt);
-    void setBuilt(string built);
+    void setBuilt(int built);
 
-    Computer(int ID, string computerName, char type, int yearBuilt, string built);
+    Computer(int id, string computerName, string type, int yearBuilt, int built);
 
  private:
 
     vector<Computer> _computers;
 
-    int _ID;
+    int _id;
     string _computerName;
     string _type;
     int _yearBuilt;
-    string _built;
+    int _built;
 };
 
 

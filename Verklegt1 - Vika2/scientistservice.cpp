@@ -37,7 +37,7 @@ struct ScientistComparisonOld
 
 ScientistService::ScientistService()
 {
-    scientists = data.readingTxt();
+    scientists = data.scientistDB();
 }
 
 vector<Scientist> ScientistService::getScientistsAlpha()
@@ -76,8 +76,7 @@ vector<Scientist> ScientistService::getScientistsOld()
 //Skilar einum scientist í database, þar sem hann verður sendur inn í textaskrá.
 void ScientistService::create(Scientist scientist)
 {
-    data.returnInfo(scientist); // textskráin
-    data.insertTable(scientist);
+    data.insertRow(scientist);
     scientists.push_back(scientist);
 }
 
