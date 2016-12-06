@@ -20,7 +20,7 @@ Scientist::Scientist(int id, string name, string gender, int dateOfBirth, int da
     _dateOfBirth = dateOfBirth;
     _dateOfDeath = dateOfDeath;
 }
-int Scientist::getId()
+int Scientist::getID()
 {
     return _id;
 }
@@ -43,6 +43,11 @@ int Scientist::getDateOfBirth()
 int Scientist::getDateOfDeath()
 {
     return _dateOfDeath;
+}
+
+void Scientist::setID(int id)
+{
+    _id = id;
 }
 
 void Scientist::setName(string name)

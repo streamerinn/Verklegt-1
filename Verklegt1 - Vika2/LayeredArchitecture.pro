@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     computer.cpp \
     computerservice.cpp \
     scientistdatabase.cpp \
-    computerdatabase.cpp
+    computerdatabase.cpp \
+    connectiondatabase.cpp
 
 HEADERS += \
     consoleui.h \
@@ -25,4 +26,5 @@ HEADERS += \
     computer.h \
     computerservice.h \
     scientistdatabase.h \
-    computerdatabase.h
+    computerdatabase.h \
+    connectiondatabase.h

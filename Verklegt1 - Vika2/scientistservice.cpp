@@ -163,3 +163,17 @@ vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
     }
     return temp4;
 }
+
+void ScientistService::seatchID(string scientistName)
+{
+    int scientistID = 0;
+
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        if(scientists[i].getName() == scientistName)
+        {
+            scientistID = scientists[i].getID();
+        }
+    }
+    scientistConnection.getcomputerID(scientistID);
+}

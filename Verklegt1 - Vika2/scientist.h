@@ -13,11 +13,13 @@ class Scientist
 public:
 
     Scientist();
-    int getId();
+    int getID();
     string getName();
     string getGender();
     int getDateOfBirth();
     int getDateOfDeath();
+
+    void setID(int id);
     void setName(string name);
     void setsecondName(string secondName);
     void setGender(string gender);

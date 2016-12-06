@@ -176,3 +176,17 @@ vector<Computer> ComputerService::searchBuilt(const char built)
     }
     return temp4;
 }
+
+void ComputerService::searchID(string computerName)
+{
+    int computerID = 0;
+
+    for(size_t i = 0; i < computers.size(); i++)
+    {
+        if(computers[i].getComputerName() == computerName)
+        {
+            computerID = computers[i].getID();
+        }
+    }
+    computerConnection.getcomputerID(computerID);
+}

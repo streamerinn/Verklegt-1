@@ -46,6 +46,8 @@ private:
     void searchRandomScientist();
 
     void stats();
+
+    void link();
 };
 
 #endif // CONSOLEUI_H

@@ -43,6 +43,7 @@ void ConsoleUI::features()
     cout << TAB << "Press 4 to get the database stats." << endl;
     cout << TAB << "Press 5 to add a computer." << endl;
     cout << TAB << "Press 6 to search for a computer. " << endl;
+    cout << TAB << "Press 7 to link Scientists and computers." << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
@@ -105,6 +106,7 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
         cout << "\t |Name: " << computers[i].getComputerName() << endl;
         cout << "\t |Type: " << computers[i].getType() << endl;
         cout << "\t |Built: " << computers[i].getYearBuilt() << endl;
+
     }
 }
 /*
@@ -115,11 +117,47 @@ void ConsoleUI::searchComputer()
 */
 
 // Tengja saman scientis(t) við computer(s) og vice versa
-/*void ConsoleUI::link()
+void ConsoleUI::link()
 {
-    // TODO
+    bool scientistExists = false;
+    bool computerExists = false;
+
+    string scientistName;
+    string computerName;
+
+    while(scientistExists == false)
+    {
+        cout << TAB << "Pleas enter a scientist name: ";
+        ws(cin);
+        getline(cin, scientistName);
+        vector<Scientist> temp1 = sService.searchName(scientistName);
+        if(temp1.size() == 0)
+        {
+            cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
+        }
+        else
+        {
+            scientistExists = true;
+        }
+    }
+
+    while(computerExists == false)
+    {
+        cout << TAB << "Pleas enter a computer name: ";
+        ws(cin);
+        getline(cin, computerName);
+        vector<Computer> temp2 = cService.searchComputerName(computerName);
+        if(temp2.size() == 0)
+        {
+            cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
+        }
+        else
+        {
+            computerExists = true;
+        }
+    }
 }
-*/
+
 void ConsoleUI::readScientists()
 {
     Scientist temp;
@@ -294,6 +332,9 @@ void ConsoleUI::display(vector<Scientist> scientists)
         cout << "\t |Gender: " << scientists[i].getGender() << endl;
         cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
 
+        //testing
+        //cout << "\t |ID: " << scientists[i].getID() << endl;
+
         if(scientists[i].getDateOfDeath() == 0)
         {
             cout << "\t |Age: " << tempAge << endl;
@@ -429,35 +470,35 @@ void ConsoleUI::displaySortOptions()
 
 void ConsoleUI::listingAndSorting()
 {
-    string CHOICE = "/0";
+    string choice = "/0";
 
-    while(CHOICE[0] != 'q' && CHOICE[0] != 'Q')
+    while(choice[0] != 'q' && choice[0] != 'Q')
     {
         vector<Scientist> temp = sService.getScientists();
 
         cout << TAB << "Please choose a feature: ";
         ws(cin);
-        getline(cin, CHOICE);
+        getline(cin, choice);
 
-        if(CHOICE.length() > 1)
+        if(choice.length() > 1)
         {
             cout << TAB << "invalid input" << endl;
         }
         else
         {
-            if(CHOICE[0] == 'h' || CHOICE[0] == 'H')
+            if(choice[0] == 'h' || choice[0] == 'H')
             {
                 features();
             }
 
-            else if(CHOICE[0] == '1')
+            else if(choice[0] == '1')
             {
                 cout << endl;
                 cout << TAB << ">>> Reading Scientist(s) <<<" << endl << endl;
                 readScientists();
             }
 
-            else if(CHOICE[0] == '2')
+            else if(choice[0] == '2')
             {
                 char sort;
 
@@ -482,7 +523,7 @@ void ConsoleUI::listingAndSorting()
                 }
             }
 
-            else if(CHOICE[0] == '3')
+            else if(choice[0] == '3')
             {
                 char searchOptions;
 
@@ -521,17 +562,17 @@ void ConsoleUI::listingAndSorting()
                 }
             }
 
-            else if(CHOICE[0] == '4')
+            else if(choice[0] == '4')
             {
                 stats();
             }
-            else if (CHOICE[0] == '5')
+            else if (choice[0] == '5')
             {
                 cout << endl;
                 cout << TAB << ">>> Reading Computer(s) <<<" << endl << endl;
                 readComputers();
             }
-            else if (CHOICE[0] == '6')
+            else if (choice[0] == '6')
             {
                 int sortComputer;
                 displaySortOptions();
@@ -556,10 +597,17 @@ void ConsoleUI::listingAndSorting()
                 }
 
             }
-            else if(CHOICE[0] == 'q' || CHOICE[0] == 'Q')
+            else if(choice[0] == 'q' || choice[0] == 'Q')
             {
                 break;
             }
+
+            else if(choice[0] == '7')
+            {
+                cout << TAB << ">>> Linking Scientists and Computers <<<" << endl;
+                link();
+            }
+
             else
             {
                 cout << TAB << "invalid input" << endl;

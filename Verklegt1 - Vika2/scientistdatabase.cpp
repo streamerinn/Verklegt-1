@@ -65,23 +65,6 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.bindValue(":born", birth);
     query.bindValue(":died", death);
     query.exec();
-
-
-
-    //query.exec("INSERT INTO Scientists (Name, Gender, Born, Died)" + "VALUES ('" + name + "','" + gender + "','" + birth + "','" + death + "')");
-    //query.prepare("INSERT INTO Scientists (Name, Gender, Born, Died) VALUES (:name, :gender, :born, :died)");
-
-    //query.bindValue(":name",QString::fromStdString(scientist.getName()));
-    //query.value("name").toString().toStdString() = scientist.getName();
-    //query.value("gender").toString().toStdString() = scientist.getGender();
-    //query.value("birthDate").toUInt() = scientist.getDateOfBirth();
-    //query.value("deathDate").toUInt() = scientist.getDateOfDeath();
-
-    //query.exec();
-
-     //upplýsingar um scientist koma hingað og eru síðan settar inn í gagnasagnið
-
-
 }
 
 
