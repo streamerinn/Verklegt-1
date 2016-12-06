@@ -2,7 +2,7 @@
 
 ComputerService::ComputerService()
 {
-    //computers = data.computerDB();
+    computers = data.computerDB();
 }
 
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
@@ -76,7 +76,7 @@ vector<Computer> ComputerService::getComputersOld()
 //Skilar einum scientist í database, þar sem hann verður sendur inn í textaskrá.
 void ComputerService::create(Computer computer)
 {
-    //data.returnInfo(scientist);
+    data.insertRow(computer);
     computers.push_back(computer);
 }
 
