@@ -12,7 +12,7 @@ Computer::Computer()
     _built = ' ';
 }
 
-Computer::Computer(int ID, string computerName, char type, int yearBuilt, string built)
+Computer::Computer(int ID, string computerName, string type, int yearBuilt, string built)
 {
     _ID = ID;
     _computerName = computerName;
@@ -56,7 +56,7 @@ void Computer::setName(string computerName)
     _computerName = computerName;
 }
 
-void Computer::setType(string type)
+void Computer::setType(char type)
 {
     _type = type;
 }
@@ -66,7 +66,7 @@ void Computer::setYearBuilt(int yearbuilt)
     _yearBuilt = yearbuilt;
 }
 
-void Computer::setBuilt(string built)
+void Computer::setBuilt(char built)
 {
     _built = built;
 }

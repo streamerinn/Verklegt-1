@@ -18,11 +18,11 @@ public:
 
     void setID(int ID);
     void setName(string computerName);
-    void setType(string type);
+    void setType(char type);
     void setYearBuilt(int yearbuilt);
-    void setBuilt(string built);
+    void setBuilt(char built);
 
-    Computer(int ID, string computerName, char type, int yearBuilt, string built);
+    Computer(int ID, string computerName, string type, int yearBuilt, string built);
 
  private:
 

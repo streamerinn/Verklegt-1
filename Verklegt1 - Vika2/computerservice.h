@@ -26,8 +26,8 @@ public:
 
     vector<Computer> searchComputerName(string name);
     vector<Computer> searchYearOfBuild(int buildYear);
-    vector<Computer> searchType(char type);
-    vector<Computer> searchBuilt(char built);
+    vector<Computer> searchType(const char type);
+    vector<Computer> searchBuilt(const char built);
 
     vector<Computer> searchRandomComputer();
 

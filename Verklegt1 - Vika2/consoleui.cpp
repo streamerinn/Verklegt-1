@@ -18,7 +18,7 @@ void ConsoleUI::WelcomeMenu()
     cout << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << TAB << TAB << " Welcome! This program will store or show" << endl;
-    cout << TAB << TAB << TAB << "      famous computer scientists. " << endl;
+    cout << TAB << TAB << TAB << " famous computer scientists and computers. " << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
@@ -36,7 +36,7 @@ void ConsoleUI::features()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << "The list below shows you all possible features on what you can do." << endl;
     cout << endl;
-    cout << TAB << "press H to show all options." << endl; //eitthvað svona er sniðgt;
+    cout << TAB << "press H to show all options." << endl;
     cout << TAB << "Press 1 to create a new scientist." << endl;
     cout << TAB << "Press 2 to list all scientists." << endl;
     cout << TAB << "Press 3 to search for a scientist." << endl;
@@ -47,23 +47,79 @@ void ConsoleUI::features()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
-/*
+
 void ConsoleUI::readComputers()
 {
-    //TODO
+    Computer temp;
+
+    string tempComputerName;
+    int tempYearBuilt;
+    char tempType, tempBuilt;
+
+    // Get name.
+    cout << TAB << "Please enter a computer name: ";
+
+    getline(cin, tempComputerName);
+    do
+    {
+        if(tempComputerName.empty())
+        {
+            cout << TAB << "You cannot enter an empty computer name. Please try again: ";
+            ws(cin);
+            getline(cin, tempComputerName);
+        }
+    }while(tempComputerName.empty());
+
+    temp.setName(tempComputerName);
+
+    // Get computer type.
+    cout << TAB << "Please enter what type the computer is (Enter 'M' for Mechanical, 'E' for Electronic or 'T' for Transistor): ";
+    cin >> tempType;
+
+    temp.setType(tempType);
+
+    // Get if the computer was built or not.
+    cout << TAB << "Please enter if the computer was built or not(Enter Y for yes or N for no): ";
+    cin >> tempBuilt;
+    if(tempBuilt == 'y' || tempBuilt == 'Y')
+    {
+        cout << "When was it built? (Enter -1 if not sure.)";
+        cin >> tempYearBuilt;
+    }
+    else
+    {
+        tempYearBuilt = 0;
+    }
+
+    temp.setBuilt(tempBuilt);
+
+
 }
 
 void ConsoleUI::displayComputers(vector<Computer> computers)
 {
-    //TODO
+    cout << "\t Information about all listed computers"  << endl;
+    cout << "\t___________________________________________________________________________" << endl;
+    for(size_t i = 0; i < computers.size(); i++)
+    {
+        cout << "\t |Name: " << computers[i].getComputerName() << endl;
+        cout << "\t |Type: " << computers[i].getType() << endl;
+        cout << "\t |Built: " << computers[i].getYearBuilt() << endl;
+    }
 }
-
+/*
 void ConsoleUI::searchComputer()
 {
     //TODO
 }
 */
 
+// Tengja saman scientis(t) við computer(s) og vice versa
+/*void ConsoleUI::link()
+{
+    // TODO
+}
+*/
 void ConsoleUI::readScientists()
 {
     Scientist temp;
@@ -357,6 +413,12 @@ void ConsoleUI::stats()
 
 }
 
+/*void ConsoleUI::listOrSortComputer()
+{
+
+}
+*/
+
 void ConsoleUI::listOrSortScientist()
 {
     string CHOICE = "/0";
@@ -383,7 +445,7 @@ void ConsoleUI::listOrSortScientist()
             else if(CHOICE[0] == '1')
             {
                 cout << endl;
-                cout << TAB << ">>> Reading Scientists <<<" << endl << endl;
+                cout << TAB << ">>> Reading Scientist(s) <<<" << endl << endl;
                 readScientists();
             }
 
@@ -461,14 +523,6 @@ void ConsoleUI::listOrSortScientist()
             else if(CHOICE[0] == '4')
             {
                 stats();
-            }
-            else if(CHOICE[0] == '5')
-            {
-                //readComputers();
-            }
-            else if(CHOICE[0] == '6')
-            {
-                //searchComputer();
             }
             else if(CHOICE[0] == 'q' || CHOICE[0] == 'Q')
             {

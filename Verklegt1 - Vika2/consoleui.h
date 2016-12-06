@@ -6,6 +6,8 @@
 
 #include "scientistservice.h"
 #include "scientist.h"
+#include "computerservice.h"
+#include "computer.h"
 
 using namespace std;
 
@@ -24,7 +26,7 @@ private:
     ScientistService service;
 
     void display(vector<Scientist> scientists);
-    //void displayComputers(vector<Computer> computers);
+    void displayComputers(vector<Computer> computers);
     void readComputers();
     void readScientists();
 

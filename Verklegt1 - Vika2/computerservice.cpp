@@ -98,7 +98,7 @@ vector<Computer> ComputerService::searchComputerName(string computerName)
     return temp;
 }
 
-vector<Computer> ComputerService::searchType(char type)
+vector<Computer> ComputerService::searchType(const char type)
 {
     vector<Computer> temp2;
 
@@ -116,7 +116,7 @@ vector<Computer> ComputerService::searchType(char type)
     {
         for(size_t i = 0; i < computers.size();i++)
         {
-            if(computers[i].getType()=="Electronic")
+            if(computers[i].getType()== "Electronical")
             {
                 temp2.push_back(computers[i]);
             }
@@ -126,7 +126,7 @@ vector<Computer> ComputerService::searchType(char type)
     {
         for(size_t i = 0; i < computers.size();i++)
         {
-            if(computers[i].getType()== "Translitoral")
+            if(computers[i].getType()== "Transitional")
             {
                 temp2.push_back(computers[i]);
             }
@@ -160,7 +160,7 @@ vector<Computer> ComputerService::searchRandomComputer()
     return temp3;
 }
 
-vector<Computer> ComputerService::searchBuilt(char built)
+vector<Computer> ComputerService::searchBuilt(const char built)
 {
     vector<Computer> temp4;
 
