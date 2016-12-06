@@ -2,8 +2,8 @@
 #define COMPUTERDATABASE_H
 
 #include "computer.h"
-#include <QtSql>
 #include <vector>
+#include <QtSql>
 
 using namespace std;
 
@@ -15,6 +15,7 @@ public:
 
     vector<Computer> computerDB();
     void insertRow(Computer computer);
+    int countConnections(); // gets number of connections
 private:
     QSqlDatabase db;
     QString dbName;

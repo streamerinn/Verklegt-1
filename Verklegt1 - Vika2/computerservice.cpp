@@ -188,5 +188,11 @@ void ComputerService::searchID(string computerName)
             computerID = computers[i].getID();
         }
     }
+    cout << "Cservice test " << computerID << endl;
     computerConnection.getcomputerID(computerID);
+}
+
+int ComputerService::getConnections()
+{
+    return data.countConnections();
 }

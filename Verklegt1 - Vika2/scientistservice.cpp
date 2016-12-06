@@ -1,4 +1,5 @@
 #include "scientistservice.h"
+#include <iostream>
 
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
 //struct sér um að raða eftir nöfnum og aldur.
@@ -164,7 +165,7 @@ vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
     return temp4;
 }
 
-void ScientistService::seatchID(string scientistName)
+void ScientistService::searchID(string scientistName)
 {
     int scientistID = 0;
 
@@ -175,5 +176,6 @@ void ScientistService::seatchID(string scientistName)
             scientistID = scientists[i].getID();
         }
     }
+    cout << "Sservice test " << scientistID << endl;
     scientistConnection.getcomputerID(scientistID);
 }

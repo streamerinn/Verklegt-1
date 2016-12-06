@@ -33,7 +33,7 @@ public:
 
     vector<Scientist> searchRandom();
 
-    void seatchID(string scientistName);
+    void searchID(string scientistName);
 
 private:
     vector<Scientist> scientists;

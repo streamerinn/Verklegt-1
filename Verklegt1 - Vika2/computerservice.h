@@ -34,7 +34,10 @@ public:
 
     vector<Computer> searchRandomComputer();
 
+
     void searchID(string computerName);
+
+    int getConnections(); // returns how many connections there are
 
 
 private:

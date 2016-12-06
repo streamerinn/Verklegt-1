@@ -1,5 +1,5 @@
 #include "connectiondatabase.h"
-#include <QtSql>
+#include <iostream>
 
 ConnectionDataBase::ConnectionDataBase()
 {
@@ -9,17 +9,32 @@ ConnectionDataBase::ConnectionDataBase()
     db.open();
 }
 
-void ConnectionDataBase::getcomputerID(int computerID)
+int ConnectionDataBase::getcomputerID(int computerID)
 {
+    cout << "db test: " << computerID << endl;
     return computerID;
 }
 
-void ConnectionDataBase::getscientistID(int scientistID)
+int ConnectionDataBase::getscientistID(int scientistID)
 {
+     cout << "db test: " << scientistID << endl;
     return scientistID;
 }
 
 void ConnectionDataBase::insertRow()
 {
+    int scientistID = 0;
+    int computerID = 0;
 
+
+    QSqlQuery query(db);
+
+    QString scientist = QString::number(getscientistID(scientistID));
+    QString computers = QString::number(getcomputerID(computerID));
+
+
+    query.prepare("INSERT INTO Connections (scientists, computers) VALUES (:scientists, :computers)");
+    query.bindValue(":scientist", scientist);
+    query.bindValue(":computers", computers);
+    query.exec();
 }

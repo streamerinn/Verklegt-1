@@ -34,6 +34,10 @@ private:
     void readComputers();
     void readScientists();
 
+    void displayListOfComputersAlpha();
+    void displayListOfComputersYoung();
+    void displayListOfComputersOld();
+
     void displaySortOptions();
     void displayListOfScientistsAlpha();
     void displayListOfScientistsYoung();
