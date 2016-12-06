@@ -56,6 +56,7 @@ void ConsoleUI::readComputers()
     string tempComputerName = " ";
     int tempYearBuilt;
     char tempBuilt = ' ';
+    int tempMade = 0;
     string tempType;
 
     // Get name.
@@ -117,15 +118,18 @@ void ConsoleUI::readComputers()
     cin >> tempBuilt;
     if(tempBuilt == 'y' || tempBuilt == 'Y')
     {
+        tempMade = 1;
         cout << "Made it" << endl;
         cout << "When was it built? (Enter -1 if not sure.)";
         cin >> tempYearBuilt;
+        temp.setYearBuilt(tempYearBuilt);
     }
     else
     {
-        tempBuilt = 0;
+        temp.setYearBuilt(0);
     }
-    temp.setBuilt(tempBuilt);
+    temp.setBuilt(tempMade);
+    cService.create(temp);
 }
 
 void ConsoleUI::displayComputers(vector<Computer> computers)
