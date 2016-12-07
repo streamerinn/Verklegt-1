@@ -152,8 +152,23 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     {
         cout << "\t |Name: " << computers[i].getComputerName() << endl;
         cout << "\t |Type: " << computers[i].getType() << endl;
-        cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
-        cout << "\t |Built: " << computers[i].getBuilt() << endl;
+        if(computers[i].getYearBuilt() == 0)
+        {
+            cout << "\t |Year built: N/A " << endl;
+        }
+        else
+        {
+            cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
+        }
+
+        if (computers[i].getBuilt() == 1)
+        {
+            cout << "\t |Built: Yes" << endl;
+        }
+        else
+        {
+            cout << "\t |Built: No" << endl;
+        }
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
