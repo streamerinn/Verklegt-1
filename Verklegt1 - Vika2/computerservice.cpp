@@ -20,6 +20,19 @@ struct ComputerComparisonAlpha
     }
 };
 
+struct ComputerComparisonReversedAlpha
+{
+    bool operator() (Computer i, Computer j)
+    {
+        string iName = i.getComputerName();
+        string jName = j.getComputerName();
+        transform(iName.begin(), iName.end(), iName.begin(), ::tolower);
+        transform(jName.begin(), jName.end(), jName.begin(), ::tolower);
+
+        return (jName<iName);
+    }
+};
+
 struct ComputerComparisonYoung
 {
     bool operator() (Computer i, Computer j)
@@ -40,11 +53,24 @@ struct ComputerComparisonOld
     }
 };
 
+
+struct
+
+
 vector<Computer> ComputerService::getComputersAlpha()
 {
     ComputerComparisonAlpha cmp;
 
     sort(computers.begin(), computers.end(), cmp);
+
+    return computers;
+}
+
+vector<Computer> ComputerService::getComputersReversedAlpha()
+{
+    ComputerComparisonReversedAlpha cmpRev;
+
+    sort(computers.begin(), computers.end(), cmpRev);
 
     return computers;
 }
@@ -98,37 +124,38 @@ vector<Computer> ComputerService::searchComputerName(string computerName)
     return temp;
 }
 
-vector<Computer> ComputerService::searchType(const char type)
+vector<Computer> ComputerService::searchType(const string type)
 {
+
     vector<Computer> temp2;
 
-    if(type == 'M'||type == 'm')
+   if(type == "M"||type == "m")
     {
-        for(size_t i = 0; i < computers.size();i++)
-        {
-            if(computers[i].getType()== "Mechanical")
+      for(size_t i = 0; i < computers.size();i++)
+       {
+          if(computers[i].getType()== "Mechanical")
             {
-                temp2.push_back(computers[i]);
+              temp2.push_back(computers[i]);
             }
         }
     }
-    else if(type == 'E'||type == 'e')
+    else if(type == "E"||type == "e")
     {
-        for(size_t i = 0; i < computers.size();i++)
-        {
-            if(computers[i].getType()== "Electronical")
-            {
-                temp2.push_back(computers[i]);
+    for(size_t i = 0; i < computers.size();i++)
+      {
+        if(computers[i].getType()== "Electronical")
+          {
+            temp2.push_back(computers[i]);
             }
         }
     }
-    else if(type == 'T'||type == 't')
+    else if(type == "T"||type == "t")
     {
-        for(size_t i = 0; i < computers.size();i++)
-        {
-            if(computers[i].getType()== "Transitional")
-            {
-                temp2.push_back(computers[i]);
+      for(size_t i = 0; i < computers.size();i++)
+       {
+         if(computers[i].getType()== "Transitional")
+           {
+               temp2.push_back(computers[i]);
             }
         }
     }
@@ -163,16 +190,72 @@ vector<Computer> ComputerService::searchRandomComputer()
 vector<Computer> ComputerService::searchBuilt(const char built)
 {
     vector<Computer> temp4;
+    int build;
 
-    for(size_t i = 0; i < computers.size(); i++)
+
+    QSqlQuery query;
+
+
+
+
+    if (built == 'Y'|| built == 'y')
     {
-        if(built == 'Y'||built == 'y')
+
+        build = 1;
+
+    }
+    else if (built == 'N'|| built =='n')
+    {
+
+        build = 0;
+    }
+
+
+    if((built == 'Y'||built == 'y')&&(build == 1))
+    {
+      query.exec("SELECT * FROM Computers WHERE built = 'true';");
+      while(query.next())
+      {
+        int id = query.value("id").toInt();
+        string name = query.value("name").toString().toStdString();
+        string type = query.value("type").toString().toStdString();
+        int yearBuilt = query.value("build year").toInt();
+        bool wasBuilt = query.value("built").toBool();
+
+        Computer computer(id, name, type, yearBuilt, wasBuilt);
+
+          temp4.push_back(computer);
+      }
+
+        //for(size_t i = 0; i < computers.size(); i++)
+        //{
+
+        //}
+    }
+
+    else if(built =='N'||built =='n'||build ==0)
+    {
+
+        query.exec("SELECT * FROM Computers WHERE built = 'false';");
+        while(query.next())
         {
-            for(size_t i = 0; i < computers.size();i++)
-            {
-                    temp4.push_back(computers[i]);
-            }
+          int id = query.value("id").toInt();
+          string name = query.value("name").toString().toStdString();
+          string type = query.value("type").toString().toStdString();
+          int yearBuilt = query.value("build year").toInt();
+          bool wasBuilt = query.value("built").toBool();
+
+          Computer computer(id, name, type, yearBuilt, wasBuilt);
+           temp4.push_back(computer);
         }
+
+
+
+        //for(size_t i = 0; i < computers.size(); i++)
+        //{
+
+        //}
+
     }
     return temp4;
 }

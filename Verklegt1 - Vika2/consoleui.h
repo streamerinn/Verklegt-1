@@ -38,19 +38,34 @@ private:
     void readScientists();
 
     void displayListOfComputersAlpha();
+    void displayListOfComputersReversedAlpha();
     void displayListOfComputersYoung();
     void displayListOfComputersOld();
 
     void displaySortOptions();
+    void displayComputerSortOptions();
     void displayListOfScientistsAlpha();
+    void displayListOfScientistsReversedAlpha();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
 
-    void searchName();
+
+
+
     void searchComputer();
+    void searchBuiltYear();
+    void searhComputerType();
+    void searchRandomComputer();
+    void searchBuilt();
+
+
+
+
+    void searchName();
     void searchDateOfBirth();
     void searchGender();
     void searchRandomScientist();
+
 
     void stats();
 

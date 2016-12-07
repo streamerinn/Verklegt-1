@@ -22,6 +22,7 @@ public:
 
     vector<Scientist> getScientists();
     vector<Scientist> getScientistsAlpha();
+    vector<Scientist> getScientistsReversedAlpha();
     vector<Scientist> getScientistsYoung();
     vector<Scientist> getScientistsOld();
 

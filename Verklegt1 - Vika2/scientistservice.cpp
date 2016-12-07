@@ -16,6 +16,21 @@ struct ScientistComparisonAlpha
     }
 };
 
+struct ScientistComparisonReversedAlpha
+{
+    bool operator() (Scientist i, Scientist j)
+    {
+        string iName = i.getName();
+        string jName = j.getName();
+        transform(iName.begin(), iName.end(), iName.begin(), ::tolower);
+        transform(jName.begin(), jName.end(), jName.begin(), ::tolower);
+
+        return (jName<iName);
+    }
+};
+
+
+
 struct ScientistComparisonYoung
 {
     bool operator() (Scientist i, Scientist j)
@@ -46,6 +61,15 @@ vector<Scientist> ScientistService::getScientistsAlpha()
     ScientistComparisonAlpha cmp;
 
     sort(scientists.begin(), scientists.end(), cmp);
+
+    return scientists;
+}
+
+vector<Scientist> ScientistService::getScientistsReversedAlpha()
+{
+    ScientistComparisonReversedAlpha cmpRev;
+
+    sort(scientists.begin(), scientists.end(), cmpRev);
 
     return scientists;
 }

@@ -80,33 +80,37 @@ void ConsoleUI::readComputers()
     // Get computer type.
 
     bool validType = false;
-    string type;
+    int type;
 
-    cout << TAB << "Please enter what type the computer is (Enter 'M' for Mechanical, 'E' for Electronic or 'T' for Transistor): ";
+    cout << TAB << "Please enter what type the computer is" << endl;
+    cout << TAB << "1. for Mechanical" << endl;
+    cout << TAB << "2. for Electronic" << endl;
+    cout << TAB << "3. for Tansistor" << endl;
+
 
     while(validType == false)
     {
-        ws(cin);
-        getline(cin, type);
+        cout << TAB;
+        cin >> type;
 
-        if(type != "M" && type != "m" && type != "E" && type != "e" && type != "T" && type != "t")
+        if((type > 3)||(type < 1))
         {
             cout << TAB << type << " is not a valid option" << endl;
             cout << TAB <<"Please enter a valid option: ";
         }
-        if(type == "M"||type == "m")
+        if(type == 1)
         {
             tempType = "Mechanical";
             temp.setType(tempType);
             validType = true;
         }
-        else if(type == "E" || type == "e")
+        else if(type == 2)
         {
             tempType = "Electronic";
             temp.setType(tempType);
             validType = true;
         }
-        else if(type == "T" || type == "t")
+        else if(type == 3)
         {
             tempType = "Transistor";
             temp.setType(tempType);
@@ -130,7 +134,7 @@ void ConsoleUI::readComputers()
     {
         temp.setYearBuilt(0);
     }
-    temp.setBuilt(tempBuilt); //hvort er rétt
+    //temp.setBuilt(tempBuilt); //hvort er rétt,ekki þetta.kvandri
 
     temp.setBuilt(tempMade);  //???
 
@@ -145,16 +149,113 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     {
         cout << "\t |Name: " << computers[i].getComputerName() << endl;
         cout << "\t |Type: " << computers[i].getType() << endl;
-        cout << "\t |Built: " << computers[i].getYearBuilt() << endl;
-
+        cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
+        cout << "\t |Built: " << computers[i].getBuilt() << endl;
+        cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
-/*
+
 void ConsoleUI::searchComputer()
 {
-    //TODO
+
+    string name;
+    cout << TAB << "Enter the name of the Computer you want to find: ";
+    cin.ignore();
+    getline(cin, name);
+
+    vector<Computer> temp = cService.searchComputerName(name);
+    if(temp.size() == 0)
+    {
+        cout << TAB << "There are no computers with the name" << name << " in our database. Please try again!";
+
+    }
+    else
+    {
+        displayComputers(temp);
+    }
+
+
 }
-*/
+
+void ConsoleUI::searchBuiltYear()
+{
+
+    int year = 0;
+    cout << TAB << "Enter the Computers built year: ";
+    cin >> year;
+
+    vector<Computer> temp = cService.searchYearOfBuild(year);
+    if (temp.size() == 0)
+    {
+        cout << TAB << "There are no Computers in our database built " << year << ". Please try again!";
+    }
+
+    else
+    {
+        displayComputers(temp);
+    }
+
+
+}
+
+void ConsoleUI::searhComputerType()
+{
+    string choice;
+
+    cout << TAB << "Which type of computer do you want to search? " << endl;
+    cout << TAB << "Press 'M' for Mechanical" << endl;
+    cout << TAB << "Press 'E' for Electronical" << endl;
+    cout << TAB << "Press 'T' for Transistor" << endl;
+    cin >> choice;
+
+
+
+    vector<Computer> temp = cService.searchType(choice);
+    if (temp.size() == 0)
+    {
+        cout << TAB << "No builts found";
+    }
+    else
+    {
+        displayComputers(temp);
+    }
+
+
+
+}
+
+void ConsoleUI::searchBuilt()
+{
+
+    char built;
+
+
+    cout << TAB << "Search by built - (Y/y = Built)(N/n = not built)  " << endl;
+    cout << TAB;
+
+    cin >> built;
+
+
+
+
+
+
+    vector<Computer> temp = cService.searchBuilt(built);
+
+    displayComputers(temp);
+
+
+
+ }
+
+
+void ConsoleUI::searchRandomComputer()
+{
+    vector<Computer> temp = cService.searchRandomComputer();
+    displayComputers(temp);
+
+}
+
 
 // Tengja saman scientis(t) við computer(s) og vice versa
 void ConsoleUI::link()
@@ -414,6 +515,13 @@ void ConsoleUI::displayListOfComputersAlpha()
     displayComputers(computers);
 }
 
+void ConsoleUI::displayListOfComputersReversedAlpha()
+{
+    vector<Computer> computers = cService.getComputersReversedAlpha();
+    displayComputers(computers);
+}
+
+
 void ConsoleUI::displayListOfComputersYoung()
 {
     vector<Computer> computers = cService.getComputersYoung();
@@ -432,6 +540,13 @@ void ConsoleUI::displayListOfScientistsAlpha()
     vector<Scientist> scientists = sService.getScientistsAlpha();
     display(scientists);
 }
+
+void ConsoleUI::displayListOfScientistsReversedAlpha()
+{
+    vector<Scientist> scientists = sService.getScientistsReversedAlpha();
+    display(scientists);
+}
+
 
 void ConsoleUI::displayListOfScientistsYoung()
 {
@@ -535,13 +650,33 @@ void ConsoleUI::stats()
     cout << TAB << "----------------------------" << endl << endl;
 
 }
+
+void ConsoleUI::displayComputerSortOptions()
+{
+    cout << endl;
+    cout << TAB << "How should the list be sorted?" << endl;
+    cout << TAB << "Press 1 for alphabetical order." << endl;
+    cout << TAB << "Press 2 for reversed alphabetical order." << endl;
+    cout << TAB << "Press 3 to sort from newer to older." << endl;
+    cout << TAB << "Press 4 to sort from older to newest." << endl;
+    cout << TAB << "Press any other number to go BACK to the menu." << endl;
+    cout << TAB << "" << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << TAB;
+
+
+}
+
+
 void ConsoleUI::displaySortOptions()
 {
     cout << endl;
     cout << TAB << "How should the list be sorted?" << endl;
     cout << TAB << "Press 1 for alphabetical order." << endl;
-    cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
-    cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
+    cout << TAB << "Press 2 for reversed alphabetical order." << endl;
+    cout << TAB << "Press 3 to sort from youngest to oldest." << endl;
+    cout << TAB << "Press 4 to sort from oldest to youngest." << endl;
+    cout << TAB << "Press 5 to sort from oldest to youngest." << endl;
     cout << TAB << "Press any other number to go BACK to the menu." << endl;
     cout << TAB << "" << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -591,9 +726,13 @@ void ConsoleUI::listingAndSorting()
                 }
                 else if(sort == '2')
                 {
-                    displayListOfScientistsYoung();
+                    displayListOfScientistsReversedAlpha();
                 }
                 else if(sort == '3')
+                {
+                    displayListOfScientistsYoung();
+                }
+                else if(sort == '4')
                 {
                     displayListOfScientistsOld();
                 }
@@ -655,7 +794,7 @@ void ConsoleUI::listingAndSorting()
             else if (choice[0] == '6')
             {
                 char sortComputer;
-                displaySortOptions();
+                displayComputerSortOptions();
 
                 cin >> sortComputer;
 
@@ -665,12 +804,18 @@ void ConsoleUI::listingAndSorting()
                 }
                 else if(sortComputer == '2')
                 {
-                    displayListOfComputersYoung();
+                    displayListOfComputersReversedAlpha();
                 }
                 else if(sortComputer == '3')
                 {
+                    displayListOfComputersYoung();
+                }
+                else if(sortComputer == '4')
+                {
                     displayListOfComputersOld();
                 }
+
+
                 else
                 {
                     features();
@@ -678,7 +823,47 @@ void ConsoleUI::listingAndSorting()
             }
             else if(choice[0] == '7')
             {
-                // TODO
+                char searchOptions;
+
+                cout << endl;
+                cout << TAB << "What do you want to search for?" << endl;
+                cout << TAB << "Press 1 to search by Computer's name." << endl;
+                cout << TAB << "Press 2 to search for all computers built in a specific year." << endl;
+                cout << TAB << "Press 3 to search for all computers of a specific type." << endl;
+                cout << TAB << "Press 4 to search for a random Computer." << endl;
+                cout << TAB << "Press 5 to search for a built Computer." << endl;
+                cout << TAB << "Press any other number to go BACK to the menu." << endl;
+                cout << TAB << "" << endl;
+                cout << TAB << "----------------------------------------------------------------------------" << endl;
+                cout << TAB;
+
+                cin >> searchOptions;
+
+                if(searchOptions == '1')
+                {
+                    searchComputer();
+                }
+                else if(searchOptions == '2')
+                {
+                    searchBuiltYear();
+                }
+                else if(searchOptions == '3')
+                {
+                    searhComputerType();
+                }
+                else if(searchOptions == '4')
+                {
+                    searchRandomComputer();
+                }
+                else if(searchOptions == '5')
+                {
+                    searchBuilt();
+                }
+                else
+                {
+                    features();
+                }
+
             }
 
             else if(choice[0] == '8')
