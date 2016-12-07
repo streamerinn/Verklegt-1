@@ -40,15 +40,21 @@ private:
     void displayListOfComputersOld();
 
     void displaySortOptions();
+    void displayComputerSortOptions();
     void displayListOfScientistsAlpha();
     void displayListOfScientistsReversedAlpha();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
 
+
+
+
     void searchComputer();
     void searchBuiltYear();
     void searhComputerType();
     void searchRandomComputer();
+    void searchBuilt();
+
 
 
 

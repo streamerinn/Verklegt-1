@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <QString>
 
 #include <cstdlib>
 #include <ctime>
@@ -30,7 +31,7 @@ public:
 
     vector<Computer> searchComputerName(string name);
     vector<Computer> searchYearOfBuild(int buildYear);
-    vector<Computer> searchType(const char type);
+    vector<Computer> searchType(const string type);
     vector<Computer> searchBuilt(const char built);
 
     vector<Computer> searchRandomComputer();
