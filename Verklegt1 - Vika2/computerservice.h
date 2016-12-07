@@ -3,7 +3,6 @@
 
 #include "computer.h"
 #include "computerdatabase.h"
-#include "connectiondatabase.h"
 
 #include <vector>
 #include <algorithm>
@@ -35,7 +34,7 @@ public:
     vector<Computer> searchRandomComputer();
 
 
-    void searchID(string computerName);
+    int searchID(string computerName);
 
     int getConnections(); // returns how many connections there are
 
@@ -43,7 +42,6 @@ public:
 private:
     vector<Computer> computers;
     ComputerDatabase data;
-    ConnectionDataBase computerConnection;
 };
 
 #endif // COMPURSERVICE_H

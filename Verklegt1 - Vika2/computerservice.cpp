@@ -177,7 +177,7 @@ vector<Computer> ComputerService::searchBuilt(const char built)
     return temp4;
 }
 
-void ComputerService::searchID(string computerName)
+int ComputerService::searchID(string computerName)
 {
     int computerID = 0;
 
@@ -188,8 +188,7 @@ void ComputerService::searchID(string computerName)
             computerID = computers[i].getID();
         }
     }
-    cout << "Cservice test " << computerID << endl;
-    computerConnection.getcomputerID(computerID);
+    return computerID;
 }
 
 int ComputerService::getConnections()

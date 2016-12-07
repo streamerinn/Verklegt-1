@@ -10,7 +10,6 @@
 
 #include "scientist.h"
 #include "scientistdatabase.h"
-#include "connectiondatabase.h"
 
 using namespace std;
 
@@ -33,12 +32,11 @@ public:
 
     vector<Scientist> searchRandom();
 
-    void searchID(string scientistName);
+    int searchID(string scientistName);
 
 private:
     vector<Scientist> scientists;
     ScientistDatabase data;
-    ConnectionDataBase scientistConnection;
 };
 
 #endif // SCIENTISTSERVICE_H

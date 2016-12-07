@@ -165,43 +165,56 @@ void ConsoleUI::link()
     string scientistName;
     string computerName;
 
-    while(scientistExists == false)
-    {
-        cout << TAB << "Pleas enter a scientist name: ";
-        ws(cin);
-        getline(cin, scientistName);
-        vector<Scientist> temp1 = sService.searchName(scientistName);
-        if(temp1.size() == 0)
-        {
-            cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
-        }
-        else
-        {
-            scientistExists = true;
-        }
-    }
+    int scientistID = 0;
+    int computerID = 0;
 
-    while(computerExists == false)
-    {
-        cout << TAB << "Pleas enter a computer name: ";
-        ws(cin);
-        getline(cin, computerName);
-        vector<Computer> temp2 = cService.searchComputerName(computerName);
-        if(temp2.size() == 0)
-        {
-            cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
-        }
-        else
-        {
-            computerExists = true;
-        }
-    }
+    vector<int> IDs;
 
-    sService.searchID(scientistName);
-    cService.searchID(computerName);
+    //while((scientistExists == false) || (computerName == false))
+    //{
+        while(scientistExists == false)
+        {
+            cout << TAB << "Pleas enter a scientist name: ";
+            ws(cin);
+            getline(cin, scientistName);
+            vector<Scientist> temp1 = sService.searchName(scientistName);
+            if(temp1.size() == 0)
+            {
+                cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
+            }
+            else
+            {
+                scientistExists = true;
+            }
+        }
 
-    cout << "UI test " << scientistName << endl;
-    cout << "UI test " << computerName << endl;
+        while(computerExists == false)
+        {
+            cout << TAB << "Pleas enter a computer name: ";
+            ws(cin);
+            getline(cin, computerName);
+            vector<Computer> temp2 = cService.searchComputerName(computerName);
+            if(temp2.size() == 0)
+            {
+                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
+            }
+            else
+            {
+                computerExists = true;
+            }
+        }
+
+
+        // sækir ID-in
+        scientistID = sService.searchID(scientistName);
+        computerID = cService.searchID(computerName);
+
+        IDs.push_back(scientistID);
+        IDs.push_back(computerID);
+
+        // sendir ID-in í connection service
+        coService.getIDs(IDs);
+    //}
 }
 
 void ConsoleUI::readScientists()

@@ -165,7 +165,7 @@ vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
     return temp4;
 }
 
-void ScientistService::searchID(string scientistName)
+int ScientistService::searchID(string scientistName)
 {
     int scientistID = 0;
 
@@ -176,6 +176,5 @@ void ScientistService::searchID(string scientistName)
             scientistID = scientists[i].getID();
         }
     }
-    cout << "Sservice test " << scientistID << endl;
-    scientistConnection.getcomputerID(scientistID);
+    return scientistID;
 }
