@@ -1,21 +1,11 @@
-#ifndef CONNECTIONS_H
-#define CONNECTIONS_H
+#ifndef CONNECTIONSERVICE_H
+#define CONNECTIONSERVICE_H
 
-#include "scientistservice.h"
-#include "computerservice.h"
-
-#include <string>
 
 class ConnectionService
 {
 public:
-    Connections();
-
-    int sendScientistName(string scientistName);
-    int sendComputerName(string computerName);
-
-private:
-    vector<Computer> connections;
+    ConnectionService();
 };
 
-#endif // CONNECTIONS_H
+#endif // CONNECTIONSERVICE_H
