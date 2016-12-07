@@ -124,7 +124,7 @@ void ConsoleUI::readComputers()
     if(tempBuilt == 'y' || tempBuilt == 'Y')
     {
         tempMade = 1;
-        cout << TAB << "When was it built? (Enter -1 if not sure.): ";
+        cout << TAB << "When was it built? ";
         cin >> tempYearBuilt;
         while(tempYearBuilt > 2016 || tempYearBuilt <= 0)
         {
@@ -138,7 +138,6 @@ void ConsoleUI::readComputers()
     {
         temp.setYearBuilt(0);
     }
-    //temp.setBuilt(tempBuilt); //hvort er rétt,ekki þetta.kvandri
 
     temp.setBuilt(tempMade);  //???
 
@@ -155,13 +154,19 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
         cout << "\t |Type: " << computers[i].getType() << endl;
         cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
         cout << "\t |Built: " << computers[i].getBuilt() << endl;
+        {
+            /*
+            if(computers[i].getBuilt == 'y')
+            {
+                cout << "Yes";
+            }*/
+        }
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
 
 void ConsoleUI::searchComputer()
 {
-
     string name;
     cout << TAB << "Enter the name of the Computer you want to find: ";
     cin.ignore();
