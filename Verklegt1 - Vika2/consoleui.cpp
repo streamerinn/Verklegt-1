@@ -80,33 +80,37 @@ void ConsoleUI::readComputers()
     // Get computer type.
 
     bool validType = false;
-    string type;
+    int type;
 
-    cout << TAB << "Please enter what type the computer is (Enter 'M' for Mechanical, 'E' for Electronic or 'T' for Transistor): ";
+    cout << TAB << "Please enter what type the computer is" << endl;
+    cout << TAB << "1. for Mechanical" << endl;
+    cout << TAB << "2. for Electronic" << endl;
+    cout << TAB << "3. for Tansistor" << endl;
+
 
     while(validType == false)
     {
-        ws(cin);
-        getline(cin, type);
+        cout << TAB;
+        cin >> type;
 
-        if(type != "M" && type != "m" && type != "E" && type != "e" && type != "T" && type != "t")
+        if((type > 3)||(type < 1))
         {
             cout << TAB << type << " is not a valid option" << endl;
             cout << TAB <<"Please enter a valid option: ";
         }
-        if(type == "M"||type == "m")
+        if(type == 1)
         {
             tempType = "Mechanical";
             temp.setType(tempType);
             validType = true;
         }
-        else if(type == "E" || type == "e")
+        else if(type == 2)
         {
             tempType = "Electronic";
             temp.setType(tempType);
             validType = true;
         }
-        else if(type == "T" || type == "t")
+        else if(type == 3)
         {
             tempType = "Transistor";
             temp.setType(tempType);
@@ -130,7 +134,7 @@ void ConsoleUI::readComputers()
     {
         temp.setYearBuilt(0);
     }
-    temp.setBuilt(tempBuilt); //hvort er rétt
+    //temp.setBuilt(tempBuilt); //hvort er rétt,ekki þetta.kvandri
 
     temp.setBuilt(tempMade);  //???
 
@@ -152,7 +156,7 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
 /*
 void ConsoleUI::searchComputer()
 {
-    //TODO
+
 }
 */
 
@@ -665,7 +669,7 @@ void ConsoleUI::listingAndSorting()
             }
             else if(choice[0] == '7')
             {
-                // TODO
+                //searchComputer();
             }
 
             else if(choice[0] == '8')
