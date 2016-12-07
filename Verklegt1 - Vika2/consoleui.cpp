@@ -149,16 +149,85 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     {
         cout << "\t |Name: " << computers[i].getComputerName() << endl;
         cout << "\t |Type: " << computers[i].getType() << endl;
-        cout << "\t |Built: " << computers[i].getYearBuilt() << endl;
+        cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
+        cout << "\t |Built: " << computers[i].getBuilt() << endl;
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
-/*
+
 void ConsoleUI::searchComputer()
 {
 
+    string name;
+    cout << TAB << "Enter the name of the Computer you want to find: ";
+    cin.ignore();
+    getline(cin, name);
+
+    vector<Computer> temp = cService.searchComputerName(name);
+    if(temp.size() == 0)
+    {
+        cout << TAB << "There are no computers with the name" << name << " in our database. Please try again!";
+
+    }
+    else
+    {
+        displayComputers(temp);
+    }
+
+
 }
-*/
+
+void ConsoleUI::searchBuiltYear()
+{
+
+    int year = 0;
+    cout << TAB << "Enter the Computers built year: ";
+    cin >> year;
+
+    vector<Computer> temp = cService.searchYearOfBuild(year);
+    if (temp.size() == 0)
+    {
+        cout << TAB << "There are no Computers in our database built " << year << ". Please try again!";
+    }
+
+    else
+    {
+        displayComputers(temp);
+    }
+
+
+}
+
+void ConsoleUI::searhComputerType()
+{
+    char choice;
+    cout << TAB << "Which type of computer do you want to search? " << endl;
+    cout << TAB << "Press 'M' for Mechanical" << endl;
+    cout << TAB << "Press 'E' for Electronical" << endl;
+    cout << TAB << "Press 'T' for Transistor" << endl;
+    cin >> choice;
+
+    vector<Computer> temp = cService.searchBuilt(choice);
+    if (temp.size() == 0)
+    {
+        cout << TAB << "No builts found";
+    }
+    else
+    {
+        displayComputers(temp);
+    }
+
+
+
+}
+
+void ConsoleUI::searchRandomComputer()
+{
+    vector<Computer> temp = cService.searchRandomComputer();
+    displayComputers(temp);
+
+}
+
 
 // Tengja saman scientis(t) við computer(s) og vice versa
 void ConsoleUI::link()
@@ -692,7 +761,47 @@ void ConsoleUI::listingAndSorting()
             }
             else if(choice[0] == '7')
             {
-                //searchComputer();
+                char searchOptions;
+
+                cout << endl;
+                cout << TAB << "What do you want to search for?" << endl;
+                cout << TAB << "Press 1 to search by Computer's name." << endl;
+                cout << TAB << "Press 2 to search for all computers built in a specific year." << endl;
+                cout << TAB << "Press 3 to search for all computers of a specific type." << endl;
+                cout << TAB << "Press 4 to search for a random Computer." << endl;
+                cout << TAB << "Press 5 to search for Computers built." << endl;
+                cout << TAB << "Press any other number to go BACK to the menu." << endl;
+                cout << TAB << "" << endl;
+                cout << TAB << "----------------------------------------------------------------------------" << endl;
+                cout << TAB;
+
+                cin >> searchOptions;
+
+                if(searchOptions == '1')
+                {
+                    searchComputer();
+                }
+                else if(searchOptions == '2')
+                {
+                    searchBuiltYear();
+                }
+                else if(searchOptions == '3')
+                {
+                    searhComputerType();
+                }
+                else if(searchOptions == '4')
+                {
+                    searchRandomComputer();
+                }
+                else if(searchOptions == '5')
+                {
+                    //searc
+                }
+                else
+                {
+                    features();
+                }
+
             }
 
             else if(choice[0] == '8')

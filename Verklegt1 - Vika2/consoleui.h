@@ -45,11 +45,18 @@ private:
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
 
-    void searchName();
     void searchComputer();
+    void searchBuiltYear();
+    void searhComputerType();
+    void searchRandomComputer();
+
+
+
+    void searchName();
     void searchDateOfBirth();
     void searchGender();
     void searchRandomScientist();
+
 
     void stats();
 

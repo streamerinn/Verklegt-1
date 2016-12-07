@@ -124,6 +124,19 @@ vector<Computer> ComputerService::searchType(const char type)
 {
     vector<Computer> temp2;
 
+    for(size_t i = 0; i < computers.size();i++)
+    {
+       if(type == 'E'||type == 'e')
+       {
+           if(computers[i].getType()== "Electronical")
+           {
+               temp2.push_back(computers[i]);
+           }
+       }
+
+    }
+
+
     if(type == 'M'||type == 'm')
     {
         for(size_t i = 0; i < computers.size();i++)
@@ -134,16 +147,16 @@ vector<Computer> ComputerService::searchType(const char type)
             }
         }
     }
-    else if(type == 'E'||type == 'e')
-    {
-        for(size_t i = 0; i < computers.size();i++)
-        {
-            if(computers[i].getType()== "Electronical")
-            {
-                temp2.push_back(computers[i]);
-            }
-        }
-    }
+    //else if(type == 'E'||type == 'e')
+    //{
+      //  for(size_t i = 0; i < computers.size();i++)
+        //{
+           // if(computers[i].getType()== "Electronical")
+            //{
+              //  temp2.push_back(computers[i]);
+            //}
+        //}
+    //}
     else if(type == 'T'||type == 't')
     {
         for(size_t i = 0; i < computers.size();i++)
