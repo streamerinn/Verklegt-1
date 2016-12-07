@@ -139,7 +139,7 @@ void ConsoleUI::readComputers()
         temp.setYearBuilt(0);
     }
 
-    temp.setBuilt(tempMade);  //???
+    temp.setBuilt(tempMade);
 
     cService.create(temp);
 }
@@ -154,13 +154,6 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
         cout << "\t |Type: " << computers[i].getType() << endl;
         cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
         cout << "\t |Built: " << computers[i].getBuilt() << endl;
-        {
-            /*
-            if(computers[i].getBuilt == 'y')
-            {
-                cout << "Yes";
-            }*/
-        }
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
@@ -188,7 +181,6 @@ void ConsoleUI::searchComputer()
 
 void ConsoleUI::searchBuiltYear()
 {
-
     int year = 0;
     cout << TAB << "Enter the Computers built year: ";
     cin >> year;
@@ -203,8 +195,6 @@ void ConsoleUI::searchBuiltYear()
     {
         displayComputers(temp);
     }
-
-
 }
 
 void ConsoleUI::searhComputerType()
