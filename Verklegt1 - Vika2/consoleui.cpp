@@ -507,6 +507,7 @@ void ConsoleUI::display(vector<Scientist> scientists)
 
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
+    cout << endl;
 }
 
 void ConsoleUI::displayListOfComputersAlpha()
@@ -676,7 +677,6 @@ void ConsoleUI::displaySortOptions()
     cout << TAB << "Press 2 for reversed alphabetical order." << endl;
     cout << TAB << "Press 3 to sort from youngest to oldest." << endl;
     cout << TAB << "Press 4 to sort from oldest to youngest." << endl;
-    cout << TAB << "Press 5 to sort from oldest to youngest." << endl;
     cout << TAB << "Press any other number to go BACK to the menu." << endl;
     cout << TAB << "" << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
