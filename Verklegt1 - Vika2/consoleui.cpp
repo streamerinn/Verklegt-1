@@ -87,7 +87,6 @@ void ConsoleUI::readComputers()
     cout << TAB << "2. for Electronic" << endl;
     cout << TAB << "3. for Tansistor" << endl;
 
-
     while(validType == false)
     {
         cout << TAB;
@@ -125,8 +124,14 @@ void ConsoleUI::readComputers()
     if(tempBuilt == 'y' || tempBuilt == 'Y')
     {
         tempMade = 1;
-        cout << "When was it built? (Enter -1 if not sure.)";
+        cout << TAB << "When was it built? (Enter -1 if not sure.): ";
         cin >> tempYearBuilt;
+        while(tempYearBuilt > 2016 || tempYearBuilt <= 0)
+        {
+            cout << TAB << "Not a valid date, try again: ";
+            cin >> tempYearBuilt;
+        };
+
         temp.setYearBuilt(tempYearBuilt);
     }
     else
