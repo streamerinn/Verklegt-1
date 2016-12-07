@@ -35,11 +35,13 @@ private:
     void readScientists();
 
     void displayListOfComputersAlpha();
+    void displayListOfComputersReversedAlpha();
     void displayListOfComputersYoung();
     void displayListOfComputersOld();
 
     void displaySortOptions();
     void displayListOfScientistsAlpha();
+    void displayListOfScientistsReversedAlpha();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
 

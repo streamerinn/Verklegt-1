@@ -150,7 +150,7 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
         cout << "\t |Name: " << computers[i].getComputerName() << endl;
         cout << "\t |Type: " << computers[i].getType() << endl;
         cout << "\t |Built: " << computers[i].getYearBuilt() << endl;
-
+        cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
 /*
@@ -405,6 +405,13 @@ void ConsoleUI::displayListOfComputersAlpha()
     displayComputers(computers);
 }
 
+void ConsoleUI::displayListOfComputersReversedAlpha()
+{
+    vector<Computer> computers = cService.getComputersReversedAlpha();
+    displayComputers(computers);
+}
+
+
 void ConsoleUI::displayListOfComputersYoung()
 {
     vector<Computer> computers = cService.getComputersYoung();
@@ -423,6 +430,13 @@ void ConsoleUI::displayListOfScientistsAlpha()
     vector<Scientist> scientists = sService.getScientistsAlpha();
     display(scientists);
 }
+
+void ConsoleUI::displayListOfScientistsReversedAlpha()
+{
+    vector<Scientist> scientists = sService.getScientistsReversedAlpha();
+    display(scientists);
+}
+
 
 void ConsoleUI::displayListOfScientistsYoung()
 {
@@ -531,8 +545,9 @@ void ConsoleUI::displaySortOptions()
     cout << endl;
     cout << TAB << "How should the list be sorted?" << endl;
     cout << TAB << "Press 1 for alphabetical order." << endl;
-    cout << TAB << "Press 2 to sort from youngest to oldest." << endl;
-    cout << TAB << "Press 3 to sort from oldest to youngest." << endl;
+    cout << TAB << "Press 2 for reversed alphabetical order." << endl;
+    cout << TAB << "Press 3 to sort from youngest to oldest." << endl;
+    cout << TAB << "Press 4 to sort from oldest to youngest." << endl;
     cout << TAB << "Press any other number to go BACK to the menu." << endl;
     cout << TAB << "" << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -582,9 +597,13 @@ void ConsoleUI::listingAndSorting()
                 }
                 else if(sort == '2')
                 {
-                    displayListOfScientistsYoung();
+                    displayListOfScientistsReversedAlpha();
                 }
                 else if(sort == '3')
+                {
+                    displayListOfScientistsYoung();
+                }
+                else if(sort == '4')
                 {
                     displayListOfScientistsOld();
                 }
@@ -656,9 +675,13 @@ void ConsoleUI::listingAndSorting()
                 }
                 else if(sortComputer == '2')
                 {
-                    displayListOfComputersYoung();
+                    displayListOfComputersReversedAlpha();
                 }
                 else if(sortComputer == '3')
+                {
+                    displayListOfComputersYoung();
+                }
+                else if(sortComputer == '4')
                 {
                     displayListOfComputersOld();
                 }

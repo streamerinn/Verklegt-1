@@ -20,6 +20,19 @@ struct ComputerComparisonAlpha
     }
 };
 
+struct ComputerComparisonReversedAlpha
+{
+    bool operator() (Computer i, Computer j)
+    {
+        string iName = i.getComputerName();
+        string jName = j.getComputerName();
+        transform(iName.begin(), iName.end(), iName.begin(), ::tolower);
+        transform(jName.begin(), jName.end(), jName.begin(), ::tolower);
+
+        return (jName<iName);
+    }
+};
+
 struct ComputerComparisonYoung
 {
     bool operator() (Computer i, Computer j)
@@ -45,6 +58,15 @@ vector<Computer> ComputerService::getComputersAlpha()
     ComputerComparisonAlpha cmp;
 
     sort(computers.begin(), computers.end(), cmp);
+
+    return computers;
+}
+
+vector<Computer> ComputerService::getComputersReversedAlpha()
+{
+    ComputerComparisonReversedAlpha cmpRev;
+
+    sort(computers.begin(), computers.end(), cmpRev);
 
     return computers;
 }

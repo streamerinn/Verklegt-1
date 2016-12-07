@@ -23,6 +23,7 @@ public:
 
     vector<Computer> getComputers();
     vector<Computer> getComputersAlpha();
+    vector<Computer> getComputersReversedAlpha();
     vector<Computer> getComputersYoung();
     vector<Computer> getComputersOld();
     vector<Computer> getComputersBuiltOrNot();
