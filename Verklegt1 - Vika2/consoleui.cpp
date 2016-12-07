@@ -87,7 +87,6 @@ void ConsoleUI::readComputers()
     cout << TAB << "2. for Electronic" << endl;
     cout << TAB << "3. for Tansistor" << endl;
 
-
     while(validType == false)
     {
         cout << TAB;
@@ -125,16 +124,20 @@ void ConsoleUI::readComputers()
     if(tempBuilt == 'y' || tempBuilt == 'Y')
     {
         tempMade = 1;
-        cout << "Made it" << endl;
-        cout << "When was it built? (Enter -1 if not sure.)";
+        cout << TAB << "When was it built? ";
         cin >> tempYearBuilt;
+        while(tempYearBuilt > 2016 || tempYearBuilt <= 0)
+        {
+            cout << TAB << "Not a valid date, try again: ";
+            cin >> tempYearBuilt;
+        };
+
         temp.setYearBuilt(tempYearBuilt);
     }
     else
     {
         temp.setYearBuilt(0);
     }
-    //temp.setBuilt(tempBuilt); //hvort er rétt,ekki þetta.kvandri
 
     temp.setBuilt(tempMade);  //???
 
@@ -151,13 +154,19 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
         cout << "\t |Type: " << computers[i].getType() << endl;
         cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
         cout << "\t |Built: " << computers[i].getBuilt() << endl;
+        {
+            /*
+            if(computers[i].getBuilt == 'y')
+            {
+                cout << "Yes";
+            }*/
+        }
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
 }
 
 void ConsoleUI::searchComputer()
 {
-
     string name;
     cout << TAB << "Enter the name of the Computer you want to find: ";
     cin.ignore();
@@ -219,8 +228,6 @@ void ConsoleUI::searhComputerType()
     {
         displayComputers(temp);
     }
-
-
 
 }
 
@@ -423,7 +430,6 @@ void ConsoleUI::readScientists()
 
     do
     {
-
         if(!cin)
         {
             while((!cin))
@@ -434,24 +440,22 @@ void ConsoleUI::readScientists()
                 cin >> tempDateOfDeath;
             }
         }
-        else if((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0) && (tempDateOfDeath < 2017))
+        else if((tempDateOfBirth > tempDateOfDeath) && (tempDateOfDeath != 0))
         {
             cout << TAB << "Not possible. A person cannot die before it is born, try again: ";
             cin >> tempDateOfDeath;
-            cin.clear();
         }
-    }
-    while((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0));
-
-    do
-    {
-        if(tempDateOfDeath > 2016)
+        else if(tempDateOfDeath > 2016 && (tempDateOfDeath != 0))
         {
-            cout << TAB << "Not possible. A person cannot die beyond the current year, try again: ";
+            cout << TAB << "Not possibe. A person cannot die beyond the current year, try again: ";
             cin >> tempDateOfDeath;
         }
+        else
+        {
+            break;
+        }
 
-    }while((tempDateOfDeath < tempDateOfBirth)&&(tempDateOfDeath != 0));
+    }while((tempDateOfBirth > tempDateOfDeath) || ((tempDateOfDeath > 2016) && (tempDateOfDeath != 0)));
 
     temp.setDateOfDeath(tempDateOfDeath);
     cout << endl;
