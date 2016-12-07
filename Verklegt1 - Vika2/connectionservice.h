@@ -1,21 +1,21 @@
-#ifndef CONNECTIONS_H
-#define CONNECTIONS_H
+#ifndef CONNECTIONSERVICE_H
+#define CONNECTIONSERVICE_H
 
-#include "scientistservice.h"
-#include "computerservice.h"
+#include <connectiondatabase.h>
 
-#include <string>
+#include <vector>
+
+using namespace std;
 
 class ConnectionService
 {
 public:
-    Connections();
+    ConnectionService();
 
-    int sendScientistName(string scientistName);
-    int sendComputerName(string computerName);
+    void getIDs(vector<int> IDs);
 
 private:
-    vector<Computer> connections;
+    ConnectionDataBase connections;
 };
 
-#endif // CONNECTIONS_H
+#endif // CONNECTIONSERVICE_H

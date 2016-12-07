@@ -199,14 +199,17 @@ void ConsoleUI::searchBuiltYear()
 
 void ConsoleUI::searhComputerType()
 {
-    char choice;
+    string choice;
+
     cout << TAB << "Which type of computer do you want to search? " << endl;
     cout << TAB << "Press 'M' for Mechanical" << endl;
     cout << TAB << "Press 'E' for Electronical" << endl;
     cout << TAB << "Press 'T' for Transistor" << endl;
     cin >> choice;
 
-    vector<Computer> temp = cService.searchBuilt(choice);
+
+
+    vector<Computer> temp = cService.searchType(choice);
     if (temp.size() == 0)
     {
         cout << TAB << "No builts found";
@@ -217,6 +220,31 @@ void ConsoleUI::searhComputerType()
     }
 
 }
+
+void ConsoleUI::searchBuilt()
+{
+
+    char built;
+
+
+    cout << TAB << "Search by built - (Y/y = Built)(N/n = not built)  " << endl;
+    cout << TAB;
+
+    cin >> built;
+
+
+
+
+
+
+    vector<Computer> temp = cService.searchBuilt(built);
+
+    displayComputers(temp);
+
+
+
+ }
+
 
 void ConsoleUI::searchRandomComputer()
 {
@@ -235,43 +263,56 @@ void ConsoleUI::link()
     string scientistName;
     string computerName;
 
-    while(scientistExists == false)
-    {
-        cout << TAB << "Pleas enter a scientist name: ";
-        ws(cin);
-        getline(cin, scientistName);
-        vector<Scientist> temp1 = sService.searchName(scientistName);
-        if(temp1.size() == 0)
-        {
-            cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
-        }
-        else
-        {
-            scientistExists = true;
-        }
-    }
+    int scientistID = 0;
+    int computerID = 0;
 
-    while(computerExists == false)
-    {
-        cout << TAB << "Pleas enter a computer name: ";
-        ws(cin);
-        getline(cin, computerName);
-        vector<Computer> temp2 = cService.searchComputerName(computerName);
-        if(temp2.size() == 0)
-        {
-            cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
-        }
-        else
-        {
-            computerExists = true;
-        }
-    }
+    vector<int> IDs;
 
-    sService.searchID(scientistName);
-    cService.searchID(computerName);
+    //while((scientistExists == false) || (computerName == false))
+    //{
+        while(scientistExists == false)
+        {
+            cout << TAB << "Pleas enter a scientist name: ";
+            ws(cin);
+            getline(cin, scientistName);
+            vector<Scientist> temp1 = sService.searchName(scientistName);
+            if(temp1.size() == 0)
+            {
+                cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
+            }
+            else
+            {
+                scientistExists = true;
+            }
+        }
 
-    cout << "UI test " << scientistName << endl;
-    cout << "UI test " << computerName << endl;
+        while(computerExists == false)
+        {
+            cout << TAB << "Pleas enter a computer name: ";
+            ws(cin);
+            getline(cin, computerName);
+            vector<Computer> temp2 = cService.searchComputerName(computerName);
+            if(temp2.size() == 0)
+            {
+                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
+            }
+            else
+            {
+                computerExists = true;
+            }
+        }
+
+
+        // sækir ID-in
+        scientistID = sService.searchID(scientistName);
+        computerID = cService.searchID(computerName);
+
+        IDs.push_back(scientistID);
+        IDs.push_back(computerID);
+
+        // sendir ID-in í connection service
+        coService.getIDs(IDs);
+    //}
 }
 
 void ConsoleUI::readScientists()
@@ -603,6 +644,24 @@ void ConsoleUI::stats()
     cout << TAB << "----------------------------" << endl << endl;
 
 }
+
+void ConsoleUI::displayComputerSortOptions()
+{
+    cout << endl;
+    cout << TAB << "How should the list be sorted?" << endl;
+    cout << TAB << "Press 1 for alphabetical order." << endl;
+    cout << TAB << "Press 2 for reversed alphabetical order." << endl;
+    cout << TAB << "Press 3 to sort from newer to older." << endl;
+    cout << TAB << "Press 4 to sort from older to newest." << endl;
+    cout << TAB << "Press any other number to go BACK to the menu." << endl;
+    cout << TAB << "" << endl;
+    cout << TAB << "----------------------------------------------------------------------------" << endl;
+    cout << TAB;
+
+
+}
+
+
 void ConsoleUI::displaySortOptions()
 {
     cout << endl;
@@ -611,6 +670,7 @@ void ConsoleUI::displaySortOptions()
     cout << TAB << "Press 2 for reversed alphabetical order." << endl;
     cout << TAB << "Press 3 to sort from youngest to oldest." << endl;
     cout << TAB << "Press 4 to sort from oldest to youngest." << endl;
+    cout << TAB << "Press 5 to sort from oldest to youngest." << endl;
     cout << TAB << "Press any other number to go BACK to the menu." << endl;
     cout << TAB << "" << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -728,7 +788,7 @@ void ConsoleUI::listingAndSorting()
             else if (choice[0] == '6')
             {
                 char sortComputer;
-                displaySortOptions();
+                displayComputerSortOptions();
 
                 cin >> sortComputer;
 
@@ -748,6 +808,8 @@ void ConsoleUI::listingAndSorting()
                 {
                     displayListOfComputersOld();
                 }
+
+
                 else
                 {
                     features();
@@ -763,7 +825,7 @@ void ConsoleUI::listingAndSorting()
                 cout << TAB << "Press 2 to search for all computers built in a specific year." << endl;
                 cout << TAB << "Press 3 to search for all computers of a specific type." << endl;
                 cout << TAB << "Press 4 to search for a random Computer." << endl;
-                cout << TAB << "Press 5 to search for Computers built." << endl;
+                cout << TAB << "Press 5 to search for a built Computer." << endl;
                 cout << TAB << "Press any other number to go BACK to the menu." << endl;
                 cout << TAB << "" << endl;
                 cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -789,7 +851,7 @@ void ConsoleUI::listingAndSorting()
                 }
                 else if(searchOptions == '5')
                 {
-                    //searc
+                    searchBuilt();
                 }
                 else
                 {

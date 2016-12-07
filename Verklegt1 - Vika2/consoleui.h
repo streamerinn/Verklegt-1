@@ -11,6 +11,7 @@
 
 #include "computer.h"
 #include "computerservice.h"
+#include "connectionservice.h"
 
 using namespace std;
 
@@ -28,6 +29,8 @@ private:
 
     ScientistService sService;
     ComputerService cService;
+    ConnectionService coService;
+
 
     void display(vector<Scientist> scientists);
     void displayComputers(vector<Computer> computers);
@@ -40,15 +43,21 @@ private:
     void displayListOfComputersOld();
 
     void displaySortOptions();
+    void displayComputerSortOptions();
     void displayListOfScientistsAlpha();
     void displayListOfScientistsReversedAlpha();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
 
+
+
+
     void searchComputer();
     void searchBuiltYear();
     void searhComputerType();
     void searchRandomComputer();
+    void searchBuilt();
+
 
 
 

@@ -1,5 +1,5 @@
 #include "connectiondatabase.h"
-#include <iostream>
+#include <iostream> // eða þegar þetta er farið að virka
 
 ConnectionDataBase::ConnectionDataBase()
 {
@@ -9,31 +9,16 @@ ConnectionDataBase::ConnectionDataBase()
     db.open();
 }
 
-int ConnectionDataBase::getcomputerID(int computerID)
+void ConnectionDataBase::insertRow(vector<int> IDs)
 {
-    cout << "db test: " << computerID << endl;
-    return computerID;
-}
-
-int ConnectionDataBase::getscientistID(int scientistID)
-{
-     cout << "db test: " << scientistID << endl;
-    return scientistID;
-}
-
-void ConnectionDataBase::insertRow()
-{
-    int scientistID = 0;
-    int computerID = 0;
-
+    cout << "database test " << IDs[0] << IDs[1] << endl;
 
     QSqlQuery query(db);
 
-    QString scientist = QString::number(getscientistID(scientistID));
-    QString computers = QString::number(getcomputerID(computerID));
-
-
-    query.prepare("INSERT INTO Connections (scientists, computers) VALUES (:scientists, :computers)");
+    QString scientist = QString::number(IDs[0]);
+    QString computers = QString::number(IDs[1]);
+    //cout << "INSERT INTO Connections (scientistsID, computersID) VALUES (" << scientist.toStdString()<< ", " << computers.toStdString() << ")" << endl;
+    query.prepare("INSERT INTO Connections (scientistsID, computersID) VALUES (:scientist, :computers)");
     query.bindValue(":scientist", scientist);
     query.bindValue(":computers", computers);
     query.exec();

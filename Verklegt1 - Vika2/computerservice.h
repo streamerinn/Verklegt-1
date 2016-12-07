@@ -3,10 +3,10 @@
 
 #include "computer.h"
 #include "computerdatabase.h"
-#include "connectiondatabase.h"
 
 #include <vector>
 #include <algorithm>
+#include <QString>
 
 #include <cstdlib>
 #include <ctime>
@@ -30,13 +30,13 @@ public:
 
     vector<Computer> searchComputerName(string name);
     vector<Computer> searchYearOfBuild(int buildYear);
-    vector<Computer> searchType(const char type);
+    vector<Computer> searchType(const string type);
     vector<Computer> searchBuilt(const char built);
 
     vector<Computer> searchRandomComputer();
 
 
-    void searchID(string computerName);
+    int searchID(string computerName);
 
     int getConnections(); // returns how many connections there are
 
@@ -44,7 +44,6 @@ public:
 private:
     vector<Computer> computers;
     ComputerDatabase data;
-    ConnectionDataBase computerConnection;
 };
 
 #endif // COMPURSERVICE_H

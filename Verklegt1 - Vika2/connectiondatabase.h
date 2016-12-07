@@ -2,6 +2,7 @@
 #define CONNECTIONDATABASE_H
 
 #include <QtSql>
+#include <vector>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ public:
 
     int getscientistID(int scientistID);
     int getcomputerID(int computerID);
-    void insertRow();
+    void insertRow(vector<int> IDs);
 
 private:
     QSqlDatabase db;
