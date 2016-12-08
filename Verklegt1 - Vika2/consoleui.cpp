@@ -444,19 +444,12 @@ void ConsoleUI::searchComputerType()
 
 void ConsoleUI::searchBuilt()
 {
-
     char built;
-
 
     cout << TAB << "Search by built - (Y/y = Built)(N/n = not built)  " << endl;
     cout << TAB;
 
     cin >> built;
-
-
-
-
-
 
     vector<Computer> temp = cService.searchBuilt(built);
 
@@ -1090,6 +1083,8 @@ void ConsoleUI::displaySortOptions()
 
 void ConsoleUI::listingAndSorting()
 {
+    cout << "remove me" << endl;
+
     string choice = "/0";
 
     while(choice != "q" && choice != "Q")
