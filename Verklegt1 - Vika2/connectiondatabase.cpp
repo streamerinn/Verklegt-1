@@ -38,3 +38,5 @@ int ConnectionDataBase::countConnections()
 
     return counter;
 }
+
+
