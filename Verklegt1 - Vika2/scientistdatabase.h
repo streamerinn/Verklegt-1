@@ -18,7 +18,7 @@ public:
     void insertRow(Scientist scientist);
 
     void deleteScientist(int id);
-    void editScientist(int id);
+    void editScientist(int id, string gender, string name, int birth, int death);
 
 private:
     QSqlDatabase db;

@@ -60,8 +60,14 @@ void ConsoleUI::features()
     cout << endl;
 }
 
+
+
 void ConsoleUI::readComputers()
 {
+
+
+
+
     Computer temp;
 
     string tempComputerName = " ";
@@ -783,6 +789,24 @@ void ConsoleUI::editOptions()
     char editButton;
     int id;
 
+    //Computer
+    string name;
+    int buildYear;
+    //char built;
+    string type;
+
+    //Scientist
+    string Sname;
+    string gender;
+    int birth;
+    int death;
+
+
+
+
+
+
+
     cout << TAB << "Press 1 to edit a scientist. " << endl;
     cout << TAB << "Press 2 to edit a computer. " << endl;
     cout << TAB;
@@ -790,28 +814,36 @@ void ConsoleUI::editOptions()
     // #Edit scientist:
     if(editButton == '1')
     {
-        editName();
-
-        //sService.editScientist(id);
-        // cout Edit what?
-        //cout << "Please edit name.";
-
-
-        //if(what == name){
-            //editScientist(id, newname);
-
-
-
-
-       // cout << TAB << "Enter ID of scientist to edit: ";
-        //cin >> id;
-        //sService.editScientist(id);
+        cout << TAB << "Enter ID of scientist to edit: ";
+        cin >> id;
+        cout << TAB << "Enter new Gender: ";
+        cin >> gender;
+        cout << TAB << "Enter new Name: ";
+        cin >> Sname;
+        cout << TAB << "Enter new birth date: ";
+        cin >> birth;
+        cout << TAB << "Enter death date, enter 0 if still alive: ";
+        cin >> death;
+        sService.editScientist(id, gender, name, birth, death);
     }
     else if(editButton == '2')
     {
+
+
         cout << TAB << "Enter ID of computer to edit: ";
         cin >> id;
-        cService.editComputer(id);
+        cout << TAB << "Enter new name of computer: ";
+        cin >> name;
+        cout << TAB << "Enter new build year: ";
+        cin >> buildYear;
+        cout << TAB << "Enter new type: ";
+        cin >> type;
+        cout << TAB << "Enter new built: ";
+        //cin >> built;
+
+
+
+        cService.editComputer(name, id, buildYear, /*built,*/ type);
     }
 
 

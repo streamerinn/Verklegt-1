@@ -151,10 +151,10 @@ int ComputerService::searchID(string computerName)
 
 void ComputerService::deleteComputer(int id)
 {
-    data.deleteComputer(id);
+     data.deleteComputer(id);
 }
 
-void ComputerService::editComputer(int id)
+void ComputerService::editComputer(string name,int id, int buildYear, /*bool built,*/ string type)
 {
-    data.editComputer(id);
+     data.editComputer(name, id, buildYear /*built*/, type);
 }

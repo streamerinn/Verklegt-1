@@ -124,26 +124,84 @@ vector<Computer> ComputerDatabase::computersConnectedToScientist(int scientistsI
 void ComputerDatabase::deleteComputer(int id)
 
 {
+    QString Compid;
+    Compid = QString::number(id);
+
         QSqlQuery query(db);
-        query.prepare("DELETE FROM Computers where ID = ?");
+        query.prepare("DELETE FROM Computers where ID = (:Compid)");
+        query.bindValue(":Compid", Compid);
+
+        if(!query.exec())
+        {
+            qDebug() << query.lastError();
+        }
+        else
+        {
+            //query.exec();
+            qDebug("Deleted!");
+        }
 
         // herna er verið ad replacea "?" med ID breytunni
-        query.addBindValue(id);
+
 
         // execute query
-        query.exec();
+
 }
+
 //Breytir tölvu í Computers töflunni
-void ComputerDatabase::editComputer(int id)
+void ComputerDatabase::editComputer(string name,int id, int buildYear/*, char built*/, string type)
 {
-    QSqlQuery query;
-    query.prepare("DELETE FROM Computers where ID = ?");
+    //vector<Computer> temp1;
+    QString Compid;
+    QString buildYears;
+    //QString builts(built);
+    QString types;
+    QString names;
 
-    // herna er verið ad replacea "?" med ID breytunni
-    query.addBindValue(id);
+    names = QString::fromStdString(name);
+    Compid = QString::number(id);
+    buildYears = QString::number(buildYear);
+    //builts()  //QString::char(built);
+    types = QString::fromStdString(type);
 
-    // execute query
-    query.exec();
+    QSqlQuery query(db);
+    //query.prepare("UPDATE Computers where ID = (:Compid);");
+    query.prepare("UPDATE Computers SET name = (:name), [build year] = (:buildYears), type = (:types) WHERE id = (:Compid)");
+   query.bindValue(":Compid", Compid);
+   query.bindValue(":name", names);
+   query.bindValue(":buildYears",buildYears);
+   query.bindValue(":types",types);
+
+
+    //query.prepare("UPDATE Computers SET name =", [build year] = +buildYears+ ", type =" +types+", builts =" +builts+";");
+
+    if(!query.exec())
+    {
+        qDebug() << query.lastError();
+    }
+    else
+    {
+        //query.exec();
+        qDebug("Updated!");
+    }
+
+
+
+
+        //int id = query.value("id").toInt();
+        //string name = query.value("name").toString().toStdString();
+        //string type = query.value("type").toString().toStdString();
+        //int yearBuilt = query.value("build year").toInt();
+        //bool wasBuilt = query.value("built").toBool();
+
+        //Computer computer(id, name, type, yearBuilt, wasBuilt);
+
+        //temp1.push_back(computer);
+
+
+
+    //return temp1;
+
 }
 
 
