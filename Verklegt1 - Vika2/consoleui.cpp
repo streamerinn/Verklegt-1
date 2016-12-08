@@ -182,6 +182,29 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     }
 }
 
+void ConsoleUI::listScientistConnections(vector<Scientist> scientists)
+{
+    cout << setw(55) << "CONNECTIONS" << endl;
+    cout << TAB << setw(15) << "Scientist" <<setw(20) << "Computer" << endl;
+    cout << "\t___________________________________________________________________________" << endl;
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        cout << TAB << setw(15) << scientists[i].getName() << endl;
+        for(size_t j = 0; j < cService.getComputersID().size(); j++)
+        {
+            if(scientists[i].getID() == cService.getComputersID()[j].getID())
+            {
+                cout << TAB << setw(20) << endl;
+            }
+        }
+    }
+
+
+
+
+         cout << "\t---------------------------------------------------------------------------" << endl;
+}
+
 
 
 void ConsoleUI::displayScientistConnections(vector<Scientist> scientist)
@@ -352,6 +375,7 @@ void ConsoleUI::link()
                 while(correctSOption == false)
                 {
                     cout << TAB << "Please enter the correct number: ";
+                    ws(cin);
                     cin >> SOption;
 
 
@@ -411,6 +435,7 @@ void ConsoleUI::link()
                 while(correctCOption == false)
                 {
                     cout << TAB << "Please enter the correct number: ";
+                    ws(cin);
                     cin >> COption;
 
                     if(COption > temp2.size() || COption < 1 || !cin)
@@ -1110,6 +1135,10 @@ void ConsoleUI::listingAndSorting()
                 {
                     editOptions();
                 }
+            }
+            else if(choice == "10")
+            {
+                listScientistConnections(temp);
             }
             else if(choice[0] == 'q' || choice[0] == 'Q')
             {
