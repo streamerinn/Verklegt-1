@@ -166,7 +166,7 @@ void ComputerDatabase::editComputer(string name,int id, int buildYear/*, char bu
 
     QSqlQuery query(db);
     //query.prepare("UPDATE Computers where ID = (:Compid);");
-    query.prepare("UPDATE Computers SET name = (:name), [build year] = (:buildYears), type = (:types) WHERE id = (:Compid)");
+    query.prepare("UPDATE Computers SET name = (:name), yearBuilt = (:buildYears), type = (:types) WHERE id = (:Compid)");
    query.bindValue(":Compid", Compid);
    query.bindValue(":name", names);
    query.bindValue(":buildYears",buildYears);
