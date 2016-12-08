@@ -184,22 +184,144 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
 
 
 
-void ConsoleUI::displayScientistConnections(vector<Scientist> scientist)
-{
-    cout << "\t Scientists and ID's"  << endl;
-    cout << "\t___________________________" << endl;
-    for(size_t i = 0; i < scientist.size(); i++)
-    {
-    cout << "\t ID: " << scientist[i].getID() << " " << scientist[i].getName() << endl;
-    //cout << TAB << "----------------------------------------------------------------------------" << endl;
+void ConsoleUI::displayScientistComputerConnections()
+{      
+    bool scientistExists = false;
+    bool correctSOption = false;
+    string scientistName;
+    string scientistOption;
+    size_t SOption;
+    int scientistID = 0;
 
-  }
-    cout << TAB << "---------------------------" << endl;
+    while(scientistExists == false)
+    {
+        cout << TAB << "Pleas enter a scientist name: ";
+        ws(cin);
+        getline(cin, scientistName);
+        vector<Scientist> temp1 = sService.searchName(scientistName);
+        if(temp1.size() == 0)
+        {
+            cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
+        }
+        else if(temp1.size() > 1)
+        {
+            cout << TAB << "There is more than one " << scientistName << ". Which one is correct?" << endl;
+            cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+
+            for(size_t i = 0; i < temp1.size(); i++)
+            {
+
+                if(temp1[i].getDateOfDeath() == 0)
+                {
+                    cout << TAB << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender() << setw(15) << temp1[i].getDateOfBirth();
+                    cout << setw(15) << "Alive" << endl;
+                }
+                else
+                {
+                    cout << TAB  << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender();
+                    cout << setw(15) << temp1[i].getDateOfBirth() << setw(15) << temp1[i].getDateOfDeath() << endl;
+                }
+                cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+            }
+
+            while(correctSOption == false)
+            {
+                cout << TAB << "Please enter the correct number: ";
+                cin >> SOption;
+
+
+                if(SOption > temp1.size() || SOption < 1 || !cin)
+                {
+                    cout << TAB << "That is not a valid number, please try again" << endl;
+                    cin.clear();
+                    cin.ignore();
+                }
+                else
+                {
+                    scientistID = temp1[SOption-1].getID();
+                    correctSOption = true;
+                    scientistExists = true;
+                }
+            }
+        }
+        else
+        {
+            scientistID = temp1[0].getID();
+            scientistExists = true;
+        }
+    }
+    cService.getScientistID(scientistID);
+
 
 }
 
+// sýnir hvaða scientists eru tengdir við ákveðna tölvu
+void ConsoleUI::displayComputerScientistConnections()
+{
+    bool computerExists = false;
+    bool correctCOption = false;
+    string computerName;
+    string computerOption;
+    size_t COption;
+    int computerID = 0;
 
+    while(computerExists == false)
+    {
+        cout << TAB << "Please enter a computer name: ";
+        ws(cin);
+        getline(cin, computerName);
+        vector<Computer> temp2 = cService.searchComputerName(computerName);
+        if(temp2.size() == 0)
+        {
+            cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
+        }
+        else if(temp2.size() > 1)
+        {
+            cout << TAB << "There is more than one " << computerName << ". Which one is correct?" << endl;
+            cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
 
+            for(size_t i = 0; i < temp2.size(); i++)
+            {
+                cout << TAB << i+1 << setw(15) << temp2[i].getComputerName() << setw(20) << temp2[i].getType();
+
+                if(temp2[i].getBuilt()==1)
+                    cout << setw(20) << "Yes";
+                else
+                    cout << setw(20) << "No";
+
+                if(temp2[i].getBuilt()== 0)
+                    cout << setw(20) << "N/A" << endl;
+                else
+                    cout << setw(20) << temp2[i].getYearBuilt() << endl;
+            }
+
+            while(correctCOption == false)
+            {
+                cout << TAB << "Please enter the correct number: ";
+                cin >> COption;
+
+                if(COption > temp2.size() || COption < 1 || !cin)
+                {
+                    cout << TAB << "That is not a valid number, please try again" << endl;
+                    cin.clear();
+                    cin.ignore();
+                }
+                else
+                {
+                    computerID = temp2[COption-1].getID();
+                    correctCOption = true;
+                    computerExists = true;
+                }
+            }
+        }
+
+        else
+        {
+            computerID = temp2[0].getID();
+            computerExists = true;
+        }
+    }
+}
 
 
 // Leitar að tölvu í gagnagrunni.
@@ -932,7 +1054,7 @@ void ConsoleUI::listingAndSorting()
 {
     string choice = "/0";
 
-    while(choice[0] != 'q' && choice[0] != 'Q')
+    while(choice != "q" && choice != "Q")
     {
         vector<Scientist> temp = sService.getScientists();
 
@@ -940,205 +1062,218 @@ void ConsoleUI::listingAndSorting()
         ws(cin);
         getline(cin, choice);
 
-        if(choice.length() > 1)
+
+        if(choice == "h" || choice == "H")
         {
-            cout << TAB << "invalid input" << endl;
+            features();
         }
-        else
+
+        else if(choice == "1")
         {
-            if(choice[0] == 'h' || choice[0] == 'H')
+            cout << endl;
+            cout << TAB << ">>> Reading Scientist(s) <<<" << endl << endl;
+            readScientists();
+        }
+
+        else if(choice == "2")
+        {
+            char sort;
+
+            displaySortOptions();
+
+            cin >> sort;
+            if(sort == '1')
             {
-                features();
+                displayListOfScientistsAlpha();
             }
-
-            else if(choice[0] == '1')
+            else if(sort == '2')
             {
-                cout << endl;
-                cout << TAB << ">>> Reading Scientist(s) <<<" << endl << endl;
-                readScientists();
+                displayListOfScientistsReversedAlpha();
             }
-
-            else if(choice[0] == '2')
+            else if(sort == '3')
             {
-                char sort;
-
-                displaySortOptions();
-
-                cin >> sort;
-                if(sort == '1')
-                {
-                    displayListOfScientistsAlpha();
-                }
-                else if(sort == '2')
-                {
-                    displayListOfScientistsReversedAlpha();
-                }
-                else if(sort == '3')
-                {
-                    displayListOfScientistsYoung();
-                }
-                else if(sort == '4')
-                {
-                    displayListOfScientistsOld();
-                }
-                else
-                {
-                    features();
-                }
+                displayListOfScientistsYoung();
             }
-
-            else if(choice[0] == '3')
+            else if(sort == '4')
             {
-                char searchOptions;
-
-                cout << endl;
-                cout << TAB << "What do you want to search for?" << endl;
-                cout << TAB << "Press 1 to search for a scientist witch a specific name." << endl;
-                cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
-                cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
-                cout << TAB << "Press 4 to search for a random Scientist." << endl;
-                cout << TAB << "Press any other number to go BACK to the menu." << endl;
-                cout << TAB << "" << endl;
-                cout << TAB << "----------------------------------------------------------------------------" << endl;
-                cout << TAB;
-
-                cin >> searchOptions;
-
-                if(searchOptions == '1')
-                {
-                    searchName();
-                }
-                else if(searchOptions == '2')
-                {
-                    searchDateOfBirth();
-                }
-                else if(searchOptions == '3')
-                {
-                    searchGender();
-                }
-                else if(searchOptions == '4')
-                {
-                    searchRandomScientist();
-                }
-                else
-                {
-                    features();
-                }
-            }
-
-            else if(choice[0] == '4')
-            {
-                stats();
-            }
-            else if (choice[0] == '5')
-            {
-                cout << endl;
-                cout << TAB << ">>> Reading Computer(s) <<<" << endl << endl;
-                readComputers();
-            }
-            else if (choice[0] == '6')
-            {
-                char sortComputer;
-                displayComputerSortOptions();
-
-                cin >> sortComputer;
-
-                if(sortComputer == '1')
-                {
-                    displayListOfComputersAlpha();
-                }
-                else if(sortComputer == '2')
-                {
-                    displayListOfComputersReversedAlpha();
-                }
-                else if(sortComputer == '3')
-                {
-                    displayListOfComputersYoung();
-                }
-                else if(sortComputer == '4')
-                {
-                    displayListOfComputersOld();
-                }
-                else
-                {
-                    features();
-                }
-            }
-            else if(choice[0] == '7')
-            {
-                char searchOptions;
-
-                cout << endl;
-                cout << TAB << "What do you want to search for?" << endl;
-                cout << TAB << "Press 1 to search by Computer's name." << endl;
-                cout << TAB << "Press 2 to search for all computers built in a specific year." << endl;
-                cout << TAB << "Press 3 to search for all computers of a specific type." << endl;
-                cout << TAB << "Press 4 to search for a random Computer." << endl;
-                cout << TAB << "Press 5 to search for a built Computer." << endl;
-                cout << TAB << "Press any other number to go BACK to the menu." << endl;
-                cout << TAB << "" << endl;
-                cout << TAB << "----------------------------------------------------------------------------" << endl;
-                cout << TAB;
-
-                cin >> searchOptions;
-
-                if(searchOptions == '1')
-                {
-                    searchComputer();
-                }
-                else if(searchOptions == '2')
-                {
-                    searchBuiltYear();
-                }
-                else if(searchOptions == '3')
-                {
-                    searchComputerType();
-                }
-                else if(searchOptions == '4')
-                {
-                    searchRandomComputer();
-                }
-                else if(searchOptions == '5')
-                {
-                    searchBuilt();
-                }
-                else
-                {
-                    features();
-                }
-            }
-
-            else if(choice[0] == '8')
-            {
-                cout << TAB << ">>> Linking Scientists and Computers <<<" << endl;
-                link();
-
-            }
-            else if(choice[0] == '9')
-            {
-                char option;
-                cout << TAB << "Enter 1 to delete a scientist or a computer. " << endl;
-                cout << TAB << "Enter 2 to edit a scientist or a computer. " << endl;
-                cout << TAB;
-                cin >> option;
-
-                if(option == '1')
-                {
-                    deleteOptions();
-                }
-                else if(option == '2')
-                {
-                    editOptions();
-                }
-            }
-            else if(choice[0] == 'q' || choice[0] == 'Q')
-            {
-                break;
+                displayListOfScientistsOld();
             }
             else
             {
-                cout << TAB << "invalid input" << endl;
+                features();
             }
+        }
+
+        else if(choice == "3")
+        {
+            string searchOptions;
+
+            cout << endl;
+            cout << TAB << "What do you want to search for?" << endl;
+            cout << TAB << "Press 1 to search for a scientist witch a specific name." << endl;
+            cout << TAB << "Press 2 to search for all scientists born in a specific year." << endl;
+            cout << TAB << "Press 3 to search for all scientists with a specific gender." << endl;
+            cout << TAB << "Press 4 to search for a random Scientist." << endl;
+            cout << TAB << "Press any other number to go BACK to the menu." << endl;
+            cout << TAB << "" << endl;
+            cout << TAB << "----------------------------------------------------------------------------" << endl;
+            cout << TAB;
+
+            cin >> searchOptions;
+
+            if(searchOptions == "1")
+            {
+                searchName();
+            }
+            else if(searchOptions == "2")
+            {
+                searchDateOfBirth();
+            }
+            else if(searchOptions == "3")
+            {
+                searchGender();
+            }
+            else if(searchOptions == "4")
+            {
+                searchRandomScientist();
+            }
+            else
+            {
+                features();
+            }
+        }
+
+        else if(choice == "4")
+        {
+            stats();
+        }
+        else if (choice == "5")
+        {
+            cout << endl;
+            cout << TAB << ">>> Reading Computer(s) <<<" << endl << endl;
+            readComputers();
+        }
+        else if (choice == "6")
+        {
+            char sortComputer;
+            displayComputerSortOptions();
+
+            cin >> sortComputer;
+
+            if(sortComputer == '1')
+            {
+                displayListOfComputersAlpha();
+            }
+            else if(sortComputer == '2')
+            {
+                displayListOfComputersReversedAlpha();
+            }
+            else if(sortComputer == '3')
+            {
+                displayListOfComputersYoung();
+            }
+            else if(sortComputer == '4')
+            {
+                displayListOfComputersOld();
+            }
+            else
+            {
+                features();
+            }
+        }
+        else if(choice == "7")
+        {
+            char searchOptions;
+
+            cout << endl;
+            cout << TAB << "What do you want to search for?" << endl;
+            cout << TAB << "Press 1 to search by Computer's name." << endl;
+            cout << TAB << "Press 2 to search for all computers built in a specific year." << endl;
+            cout << TAB << "Press 3 to search for all computers of a specific type." << endl;
+            cout << TAB << "Press 4 to search for a random Computer." << endl;
+            cout << TAB << "Press 5 to search for a built Computer." << endl;
+            cout << TAB << "Press any other number to go BACK to the menu." << endl;
+            cout << TAB << "" << endl;
+            cout << TAB << "----------------------------------------------------------------------------" << endl;
+            cout << TAB;
+
+            cin >> searchOptions;
+
+            if(searchOptions == '1')
+            {
+                searchComputer();
+            }
+            else if(searchOptions == '2')
+            {
+                searchBuiltYear();
+            }
+            else if(searchOptions == '3')
+            {
+                searchComputerType();
+            }
+            else if(searchOptions == '4')
+            {
+                searchRandomComputer();
+            }
+            else if(searchOptions == '5')
+            {
+                searchBuilt();
+            }
+            else
+            {
+                features();
+            }
+        }
+
+        else if(choice == "8")
+        {
+            cout << TAB << ">>> Linking Scientists and Computers <<<" << endl;
+            link();
+
+        }
+        else if(choice == "9")
+        {
+            string option;
+            cout << TAB << "Enter 1 to delete a scientist or a computer. " << endl;
+            cout << TAB << "Enter 2 to edit a scientist or a computer. " << endl;
+            cout << TAB;
+            cin >> option;
+
+            if(option == "1")
+            {
+                deleteOptions();
+            }
+            else if(option == "2")
+            {
+                editOptions();
+            }
+        }
+        else if(choice == "10")
+        {
+            string connectionOption = 0;
+
+            cout << "Press 1 to see all computers connected to a scientist" << endl;
+            cout << "Press 2 to see all scientists connected to a computer" << endl;
+            ws(cin);
+            getline(cin, connectionOption);
+
+            if(connectionOption == "1")
+            {
+                displayScientistComputerConnections();
+            }
+            else if(connectionOption == "2")
+            {
+                displayComputerScientistConnections();
+            }
+        }
+        else if(choice == "q" || choice == "Q")
+        {
+            break;
+        }
+        else
+        {
+            cout << TAB << "invalid input" << endl;
         }
     }
 }
+

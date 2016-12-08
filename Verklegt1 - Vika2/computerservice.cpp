@@ -151,10 +151,17 @@ int ComputerService::searchID(string computerName)
 
 void ComputerService::deleteComputer(int id)
 {
-     data.deleteComputer(id);
+    data.deleteComputer(id);
 }
 
 void ComputerService::editComputer(string name,int id, int buildYear, /*bool built,*/ string type)
 {
-     data.editComputer(name, id, buildYear /*built*/, type);
+    data.editComputer(name, id, buildYear /*built*/, type);
+}
+
+vector<Computer> ComputerService::getScientistID(int SID)
+{
+    vector<Computer> computersConnected;
+    computersConnected = data.computersConnectedToScientist(SID);
+    return computersConnected;
 }

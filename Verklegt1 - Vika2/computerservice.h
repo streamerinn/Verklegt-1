@@ -38,6 +38,9 @@ public:
 
     int searchID(string computerName);
 
+    // sendir ID og sækir Tölvur connectaðar við ID-ið
+    vector<Computer> getScientistID(int SID);
+
     int getConnections(); // returns how many connections there are
 
     void deleteComputer(int id);
