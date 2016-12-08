@@ -216,7 +216,6 @@ void ConsoleUI::searchComputer()
     if(temp.size() == 0)
     {
         cout << TAB << "There are no computers with the name" << name << " in our database. Please try again!";
-
     }
     else
     {
@@ -328,9 +327,6 @@ void ConsoleUI::link()
     string scientistName;
     string computerName;
 
-    string scientistOption;
-    string computerOption;
-
     size_t SOption;
     size_t COption;
     int scientistID = 0;
@@ -338,138 +334,142 @@ void ConsoleUI::link()
 
     vector<int> IDs;
 
-    //while((scientistExists == false) || (computerName == false))
-    //{
-        while(scientistExists == false)
+    while(scientistExists == false)
+    {
+        cout << TAB << "Please enter a scientist name or press Q to return to main menu: ";
+        ws(cin);
+        getline(cin, scientistName);
         {
-            cout << TAB << "Pleas enter a scientist name: ";
-            ws(cin);
-            getline(cin, scientistName);
-            vector<Scientist> temp1 = sService.searchName(scientistName);
-            if(temp1.size() == 0)
+            if(scientistName == "q" || scientistName == "Q")
             {
-                cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
+                return features();
             }
-            else if(temp1.size() > 1)
+        }
+        vector<Scientist> temp1 = sService.searchName(scientistName);
+        if(temp1.size() == 0)
+        {
+            cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again or press Q to quit: " << endl;
+        }
+        else if(temp1.size() > 1)
+        {
+            cout << TAB << "There is more than one " << scientistName << ". Which one is correct?" << endl;
+            cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+
+            for(size_t i = 0; i < temp1.size(); i++)
             {
-                cout << TAB << "There is more than one " << scientistName << ". Which one is correct?" << endl;
+
+                if(temp1[i].getDateOfDeath() == 0)
+                {
+                    cout << TAB << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender() << setw(15) << temp1[i].getDateOfBirth();
+                    cout << setw(15) << "Alive" << endl;
+                }
+                else
+                {
+                    cout << TAB  << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender();
+                    cout << setw(15) << temp1[i].getDateOfBirth() << setw(15) << temp1[i].getDateOfDeath() << endl;
+                }
                 cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+            }
 
-                for(size_t i = 0; i < temp1.size(); i++)
+            while(correctSOption == false)
+            {
+                cout << TAB << "Please enter the correct number: ";
+                cin >> SOption;
+
+
+                if(SOption > temp1.size() || SOption < 1 || !cin)
                 {
-
-                    if(temp1[i].getDateOfDeath() == 0)
-                    {
-                        cout << TAB << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender() << setw(15) << temp1[i].getDateOfBirth();
-                        cout << setw(15) << "Alive" << endl;
-                    }
-                    else
-                    {
-                        cout << TAB  << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender();
-                        cout << setw(15) << temp1[i].getDateOfBirth() << setw(15) << temp1[i].getDateOfDeath() << endl;
-                    }
-                    cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+                    cout << TAB << "That is not a valid number, please try again" << endl;
+                    cin.clear();
+                    cin.ignore();
                 }
-
-                while(correctSOption == false)
+                else
                 {
-                    cout << TAB << "Please enter the correct number: ";
-                    cin >> SOption;
-
-
-                    if(SOption > temp1.size() || SOption < 1 || !cin)
-                    {
-                        cout << TAB << "That is not a valid number, please try again" << endl;
-                        cin.clear();
-                        cin.ignore();
-                    }
-                    else
-                    {
-                        scientistID = temp1[SOption-1].getID();
-                        correctSOption = true;
-                        scientistExists = true;
-                    }
+                    scientistID = temp1[SOption-1].getID();
+                    correctSOption = true;
+                    scientistExists = true;
                 }
             }
-            else
-            {                                
-                scientistID = temp1[0].getID();
-                scientistExists = true;
+        }
+        else
+        {
+            scientistID = temp1[0].getID();
+            scientistExists = true;
+        }
+    }
+
+    while(computerExists == false)
+    {
+        cout << TAB << "Please enter a computer name or press Q to return to main menu: ";
+        ws(cin);
+        getline(cin, computerName);
+        if(computerName == "Q" || computerName == "q")
+        {
+            return features();
+        }
+        vector<Computer> temp2 = cService.searchComputerName(computerName);
+        if(temp2.size() == 0)
+        {
+            cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
+        }
+        else if(temp2.size() > 1)
+        {
+            cout << TAB << "There is more than one " << computerName << ". Which one is correct?" << endl;
+            cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+
+            for(size_t i = 0; i < temp2.size(); i++)
+            {
+                cout << TAB << i+1 << setw(15) << temp2[i].getComputerName() << setw(20) << temp2[i].getType();
+
+                if(temp2[i].getBuilt()==1)
+                    cout << setw(20) << "Yes";
+                else
+                    cout << setw(20) << "No";
+
+                if(temp2[i].getBuilt()== 0)
+                    cout << setw(20) << "N/A" << endl;
+                else
+                    cout << setw(20) << temp2[i].getYearBuilt() << endl;
+            }
+
+            while(correctCOption == false)
+            {
+                cout << TAB << "Please enter the correct number: ";
+                cin >> COption;
+
+                if(COption > temp2.size() || COption < 1 || !cin)
+                {
+                    cout << TAB << "That is not a valid number, please try again" << endl;
+                    cin.clear();
+                    cin.ignore();
+                }
+                else
+                {
+                    computerID = temp2[COption-1].getID();
+                    correctCOption = true;
+                    computerExists = true;
+                }
             }
         }
 
-
-
-        while(computerExists == false)
+        else
         {
-            cout << TAB << "Please enter a computer name: ";
-            ws(cin);
-            getline(cin, computerName);
-            vector<Computer> temp2 = cService.searchComputerName(computerName);
-            if(temp2.size() == 0)
-            {
-                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
-            }
-            else if(temp2.size() > 1)
-            {
-                cout << TAB << "There is more than one " << computerName << ". Which one is correct?" << endl;
-                cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
-
-                for(size_t i = 0; i < temp2.size(); i++)
-                {
-                    cout << TAB << i+1 << setw(15) << temp2[i].getComputerName() << setw(20) << temp2[i].getType();
-
-                    if(temp2[i].getBuilt()==1)
-                        cout << setw(20) << "Yes";
-                    else
-                        cout << setw(20) << "No";
-
-                    if(temp2[i].getBuilt()== 0)
-                        cout << setw(20) << "N/A" << endl;
-                    else
-                        cout << setw(20) << temp2[i].getYearBuilt() << endl;
-                }
-
-                while(correctCOption == false)
-                {
-                    cout << TAB << "Please enter the correct number: ";
-                    cin >> COption;
-
-                    if(COption > temp2.size() || COption < 1 || !cin)
-                    {
-                        cout << TAB << "That is not a valid number, please try again" << endl;
-                        cin.clear();
-                        cin.ignore();
-                    }
-                    else
-                    {
-                        computerID = temp2[COption-1].getID();
-                        correctCOption = true;
-                        computerExists = true;
-                    }
-                }
-            }
-
-            else
-            {
-                computerID = temp2[0].getID();
-                computerExists = true;
-            }
+            computerID = temp2[0].getID();
+            computerExists = true;
         }
+    }
 
+    // sækir ID-in
+    //scientistID = sService.searchID(scientistName);
+    //computerID = cService.searchID(computerName);
+    //scientistID = temp1[SOption-1];
+    //computerID = temp2[COption-1];
 
-        // sækir ID-in
-        //scientistID = sService.searchID(scientistName);
-        //computerID = cService.searchID(computerName);
-        //scientistID = temp1[SOption-1];
-        //computerID = temp2[COption-1];
+    IDs.push_back(scientistID);
+    IDs.push_back(computerID);
 
-        IDs.push_back(scientistID);
-        IDs.push_back(computerID);
-
-        // sendir ID-in í connection service
-        coService.getIDs(IDs);
-    //}
+    // sendir ID-in í connection service
+    coService.getIDs(IDs);
 }
 
 void ConsoleUI::readScientists()
