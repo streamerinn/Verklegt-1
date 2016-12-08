@@ -79,5 +79,14 @@ void ScientistDatabase::deleteScientist(int id)
     query.exec();
 }
 
+void ScientistDatabase::editScientist(int id)
+{
+   QSqlQuery query;
+   query.prepare("UPDATE scientists SET name=' ', gender= ' ', birthDate = '0', deathDate = '0' WHERE ID = ?");
+    // aaaaaaaaaaaaaaaa klara
+   query.addBindValue(id);
 
+   query.exec();
+
+}
 

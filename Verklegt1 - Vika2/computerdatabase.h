@@ -17,6 +17,7 @@ public:
     void insertRow(Computer computer);
     int countConnections(); // gets number of connections
     void deleteComputer(int id);
+    void editComputer(int id);
 
 private:
     QSqlDatabase db;

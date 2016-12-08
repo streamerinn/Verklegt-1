@@ -279,3 +279,8 @@ void ComputerService::deleteComputer(int id)
 {
     data.deleteComputer(id);
 }
+
+void ComputerService::editComputer(int id)
+{
+    data.editComputer(id);
+}

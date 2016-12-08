@@ -45,7 +45,7 @@ void ConsoleUI::features()
     cout << TAB << "Press 6 to list all computers. " << endl;
     cout << TAB << "Press 7 to search for a computer. " << endl;
     cout << TAB << "Press 8 to link Scientists and computers." << endl;
-    cout << TAB << "Press 9 to delete." << endl;
+    cout << TAB << "Press 9 to delete or edit a scientist or a computer." << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
@@ -630,6 +630,56 @@ void ConsoleUI::searchGender()
     }
 }
 
+void ConsoleUI::deleteOptions()
+{
+    char deleteButton;
+    int id;
+
+    cout << TAB << "Press 1 to delete a scientist. " << endl;
+    cout << TAB << "Press 2 to delete a computer. " << endl;
+    cout << TAB;
+    cin >> deleteButton;
+
+    if(deleteButton == '1')
+    {
+        cout << TAB << "Enter ID of scientist to delete: ";
+        cin >> id;
+        sService.deleteScientist(id);
+    }
+
+    else if(deleteButton == '2')
+    {
+        cout << TAB << "Enter ID of computer to delete: ";
+        cin >> id;
+        cService.deleteComputer(id);
+    }
+}
+
+void ConsoleUI::editOptions()
+{
+    char editButton;
+    int id;
+
+    cout << TAB << "Press 1 to edit a scientist. " << endl;
+    cout << TAB << "Press 2 to edit a computer. " << endl;
+    cout << TAB;
+    cin >> editButton;
+    if(editButton == '1')
+    {
+        cout << TAB << "Enter ID of scientist to edit: ";
+        cin >> id;
+        sService.editScientist(id);
+    }
+    else if(editButton == '2')
+    {
+        int name;
+        int age;
+        cout << TAB << "Enter ID of computer to edit: ";
+        cin >> id;
+        cService.editComputer(id);
+    }
+}
+
 void ConsoleUI::searchRandomScientist()
 {
     vector<Scientist> temp = sService.searchRandom();
@@ -672,8 +722,6 @@ void ConsoleUI::displayComputerSortOptions()
     cout << TAB << "" << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB;
-
-
 }
 
 
@@ -823,8 +871,6 @@ void ConsoleUI::listingAndSorting()
                 {
                     displayListOfComputersOld();
                 }
-
-
                 else
                 {
                     features();
@@ -882,31 +928,21 @@ void ConsoleUI::listingAndSorting()
             }
             else if(choice[0] == '9')
             {
-                char deleteButton;
-                int id;
-
-                cout << TAB << "Press 1 to delete a scientist " << endl;
-                cout << TAB << "Press 2 to delete a computer " << endl;
+                char option;
+                cout << TAB << endl;
+                cout << TAB << "Press 1 for deleting options. " << endl;
+                cout << TAB << "Press 2 for editing options. " << endl;
                 cout << TAB;
-                cin >> deleteButton;
-                if(deleteButton == '1')
+                cin >> option;
+                if(option == '1')
                 {
-                    cout << TAB << "Enter ID of scientist to delete: ";
-                    cin >> id;
-                    sService.deleteScientist(id);
+                    deleteOptions();
                 }
-
-                else if(deleteButton == '2')
+                else if(option == '2')
                 {
-                    cout << TAB << "Enter ID of computer to delete: ";
-                    cin >> id;
-                    cService.deleteComputer(id);
+                    editOptions();
                 }
-                else
-                {
-                    features();
-                }
-            }                     
+            }
             else if(choice[0] == 'q' || choice[0] == 'Q')
             {
                 break;

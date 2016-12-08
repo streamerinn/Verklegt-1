@@ -93,5 +93,15 @@ void ComputerDatabase::deleteComputer(int id)
         query.exec();
 }
 
+void ComputerDatabase::editComputer(int id)
+{
+    QSqlQuery query;
+    query.prepare("DELETE FROM Computers where ID = ?");
 
+    // herna er verið ad replacea "?" med ID breytunni
+    query.addBindValue(id);
+
+    // execute query
+    query.exec();
+}
 

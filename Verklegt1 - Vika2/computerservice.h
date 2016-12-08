@@ -41,6 +41,7 @@ public:
     int getConnections(); // returns how many connections there are
 
     void deleteComputer(int id);
+    void editComputer(int id);
 
 
 private:
