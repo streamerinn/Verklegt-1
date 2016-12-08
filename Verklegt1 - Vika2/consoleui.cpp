@@ -345,12 +345,15 @@ void ConsoleUI::link()
 
                 while(correctSOption == false)
                 {
-                    cout << TAB << "Pleas enter the correct number: ";
+                    cout << TAB << "Please enter the correct number: ";
                     cin >> SOption;
 
-                    if(SOption > temp1.size() || SOption < 1)
+
+                    if(SOption > temp1.size() || SOption < 1 || !cin)
                     {
-                        cout << TAB << "That is not a valid number, pleas try again" << endl;
+                        cout << TAB << "That is not a valid number, please try again" << endl;
+                        cin.clear();
+                        cin.ignore();
                     }
                     else
                     {
@@ -371,7 +374,7 @@ void ConsoleUI::link()
 
         while(computerExists == false)
         {
-            cout << TAB << "Pleas enter a computer name: ";
+            cout << TAB << "Please enter a computer name: ";
             ws(cin);
             getline(cin, computerName);
             vector<Computer> temp2 = cService.searchComputerName(computerName);
@@ -401,12 +404,14 @@ void ConsoleUI::link()
 
                 while(correctCOption == false)
                 {
-                    cout << TAB << "Pleas enter the correct number: ";
+                    cout << TAB << "Please enter the correct number: ";
                     cin >> COption;
 
-                    if(COption > temp2.size() || COption < 1)
+                    if(COption > temp2.size() || COption < 1 || !cin)
                     {
-                        cout << TAB << "That is not a valid number, pleas try again" << endl;
+                        cout << TAB << "That is not a valid number, please try again" << endl;
+                        cin.clear();
+                        cin.ignore();
                     }
                     else
                     {
