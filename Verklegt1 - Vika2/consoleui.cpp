@@ -199,6 +199,8 @@ void ConsoleUI::displayScientistComputerConnections()
     size_t SOption;
     int scientistID = 0;
 
+    //vector<Computer> connectedComputers;
+
     while(scientistExists == false)
     {
         cout << TAB << "Pleas enter a scientist name: ";
@@ -256,8 +258,9 @@ void ConsoleUI::displayScientistComputerConnections()
             scientistExists = true;
         }
     }
-    cService.getScientistID(scientistID);
+    vector<Computer> connectedComputers = cService.getScientistID(scientistID);
 
+    displayComputers(connectedComputers);
 
 }
 
@@ -328,6 +331,9 @@ void ConsoleUI::displayComputerScientistConnections()
             computerExists = true;
         }
     }
+    vector<Scientist> connectedScientists = sService.getComputerID(computerID);
+
+    display(connectedScientists);
 }
 
 // Leitar að tölvu í gagnagrunni.
@@ -1257,7 +1263,7 @@ void ConsoleUI::listingAndSorting()
         }
         else if(choice == "10")
         {
-            string connectionOption = 0;
+            string connectionOption = "/0";
 
             cout << "Press 1 to see all computers connected to a scientist" << endl;
             cout << "Press 2 to see all scientists connected to a computer" << endl;
