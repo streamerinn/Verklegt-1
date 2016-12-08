@@ -255,9 +255,6 @@ void ConsoleUI::searchBuilt()
     vector<Computer> temp = cService.searchBuilt(built);
 
     displayComputers(temp);
-
-
-
  }
 
 
@@ -665,11 +662,24 @@ void ConsoleUI::editOptions()
     cout << TAB << "Press 2 to edit a computer. " << endl;
     cout << TAB;
     cin >> editButton;
+    // #Edit scientist:
     if(editButton == '1')
     {
-        cout << TAB << "Enter ID of scientist to edit: ";
-        cin >> id;
+        cout << "Please enter ID to edit: ";
         sService.editScientist(id);
+        // cout Edit what?
+        //cout << "Please edit name.";
+
+
+        //if(what == name){
+            //editScientist(id, newname);
+
+
+
+
+       // cout << TAB << "Enter ID of scientist to edit: ";
+        //cin >> id;
+        //sService.editScientist(id);
     }
     else if(editButton == '2')
     {
@@ -677,6 +687,8 @@ void ConsoleUI::editOptions()
         cin >> id;
         cService.editComputer(id);
     }
+
+
 }
 
 void ConsoleUI::searchRandomScientist()
@@ -724,7 +736,6 @@ void ConsoleUI::displayComputerSortOptions()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB;
 }
-
 
 void ConsoleUI::displaySortOptions()
 {

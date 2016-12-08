@@ -101,6 +101,14 @@ void ScientistDatabase::deleteScientist(int id)
     query.exec();
 }
 
+/*
+void ScientistDatabase::editScientistName(int id){
+    QSqlQuery query;
+    query.prepare("UPDATE scientists SET name=")
+}
+*/
+
+
 void ScientistDatabase::editScientist(int id)
 {
    QSqlQuery query;

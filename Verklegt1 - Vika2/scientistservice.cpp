@@ -209,7 +209,13 @@ void ScientistService::deleteScientist(int id)
     data.deleteScientist(id);
 }
 
+
+// Senda með choice, t.d. name
 void ScientistService::editScientist(int id)
 {
+    // ifchoice == name{
+        //data.editScientistName(id,newname);
+    //}
+
     data.editScientist(id);
 }
