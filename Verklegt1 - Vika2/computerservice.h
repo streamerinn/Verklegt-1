@@ -38,15 +38,8 @@ public:
 
     int searchID(string computerName);
 
-<<<<<<< HEAD
-=======
     int getConnections(); // returns how many connections there are
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 31e8d7e12cc18684c2e282c66aa521b99a372330
->>>>>>> 98210d66be575f87a67ee17cd6cd7e96bec419ff
     void deleteComputer(int id);
     void editComputer(int id);
 

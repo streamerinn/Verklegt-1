@@ -277,9 +277,15 @@ void ConsoleUI::link()
 
     string scientistName;
     string computerName;
+    string Soption;
+    string Coption;
 
     int scientistID = 0;
     int computerID = 0;
+    int correctScientistID = 0;
+    int correctComputerID = 0;
+
+
 
     vector<int> IDs;
 
@@ -295,11 +301,27 @@ void ConsoleUI::link()
             {
                 cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
             }
-            else
+            else if(temp1.size() > 1)
             {
+                cout << "There is more than one " << scientistName << ". Which one is correct?" << endl;
+
+                for(size_t i = 0; i < temp1.size(); i++)
+                {
+                    cout << i+1 << " " << temp1[i].getName() <<endl;
+                }
+
+                cout << "Pleas enter the correct number: ";
+                cin >> Soption;
+
+            }
+            else
+            {                                
                 scientistExists = true;
+
             }
         }
+
+
 
         while(computerExists == false)
         {
@@ -319,8 +341,10 @@ void ConsoleUI::link()
 
 
         // sækir ID-in
-        scientistID = sService.searchID(scientistName);
-        computerID = cService.searchID(computerName);
+        //scientistID = sService.searchID(scientistName);
+        //computerID = cService.searchID(computerName);
+        //scientistID =
+        //computerID =
 
         IDs.push_back(scientistID);
         IDs.push_back(computerID);
@@ -673,8 +697,6 @@ void ConsoleUI::editOptions()
     }
     else if(editButton == '2')
     {
-        int name;
-        int age;
         cout << TAB << "Enter ID of computer to edit: ";
         cin >> id;
         cService.editComputer(id);
@@ -696,10 +718,10 @@ void ConsoleUI::stats()
     vector<Scientist> alive = sService.searchDateOfDeath(0);
     vector<Scientist> total = sService.getScientists();
     vector<Computer> computers = cService.getComputers();
-<<<<<<< HEAD
-=======
+
+
     int totalConnections = coService.getConnections();
->>>>>>> 31e8d7e12cc18684c2e282c66aa521b99a372330
+
     dead = total.size() - alive.size();
 
     cout << TAB << "---------------------------" << endl;
@@ -709,6 +731,7 @@ void ConsoleUI::stats()
     cout << TAB << alive.size() << " alive scientists" << endl;
     cout << TAB << dead << " dead scientists" << endl;
     cout << TAB << computers.size() << " computers" << endl;
+    cout << TAB << totalConnections << " connections" << endl;
     cout << TAB << "----------------------------" << endl << endl;
 
 }
@@ -920,7 +943,6 @@ void ConsoleUI::listingAndSorting()
                 {
                     features();
                 }
-
             }
 
             else if(choice[0] == '8')
@@ -931,11 +953,11 @@ void ConsoleUI::listingAndSorting()
             else if(choice[0] == '9')
             {
                 char option;
-                cout << TAB << endl;
-                cout << TAB << "Press 1 for deleting options. " << endl;
-                cout << TAB << "Press 2 for editing options. " << endl;
+                cout << TAB << "Enter 1 to delete a scientist or a computer. " << endl;
+                cout << TAB << "Enter 2 to edit a scientist or a computer. " << endl;
                 cout << TAB;
                 cin >> option;
+
                 if(option == '1')
                 {
                     deleteOptions();

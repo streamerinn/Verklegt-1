@@ -16,15 +16,10 @@ public:
     vector<Computer> computerDB();
     bool connectionCheck(QString name);
     void insertRow(Computer computer);
-<<<<<<< HEAD
-=======
-    int countConnections(); // gets number of connections
-<<<<<<< HEAD
+    vector<Computer> computersConnectedToScientist(int scientistsID);
 
-=======
-<<<<<<< HEAD
->>>>>>> 31e8d7e12cc18684c2e282c66aa521b99a372330
->>>>>>> 98210d66be575f87a67ee17cd6cd7e96bec419ff
+    int countConnections(); // gets number of connections
+
     void deleteComputer(int id);
     void editComputer(int id);
 

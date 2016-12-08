@@ -213,4 +213,3 @@ void ScientistService::editScientist(int id)
 {
     data.editScientist(id);
 }
-

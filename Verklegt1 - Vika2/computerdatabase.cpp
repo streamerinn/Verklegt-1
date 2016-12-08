@@ -86,11 +86,41 @@ void ComputerDatabase::insertRow(Computer computer)
     query.bindValue(":yearBuilt", yearBuilt);
     query.bindValue(":built", built);
     query.exec();
+
 }
 
-<<<<<<< HEAD
-void ComputerDatabase::deleteComputer(int id)
-=======
+vector<Computer> ComputerDatabase::computersConnectedToScientist(int scientistsID)
+{
+    QSqlQuery query(db);
+    vector<Computer> connectedComputer;
+
+    query.prepare("SELECT b.id, b.name, b.yearBuilt, b.type, b.built FROM Connections a, Computers b WHERE a.scientistsID = ? AND b.id = a.computersID");
+    query.addBindValue(scientistsID);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value("id").toUInt();
+        string name = query.value("name").toString().toStdString();
+        string type = query.value("type").toString().toStdString();
+        int yearBuilt;
+
+        if(!query.value("yearBuilt").isNull())
+        {
+            yearBuilt = query.value("yearBuilt").toUInt();
+        }
+        else
+        {
+            yearBuilt = 0;
+        }
+
+        int built = query.value("built").toUInt();
+
+        connectedComputer.push_back(Computer(id, name, type, yearBuilt, built));
+    }
+    return connectedComputer;
+}
+
 int ComputerDatabase::countConnections()
 {
     int counter = 0;
@@ -106,8 +136,8 @@ int ComputerDatabase::countConnections()
     return counter;
 }
 
-void ComputerDatabase::deleteComputer(char id)
->>>>>>> 31e8d7e12cc18684c2e282c66aa521b99a372330
+void ComputerDatabase::deleteComputer(int id)
+
 {
         QSqlQuery query;
         query.prepare("DELETE FROM Computers where ID = ?");
@@ -119,7 +149,6 @@ void ComputerDatabase::deleteComputer(char id)
         query.exec();
 }
 
-<<<<<<< HEAD
 void ComputerDatabase::editComputer(int id)
 {
     QSqlQuery query;
@@ -132,5 +161,3 @@ void ComputerDatabase::editComputer(int id)
     query.exec();
 }
 
-=======
->>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a
