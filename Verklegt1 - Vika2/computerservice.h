@@ -40,6 +40,8 @@ public:
 
     int getConnections(); // returns how many connections there are
 
+    void deleteComputer(int id);
+
 
 private:
     vector<Computer> computers;

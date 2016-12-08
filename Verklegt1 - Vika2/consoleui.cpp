@@ -42,10 +42,10 @@ void ConsoleUI::features()
     cout << TAB << "Press 3 to search for a scientist." << endl;
     cout << TAB << "Press 4 to get the database stats." << endl;
     cout << TAB << "Press 5 to add a computer." << endl;
-    cout << TAB << "Press 8 to link Scientists and computers." << endl;
     cout << TAB << "Press 6 to list all computers. " << endl;
     cout << TAB << "Press 7 to search for a computer. " << endl;
     cout << TAB << "Press 8 to link Scientists and computers." << endl;
+    cout << TAB << "Press 9 to delete." << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
@@ -880,12 +880,37 @@ void ConsoleUI::listingAndSorting()
                 cout << TAB << ">>> Linking Scientists and Computers <<<" << endl;
                 link();
             }
+            else if(choice[0] == '9')
+            {
+                char deleteButton;
+                int id;
 
+                cout << TAB << "Press 1 to delete a scientist " << endl;
+                cout << TAB << "Press 2 to delete a computer " << endl;
+                cout << TAB;
+                cin >> deleteButton;
+                if(deleteButton == '1')
+                {
+                    cout << TAB << "Enter ID of scientist to delete: ";
+                    cin >> id;
+                    sService.deleteScientist(id);
+                }
+
+                else if(deleteButton == '2')
+                {
+                    cout << TAB << "Enter ID of computer to delete: ";
+                    cin >> id;
+                    cService.deleteComputer(id);
+                }
+                else
+                {
+                    features();
+                }
+            }                     
             else if(choice[0] == 'q' || choice[0] == 'Q')
             {
                 break;
             }
-
             else
             {
                 cout << TAB << "invalid input" << endl;

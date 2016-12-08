@@ -67,6 +67,17 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.exec();
 }
 
+void ScientistDatabase::deleteScientist(int id)
+{
+    QSqlQuery query;
+    query.prepare("DELETE FROM Scientists where ID = ?");
+
+    // herna er verið ad replacea "?" med ID breytunni
+    query.addBindValue(id);
+
+    // execute query
+    query.exec();
+}
 
 
 

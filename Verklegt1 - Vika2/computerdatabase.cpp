@@ -80,3 +80,18 @@ int ComputerDatabase::countConnections()
 
     return counter;
 }
+
+void ComputerDatabase::deleteComputer(int id)
+{
+        QSqlQuery query;
+        query.prepare("DELETE FROM Computers where ID = ?");
+
+        // herna er verið ad replacea "?" med ID breytunni
+        query.addBindValue(id);
+
+        // execute query
+        query.exec();
+}
+
+
+
