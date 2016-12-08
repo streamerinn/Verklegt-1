@@ -188,6 +188,29 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     }
 }
 
+void ConsoleUI::listScientistConnections(vector<Scientist> scientists)
+{
+    cout << setw(55) << "CONNECTIONS" << endl;
+    cout << TAB << setw(15) << "Scientist" <<setw(20) << "Computer" << endl;
+    cout << "\t___________________________________________________________________________" << endl;
+    for(size_t i = 0; i < scientists.size(); i++)
+    {
+        cout << TAB << setw(15) << scientists[i].getName() << endl;
+        for(size_t j = 0; j < cService.getComputersID().size(); j++)
+        {
+            if(scientists[i].getID() == cService.getComputersID()[j].getID())
+            {
+                cout << TAB << setw(20) << endl;
+            }
+        }
+    }
+
+
+
+
+         cout << "\t---------------------------------------------------------------------------" << endl;
+}
+
 
 
 void ConsoleUI::displayScientistComputerConnections()
@@ -506,6 +529,7 @@ void ConsoleUI::link()
                 while(correctSOption == false)
                 {
                     cout << TAB << "Please enter the correct number: ";
+                    ws(cin);
                     cin >> SOption;
 
 
@@ -565,6 +589,7 @@ void ConsoleUI::link()
                 while(correctCOption == false)
                 {
                     cout << TAB << "Please enter the correct number: ";
+                    ws(cin);
                     cin >> COption;
 
                     if(COption > temp2.size() || COption < 1 || !cin)
@@ -1265,8 +1290,9 @@ void ConsoleUI::listingAndSorting()
         {
             string connectionOption = "/0";
 
-            cout << "Press 1 to see all computers connected to a scientist" << endl;
-            cout << "Press 2 to see all scientists connected to a computer" << endl;
+            cout << "Press 1 to see all computers connected to a specific scientist" << endl;
+            cout << "Press 2 to see all scientists connected to a specific computer" << endl;
+            cout << "Press 3 to see all scientists and their connections" << endl;
             ws(cin);
             getline(cin, connectionOption);
 
@@ -1277,6 +1303,10 @@ void ConsoleUI::listingAndSorting()
             else if(connectionOption == "2")
             {
                 displayComputerScientistConnections();
+            }
+            else if(connectionOption == "3")
+            {
+                listScientistConnections(temp);
             }
         }
         else if(choice == "q" || choice == "Q")
