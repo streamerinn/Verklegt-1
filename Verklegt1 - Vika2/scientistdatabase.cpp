@@ -7,16 +7,38 @@ using namespace std;
 //Default constructor
 ScientistDatabase::ScientistDatabase()
 {
+    QString connectionName = "scientistDB";
     dbName = "Skil2DB.sqlite";
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbName);
-    db.open();
+    if(!connectionCheck(connectionName))
+    {
+        db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+        db.setDatabaseName(dbName);
+        db.open();
+    }
+    else
+    {
+        db = QSqlDatabase::database(connectionName);
+    }
 }
 //Destructor
 ScientistDatabase::~ScientistDatabase()
 {
     QSqlDatabase::removeDatabase(dbName);
     db.close();
+}
+
+bool ScientistDatabase::connectionCheck(QString name)
+{
+    bool connected;
+    if(QSqlDatabase::contains(name))
+    {
+        connected = true;
+    }
+    else
+    {
+        connected = false;
+    }
+    return connected;
 }
 
 vector<Scientist> ScientistDatabase::scientistDB()

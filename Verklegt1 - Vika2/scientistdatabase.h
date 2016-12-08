@@ -13,12 +13,14 @@ public:
     ~ScientistDatabase();
 
     vector<Scientist> scientistDB();
+    bool connectionCheck(QString name);
     void insertRow(Scientist scientist);
     void deleteScientist(int id);
 
 private:
     QSqlDatabase db;
     QString dbName;
+    QString connectionName;
 
 };
 

@@ -10,7 +10,9 @@ class ConnectionDataBase
 {
 public:
     ConnectionDataBase();
+    ~ConnectionDataBase();
 
+    bool connectionCheck(QString name);
     int getscientistID(int scientistID);
     int getcomputerID(int computerID);
     void insertRow(vector<int> IDs);
@@ -18,6 +20,7 @@ public:
 private:
     QSqlDatabase db;
     QString dbName;
+    QString connectionName;
 };
 
 #endif // CONNECTIONDATABASE_H
