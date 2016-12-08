@@ -38,6 +38,8 @@ public:
     void deleteScientist(int id);
     void editScientist(int id, string gender,string name, int birth, int death);
 
+    vector<Scientist> getComputerID(int CID);
+
 private:
     vector<Scientist> scientists;
     ScientistDatabase data;

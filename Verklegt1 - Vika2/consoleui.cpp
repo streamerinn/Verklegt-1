@@ -336,7 +336,7 @@ void ConsoleUI::link()
 
     while(scientistExists == false)
     {
-        cout << TAB << "Please enter a scientist name or press Q to return to main menu: ";
+        cout << TAB << "Please enter a scientist name or press Q return to main menu: ";
         ws(cin);
         getline(cin, scientistName);
         {

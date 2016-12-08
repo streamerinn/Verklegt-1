@@ -53,6 +53,25 @@ struct ComputerComparisonOld
     }
 };
 
+struct ComputerComparisonID
+{
+    bool operator() (Computer i, Computer j)
+    {
+        int iID = i.getID();
+        int jID = j.getID();
+        return (iID<jID);
+    }
+};
+
+vector<Computer> ComputerService::getComputersID()
+{
+    ComputerComparisonID cmp;
+
+    sort(computers.begin(), computers.end(), cmp);
+
+    return computers;
+}
+
 vector<Computer> ComputerService::getComputersAlpha()
 {
     ComputerComparisonAlpha cmp;
@@ -129,7 +148,7 @@ vector<Computer> ComputerService::searchRandomComputer()
     return temp3;
 }
 
-vector<Computer> ComputerService::searchBuilt(const char built)
+vector<Computer> ComputerService::searchBuilt(char built)
 {
 
     return data.getBuilt(built);
@@ -151,10 +170,17 @@ int ComputerService::searchID(string computerName)
 
 void ComputerService::deleteComputer(int id)
 {
-     data.deleteComputer(id);
+    data.deleteComputer(id);
 }
 
 void ComputerService::editComputer(string name,int id, int buildYear, /*bool built,*/ string type)
 {
-     data.editComputer(name, id, buildYear /*built*/, type);
+    data.editComputer(name, id, buildYear /*built*/, type);
+}
+
+vector<Computer> ComputerService::getScientistID(int SID)
+{
+    vector<Computer> computersConnected;
+    computersConnected = data.computersConnectedToScientist(SID);
+    return computersConnected;
 }

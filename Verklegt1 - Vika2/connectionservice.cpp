@@ -1,5 +1,4 @@
 #include "connectionservice.h"
-//#include <iostream>
 
 //Constructor
 ConnectionService::ConnectionService()
