@@ -168,6 +168,26 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     }
 }
 
+
+
+void ConsoleUI::displayScientistConnections(vector<Scientist> scientist)
+{
+    cout << "\t Scientists and ID's"  << endl;
+    cout << "\t___________________________" << endl;
+    for(size_t i = 0; i < scientist.size(); i++)
+    {
+    cout << "\t ID: " << scientist[i].getID() << " " << scientist[i].getName() << endl;
+    //cout << TAB << "----------------------------------------------------------------------------" << endl;
+
+  }
+    cout << TAB << "---------------------------" << endl;
+
+}
+
+
+
+
+
 void ConsoleUI::searchComputer()
 {
     string name;
@@ -209,7 +229,7 @@ void ConsoleUI::searchBuiltYear()
 
 void ConsoleUI::searchComputerType()
 {
-    string choice;
+    char choice;
 
     cout << TAB << "Which type of computer do you want to search? " << endl;
     cout << TAB << "Press 'M' for Mechanical" << endl;
@@ -279,7 +299,12 @@ void ConsoleUI::link()
     //{
         while(scientistExists == false)
         {
-            cout << TAB << "Pleas enter a scientist name: ";
+
+             vector<Scientist> temp = coService.idName();
+             displayScientistConnections(temp);
+
+
+            cout << TAB << "Pleas enter a scientist ID: ";
             ws(cin);
             getline(cin, scientistName);
             vector<Scientist> temp1 = sService.searchName(scientistName);
@@ -295,7 +320,7 @@ void ConsoleUI::link()
 
         while(computerExists == false)
         {
-            cout << TAB << "Pleas enter a computer name: ";
+            cout << TAB << "Pleas enter a computer ID: ";
             ws(cin);
             getline(cin, computerName);
             vector<Computer> temp2 = cService.searchComputerName(computerName);

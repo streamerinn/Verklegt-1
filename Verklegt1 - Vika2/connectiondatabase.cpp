@@ -65,3 +65,32 @@ int ConnectionDataBase::countConnections()
 
     return counter;
 }
+
+
+vector<Scientist> ConnectionDataBase::getidName()
+{
+
+    vector<Scientist> temp;
+    QSqlQuery query(db);
+    query.exec("SELECT * FROM Scientists;");
+    //TODO: Laga villu - "unkown field name".
+    //      Kemur á fleiri stöðum þar sem ekki er notað SELECT *
+    while (query.next())
+    {
+        int id = query.value("id").toInt();
+        string name = query.value("name").toString().toStdString();
+        string gender = query.value("gender").toString().toStdString();
+        int dateOfBirth = query.value("birthDate").toInt();
+        int dateOfDeath = query.value("deathDate").toInt();
+
+        Scientist scientist (id, name, gender, dateOfBirth, dateOfDeath);
+        temp.push_back(scientist);
+
+
+    }
+
+    return temp;
+}
+
+
+

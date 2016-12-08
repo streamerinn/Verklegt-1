@@ -2,8 +2,9 @@
 #define CONNECTIONSERVICE_H
 
 #include <connectiondatabase.h>
+#include "scientist.h"
+#include<vector>
 
-#include <vector>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ public:
 
     void getIDs(vector<int> IDs);
     int getConnections();
+    vector<Scientist> idName();
 
 private:
     ConnectionDataBase connections;
