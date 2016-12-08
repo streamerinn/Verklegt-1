@@ -214,7 +214,7 @@ void ConsoleUI::listScientistConnections(vector<Scientist> scientists)
 
 
 void ConsoleUI::displayScientistComputerConnections()
-{      
+{
     bool scientistExists = false;
     bool correctSOption = false;
     string scientistName;
@@ -488,15 +488,21 @@ void ConsoleUI::link()
 
     //while((scientistExists == false) || (computerName == false))
     //{
-        while(scientistExists == false)
+    while(scientistExists == false)
         {
-            cout << TAB << "Pleas enter a scientist name: ";
+            cout << TAB << "Please enter a scientist name or press Q to return to main menu: ";
             ws(cin);
             getline(cin, scientistName);
+            {
+                if(scientistName == "q" || scientistName == "Q")
+                {
+                    return features();
+                }
+            }
             vector<Scientist> temp1 = sService.searchName(scientistName);
             if(temp1.size() == 0)
             {
-                cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
+                cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again or press Q to quit: " << endl;
             }
             else if(temp1.size() > 1)
             {
@@ -522,7 +528,6 @@ void ConsoleUI::link()
                 while(correctSOption == false)
                 {
                     cout << TAB << "Please enter the correct number: ";
-                    ws(cin);
                     cin >> SOption;
 
 
@@ -541,23 +546,25 @@ void ConsoleUI::link()
                 }
             }
             else
-            {                                
+            {
                 scientistID = temp1[0].getID();
                 scientistExists = true;
             }
         }
 
-
-
         while(computerExists == false)
         {
-            cout << TAB << "Please enter a computer name: ";
+            cout << TAB << "Please enter a computer name or press Q to return to main menu: ";
             ws(cin);
             getline(cin, computerName);
+            if(computerName == "Q" || computerName == "q")
+            {
+                return features();
+            }
             vector<Computer> temp2 = cService.searchComputerName(computerName);
             if(temp2.size() == 0)
             {
-                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
+                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
             }
             else if(temp2.size() > 1)
             {
@@ -582,7 +589,6 @@ void ConsoleUI::link()
                 while(correctCOption == false)
                 {
                     cout << TAB << "Please enter the correct number: ";
-                    ws(cin);
                     cin >> COption;
 
                     if(COption > temp2.size() || COption < 1 || !cin)
@@ -607,7 +613,6 @@ void ConsoleUI::link()
             }
         }
 
-
         // sækir ID-in
         //scientistID = sService.searchID(scientistName);
         //computerID = cService.searchID(computerName);
@@ -619,7 +624,6 @@ void ConsoleUI::link()
 
         // sendir ID-in í connection service
         coService.getIDs(IDs);
-    //}
 }
 
 void ConsoleUI::readScientists()
@@ -966,17 +970,18 @@ void ConsoleUI::editOptions()
     string name;
     int buildYear;
     //char built;
-    string type;
+    int type;
+    string tempType;
+    bool validType = false;
+
 
     //Scientist
     string Sname;
+    bool validGender = false;
     string gender;
+    string tempGender;
     int birth;
     int death;
-
-
-
-
 
 
 
@@ -989,37 +994,248 @@ void ConsoleUI::editOptions()
     {
         cout << TAB << "Enter ID of scientist to edit: ";
         cin >> id;
-        cout << TAB << "Enter new Gender: ";
-        cin >> gender;
+
+        if(!cin)
+        {
+            while(!cin)
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << TAB << "That is not a valid option. Please try again!";
+                cin >> id;
+
+            }
+        }
+
+
+
+
+
+
         cout << TAB << "Enter new Name: ";
-        cin >> Sname;
-        cout << TAB << "Enter new birth date: ";
+        ws(cin);
+        getline(cin,Sname);
+        do
+            {
+                if(Sname.empty())
+                {
+                    cout << TAB << "You cannot enter an empty name. Please try again: ";
+                    ws(cin);
+                    getline(cin, Sname);
+                }
+            }
+            while(Sname.empty());
+
+
+        cout << TAB << "Enter new Gender(M/F): ";
+
+
+        while(validGender ==false)
+        {
+        ws(cin);
+        getline(cin,tempGender);
+
+                if(tempGender != "M" && tempGender != "m" && tempGender != "F" && tempGender != "f")
+                {
+                   cout << TAB << tempGender << " is not a valid option" << endl;
+                   cout << TAB <<"Please enter a valid option: ";
+                }
+               if(tempGender == "M"||tempGender== "m")
+               {
+                   gender = "Male";
+                   validGender = true;
+               }
+               else if(tempGender == "F" || tempGender == "f")
+               {
+                   gender = "Female";
+                   validGender = true;
+               }
+        }
+
+
+
+        cout << TAB << "Enter new birth year: ";
         cin >> birth;
+
+        do
+            {
+                if(birth > 2016)
+                {
+                    cout << TAB << "Invalid date. Please try again: ";
+                    cin >> birth;
+                }
+                else if(birth < 0)
+                {
+                    cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
+                    cin >> birth;
+                }
+             }while(birth > 2016 || birth < 0);
+
+            do
+            {
+                if(birth > 2016)
+                {
+                    cout << TAB << "Invalid date. Please try again: ";
+                    cin >> birth;
+                }
+                else if(birth < 0)
+                {
+                    cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
+                    cin >> birth;
+                }
+             }while(birth > 2016 || birth < 0);
+
+             do
+             {
+                if(!cin)
+                {
+                    while((!cin))
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                        cout << TAB << "That is not a date, please try again: ";
+                        cin >> birth;
+                    }
+                }
+            }while(birth > 2016 && birth < 0);
+
+
+
         cout << TAB << "Enter death date, enter 0 if still alive: ";
         cin >> death;
-        sService.editScientist(id, gender, name, birth, death);
+
+        do
+            {
+                if(!cin)
+                {
+                    while((!cin))
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                        cout << TAB << "Invalid date, that is not a year, try again: ";
+                        cin >> death;
+                    }
+                }
+                else if((birth > death) && (death != 0))
+                {
+                    cout << TAB << "Not possible. A person cannot die before it is born, try again: ";
+                    cin >> death;
+                }
+                else if(death > 2016 && (death != 0))
+                {
+                    cout << TAB << "Not possibe. A person cannot die beyond the current year, try again: ";
+                    cin >> death;
+                }
+                else
+                {
+                    break;
+                }
+
+            }while((birth > death) || ((death > 2016) && (death != 0)));
+
+
+
+
+
+        sService.editScientist(id, gender, Sname, birth, death);
     }
+
     else if(editButton == '2')
     {
 
 
         cout << TAB << "Enter ID of computer to edit: ";
         cin >> id;
+
+
+
+          if(!cin)
+          {
+              while(!cin)
+              {
+                  cin.clear();
+                  cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                  cout << TAB << "That is not a valid option. Please try again!";
+                  cin >> id;
+
+              }
+          }
+
+
+
+
         cout << TAB << "Enter new name of computer: ";
-        cin >> name;
+        ws(cin);
+        getline(cin,name);
+        do
+            {
+                if(name.empty())
+                {
+                    cout << TAB << "You cannot enter an empty name. Please try again: ";
+                    ws(cin);
+                    getline(cin, name);
+                }
+            }
+            while(name.empty());
+
         cout << TAB << "Enter new build year: ";
         cin >> buildYear;
+
+        while(buildYear > 2016 || buildYear <=0)
+        {
+            cout << TAB << "Not a valid date, try again: ";
+            cin >> buildYear;
+        }
+
+        //TYPE
         cout << TAB << "Enter new type: ";
-        cin >> type;
-        cout << TAB << "Enter new built: ";
+        cout << TAB << "Please enter what type the computer is" << endl;
+        cout << TAB << "1. for Mechanical" << endl;
+        cout << TAB << "2. for Electronic" << endl;
+        cout << TAB << "3. for Tansistor" << endl;
+
+        while(validType == false)
+        {
+            cout << TAB;
+            cin >> type;
+
+            if((type > 3)||(type < 1))
+            {
+                cout << TAB << type << " is not a valid option" << endl;
+                cout << TAB <<"Please enter a valid option: ";
+            }
+
+           if(type == 1)
+          {
+            tempType = "Mechanical";
+            validType = true;
+          }
+
+         else if(type == 2)
+        {
+            tempType = "Electronic";
+            validType = true;
+         }
+
+        else if(type == 3)
+       {
+            tempType = "Transistor";
+            validType = true;
+       }
+    }
+
+
+
+
+
+        //cout << TAB << "Enter if built or not(Y/N): ";
+        //cin >>
         //cin >> built;
 
 
 
-        cService.editComputer(name, id, buildYear, /*built,*/ type);
+        cService.editComputer(name, id, buildYear, /*built,*/ tempType);
     }
-
-
 }
 
 void ConsoleUI::searchRandomScientist()
