@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <iomanip>
 #include "consoleui.h"
 
 using namespace std;
@@ -146,32 +147,46 @@ void ConsoleUI::readComputers()
 
 void ConsoleUI::displayComputers(vector<Computer> computers)
 {
-    cout << "\t Information about all listed computers"  << endl;
-    cout << "\t___________________________________________________________________________" << endl;
+    cout << setw(55) << "COMPUTERS" << endl;
+    cout << TAB << setw(15) << "Name" <<setw(15) << "Type" <<setw(20)<< "was it built?"
+         << setw(20) << "Year made" << endl;
+    cout << "\t______________________________________________________________________" << endl;
     for(size_t i = 0; i < computers.size(); i++)
     {
-        cout << "\t |Name: " << computers[i].getComputerName() << endl;
-        cout << "\t |Type: " << computers[i].getType() << endl;
-        if(computers[i].getYearBuilt() == 0)
-        {
-            cout << "\t |Year built: N/A " << endl;
-        }
+    cout << TAB << setw(15) << computers[i].getComputerName() << setw(15) << computers[i].getType();
+        if(computers[i].getBuilt()==1)
+            cout << setw(20) << "Yes";
         else
-        {
-            cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
-        }
+            cout << setw(20) << "No";
 
-        if (computers[i].getBuilt() == 1)
-        {
-            cout << "\t |Built: Yes" << endl;
-        }
+        if(computers[i].getYearBuilt()==0)
+            cout << setw(20) << "Was not made" << endl;
         else
-        {
-            cout << "\t |Built: No" << endl;
-        }
-        cout << TAB << "----------------------------------------------------------------------------" << endl;
+            cout << setw(20) << computers[i].getYearBuilt() << endl;
+
+         cout << "\t----------------------------------------------------------------------" << endl;
     }
 }
+
+
+
+void ConsoleUI::displayScientistConnections(vector<Scientist> scientist)
+{
+    cout << "\t Scientists and ID's"  << endl;
+    cout << "\t___________________________" << endl;
+    for(size_t i = 0; i < scientist.size(); i++)
+    {
+    cout << "\t ID: " << scientist[i].getID() << " " << scientist[i].getName() << endl;
+    //cout << TAB << "----------------------------------------------------------------------------" << endl;
+
+  }
+    cout << TAB << "---------------------------" << endl;
+
+}
+
+
+
+
 
 void ConsoleUI::searchComputer()
 {
@@ -214,7 +229,7 @@ void ConsoleUI::searchBuiltYear()
 
 void ConsoleUI::searchComputerType()
 {
-    string choice;
+    char choice;
 
     cout << TAB << "Which type of computer do you want to search? " << endl;
     cout << TAB << "Press 'M' for Mechanical" << endl;
@@ -274,16 +289,17 @@ void ConsoleUI::link()
 {
     bool scientistExists = false;
     bool computerExists = false;
+    bool correctSOption = false;
+    bool correctCOption = false;
 
     string scientistName;
     string computerName;
-    string Soption;
-    string Coption;
 
+    unsigned int SOption;
+    unsigned int COption;
     int scientistID = 0;
     int computerID = 0;
-    int correctScientistID = 0;
-    int correctComputerID = 0;
+
 
 
 
@@ -303,20 +319,47 @@ void ConsoleUI::link()
             }
             else if(temp1.size() > 1)
             {
-                cout << "There is more than one " << scientistName << ". Which one is correct?" << endl;
+                cout << TAB << "There is more than one " << scientistName << ". Which one is correct?" << endl;
+                cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
 
                 for(size_t i = 0; i < temp1.size(); i++)
                 {
-                    cout << i+1 << " " << temp1[i].getName() <<endl;
+
+                    if(temp1[i].getDateOfDeath() == 0)
+                    {
+                        cout << TAB << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender() << setw(15) << temp1[i].getDateOfBirth();
+                        cout << setw(15) << "Alive" << endl;
+                    }
+                    else
+                    {
+                        cout << TAB  << i+1 << TAB << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender();
+                        cout << setw(15) << setw(15) << temp1[i].getDateOfBirth() << setw(15) << temp1[i].getDateOfDeath() << endl;
+                    }
+                    cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
                 }
 
-                cout << "Pleas enter the correct number: ";
-                cin >> Soption;
+                while(correctSOption == false)
+                {
+                    cout << TAB << "Pleas enter the correct number: ";
+                    cin >> SOption;
+
+                    if(SOption > temp1.size() || SOption < 1)
+                    {
+                        cout << TAB << "That is not a valid number, pleas try again" << endl;
+                    }
+                    else
+                    {
+                        correctSOption = true;
+                        scientistExists = true;
+                    }
+                }
+
 
             }
             else
             {                                
                 scientistExists = true;
+                SOption = 1;
 
             }
         }
@@ -333,6 +376,34 @@ void ConsoleUI::link()
             {
                 cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
             }
+            else if(temp2.size() > 1)
+            {
+                cout << TAB << "There is more than one " << scientistName << ". Which one is correct?" << endl;
+                cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+
+                for(size_t i = 0; i < temp2.size(); i++)
+                {
+
+
+                }
+
+                while(correctSOption == false)
+                {
+                    cout << TAB << "Pleas enter the correct number: ";
+                    cin >> SOption;
+
+                    if(COption > temp2.size() || SOption < 1)
+                    {
+                        cout << TAB << "That is not a valid number, pleas try again" << endl;
+                    }
+                    else
+                    {
+                        correctSOption = true;
+                        scientistExists = true;
+                    }
+                }
+            }
+
             else
             {
                 computerExists = true;
@@ -343,7 +414,7 @@ void ConsoleUI::link()
         // sækir ID-in
         //scientistID = sService.searchID(scientistName);
         //computerID = cService.searchID(computerName);
-        //scientistID =
+        //scientistID = temp1[Soption-1];
         //computerID =
 
         IDs.push_back(scientistID);
@@ -506,41 +577,38 @@ void ConsoleUI::readScientists()
 
 void ConsoleUI::display(vector<Scientist> scientists)
 {
-    cout << "\t Information about all listed scientists" << endl;
-    cout << "\t___________________________________________________________________________" << endl;
-    for(size_t i = 0; i < scientists.size(); i++)
     {
-        int tempAge;
-        if (scientists[i].getDateOfDeath() != 0)
+        cout << setw(55) << "SCIENTISTS" << endl;
+        cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+        cout << TAB << setw(15) << "Name" <<setw(15) << "Gender" <<setw(15 )<< "Born"
+             << setw(15) << "Died" << setw(20) << "Age" << endl;
+        cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+        for(size_t i = 0; i < scientists.size(); i++)
         {
-            tempAge = scientists[i].getDateOfDeath() - scientists[i].getDateOfBirth();
-        }
-        else
-        {
-            tempAge = 2016 - scientists[i].getDateOfBirth();
-        }
+            int tempAge;
+            if (scientists[i].getDateOfDeath() != 0)
+            {
+                tempAge = scientists[i].getDateOfDeath() - scientists[i].getDateOfBirth();
+            }
+            else
+            {
+                tempAge = 2016 - scientists[i].getDateOfBirth();
+            }
 
-        cout << "\t |Name: " << scientists[i].getName() << endl;
-        cout << "\t |Gender: " << scientists[i].getGender() << endl;
-        cout << "\t |Born: " << scientists[i].getDateOfBirth() << endl;
+            if(scientists[i].getDateOfDeath() == 0)
+            {
+                cout << TAB << setw(15) << scientists[i].getName() << setw(15) << scientists[i].getGender() << setw(15) << scientists[i].getDateOfBirth();
+                cout << setw(15) << "Alive" << setw(20) << tempAge << endl;
+            }
+            else
+            {
+                cout << TAB << setw(15) << scientists[i].getName() << setw(15) << scientists[i].getGender();
+                cout << setw(15) << setw(15) << scientists[i].getDateOfBirth() << setw(15) << scientists[i].getDateOfDeath() << setw(20) << "age when died " << tempAge << endl;
+            }
 
-        //testing
-        //cout << "\t |ID: " << scientists[i].getID() << endl;
-
-        if(scientists[i].getDateOfDeath() == 0)
-        {
-            cout << "\t |Age: " << tempAge << endl;
-            cout << "\t |Still alive " << endl;
+            cout << TAB << setw(15) <<"-------------------------------------------------------------------------------------" << endl;
         }
-        else
-        {
-            cout << "\t |Died: " << scientists[i].getDateOfDeath() << endl;
-            cout << "\t |Died at the age of " << tempAge << endl;
-        }
-
-        cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
-    cout << endl;
 }
 
 void ConsoleUI::displayListOfComputersAlpha()
@@ -949,6 +1017,7 @@ void ConsoleUI::listingAndSorting()
             {
                 cout << TAB << ">>> Linking Scientists and Computers <<<" << endl;
                 link();
+
             }
             else if(choice[0] == '9')
             {

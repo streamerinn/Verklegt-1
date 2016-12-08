@@ -3,6 +3,7 @@
 
 #include <QtSql>
 #include <vector>
+#include"scientist.h"
 
 using namespace std;
 
@@ -17,6 +18,8 @@ public:
     int getcomputerID(int computerID);
     void insertRow(vector<int> IDs);
     int countConnections();
+
+    vector<Scientist> getidName();
 
 private:
     QSqlDatabase db;
