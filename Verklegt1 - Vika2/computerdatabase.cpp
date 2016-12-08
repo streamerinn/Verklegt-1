@@ -81,7 +81,7 @@ int ComputerDatabase::countConnections()
     return counter;
 }
 
-void ComputerDatabase::deleteComputer(int id)
+void ComputerDatabase::deleteComputer(char id)
 {
         QSqlQuery query;
         query.prepare("DELETE FROM Computers where ID = ?");
@@ -93,6 +93,7 @@ void ComputerDatabase::deleteComputer(int id)
         query.exec();
 }
 
+<<<<<<< HEAD
 void ComputerDatabase::editComputer(int id)
 {
     QSqlQuery query;
@@ -105,3 +106,5 @@ void ComputerDatabase::editComputer(int id)
     query.exec();
 }
 
+=======
+>>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a

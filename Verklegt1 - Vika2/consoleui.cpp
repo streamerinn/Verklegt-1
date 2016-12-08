@@ -516,6 +516,7 @@ void ConsoleUI::display(vector<Scientist> scientists)
 
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
+    cout << endl;
 }
 
 void ConsoleUI::displayListOfComputersAlpha()
@@ -695,7 +696,7 @@ void ConsoleUI::stats()
     vector<Scientist> alive = sService.searchDateOfDeath(0);
     vector<Scientist> total = sService.getScientists();
     vector<Computer> computers = cService.getComputers();
-    int totalConnections = cService.getConnections();
+    int totalConnections = coService.getConnections();
     dead = total.size() - alive.size();
 
     cout << TAB << "---------------------------" << endl;
@@ -733,7 +734,6 @@ void ConsoleUI::displaySortOptions()
     cout << TAB << "Press 2 for reversed alphabetical order." << endl;
     cout << TAB << "Press 3 to sort from youngest to oldest." << endl;
     cout << TAB << "Press 4 to sort from oldest to youngest." << endl;
-    cout << TAB << "Press 5 to sort from oldest to youngest." << endl;
     cout << TAB << "Press any other number to go BACK to the menu." << endl;
     cout << TAB << "" << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -928,6 +928,7 @@ void ConsoleUI::listingAndSorting()
             }
             else if(choice[0] == '9')
             {
+<<<<<<< HEAD
                 char option;
                 cout << TAB << endl;
                 cout << TAB << "Press 1 for deleting options. " << endl;
@@ -935,6 +936,16 @@ void ConsoleUI::listingAndSorting()
                 cout << TAB;
                 cin >> option;
                 if(option == '1')
+=======
+                char deleteButton;
+                char id;
+                cout << TAB << "Press 1 to delete a scientist " << endl;
+                cout << TAB << "Press 2 to delete a computer " << endl;
+                cout << TAB;
+                cin >> deleteButton;
+
+                if(deleteButton == '1')
+>>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a
                 {
                     deleteOptions();
                 }
@@ -942,7 +953,12 @@ void ConsoleUI::listingAndSorting()
                 {
                     editOptions();
                 }
+<<<<<<< HEAD
             }
+=======
+
+            }                     
+>>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a
             else if(choice[0] == 'q' || choice[0] == 'Q')
             {
                 break;

@@ -13,6 +13,7 @@ public:
     ConnectionService();
 
     void getIDs(vector<int> IDs);
+    int getConnections();
 
 private:
     ConnectionDataBase connections;

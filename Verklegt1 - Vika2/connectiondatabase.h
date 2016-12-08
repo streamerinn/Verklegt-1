@@ -14,6 +14,7 @@ public:
     int getscientistID(int scientistID);
     int getcomputerID(int computerID);
     void insertRow(vector<int> IDs);
+    int countConnections();
 
 private:
     QSqlDatabase db;
