@@ -222,9 +222,9 @@ vector<Computer> ComputerDatabase::getYearBuilt(int a)
         string name = query.value("name").toString().toStdString();
         string type = query.value("type").toString().toStdString();
         int yearBuilt = query.value("yearBuilt").toInt();
-        bool wasBuilt = query.value("built").toBool();
+        bool built = query.value("built").toBool();
 
-        Computer computer(id, name, type, yearBuilt, wasBuilt);
+        Computer computer(id, name, type, yearBuilt, built);
 
           temp1.push_back(computer);
     }
@@ -249,10 +249,10 @@ vector<Computer> ComputerDatabase::getType(char type)
                string name = query.value("name").toString().toStdString();
                string type = query.value("type").toString().toStdString();
                int yearBuilt = query.value("yearBuilt").toInt();
-               int wasBuilt = query.value("built").toInt();
+               int built = query.value("built").toInt();
 
 
-               Computer computer(id, name, type, yearBuilt, wasBuilt);
+               Computer computer(id, name, type, yearBuilt, built);
                temp2.push_back(computer);
            }
 }
@@ -266,9 +266,9 @@ vector<Computer> ComputerDatabase::getType(char type)
             string name = query.value("name").toString().toStdString();
             string type = query.value("type").toString().toStdString();
             int yearBuilt = query.value("yearBuilt").toInt();
-            int wasBuilt = query.value("built").toInt();
+            int built = query.value("built").toInt();
 
-            Computer computer(id, name, type, yearBuilt, wasBuilt);
+            Computer computer(id, name, type, yearBuilt, built);
             temp2.push_back(computer);
         }
    }
@@ -282,9 +282,9 @@ vector<Computer> ComputerDatabase::getType(char type)
            string name = query.value("name").toString().toStdString();
            string type = query.value("type").toString().toStdString();
            int yearBuilt = query.value("yearBuilt").toInt();
-           int wasBuilt = query.value("built").toInt();
+           int built = query.value("built").toInt();
 
-           Computer computer(id, name, type, yearBuilt, wasBuilt);
+           Computer computer(id, name, type, yearBuilt, built);
            temp2.push_back(computer);
        }
   }
@@ -351,9 +351,9 @@ vector<Computer> ComputerDatabase::getName (string name)
        string name = query.value("name").toString().toStdString();
        string type = query.value("type").toString().toStdString();
        int yearBuilt = query.value("yearBuilt").toInt();
-       int wasBuilt = query.value("built").toInt();
+       int built = query.value("built").toInt();
 
-       Computer computer(id, name, type, yearBuilt, wasBuilt);
+       Computer computer(id, name, type, yearBuilt, built);
        temp.push_back(computer);
    }
  return temp;
