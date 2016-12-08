@@ -1,5 +1,5 @@
 #include "connectiondatabase.h"
-#include <iostream> // eða þegar þetta er farið að virka
+//#include <iostream>
 
 //Constructor
 ConnectionDataBase::ConnectionDataBase()
@@ -41,13 +41,11 @@ bool ConnectionDataBase::connectionCheck(QString name)
 //Bætir við connection í Connections töfluna
 void ConnectionDataBase::insertRow(vector<int> IDs)
 {
-    cout << "database test " << IDs[0] << IDs[1];
-
     QSqlQuery query(db);
 
     QString scientists = QString::number(IDs[0]);
     QString computers = QString::number(IDs[1]);
-    cout << "INSERT INTO Connections (scientistsID, computersID) VALUES (" << scientists.toStdString()<< ", " << computers.toStdString() << ")" << endl;
+    //cout << "INSERT INTO Connections (scientistsID, computersID) VALUES (" << scientists.toStdString()<< ", " << computers.toStdString() << ")" << endl;
     query.prepare("INSERT INTO Connections (scientistsID, computersID) VALUES (:scientists, :computers)");
     query.bindValue(":scientists", scientists);
     query.bindValue(":computers", computers);

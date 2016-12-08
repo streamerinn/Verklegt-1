@@ -1,5 +1,5 @@
 #include "connectionservice.h"
-#include <iostream> // eyða
+//#include <iostream>
 
 //Constructor
 ConnectionService::ConnectionService()
@@ -9,8 +9,6 @@ ConnectionService::ConnectionService()
 
 void ConnectionService::getIDs(vector<int> IDs)
 {
-    cout << "service test" << IDs[0] << IDs[1] << endl;
-
     connections.insertRow(IDs);
 }
 

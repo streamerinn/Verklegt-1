@@ -60,14 +60,8 @@ void ConsoleUI::features()
     cout << endl;
 }
 
-
-
 void ConsoleUI::readComputers()
 {
-
-
-
-
     Computer temp;
 
     string tempComputerName = " ";
@@ -78,7 +72,6 @@ void ConsoleUI::readComputers()
 
     // Get name.
     cout << TAB << "Please enter a computer name: ";
-
     getline(cin, tempComputerName);
     while(tempComputerName.empty())
     {
@@ -155,6 +148,19 @@ void ConsoleUI::readComputers()
     }
 
     temp.setBuilt(tempMade);
+
+    char cont;
+    cout << TAB << "Do you want to add another computer? Press Y/y for yes or N/n for no:  ";
+    cin >> cont;
+    if(cont == 'y' || cont == 'Y')
+    {
+        cin.ignore();
+        readComputers();
+    }
+    else
+    {
+        features();
+    }
 
     cService.create(temp);
 }
@@ -255,6 +261,7 @@ void ConsoleUI::displayScientistComputerConnections()
 
 }
 
+
 // sýnir hvaða scientists eru tengdir við ákveðna tölvu
 void ConsoleUI::displayComputerScientistConnections()
 {
@@ -322,7 +329,6 @@ void ConsoleUI::displayComputerScientistConnections()
         }
     }
 }
-
 
 // Leitar að tölvu í gagnagrunni.
 void ConsoleUI::searchComputer()
@@ -734,6 +740,7 @@ void ConsoleUI::readScientists()
     cin >> cont;
     if(cont == 'y' || cont == 'Y')
     {
+        cin.ignore();
         readScientists();
     }
     else
