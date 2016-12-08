@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//Default constructor
+//Constructor
 ScientistDatabase::ScientistDatabase()
 {
     QString connectionName = "scientistDB";
@@ -26,7 +26,7 @@ ScientistDatabase::~ScientistDatabase()
     QSqlDatabase::removeDatabase(dbName);
     db.close();
 }
-
+//Notað til að checka hvort database-inn sé tengdur
 bool ScientistDatabase::connectionCheck(QString name)
 {
     bool connected;
@@ -40,7 +40,7 @@ bool ScientistDatabase::connectionCheck(QString name)
     }
     return connected;
 }
-
+//Tekur upplýsingar úr Scientists töflunni og skilar þeim í vector
 vector<Scientist> ScientistDatabase::scientistDB()
 {
     vector<Scientist> sVector;
@@ -71,7 +71,7 @@ vector<Scientist> ScientistDatabase::scientistDB()
 
     return sVector;
 }
-
+//Bætir scientist í Scientists töfluna
 void ScientistDatabase::insertRow(Scientist scientist)
 {
     QSqlQuery query(db);
@@ -88,7 +88,7 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.bindValue(":died", death);
     query.exec();
 }
-
+//Eyðir scientist úr Scientists töflunni
 void ScientistDatabase::deleteScientist(int id)
 {
     QSqlQuery query(db);
@@ -102,6 +102,7 @@ void ScientistDatabase::deleteScientist(int id)
     query.exec();
 }
 
+
 /*
 void ScientistDatabase::editScientistName(int id){
     QSqlQuery query;
@@ -110,6 +111,8 @@ void ScientistDatabase::editScientistName(int id){
 */
 
 
+
+//Breytir scientist í Scientists töflunni
 void ScientistDatabase::editScientist(int id)
 {
    QSqlQuery query;

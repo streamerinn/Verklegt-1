@@ -1,6 +1,7 @@
 #include "connectiondatabase.h"
 #include <iostream> // eða þegar þetta er farið að virka
 
+//Constructor
 ConnectionDataBase::ConnectionDataBase()
 {
     connectionName = "connectionDB";
@@ -16,13 +17,14 @@ ConnectionDataBase::ConnectionDataBase()
         db = QSqlDatabase::database(connectionName);
     }
 }
-
+//Destructor
 ConnectionDataBase::~ConnectionDataBase()
 {
     QSqlDatabase::removeDatabase(dbName);
     db.close();
 }
 
+//Notað til að checka hvort database-inn sé tengdur
 bool ConnectionDataBase::connectionCheck(QString name)
 {
     bool connected;
@@ -36,7 +38,7 @@ bool ConnectionDataBase::connectionCheck(QString name)
     }
     return connected;
 }
-
+//Bætir við connection í Connections töfluna
 void ConnectionDataBase::insertRow(vector<int> IDs)
 {
 
@@ -50,7 +52,7 @@ void ConnectionDataBase::insertRow(vector<int> IDs)
     query.bindValue(":computers", computers);
     query.exec();
 }
-
+//Telur connections í Connections töflunni
 int ConnectionDataBase::countConnections()
 {
     int counter = 0;

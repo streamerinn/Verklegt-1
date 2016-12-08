@@ -23,7 +23,7 @@ void ConsoleUI::WelcomeMenu()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
-
+//Menu með updated MAXIMUM THREEDEE
 void ConsoleUI::features()
 {
     cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -148,13 +148,13 @@ void ConsoleUI::readComputers()
 void ConsoleUI::displayComputers(vector<Computer> computers)
 {
     cout << setw(55) << "COMPUTERS" << endl;
-    cout << TAB << setw(15) << "Name" <<setw(15) << "Type" <<setw(20)<< "was it built?"
+    cout << TAB << setw(15) << "Name" <<setw(20) << "Type" <<setw(20)<< "was it built?"
          << setw(20) << "Year made" << endl;
-    cout << "\t______________________________________________________________________" << endl;
+    cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < computers.size(); i++)
     {
-    cout << TAB << setw(15) << computers[i].getComputerName() << setw(15) << computers[i].getType();
-        if(computers[i].getBuilt() == 1)
+    cout << TAB << setw(15) << computers[i].getComputerName() << setw(20) << computers[i].getType();
+        if(computers[i].getBuilt()==1)
             cout << setw(20) << "Yes";
         else
             cout << setw(20) << "No";
@@ -164,7 +164,7 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
         else
             cout << setw(20) << computers[i].getYearBuilt() << endl;
 
-         cout << "\t----------------------------------------------------------------------" << endl;
+         cout << "\t---------------------------------------------------------------------------" << endl;
     }
 }
 
@@ -737,7 +737,7 @@ void ConsoleUI::stats()
     vector<Computer> computers = cService.getComputers();
 
 
-    int totalConnections = cService.getConnections();
+    //int totalConnections = cService.getConnections();
 
     dead = total.size() - alive.size();
 

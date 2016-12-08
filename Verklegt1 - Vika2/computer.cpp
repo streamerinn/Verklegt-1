@@ -1,8 +1,6 @@
 #include "computer.h"
-#include <string>
-#include <iostream>
-#include <sstream>
 
+//Constructor
 Computer::Computer()
 {
     _id = 0;
@@ -11,7 +9,7 @@ Computer::Computer()
     _yearBuilt = 0;
     _built = 0;
 }
-
+//Constructor með parameters
 Computer::Computer(int id, string computerName, string type, int yearBuilt, int built)
 {
     _id = id;
@@ -21,7 +19,7 @@ Computer::Computer(int id, string computerName, string type, int yearBuilt, int 
     _built = built;
 }
 
-// get föll
+//Getters
 int Computer::getID()
 {
     return _id;
@@ -47,7 +45,7 @@ int Computer::getBuilt()
     return _built;
 }
 
-// set föll
+//Setters
 void Computer::setID(int id)
 {
     _id = id;

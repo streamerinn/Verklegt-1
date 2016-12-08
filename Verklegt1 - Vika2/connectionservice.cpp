@@ -1,6 +1,7 @@
 #include "connectionservice.h"
 #include <iostream> // eyða
 
+//Constructor
 ConnectionService::ConnectionService()
 {
 
