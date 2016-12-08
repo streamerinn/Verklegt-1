@@ -202,6 +202,7 @@ void ConsoleUI::displayScientistConnections(vector<Scientist> scientist)
 
 
 
+// Leitar að tölvu í gagnagrunni.
 void ConsoleUI::searchComputer()
 {
     string name;
@@ -219,50 +220,69 @@ void ConsoleUI::searchComputer()
     {
         displayComputers(temp);
     }
-
-
 }
 
+// Leitar að árinu sem tölva var byggð.
 void ConsoleUI::searchBuiltYear()
 {
     int year = 0;
     cout << TAB << "Enter the Computers built year: ";
     cin >> year;
 
+    while(year > 2016 || year < 0)
+    {
+        if(year > 2016)
+        {
+            cout << TAB << "Invalid date, a computer cannot be built in the future, try again: ";
+            cin >> year;
+        }
+        else if(year < 0)
+        {
+            cout << TAB << "Invalid date, a computer cannot be built before the year zero, try again: ";
+            cin >> year;
+        }
+    }
     vector<Computer> temp = cService.searchYearOfBuild(year);
+
     if (temp.size() == 0)
     {
-        cout << TAB << "There are no Computers in our database built " << year << ". Please try again!";
+        cout << TAB << "There are no Computers in our database built " << year << "." << endl;
     }
-
     else
     {
         displayComputers(temp);
     }
 }
 
+// Leitar að týpu tölvu.
 void ConsoleUI::searchComputerType()
 {
-    char choice;
+    char type;
 
     cout << TAB << "Which type of computer do you want to search? " << endl;
     cout << TAB << "Press 'M' for Mechanical" << endl;
     cout << TAB << "Press 'E' for Electronical" << endl;
     cout << TAB << "Press 'T' for Transistor" << endl;
-    cin >> choice;
+    cout << TAB;
 
+    cin >> type;
 
-
-    vector<Computer> temp = cService.searchType(choice);
+    while(type != 'E' && type != 'e' && type != 'M' && type != 'm' && type != 'T' && type != 't')
+    {
+        {
+            cout << TAB << "That is not a valid option, try again: ";
+            cin >> type;
+        }
+    }
+    vector<Computer> temp = cService.searchType(type);
     if (temp.size() == 0)
     {
-        cout << TAB << "No builts found";
+        cout << TAB << "No builts found" << endl;
     }
     else
     {
         displayComputers(temp);
     }
-
 }
 
 void ConsoleUI::searchBuilt()
