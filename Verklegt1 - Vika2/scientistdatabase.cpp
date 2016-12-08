@@ -91,24 +91,61 @@ void ScientistDatabase::insertRow(Scientist scientist)
 
 void ScientistDatabase::deleteScientist(int id)
 {
+
+    QString Sid;
+    Sid = QString::number(id);
     QSqlQuery query(db);
 
-    query.prepare("DELETE FROM Scientists where ID = ?");
+    query.prepare("DELETE FROM Computers where ID = (:Sid)");
+    query.bindValue(":Sid", Sid);
+    if(!query.exec())
+    {
+        qDebug() << query.lastError();
+    }
+    else
+    {
+        //query.exec();
+        qDebug("Deleted!");
+    }
 
-    // herna er verið ad replacea "?" med ID breytunni
-    query.addBindValue(id);
-
-    // execute query
-    query.exec();
 }
 
-void ScientistDatabase::editScientist(int id)
+void ScientistDatabase::editScientist(int id, string gender, string name, int birth, int death)
 {
-   QSqlQuery query;
-   query.prepare("UPDATE scientists SET name=' ', gender= ' ', birthDate = '0', deathDate = '0' WHERE ID = ?");
-    // aaaaaaaaaaaaaaaa klara
-   query.addBindValue(id);
+    QString Sid;
+    QString birthYear;
+    //QString builts(built);
+    QString deaths;
+    QString names;
+    QString genders;
 
-   query.exec();
+    names = QString::fromStdString(name);
+    Sid = QString::number(id);
+    birthYear = QString::number(birth);
+    //builts()  //QString::char(built);
+    genders = QString::fromStdString(gender);
+    deaths = QString::number(death);
+
+    QSqlQuery query(db);
+    //query.prepare("UPDATE Computers where ID = (:Compid);");
+    query.prepare("UPDATE Scientists SET name = (:name), birthDate = (:birthYear), deathDate = (:deaths), gender = (:genders) WHERE id = (:Sid)");
+   query.bindValue(":Sid", Sid);
+   query.bindValue(":name", names);
+   query.bindValue(":birthYear",birthYear);
+   query.bindValue(":deaths",deaths);
+   query.bindValue(":genders",genders);
+
+
+    //query.prepare("UPDATE Computers SET name =", [build year] = +buildYears+ ", type =" +types+", builts =" +builts+";");
+
+    if(!query.exec())
+    {
+        qDebug() << query.lastError();
+    }
+    else
+    {
+        //query.exec();
+        qDebug("Updated!");
+    }
 }
 

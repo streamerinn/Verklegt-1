@@ -209,7 +209,7 @@ void ScientistService::deleteScientist(int id)
     data.deleteScientist(id);
 }
 
-void ScientistService::editScientist(int id)
+void ScientistService::editScientist(int id, string gender, string name, int birth, int death)
 {
-    data.editScientist(id);
+    data.editScientist(id, gender, name, birth, death);
 }
