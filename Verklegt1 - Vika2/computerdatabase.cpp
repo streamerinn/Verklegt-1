@@ -22,7 +22,7 @@ ComputerDatabase::~ComputerDatabase()
     QSqlDatabase::removeDatabase(dbName);
     db.close();
 }
-
+//Checkar hvort database-inn er tengdur eða ekki
 bool ComputerDatabase::connectionCheck(QString name)
 {
     bool connected;
@@ -36,7 +36,7 @@ bool ComputerDatabase::connectionCheck(QString name)
     }
     return connected;
 }
-
+//Tekur upplýsingar úr database og skilar þeim í vector
 vector<Computer> ComputerDatabase::computerDB()
 {
     vector<Computer> computerVector;
@@ -49,8 +49,9 @@ vector<Computer> ComputerDatabase::computerDB()
     {
         int id = query.value("id").toUInt();
         string computerName = query.value("name").toString().toStdString();
-        // string type = query.value("type").toString().toStdString();
+        string type = query.value("type").toString().toStdString();
         int yearBuilt;
+        int built = query.value("built").toUInt();
 
 
         if(!query.value("yearBuilt").isNull())
@@ -61,8 +62,7 @@ vector<Computer> ComputerDatabase::computerDB()
         {
             yearBuilt = 0;
         }
-        string type = query.value("type").toString().toStdString();
-        int built = query.value("built").toUInt();
+
 
         computerVector.push_back(Computer(id, computerName, type, yearBuilt, built));
     }
@@ -70,7 +70,7 @@ vector<Computer> ComputerDatabase::computerDB()
     return computerVector;
 
 }
-
+//Bætir nýrri tölvu í Computers töfluna
 void ComputerDatabase::insertRow(Computer computer)
 {
     QSqlQuery query(db);
@@ -87,22 +87,7 @@ void ComputerDatabase::insertRow(Computer computer)
     query.bindValue(":built", built);
     query.exec();
 }
-
-int ComputerDatabase::countConnections()
-{
-    int counter = 0;
-
-    QSqlQuery query;
-    query.exec("SELECT * FROM Connections");
-
-    while (query.next())
-    {
-        counter++;
-    }
-
-    return counter;
-}
-
+//Eyðir tölvu úr Computers töflunni
 void ComputerDatabase::deleteComputer(int id)
 
 {
@@ -115,7 +100,7 @@ void ComputerDatabase::deleteComputer(int id)
         // execute query
         query.exec();
 }
-
+//Breytir tölvu í Computers töflunni
 void ComputerDatabase::editComputer(int id)
 {
     QSqlQuery query;
