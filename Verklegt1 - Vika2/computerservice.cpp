@@ -275,15 +275,12 @@ int ComputerService::getConnections()
     return data.countConnections();
 }
 
-void ComputerService::deleteComputer(char id)
+void ComputerService::deleteComputer(int id)
 {
     data.deleteComputer(id);
 }
 
-<<<<<<< HEAD
 void ComputerService::editComputer(int id)
 {
     data.editComputer(id);
 }
-=======
->>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a

@@ -673,8 +673,6 @@ void ConsoleUI::editOptions()
     }
     else if(editButton == '2')
     {
-        int name;
-        int age;
         cout << TAB << "Enter ID of computer to edit: ";
         cin >> id;
         cService.editComputer(id);
@@ -918,7 +916,6 @@ void ConsoleUI::listingAndSorting()
                 {
                     features();
                 }
-
             }
 
             else if(choice[0] == '8')
@@ -928,24 +925,13 @@ void ConsoleUI::listingAndSorting()
             }
             else if(choice[0] == '9')
             {
-<<<<<<< HEAD
                 char option;
-                cout << TAB << endl;
-                cout << TAB << "Press 1 for deleting options. " << endl;
-                cout << TAB << "Press 2 for editing options. " << endl;
+                cout << TAB << "Enter 1 to delete a scientist or a computer. " << endl;
+                cout << TAB << "Enter 2 to edit a scientist or a computer. " << endl;
                 cout << TAB;
                 cin >> option;
-                if(option == '1')
-=======
-                char deleteButton;
-                char id;
-                cout << TAB << "Press 1 to delete a scientist " << endl;
-                cout << TAB << "Press 2 to delete a computer " << endl;
-                cout << TAB;
-                cin >> deleteButton;
 
-                if(deleteButton == '1')
->>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a
+                if(option == '1')
                 {
                     deleteOptions();
                 }
@@ -953,12 +939,7 @@ void ConsoleUI::listingAndSorting()
                 {
                     editOptions();
                 }
-<<<<<<< HEAD
-            }
-=======
-
             }                     
->>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a
             else if(choice[0] == 'q' || choice[0] == 'Q')
             {
                 break;
