@@ -1,6 +1,6 @@
 #include "scientistdatabase.h"
 #include <sstream>
-#include <iostream>
+//#include <iostream>
 
 using namespace std;
 

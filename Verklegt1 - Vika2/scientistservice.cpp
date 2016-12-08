@@ -213,3 +213,10 @@ void ScientistService::editScientist(int id, string gender, string name, int bir
 {
     data.editScientist(id, gender, name, birth, death);
 }
+
+vector<Scientist> ScientistService::getComputerID(int CID)
+{
+    vector<Scientist> scientistsConnected;
+    scientistsConnected = data.scientistsConnectedToComputers(CID);
+    return scientistsConnected;
+}

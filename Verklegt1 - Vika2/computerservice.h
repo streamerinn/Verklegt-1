@@ -27,16 +27,20 @@ public:
     vector<Computer> getComputersYoung();
     vector<Computer> getComputersOld();
     vector<Computer> getComputersBuiltOrNot();
+    vector<Computer> getComputersID();
 
     vector<Computer> searchComputerName(string name);
     vector<Computer> searchYearOfBuild(int buildYear);
     vector<Computer> searchType(const char type);
-    vector<Computer> searchBuilt(const char built);
+    vector<Computer> searchBuilt(char built);
 
     vector<Computer> searchRandomComputer();
 
 
     int searchID(string computerName);
+
+    // sendir ID og sækir Tölvur connectaðar við ID-ið
+    vector<Computer> getScientistID(int SID);
 
     int getConnections(); // returns how many connections there are
 
