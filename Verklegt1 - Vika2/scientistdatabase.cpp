@@ -123,3 +123,33 @@ void ScientistDatabase::editScientist(int id)
    query.exec();
 }
 
+vector<Scientist> ScientistDatabase::scientistsConnectedToComputers(int computerID)
+{
+    QSqlQuery query(db);
+    vector<Scientist> connectedScientist;
+
+    query.prepare("SELECT b.id, b.name, b.gender, b.birthDate, b.deathDate FROM Connections a, Scientists b WHERE a.computersID = ? AND b.id = a.scientistsID");
+    query.addBindValue(computerID);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value("id").toUInt();
+        string name = query.value("name").toString().toStdString();
+        string gender = query.value("gender").toString().toStdString();
+        int birthDate = query.value("birthDate").toUInt();
+        int deathDate;
+
+        if(!query.value("deathDate").isNull())
+        {
+            deathDate = query.value("deathDate").toUInt();
+        }
+        else
+        {
+            deathDate = 0;
+        }
+
+        connectedScientist.push_back(Scientist(id, name, gender, birthDate, deathDate));
+    }
+    return connectedScientist;
+}

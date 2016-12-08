@@ -13,6 +13,7 @@ public:
     ~ScientistDatabase();
 
     vector<Scientist> scientistDB();
+    vector<Scientist> scientistsConnectedToComputers(int computerID);
     bool connectionCheck(QString name);
     void insertRow(Scientist scientist);
     void deleteScientist(int id);
