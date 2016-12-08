@@ -154,13 +154,13 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     for(size_t i = 0; i < computers.size(); i++)
     {
     cout << TAB << setw(15) << computers[i].getComputerName() << setw(15) << computers[i].getType();
-        if(computers[i].getBuilt()==1)
+        if(computers[i].getBuilt() == 1)
             cout << setw(20) << "Yes";
         else
             cout << setw(20) << "No";
 
-        if(computers[i].getYearBuilt()==0)
-            cout << setw(20) << "Was not made" << endl;
+        if(computers[i].getBuilt()== 0)
+            cout << setw(20) << "N/A" << endl;
         else
             cout << setw(20) << computers[i].getYearBuilt() << endl;
 
@@ -642,7 +642,18 @@ void ConsoleUI::deleteOptions()
         cout << TAB << "Enter ID of computer to delete: ";
         cin >> id;
         cService.deleteComputer(id);
+        //cout << cService.deleteComputer(id);
     }
+}
+
+
+void ConsoleUI::editName()
+{
+    /*
+    cout << "Please enter your current name: ";
+    cin >> name;
+    if(name == )
+    */
 }
 
 void ConsoleUI::editOptions()
@@ -657,8 +668,9 @@ void ConsoleUI::editOptions()
     // #Edit scientist:
     if(editButton == '1')
     {
-        cout << "Please enter ID to edit: ";
-        sService.editScientist(id);
+        editName();
+
+        //sService.editScientist(id);
         // cout Edit what?
         //cout << "Please edit name.";
 
@@ -700,7 +712,7 @@ void ConsoleUI::stats()
     vector<Computer> computers = cService.getComputers();
 
 
-    int totalConnections = coService.getConnections();
+    int totalConnections = cService.getConnections();
 
     dead = total.size() - alive.size();
 

@@ -63,6 +63,7 @@ private:
     void searchRandomScientist();
     void deleteOptions();
     void editOptions();
+    void editName();
 
 
     void stats();
