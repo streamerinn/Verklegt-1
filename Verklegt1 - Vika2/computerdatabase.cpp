@@ -66,3 +66,30 @@ void ComputerDatabase::insertRow(Computer computer)
     query.exec();
 }
 
+int ComputerDatabase::countConnections()
+{
+    int counter = 0;
+
+    QSqlQuery query;
+    query.exec("SELECT * FROM Connections");
+
+    while (query.next())
+    {
+        counter++;
+    }
+
+    return counter;
+}
+
+void ComputerDatabase::deleteComputer(char id)
+{
+        QSqlQuery query;
+        query.prepare("DELETE FROM Computers where ID = ?");
+
+        // herna er verið ad replacea "?" med ID breytunni
+        query.addBindValue(id);
+
+        // execute query
+        query.exec();
+}
+

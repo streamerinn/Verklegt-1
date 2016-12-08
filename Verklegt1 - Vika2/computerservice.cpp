@@ -53,10 +53,6 @@ struct ComputerComparisonOld
     }
 };
 
-
-struct
-
-
 vector<Computer> ComputerService::getComputersAlpha()
 {
     ComputerComparisonAlpha cmp;
@@ -272,5 +268,15 @@ int ComputerService::searchID(string computerName)
         }
     }
     return computerID;
+}
+
+int ComputerService::getConnections()
+{
+    return data.countConnections();
+}
+
+void ComputerService::deleteComputer(char id)
+{
+    data.deleteComputer(id);
 }
 

@@ -59,7 +59,8 @@ private:
     void searchBuilt();
 
 
-
+    void deleteScientist();
+    void deleteComputer();
 
     void searchName();
     void searchDateOfBirth();

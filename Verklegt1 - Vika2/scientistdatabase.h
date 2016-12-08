@@ -14,6 +14,8 @@ public:
 
     vector<Scientist> scientistDB();
     void insertRow(Scientist scientist);
+    void deleteScientist(char id);
+
 private:
     QSqlDatabase db;
     QString dbName;

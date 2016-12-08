@@ -42,10 +42,10 @@ void ConsoleUI::features()
     cout << TAB << "Press 3 to search for a scientist." << endl;
     cout << TAB << "Press 4 to get the database stats." << endl;
     cout << TAB << "Press 5 to add a computer." << endl;
-    cout << TAB << "Press 8 to link Scientists and computers." << endl;
     cout << TAB << "Press 6 to list all computers. " << endl;
     cout << TAB << "Press 7 to search for a computer. " << endl;
     cout << TAB << "Press 8 to link Scientists and computers." << endl;
+    cout << TAB << "Press 9 to delete." << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
@@ -139,7 +139,7 @@ void ConsoleUI::readComputers()
         temp.setYearBuilt(0);
     }
 
-    temp.setBuilt(tempMade);  //???
+    temp.setBuilt(tempMade);
 
     cService.create(temp);
 }
@@ -152,14 +152,22 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     {
         cout << "\t |Name: " << computers[i].getComputerName() << endl;
         cout << "\t |Type: " << computers[i].getType() << endl;
-        cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
-        cout << "\t |Built: " << computers[i].getBuilt() << endl;
+        if(computers[i].getYearBuilt() == 0)
         {
-            /*
-            if(computers[i].getBuilt == 'y')
-            {
-                cout << "Yes";
-            }*/
+            cout << "\t |Year built: N/A " << endl;
+        }
+        else
+        {
+            cout << "\t |Year built: " << computers[i].getYearBuilt() << endl;
+        }
+
+        if (computers[i].getBuilt() == 1)
+        {
+            cout << "\t |Built: Yes" << endl;
+        }
+        else
+        {
+            cout << "\t |Built: No" << endl;
         }
         cout << TAB << "----------------------------------------------------------------------------" << endl;
     }
@@ -188,7 +196,6 @@ void ConsoleUI::searchComputer()
 
 void ConsoleUI::searchBuiltYear()
 {
-
     int year = 0;
     cout << TAB << "Enter the Computers built year: ";
     cin >> year;
@@ -203,8 +210,6 @@ void ConsoleUI::searchBuiltYear()
     {
         displayComputers(temp);
     }
-
-
 }
 
 void ConsoleUI::searhComputerType()
@@ -875,12 +880,34 @@ void ConsoleUI::listingAndSorting()
                 cout << TAB << ">>> Linking Scientists and Computers <<<" << endl;
                 link();
             }
+            else if(choice[0] == '9')
+            {
+                char deleteButton;
+                char id;
+                cout << TAB << "Press 1 to delete a scientist " << endl;
+                cout << TAB << "Press 2 to delete a computer " << endl;
+                cout << TAB;
+                cin >> deleteButton;
 
+                if(deleteButton == '1')
+                {
+                    cout << TAB << "Enter ID of scientist to delete: ";
+                    cin >> id;
+                    sService.deleteScientist(id);
+                }
+
+                else if(deleteButton == '2')
+                {
+                    cout << TAB << "Enter ID of computer to delete: ";
+                    cin >> id;
+                    cService.deleteComputer(id);
+                }
+
+            }                     
             else if(choice[0] == 'q' || choice[0] == 'Q')
             {
                 break;
             }
-
             else
             {
                 cout << TAB << "invalid input" << endl;
