@@ -23,3 +23,18 @@ void ConnectionDataBase::insertRow(vector<int> IDs)
     query.bindValue(":computers", computers);
     query.exec();
 }
+
+int ConnectionDataBase::countConnections()
+{
+    int counter = 0;
+
+    QSqlQuery query;
+    query.exec("SELECT * FROM Connections");
+
+    while (query.next())
+    {
+        counter++;
+    }
+
+    return counter;
+}

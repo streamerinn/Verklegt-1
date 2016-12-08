@@ -66,17 +66,3 @@ void ComputerDatabase::insertRow(Computer computer)
     query.exec();
 }
 
-int ComputerDatabase::countConnections()
-{
-    int counter = 0;
-
-    QSqlQuery query;
-    query.exec("SELECT * FROM Connections");
-
-    while (query.next())
-    {
-        counter++;
-    }
-
-    return counter;
-}

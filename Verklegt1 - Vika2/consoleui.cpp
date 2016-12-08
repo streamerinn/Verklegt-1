@@ -641,7 +641,7 @@ void ConsoleUI::stats()
     vector<Scientist> alive = sService.searchDateOfDeath(0);
     vector<Scientist> total = sService.getScientists();
     vector<Computer> computers = cService.getComputers();
-    int totalConnections = cService.getConnections();
+    int totalConnections = coService.getConnections();
     dead = total.size() - alive.size();
 
     cout << TAB << "---------------------------" << endl;

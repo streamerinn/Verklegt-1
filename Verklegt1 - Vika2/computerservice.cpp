@@ -274,7 +274,3 @@ int ComputerService::searchID(string computerName)
     return computerID;
 }
 
-int ComputerService::getConnections()
-{
-    return data.countConnections();
-}
