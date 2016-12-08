@@ -54,7 +54,7 @@ private:
 
     void searchComputer();
     void searchBuiltYear();
-    void searhComputerType();
+    void searchComputerType();
     void searchRandomComputer();
     void searchBuilt();
     void searchName();

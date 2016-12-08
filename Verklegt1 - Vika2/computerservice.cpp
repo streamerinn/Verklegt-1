@@ -94,8 +94,8 @@ vector<Computer> ComputerService::getComputersOld()
     return computers;
 }
 
-//Skilar einum scientist inn í vectorinn.
-//Skilar einum scientist í database, þar sem hann verður sendur inn í textaskrá.
+//Skilar einni computer inn í vectorinn.
+//Skilar einni computer í database, þar sem hann verður sendur inn í textaskrá.
 void ComputerService::create(Computer computer)
 {
     data.insertRow(computer);
@@ -270,12 +270,16 @@ int ComputerService::searchID(string computerName)
     return computerID;
 }
 
+<<<<<<< HEAD
+void ComputerService::deleteComputer(int id)
+=======
 int ComputerService::getConnections()
 {
     return data.countConnections();
 }
 
 void ComputerService::deleteComputer(char id)
+>>>>>>> 31e8d7e12cc18684c2e282c66aa521b99a372330
 {
     data.deleteComputer(id);
 }
