@@ -23,6 +23,11 @@ public:
     void deleteComputer(int id);
     void editComputer(int id);
 
+        vector<Computer> getYearBuilt(int a);
+        vector<Computer> getType(char a);
+        vector<Computer> getBuilt(char built);
+        vector<Computer> getName (string name);
+
 private:
     QSqlDatabase db;
     QString dbName;

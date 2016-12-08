@@ -34,6 +34,7 @@ private:
 
     void display(vector<Scientist> scientists);
     void displayComputers(vector<Computer> computers);
+    void displayScientistConnections(vector<Scientist> scientists);
     void readComputers();
     void readScientists();
 
