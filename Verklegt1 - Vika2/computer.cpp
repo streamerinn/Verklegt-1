@@ -21,6 +21,7 @@ Computer::Computer(int id, string computerName, string type, int yearBuilt, int 
     _built = built;
 }
 
+// get föll
 int Computer::getID()
 {
     return _id;
@@ -46,6 +47,7 @@ int Computer::getBuilt()
     return _built;
 }
 
+// set föll
 void Computer::setID(int id)
 {
     _id = id;

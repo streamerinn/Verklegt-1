@@ -270,7 +270,24 @@ int ComputerService::searchID(string computerName)
     return computerID;
 }
 
+<<<<<<< HEAD
 void ComputerService::deleteComputer(int id)
+=======
+int ComputerService::getConnections()
+{
+    return data.countConnections();
+}
+
+void ComputerService::deleteComputer(char id)
+>>>>>>> 31e8d7e12cc18684c2e282c66aa521b99a372330
 {
     data.deleteComputer(id);
 }
+
+<<<<<<< HEAD
+void ComputerService::editComputer(int id)
+{
+    data.editComputer(id);
+}
+=======
+>>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a

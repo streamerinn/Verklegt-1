@@ -203,8 +203,14 @@ int ScientistService::searchID(string scientistName)
     return scientistID;
 }
 
-void ScientistService::deleteScientist(int id)
+void ScientistService::deleteScientist(char id)
 {
     // kalla bara a database fallið sem sér um að deletea
     data.deleteScientist(id);
 }
+
+void ScientistService::editScientist(int id)
+{
+    data.editScientist(id);
+}
+

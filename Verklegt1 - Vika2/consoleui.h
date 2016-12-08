@@ -57,15 +57,12 @@ private:
     void searchComputerType();
     void searchRandomComputer();
     void searchBuilt();
-
-
-    void deleteScientist();
-    void deleteComputer();
-
     void searchName();
     void searchDateOfBirth();
     void searchGender();
     void searchRandomScientist();
+    void deleteOptions();
+    void editOptions();
 
 
     void stats();

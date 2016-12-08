@@ -35,7 +35,12 @@ public:
 
     int searchID(string scientistName);
 
+<<<<<<< HEAD
     void deleteScientist(int id);
+    void editScientist(int id);
+=======
+    void deleteScientist(char id);
+>>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a
 
 private:
     vector<Scientist> scientists;

@@ -88,7 +88,26 @@ void ComputerDatabase::insertRow(Computer computer)
     query.exec();
 }
 
+<<<<<<< HEAD
 void ComputerDatabase::deleteComputer(int id)
+=======
+int ComputerDatabase::countConnections()
+{
+    int counter = 0;
+
+    QSqlQuery query;
+    query.exec("SELECT * FROM Connections");
+
+    while (query.next())
+    {
+        counter++;
+    }
+
+    return counter;
+}
+
+void ComputerDatabase::deleteComputer(char id)
+>>>>>>> 31e8d7e12cc18684c2e282c66aa521b99a372330
 {
         QSqlQuery query;
         query.prepare("DELETE FROM Computers where ID = ?");
@@ -100,5 +119,18 @@ void ComputerDatabase::deleteComputer(int id)
         query.exec();
 }
 
+<<<<<<< HEAD
+void ComputerDatabase::editComputer(int id)
+{
+    QSqlQuery query;
+    query.prepare("DELETE FROM Computers where ID = ?");
 
+    // herna er verið ad replacea "?" med ID breytunni
+    query.addBindValue(id);
 
+    // execute query
+    query.exec();
+}
+
+=======
+>>>>>>> f14cac9a03602b904aa2b58670376bc7f3e6894a

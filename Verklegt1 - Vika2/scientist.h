@@ -12,21 +12,24 @@ class Scientist
 {
 public:
 
+    // constructorar
     Scientist();
+    Scientist(int id, string name, string gender, int dateOfBirth, int dateOfDeath);
+
+    // get föll
     int getID();
     string getName();
     string getGender();
     int getDateOfBirth();
     int getDateOfDeath();
 
+    // set föll
     void setID(int id);
     void setName(string name);
     void setsecondName(string secondName);
     void setGender(string gender);
     void setDateOfBirth(int birth);
     void setDateOfDeath(int death);
-
-    Scientist(int id, string name, string gender, int dateOfBirth, int dateOfDeath);
 
 private:
 
