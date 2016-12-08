@@ -883,12 +883,12 @@ void ConsoleUI::listingAndSorting()
             else if(choice[0] == '9')
             {
                 char deleteButton;
-                int id;
-
+                char id;
                 cout << TAB << "Press 1 to delete a scientist " << endl;
                 cout << TAB << "Press 2 to delete a computer " << endl;
                 cout << TAB;
                 cin >> deleteButton;
+
                 if(deleteButton == '1')
                 {
                     cout << TAB << "Enter ID of scientist to delete: ";
@@ -902,10 +902,7 @@ void ConsoleUI::listingAndSorting()
                     cin >> id;
                     cService.deleteComputer(id);
                 }
-                else
-                {
-                    features();
-                }
+
             }                     
             else if(choice[0] == 'q' || choice[0] == 'Q')
             {

@@ -67,7 +67,7 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.exec();
 }
 
-void ScientistDatabase::deleteScientist(int id)
+void ScientistDatabase::deleteScientist(char id)
 {
     QSqlQuery query;
     query.prepare("DELETE FROM Scientists where ID = ?");

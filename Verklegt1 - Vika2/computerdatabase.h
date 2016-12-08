@@ -16,7 +16,7 @@ public:
     vector<Computer> computerDB();
     void insertRow(Computer computer);
     int countConnections(); // gets number of connections
-    void deleteComputer(int id);
+    void deleteComputer(char id);
 
 private:
     QSqlDatabase db;

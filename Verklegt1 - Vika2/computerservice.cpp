@@ -275,7 +275,7 @@ int ComputerService::getConnections()
     return data.countConnections();
 }
 
-void ComputerService::deleteComputer(int id)
+void ComputerService::deleteComputer(char id)
 {
     data.deleteComputer(id);
 }

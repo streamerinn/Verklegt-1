@@ -35,7 +35,7 @@ public:
 
     int searchID(string scientistName);
 
-    void deleteScientist(int id);
+    void deleteScientist(char id);
 
 private:
     vector<Scientist> scientists;

@@ -40,7 +40,7 @@ public:
 
     int getConnections(); // returns how many connections there are
 
-    void deleteComputer(int id);
+    void deleteComputer(char id);
 
 
 private:
