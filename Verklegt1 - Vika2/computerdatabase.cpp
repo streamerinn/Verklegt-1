@@ -3,16 +3,38 @@
 //Constructor
 ComputerDatabase::ComputerDatabase()
 {
+    connectionName = "computerDB";
     dbName = "Skil2DB.sqlite";
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbName);
-    db.open();
+    if(!connectionCheck(connectionName))
+    {
+        db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+        db.setDatabaseName(dbName);
+        db.open();
+    }
+    else
+    {
+        db = QSqlDatabase::database(connectionName);
+    }
 }
 //Destructor
 ComputerDatabase::~ComputerDatabase()
 {
     QSqlDatabase::removeDatabase(dbName);
     db.close();
+}
+
+bool ComputerDatabase::connectionCheck(QString name)
+{
+    bool connected;
+    if(QSqlDatabase::contains(name))
+    {
+        connected = true;
+    }
+    else
+    {
+        connected = false;
+    }
+    return connected;
 }
 
 vector<Computer> ComputerDatabase::computerDB()
@@ -27,7 +49,7 @@ vector<Computer> ComputerDatabase::computerDB()
     {
         int id = query.value("id").toUInt();
         string computerName = query.value("name").toString().toStdString();
-       // string type = query.value("type").toString().toStdString();
+        // string type = query.value("type").toString().toStdString();
         int yearBuilt;
 
 
@@ -82,6 +104,7 @@ int ComputerDatabase::countConnections()
 }
 
 void ComputerDatabase::deleteComputer(int id)
+
 {
         QSqlQuery query;
         query.prepare("DELETE FROM Computers where ID = ?");

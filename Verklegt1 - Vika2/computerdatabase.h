@@ -14,14 +14,19 @@ public:
     ~ComputerDatabase();
 
     vector<Computer> computerDB();
+    bool connectionCheck(QString name);
     void insertRow(Computer computer);
+
+
     int countConnections(); // gets number of connections
+
     void deleteComputer(int id);
     void editComputer(int id);
 
 private:
     QSqlDatabase db;
     QString dbName;
+    QString connectionName;
 };
 
 #endif // COMPUTERDATABASE_H

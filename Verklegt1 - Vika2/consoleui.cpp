@@ -212,7 +212,7 @@ void ConsoleUI::searchBuiltYear()
     }
 }
 
-void ConsoleUI::searhComputerType()
+void ConsoleUI::searchComputerType()
 {
     string choice;
 
@@ -694,7 +694,10 @@ void ConsoleUI::stats()
     vector<Scientist> alive = sService.searchDateOfDeath(0);
     vector<Scientist> total = sService.getScientists();
     vector<Computer> computers = cService.getComputers();
+
+
     int totalConnections = coService.getConnections();
+
     dead = total.size() - alive.size();
 
     cout << TAB << "---------------------------" << endl;
@@ -704,7 +707,6 @@ void ConsoleUI::stats()
     cout << TAB << alive.size() << " alive scientists" << endl;
     cout << TAB << dead << " dead scientists" << endl;
     cout << TAB << computers.size() << " computers" << endl;
-    cout << TAB << totalConnections << " connections" << endl;
     cout << TAB << "----------------------------" << endl << endl;
 
 }
@@ -902,7 +904,7 @@ void ConsoleUI::listingAndSorting()
                 }
                 else if(searchOptions == '3')
                 {
-                    searhComputerType();
+                    searchComputerType();
                 }
                 else if(searchOptions == '4')
                 {
