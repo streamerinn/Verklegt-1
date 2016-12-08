@@ -16,7 +16,7 @@ public:
     vector<Computer> computerDB();
     bool connectionCheck(QString name);
     void insertRow(Computer computer);
-
+    vector<Computer> computersConnectedToScientist(int scientistsID);
 
     int countConnections(); // gets number of connections
 

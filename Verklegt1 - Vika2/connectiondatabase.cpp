@@ -1,6 +1,7 @@
 #include "connectiondatabase.h"
 #include <iostream> // eða þegar þetta er farið að virka
 
+//Constructor
 ConnectionDataBase::ConnectionDataBase()
 {
     connectionName = "connectionDB";
@@ -16,13 +17,14 @@ ConnectionDataBase::ConnectionDataBase()
         db = QSqlDatabase::database(connectionName);
     }
 }
-
+//Destructor
 ConnectionDataBase::~ConnectionDataBase()
 {
     QSqlDatabase::removeDatabase(dbName);
     db.close();
 }
 
+//Notað til að checka hvort database-inn sé tengdur
 bool ConnectionDataBase::connectionCheck(QString name)
 {
     bool connected;
@@ -36,21 +38,22 @@ bool ConnectionDataBase::connectionCheck(QString name)
     }
     return connected;
 }
-
+//Bætir við connection í Connections töfluna
 void ConnectionDataBase::insertRow(vector<int> IDs)
 {
+    cout << "database test " << IDs[0] << IDs[1];
 
     QSqlQuery query(db);
 
-    QString scientist = QString::number(IDs[0]);
+    QString scientists = QString::number(IDs[0]);
     QString computers = QString::number(IDs[1]);
-    //cout << "INSERT INTO Connections (scientistsID, computersID) VALUES (" << scientist.toStdString()<< ", " << computers.toStdString() << ")" << endl;
-    query.prepare("INSERT INTO Connections (scientist, computer) VALUES (:scientist, :computers)");
-    query.bindValue(":scientist", scientist);
+    cout << "INSERT INTO Connections (scientistsID, computersID) VALUES (" << scientists.toStdString()<< ", " << computers.toStdString() << ")" << endl;
+    query.prepare("INSERT INTO Connections (scientistsID, computersID) VALUES (:scientists, :computers)");
+    query.bindValue(":scientists", scientists);
     query.bindValue(":computers", computers);
     query.exec();
 }
-
+//Telur connections í Connections töflunni
 int ConnectionDataBase::countConnections()
 {
     int counter = 0;
@@ -66,15 +69,12 @@ int ConnectionDataBase::countConnections()
     return counter;
 }
 
-
 vector<Scientist> ConnectionDataBase::getidName()
 {
 
     vector<Scientist> temp;
     QSqlQuery query(db);
     query.exec("SELECT * FROM Scientists;");
-    //TODO: Laga villu - "unkown field name".
-    //      Kemur á fleiri stöðum þar sem ekki er notað SELECT *
     while (query.next())
     {
         int id = query.value("id").toInt();
@@ -91,6 +91,5 @@ vector<Scientist> ConnectionDataBase::getidName()
 
     return temp;
 }
-
 
 

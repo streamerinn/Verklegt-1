@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//Default constructor
+//Constructor
 ScientistDatabase::ScientistDatabase()
 {
     QString connectionName = "scientistDB";
@@ -26,7 +26,7 @@ ScientistDatabase::~ScientistDatabase()
     QSqlDatabase::removeDatabase(dbName);
     db.close();
 }
-
+//Notað til að checka hvort database-inn sé tengdur
 bool ScientistDatabase::connectionCheck(QString name)
 {
     bool connected;
@@ -40,7 +40,7 @@ bool ScientistDatabase::connectionCheck(QString name)
     }
     return connected;
 }
-
+//Tekur upplýsingar úr Scientists töflunni og skilar þeim í vector
 vector<Scientist> ScientistDatabase::scientistDB()
 {
     vector<Scientist> sVector;
@@ -71,7 +71,7 @@ vector<Scientist> ScientistDatabase::scientistDB()
 
     return sVector;
 }
-
+//Bætir scientist í Scientists töfluna
 void ScientistDatabase::insertRow(Scientist scientist)
 {
     QSqlQuery query(db);
@@ -88,7 +88,7 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.bindValue(":died", death);
     query.exec();
 }
-
+//Eyðir scientist úr Scientists töflunni
 void ScientistDatabase::deleteScientist(int id)
 {
 
@@ -109,7 +109,7 @@ void ScientistDatabase::deleteScientist(int id)
     }
 
 }
-
+//  Til að breyta scientist
 void ScientistDatabase::editScientist(int id, string gender, string name, int birth, int death)
 {
     QString Sid;
@@ -149,3 +149,33 @@ void ScientistDatabase::editScientist(int id, string gender, string name, int bi
     }
 }
 
+vector<Scientist> ScientistDatabase::scientistsConnectedToComputers(int computerID)
+{
+    QSqlQuery query(db);
+    vector<Scientist> connectedScientist;
+
+    query.prepare("SELECT b.id, b.name, b.gender, b.birthDate, b.deathDate FROM Connections a, Scientists b WHERE a.computersID = ? AND b.id = a.scientistsID");
+    query.addBindValue(computerID);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value("id").toUInt();
+        string name = query.value("name").toString().toStdString();
+        string gender = query.value("gender").toString().toStdString();
+        int birthDate = query.value("birthDate").toUInt();
+        int deathDate;
+
+        if(!query.value("deathDate").isNull())
+        {
+            deathDate = query.value("deathDate").toUInt();
+        }
+        else
+        {
+            deathDate = 0;
+        }
+
+        connectedScientist.push_back(Scientist(id, name, gender, birthDate, deathDate));
+    }
+    return connectedScientist;
+}

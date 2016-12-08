@@ -1,12 +1,12 @@
 #include "computerservice.h"
 
+//Constructor
 ComputerService::ComputerService()
 {
     computers = data.computerDB();
 }
 
-//þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
-//struct sér um að raða eftir nöfnum og aldur.
+//Sér um að raða eftir nöfnum og aldri
 struct ComputerComparisonAlpha
 {
     bool operator() (Computer i, Computer j)
@@ -19,7 +19,7 @@ struct ComputerComparisonAlpha
         return (iName<jName);
     }
 };
-
+//Raðar nöfnum í öfuga stafrófsröð
 struct ComputerComparisonReversedAlpha
 {
     bool operator() (Computer i, Computer j)
@@ -32,7 +32,7 @@ struct ComputerComparisonReversedAlpha
         return (jName<iName);
     }
 };
-
+//Raðar eftir byggingarári, nýlegast fyrst
 struct ComputerComparisonYoung
 {
     bool operator() (Computer i, Computer j)
@@ -42,7 +42,7 @@ struct ComputerComparisonYoung
         return (iYearBuilt<jYearBuilt);
     }
 };
-
+//Raðar eftir byggingarári, elst fyrst
 struct ComputerComparisonOld
 {
     bool operator() (Computer i, Computer j)
@@ -149,13 +149,6 @@ int ComputerService::searchID(string computerName)
     return computerID;
 }
 
-
-
-
-int ComputerService::getConnections()
-{
-    return data.countConnections();
-}
 void ComputerService::deleteComputer(int id)
 {
      data.deleteComputer(id);
