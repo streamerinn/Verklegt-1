@@ -17,6 +17,10 @@ public:
     // Get föll
     void getIDs(vector<int> IDs);
     int getConnections();
+    //delete föll
+    void deleteLink(int Compid, int sciID);
+
+
 
 private:
     ConnectionDataBase connections;

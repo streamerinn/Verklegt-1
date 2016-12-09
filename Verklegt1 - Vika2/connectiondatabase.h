@@ -24,8 +24,9 @@ public:
     void insertRow(vector<int> IDs);
 
     int countConnections();
+    void deleteLink(int compID, int sciID);
 
-    vector<Scientist> getidName();
+
 
 private:
     QSqlDatabase db;
