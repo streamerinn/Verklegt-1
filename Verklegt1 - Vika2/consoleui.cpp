@@ -256,7 +256,7 @@ void ConsoleUI::displayScientistComputerConnections()
 
     while(scientistExists == false)
     {
-        cout << TAB << "Pleas enter a scientist name: ";
+        cout << TAB << "Please enter a scientist name: ";
         ws(cin);
         getline(cin, scientistName);
         vector<Scientist> temp1 = sService.searchName(scientistName);
@@ -393,14 +393,14 @@ void ConsoleUI::displayComputerScientistConnections()
 void ConsoleUI::searchComputer()
 {
     string name;
-    cout << TAB << "Enter the name of the Computer you want to find: ";
+    cout << TAB << "Enter the name of the computer you want to find: ";
     ws(cin);
     getline(cin, name);
 
     vector<Computer> temp = cService.searchComputerName(name);
     if(temp.size() == 0)
     {
-        cout << TAB << "There are no computers with the name" << name << " in our database. Please try again!";
+        cout << TAB << "There are no computers with the name " << name << " in our database. Please try again!";
 
     }
     else
@@ -413,7 +413,7 @@ void ConsoleUI::searchComputer()
 void ConsoleUI::searchBuiltYear()
 {
     int year = 0;
-    cout << TAB << "Enter the Computers built year: ";
+    cout << TAB << "Enter the computers built year: ";
     cin >> year;
 
     while(year > 2016 || year < 0)
@@ -433,7 +433,7 @@ void ConsoleUI::searchBuiltYear()
 
     if (temp.size() == 0)
     {
-        cout << TAB << "There are no Computers in our database built " << year << "." << endl;
+        cout << TAB << "There are no computers in our database built " << year << "." << endl;
     }
     else
     {
@@ -594,7 +594,7 @@ void ConsoleUI::link()
             vector<Computer> temp2 = cService.searchComputerName(computerName);
             if(temp2.size() == 0)
             {
-                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
+                cout << TAB << "There is no computer with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
             }
             else if(temp2.size() > 1)
             {
@@ -1360,8 +1360,6 @@ void ConsoleUI::displaySortOptions()
 
 void ConsoleUI::listingAndSorting()
 {
-    cout << "remove me" << endl;
-
     string choice = "/0";
 
     while(choice != "q" && choice != "Q")
@@ -1497,11 +1495,11 @@ void ConsoleUI::listingAndSorting()
 
             cout << endl;
             cout << TAB << "What do you want to search for?" << endl;
-            cout << TAB << "Press 1 to search by Computer's name." << endl;
+            cout << TAB << "Press 1 to search by computer's name." << endl;
             cout << TAB << "Press 2 to search for all computers built in a specific year." << endl;
             cout << TAB << "Press 3 to search for all computers of a specific type." << endl;
-            cout << TAB << "Press 4 to search for a random Computer." << endl;
-            cout << TAB << "Press 5 to search for a built Computer." << endl;
+            cout << TAB << "Press 4 to search for a random computer." << endl;
+            cout << TAB << "Press 5 to search for a built computer." << endl;
             cout << TAB << "Press any other number to go BACK to the menu." << endl;
             cout << TAB << "" << endl;
             cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -1537,7 +1535,7 @@ void ConsoleUI::listingAndSorting()
 
         else if(choice == "8")
         {
-            cout << TAB << ">>> Linking Scientists and Computers <<<" << endl;
+            cout << TAB << ">>> Linking scientists and computers <<<" << endl;
             link();
 
         }
