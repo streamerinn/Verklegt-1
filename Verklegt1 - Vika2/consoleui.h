@@ -33,10 +33,10 @@ private:
 
     /*** Display föll ***/
 
+    // displayar scientists
     void display(vector<Scientist> scientists);
+    // displayar compuers
     void displayComputers(vector<Computer> computers);
-    void displayScientistConnections(vector<Scientist> scientists);
-    void displayConnections();
 
     // Displayer upplýsingar um hvernig það er hægt að sorta
     void displaySortOptions(); // Scientist
@@ -54,14 +54,29 @@ private:
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
 
+    void stats();
+
+    // sýnir hvaða computers eru tengdar við scientist
+    void displayScientistComputerConnections();
+    // sýnir hvaða scientists eru tengdar við computer
+    void displayComputerScientistConnections();
+
+    // Sýnir allat tengingar fyrir computers/scientists
+    void listScientistConnections();
+    void listComputerConnections();
+
+    /***Display föll enda***/
+
     // Less inn upplýsingar um Scientist/Computer sem á að búa til
     void readComputers();
-    void readScientists();
+    void readScientists();   
 
     // Föll sem breyta upplýsingum í database
     void deleteOptions();
     void editOptions();
     void link(); // connectar scientist við computer
+
+    /***Search föll***/
 
     // Search möbuleikar fyrir computers
     void searchComputer();
@@ -76,13 +91,6 @@ private:
     void searchGender();
     void searchRandomScientist();
 
-    void stats();
-
-    void displayScientistComputerConnections();
-    void displayComputerScientistConnections();
-
-    void listScientistConnections();
-    void listComputerConnections();
 };
 
 #endif // CONSOLEUI_H

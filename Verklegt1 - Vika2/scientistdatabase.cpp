@@ -97,16 +97,10 @@ void ScientistDatabase::deleteScientist(int id)
     QSqlQuery query(db);
 
     query.prepare("DELETE FROM Scientists where ID = (:Sid)");
+    //query.prepare("DELETE FROM SQLITE_SEQUENCE where name = 'Scientists'");
     query.bindValue(":Sid", Sid);
-    if(!query.exec())
-    {
-        qDebug() << query.lastError();
-    }
-    else
-    {
-        //query.exec();
-        qDebug("Deleted!");
-    }
+    query.exec();
+
 
 }
 //  Til að breyta scientist
