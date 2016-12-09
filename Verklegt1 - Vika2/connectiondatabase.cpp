@@ -56,7 +56,7 @@ int ConnectionDataBase::countConnections()
 {
     int counter = 0;
 
-    QSqlQuery query;
+    QSqlQuery query(db);
     query.exec("SELECT * FROM Connections");
 
     while (query.next())

@@ -215,7 +215,7 @@ void ConsoleUI::listScientistConnections(vector<Scientist> scientists)
 
 
 void ConsoleUI::displayScientistComputerConnections()
-{      
+{
     bool scientistExists = false;
     bool correctSOption = false;
     string scientistName;
@@ -445,19 +445,12 @@ void ConsoleUI::searchComputerType()
 
 void ConsoleUI::searchBuilt()
 {
-
     char built;
-
 
     cout << TAB << "Search by built - (Y/y = Built)(N/n = not built)  " << endl;
     cout << TAB;
 
     cin >> built;
-
-
-
-
-
 
     vector<Computer> temp = cService.searchBuilt(built);
 
@@ -496,15 +489,21 @@ void ConsoleUI::link()
 
     //while((scientistExists == false) || (computerName == false))
     //{
-        while(scientistExists == false)
+    while(scientistExists == false)
         {
-            cout << TAB << "Pleas enter a scientist name: ";
+            cout << TAB << "Please enter a scientist name or press Q to return to main menu: ";
             ws(cin);
             getline(cin, scientistName);
+            {
+                if(scientistName == "q" || scientistName == "Q")
+                {
+                    return features();
+                }
+            }
             vector<Scientist> temp1 = sService.searchName(scientistName);
             if(temp1.size() == 0)
             {
-                cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again: " << endl;
+                cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again or press Q to quit: " << endl;
             }
             else if(temp1.size() > 1)
             {
@@ -530,7 +529,6 @@ void ConsoleUI::link()
                 while(correctSOption == false)
                 {
                     cout << TAB << "Please enter the correct number: ";
-                    ws(cin);
                     cin >> SOption;
 
 
@@ -549,23 +547,25 @@ void ConsoleUI::link()
                 }
             }
             else
-            {                                
+            {
                 scientistID = temp1[0].getID();
                 scientistExists = true;
             }
         }
 
-
-
         while(computerExists == false)
         {
-            cout << TAB << "Please enter a computer name: ";
+            cout << TAB << "Please enter a computer name or press Q to return to main menu: ";
             ws(cin);
             getline(cin, computerName);
+            if(computerName == "Q" || computerName == "q")
+            {
+                return features();
+            }
             vector<Computer> temp2 = cService.searchComputerName(computerName);
             if(temp2.size() == 0)
             {
-                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again: " << endl;
+                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
             }
             else if(temp2.size() > 1)
             {
@@ -590,7 +590,6 @@ void ConsoleUI::link()
                 while(correctCOption == false)
                 {
                     cout << TAB << "Please enter the correct number: ";
-                    ws(cin);
                     cin >> COption;
 
                     if(COption > temp2.size() || COption < 1 || !cin)
@@ -615,7 +614,6 @@ void ConsoleUI::link()
             }
         }
 
-
         // sækir ID-in
         //scientistID = sService.searchID(scientistName);
         //computerID = cService.searchID(computerName);
@@ -627,7 +625,6 @@ void ConsoleUI::link()
 
         // sendir ID-in í connection service
         coService.getIDs(IDs);
-    //}
 }
 
 void ConsoleUI::readScientists()
@@ -1271,8 +1268,6 @@ void ConsoleUI::editOptions()
 
         cService.editComputer(name, id, buildYear, built, tempType);
     }
-
-
 }
 
 void ConsoleUI::searchRandomScientist()
@@ -1336,6 +1331,8 @@ void ConsoleUI::displaySortOptions()
 
 void ConsoleUI::listingAndSorting()
 {
+    cout << "remove me" << endl;
+
     string choice = "/0";
 
     while(choice != "q" && choice != "Q")
