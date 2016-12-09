@@ -2,12 +2,15 @@
 #include <iostream>
 
 
-void ScientistService::setScientistVector()
+ScientistService::ScientistService()
 {
     scientists = data.scientistDB();
 }
 
-
+void ScientistService::setScientistVector()
+{
+    scientists = data.scientistDB();
+}
 
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
 //struct sér um að raða eftir nöfnum og aldur.
@@ -62,12 +65,6 @@ struct ScientistComparisonOld
         return (jAge<iAge);
     }
 };
-
-ScientistService::ScientistService()
-{
-    //scientists = data.scientistDB();
-    setScientistVector();
-}
 
 vector<Scientist> ScientistService::getScientistsAlpha()
 {
