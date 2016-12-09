@@ -207,10 +207,17 @@ void ConsoleUI::listScientistConnections()
             //displayComputers(itsComputers);
             for(size_t j = 0; j < itsComputers.size(); j++)
             {
-                cout << itsComputers[j].getComputerName() << ", ";
+                cout << itsComputers[j].getComputerName();
+                if(itsComputers.size() > 1)
+                {
+                    cout << ", ";
+                }
+                else
+                {
+                    cout << " ";
+                }
             }
         }
-        cout << endl;
     }
     cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
@@ -317,7 +324,15 @@ void ConsoleUI::displayScientistComputerConnections()
     }
     vector<Computer> connectedComputers = cService.getScientistID(scientistID);
 
-    displayComputers(connectedComputers);
+    if(connectedComputers.size() == 0)
+    {
+        cout << TAB << scientistName << " is not connected to any one";
+    }
+    else
+    {
+        displayComputers(connectedComputers);
+    }
+    cout << TAB << "-------------------------------------------------------------------------------------" << endl << endl;
 }
 
 // sýnir hvaðaa scientists eru tengdir við ákveðna tölvu
@@ -388,7 +403,15 @@ void ConsoleUI::displayComputerScientistConnections()
     }
     vector<Scientist> connectedScientists = sService.getComputerID(computerID);
 
-    display(connectedScientists);
+    if(connectedScientists.size() == 0)
+    {
+        cout << TAB << computerName << " is not connected to any one";
+    }
+    else
+    {
+        display(connectedScientists);
+    }
+    cout << TAB << "-------------------------------------------------------------------------------------" << endl << endl;
 }
 
 // Leitar að tölvu í gagnagrunni.
@@ -1565,6 +1588,7 @@ void ConsoleUI::listingAndSorting()
             {
                 listComputerConnections();
             }
+
         }
         else if(choice == "q" || choice == "Q")
         {
