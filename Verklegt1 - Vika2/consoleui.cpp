@@ -72,6 +72,7 @@ void ConsoleUI::readComputers()
 
     // Get name
     cout << TAB << "Please enter a computer name: ";
+    ws(cin);
     getline(cin, tempComputerName);
     while(tempComputerName.empty())
     {
@@ -355,7 +356,7 @@ void ConsoleUI::searchComputer()
 {
     string name;
     cout << TAB << "Enter the name of the Computer you want to find: ";
-    cin.ignore();
+    ws(cin);
     getline(cin, name);
 
     vector<Computer> temp = cService.searchComputerName(name);
@@ -623,6 +624,7 @@ void ConsoleUI::readScientists()
     string tempName;
     cout << TAB << "Please enter a name: ";
 
+    ws(cin);
     getline(cin, tempName);
     do
     {
@@ -858,7 +860,7 @@ void ConsoleUI::searchName()
 {
      string name;
      cout << TAB << "Enter the name of the scientist you want to find: ";
-     cin.ignore();
+     ws(cin);
      getline(cin, name);
 
      vector<Scientist> temp = sService.searchName(name);
@@ -959,7 +961,8 @@ void ConsoleUI::editOptions()
     //Computer
     string name;
     int buildYear;
-    //char built;
+    char tempBuilt;
+    int built;
     int type;
     string tempType;
     bool validType = false;
@@ -1151,18 +1154,33 @@ void ConsoleUI::editOptions()
 
 
         cout << TAB << "Enter new name of computer: ";
+
+        //getline(cin,name);
         ws(cin);
-        getline(cin,name);
-        do
-            {
-                if(name.empty())
-                {
-                    cout << TAB << "You cannot enter an empty name. Please try again: ";
-                    ws(cin);
-                    getline(cin, name);
-                }
-            }
-            while(name.empty());
+        getline(cin, name);
+
+        //while(name.empty())
+        //    {
+          //      if(name.empty())
+            //    {
+              //      cout << TAB << "You cannot enter an empty computer name. Please try again: ";
+                //    ws(cin);
+                  //  getline(cin, name);
+                //}
+            //}
+
+
+
+        //do
+            //{
+               // if(name.empty())
+                //{
+                  //  cout << TAB << "You cannot enter an empty name. Please try again: ";
+                   // ws(cin);
+                   // getline(cin, name);
+                //}
+            //}
+            //while(name.empty());
 
         cout << TAB << "Enter new build year: ";
         cin >> buildYear;
@@ -1214,13 +1232,27 @@ void ConsoleUI::editOptions()
 
 
 
-        //cout << TAB << "Enter if built or not(Y/N): ";
-        //cin >>
-        //cin >> built;
+      cout << TAB << "Enter if built or not(Y/N): ";
+      cin >> tempBuilt;
+      if(tempBuilt == 'y' || tempBuilt == 'Y')
+     {
+       built = 1;
+     }
+
+      else if(tempBuilt == 'n' || tempBuilt == 'N')
+      {
+
+          built = 0;
+      }
 
 
 
-        cService.editComputer(name, id, buildYear, /*built,*/ tempType);
+
+
+
+
+
+        cService.editComputer(name, id, buildYear, built, tempType);
     }
 }
 

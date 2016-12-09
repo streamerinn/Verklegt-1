@@ -96,7 +96,7 @@ void ScientistDatabase::deleteScientist(int id)
     Sid = QString::number(id);
     QSqlQuery query(db);
 
-    query.prepare("DELETE FROM Computers where ID = (:Sid)");
+    query.prepare("DELETE FROM Scientists where ID = (:Sid)");
     query.bindValue(":Sid", Sid);
     if(!query.exec())
     {
@@ -112,6 +112,8 @@ void ScientistDatabase::deleteScientist(int id)
 //  Til að breyta scientist
 void ScientistDatabase::editScientist(int id, string gender, string name, int birth, int death)
 {
+    //id = id-1;
+
     QString Sid;
     QString birthYear;
     //QString builts(built);
@@ -121,6 +123,7 @@ void ScientistDatabase::editScientist(int id, string gender, string name, int bi
 
     names = QString::fromStdString(name);
     Sid = QString::number(id);
+
     birthYear = QString::number(birth);
     //builts()  //QString::char(built);
     genders = QString::fromStdString(gender);

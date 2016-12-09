@@ -21,7 +21,7 @@ public:
     int countConnections(); // gets number of connections
 
     void deleteComputer(int id);
-    void editComputer(string name,int id, int buildYear /*char built*/, string type);
+    void editComputer(string name,int id, int buildYear ,int built, string type);
 
         vector<Computer> getYearBuilt(int a);
         vector<Computer> getType(char a);

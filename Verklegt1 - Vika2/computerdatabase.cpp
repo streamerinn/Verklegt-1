@@ -149,7 +149,7 @@ void ComputerDatabase::deleteComputer(int id)
 }
 
 //Breytir tölvu í Computers töflunni
-void ComputerDatabase::editComputer(string name,int id, int buildYear/*, char built*/, string type)
+void ComputerDatabase::editComputer(string name,int id, int buildYear, int built, string type)
 {
     //vector<Computer> temp1;
     QString Compid;
@@ -157,32 +157,39 @@ void ComputerDatabase::editComputer(string name,int id, int buildYear/*, char bu
     //QString builts(built);
     QString types;
     QString names;
+    QString builts;
 
     names = QString::fromStdString(name);
     Compid = QString::number(id);
     buildYears = QString::number(buildYear);
     //builts()  //QString::char(built);
     types = QString::fromStdString(type);
+    builts = QString::number(built);
+
+
 
     QSqlQuery query(db);
     //query.prepare("UPDATE Computers where ID = (:Compid);");
-    query.prepare("UPDATE Computers SET name = (:name), yearBuilt = (:buildYears), type = (:types) WHERE id = (:Compid)");
+    query.prepare("UPDATE Computers SET name = (:names), yearBuilt = (:buildYears), type = (:types), built = (:built) WHERE id = (:Compid)");
    query.bindValue(":Compid", Compid);
-   query.bindValue(":name", names);
+   query.bindValue(":names", names);
    query.bindValue(":buildYears",buildYears);
    query.bindValue(":types",types);
+    query.bindValue(":built",builts);
 
 
     //query.prepare("UPDATE Computers SET name =", [build year] = +buildYears+ ", type =" +types+", builts =" +builts+";");
+    //query.exec();
 
     if(!query.exec())
     {
-        qDebug() << query.lastError();
+      qDebug() << query.lastError();
     }
     else
     {
         //query.exec();
-        qDebug("Updated!");
+    qDebug("Updated!");
+
     }
 
 
