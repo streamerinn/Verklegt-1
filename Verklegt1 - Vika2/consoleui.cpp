@@ -55,6 +55,7 @@ void ConsoleUI::features()
     cout << TAB << "Press 7 to search for a computer. " << endl;
     cout << TAB << "Press 8 to link Scientists and computers." << endl;
     cout << TAB << "Press 9 to delete or edit a scientist or a computer." << endl;
+    cout << TAB << "Press 10 to view connections" << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
@@ -207,12 +208,13 @@ void ConsoleUI::listScientistConnections()
             //displayComputers(itsComputers);
             for(size_t j = 0; j < itsComputers.size(); j++)
             {
-                cout << itsComputers[j].getComputerName() << endl;
+                cout << itsComputers[j].getComputerName() << ", ";
             }
         }
+        cout << endl;
 
     }
-         cout << "\t---------------------------------------------------------------------------" << endl << endl;
+         cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
 
 // Sýnir alla scientist tengdar við tölvu
@@ -226,16 +228,26 @@ void ConsoleUI::listComputerConnections()
 
     for(size_t i = 1; i <= aComputer.size(); i++ )
     {
-        vector<Scientist> itsComputers = sService.getComputerID(aComputer[i].getID());
-        if(itsComputers.size() != 0)
+        vector<Scientist> itsScientists = sService.getComputerID(aComputer[i].getID());
+        if(itsScientists.size() != 0)
         {
-            cout << TAB << setw(15) << aComputer[i].getComputerName() << TAB;
+            cout << TAB << setw(15) << aComputer[i].getComputerName() << setw(20);
             //displayComputers(itsComputers);
-            for(size_t j = 0; j < itsComputers.size(); j++)
+            for(size_t j = 0; j < itsScientists.size(); j++)
             {
-                cout << itsComputers[j].getName() << " ";
+                cout << itsScientists[j].getName();
+
+                if(itsScientists.size() > 1)
+                {
+                    cout << ", ";
+                }
+                else
+                {
+                    cout << " ";
+                }
             }
         }
+        cout << endl;
 
     }
          cout << TAB << "---------------------------------------------------------------------------" << endl << endl;
