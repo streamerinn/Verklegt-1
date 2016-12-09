@@ -10,17 +10,17 @@ using namespace std;
 class ConnectionDataBase
 {
 public:
-    // Constructor föll
+    // Constructor functions
     ConnectionDataBase();
     ~ConnectionDataBase();
 
     bool connectionCheck(QString name);
 
-    // Sækir upplýsingar úr database
+    // Retrieves informations from database.
     int getscientistID(int scientistID);
     int getcomputerID(int computerID);
 
-    // bætir upplýsingum á database
+    // Adds informations to the database.
     void insertRow(vector<int> IDs);
 
     int countConnections();

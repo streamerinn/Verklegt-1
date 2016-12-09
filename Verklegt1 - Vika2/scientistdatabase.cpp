@@ -29,7 +29,7 @@ ScientistDatabase::~ScientistDatabase()
     db.close();
 }
 
-//Notað til að checka hvort database-inn sé tengdur
+//Used to check if the database is connected or not.
 bool ScientistDatabase::connectionCheck(QString name)
 {
     bool connected;
@@ -44,7 +44,7 @@ bool ScientistDatabase::connectionCheck(QString name)
     return connected;
 }
 
-//Tekur upplýsingar úr Scientists töflunni og skilar þeim í vector
+// Takes information from Scientists tablet and returns them to a vector.
 vector<Scientist> ScientistDatabase::scientistDB()
 {
     vector<Scientist> sVector;
@@ -72,7 +72,7 @@ vector<Scientist> ScientistDatabase::scientistDB()
     return sVector;
 }
 
-//Bætir scientist í Scientists töfluna
+// Adds a scientist to the Scientists table.
 void ScientistDatabase::insertRow(Scientist scientist)
 {
     QSqlQuery query(db);
@@ -90,7 +90,7 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.exec();
 }
 
-//Eyðir scientist úr Scientists töflunni
+// Delets a scientist from the Scientists table.
 void ScientistDatabase::deleteScientist(int id)
 {
     QString Sid;
@@ -102,7 +102,7 @@ void ScientistDatabase::deleteScientist(int id)
     query.exec();
 }
 
-//  Til að breyta scientist
+// Used to edit a scientist.
 void ScientistDatabase::editScientist(int id, string gender, string name, int birth, int death)
 {
     QString Sid;

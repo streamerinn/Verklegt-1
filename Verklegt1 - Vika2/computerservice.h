@@ -23,7 +23,7 @@ public:
 
     void create(Computer computer);
 
-    // Display föll
+    // Display functions
     vector<Computer> getComputers();
     vector<Computer> getComputersAlpha();
     vector<Computer> getComputersReversedAlpha();
@@ -32,20 +32,20 @@ public:
     vector<Computer> getComputersBuiltOrNot();
     vector<Computer> getComputersID();
 
-    // search föll
+    // search functions
     vector<Computer> searchComputerName(string name);
     vector<Computer> searchYearOfBuild(int buildYear);
     vector<Computer> searchType(const char type);
     vector<Computer> searchBuilt(char built);
     vector<Computer> searchRandomComputer();
 
-    // sendir ID og sækir Tölvur connectaðar við ID-ið
+    // Sends an ID and retrieves computers connected to the ID.
     vector<Computer> getScientistID(int SID);
 
-    // sækir fjölda connections
+    // Retrieves how many connections there are between scientists and computers.
     int getConnections();
 
-    // Breytir upplýsingum í database
+    // Changes information in the database.
     void deleteComputer(int id);
     void editComputer(string name, int id, int buildYear,int built, string type); // sendir nýjar upplýsingar um computer database
 

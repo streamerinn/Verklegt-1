@@ -31,24 +31,24 @@ private:
     ComputerService cService;
     ConnectionService coService;
 
-    /*** Display föll ***/
+    /*** Display functions ***/
 
-    // displayar scientists
+    // displays scientists
     void display(vector<Scientist> scientists);
-    // displayar compuers
+    // displays computers
     void displayComputers(vector<Computer> computers);
 
-    // Displayer upplýsingar um hvernig það er hægt að sorta
+    // Displays informations about how the user can sort.
     void displaySortOptions(); // Scientist
     void displayComputerSortOptions(); // Computer
 
-    // Display allan listann af Scientists
+    // Display all Scientists lists.
     void displayListOfComputersAlpha();
     void displayListOfComputersReversedAlpha();
     void displayListOfComputersYoung();
     void displayListOfComputersOld();
 
-    // Display allan listann af Computerss
+    // Display allan Computers list.
     void displayListOfScientistsAlpha();
     void displayListOfScientistsReversedAlpha();
     void displayListOfScientistsYoung();
@@ -56,36 +56,38 @@ private:
 
     void stats();
 
-    // sýnir hvaða computers eru tengdar við scientist
+    // Displays the computers and which scientist are connected.
     void displayScientistComputerConnections();
-    // sýnir hvaða scientists eru tengdar við computer
+    // Displays the scientists are connected to which computer.
     void displayComputerScientistConnections();
 
-    // Sýnir allat tengingar fyrir computers/scientists
+    // Shows all connections for both computers and scientists.
     void listScientistConnections();
     void listComputerConnections();
 
-    /***Display föll enda***/
+    /***Display functions come to an end***/
 
-    // Less inn upplýsingar um Scientist/Computer sem á að búa til
+    //
+
+    // Read input from user to create scientists and computers.
     void readComputers();
     void readScientists();   
 
-    // Föll sem breyta upplýsingum í database
+    // Functions that change the information in database.
     void deleteOptions();
     void editOptions();
     void link(); // connectar scientist við computer
 
-    /***Search föll***/
+    /***Search functions***/
 
-    // Search möbuleikar fyrir computers
+    // Search possibilities for computers.
     void searchComputer();
     void searchBuiltYear();
     void searchComputerType();
     void searchRandomComputer();
     void searchBuilt();
 
-    // Search möbuleikar fyrir scientists
+    // Search possibilities for scientists
     void searchName();
     void searchDateOfBirth();
     void searchGender();

@@ -11,18 +11,18 @@ using namespace std;
 class Scientist
 {
 public:
-    // constructorar
+    // constructors
     Scientist();
     Scientist(int id, string name, string gender, int dateOfBirth, int dateOfDeath);
 
-    // get föll
+    // get functions
     int getID();
     string getName();
     string getGender();
     int getDateOfBirth();
     int getDateOfDeath();
 
-    // set föll
+    // set functions
     void setID(int id);
     void setName(string name);
     void setsecondName(string secondName);

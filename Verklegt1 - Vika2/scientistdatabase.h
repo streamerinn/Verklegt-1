@@ -9,17 +9,17 @@ using namespace std;
 class ScientistDatabase
 {
 public:
-    // Constructorar
+    // Constructors
     ScientistDatabase();
     ~ScientistDatabase();
 
-    // Athugar connection við database
+    // Checks the connection to database.
     bool connectionCheck(QString name);
 
     vector<Scientist> scientistDB();
     vector<Scientist> scientistsConnectedToComputers(int computerID);   
 
-    // Breytir upplýsingum í database
+    // Changes information in database
     void deleteScientist(int id);
     void editScientist(int id, string gender, string name, int birth, int death);
     void insertRow(Scientist scientist); // bætir við nýjum scientist

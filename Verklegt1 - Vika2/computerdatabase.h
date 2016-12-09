@@ -10,19 +10,19 @@ using namespace std;
 class ComputerDatabase
 {
 public:
-    // Consturcor föll
+    // Constructor functions
     ComputerDatabase();
     ~ComputerDatabase();
 
     // Connection
     bool connectionCheck(QString name); 
 
-    // Breytir upplýsingum í database
+    // Changes information in database.
     void deleteComputer(int id);
     void editComputer(string name,int id, int buildYear ,int built, string type); // setur upplýsingar upp á nýtt í database
     void insertRow(Computer computer); // bætir nýrri tölvu við
 
-    // sækir upplýsingar úr database
+    // Retrieves information from database.
     vector<Computer> computersConnectedToScientist(int scientistsID); // sækir tengingar
     vector<Computer> getYearBuilt(int a);
     vector<Computer> getType(char a);

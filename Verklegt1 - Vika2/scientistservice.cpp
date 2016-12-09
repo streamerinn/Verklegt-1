@@ -12,10 +12,7 @@ void ScientistService::setScientistVector()
     scientists = data.scientistDB();
 }
 
-//þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
-//struct sér um að raða eftir nöfnum og aldur.
-
-//raðar í stafrófsröð
+// Sorts its contents in alphabetical order.
 struct ScientistComparisonAlpha
 {
     bool operator() (Scientist i, Scientist j)
@@ -28,7 +25,8 @@ struct ScientistComparisonAlpha
         return (iName<jName);
     }
 };
-//raðar í öfuga stafrófsröð
+
+//Sorts its contents in reverse alphabetical order
 struct ScientistComparisonReversedAlpha
 {
     bool operator() (Scientist i, Scientist j)
@@ -43,7 +41,7 @@ struct ScientistComparisonReversedAlpha
     }
 };
 
-//raðar eftir aldri, yngsti til elsta
+// Sorts by year, youngest to oldest.
 struct ScientistComparisonYoung
 {
     bool operator() (Scientist i, Scientist j)
@@ -55,7 +53,7 @@ struct ScientistComparisonYoung
     }
 };
 
-//raðar eftir aldri, elsta til yngsta
+// Sorts by year, oldest to youngest.
 struct ScientistComparisonOld
 {
     bool operator() (Scientist i, Scientist j)
@@ -172,8 +170,8 @@ vector<Scientist> ScientistService::searchRandom()
 {
     vector<Scientist> temp3;
     srand(time(0));
-                   // Virkni sem býr til slembitölur með hjálp time.
-                   // Ástæðan fyrir að nota %(scientist.size() - 1) er til að ná í allt "range-ið" úr vektornum.
+                          //Creates random numbers with the help of time.
+                          // The reason to use %(scientist.size() - 1) is to get all the range from the vector.
     temp3.push_back(scientists[1+(rand()%(scientists.size() - 1))]);
 
     return temp3;
@@ -195,7 +193,6 @@ vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
 
 void ScientistService::deleteScientist(int id)
 {
-    // kalla bara a database fallið sem sér um að deletea
     data.deleteScientist(id);
     setScientistVector();
 }

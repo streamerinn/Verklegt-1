@@ -25,7 +25,7 @@ ConnectionDataBase::~ConnectionDataBase()
     db.close();
 }
 
-//Notað til að checka hvort database-inn sé tengdur
+//To check if the database is connected.
 bool ConnectionDataBase::connectionCheck(QString name)
 {
     bool connected;
@@ -40,7 +40,7 @@ bool ConnectionDataBase::connectionCheck(QString name)
     return connected;
 }
 
-//Bætir við connection í Connections töfluna
+//Adds a connection to the Connections table.
 void ConnectionDataBase::insertRow(vector<int> IDs)
 {
     QSqlQuery query(db);
@@ -54,7 +54,7 @@ void ConnectionDataBase::insertRow(vector<int> IDs)
     query.exec();
 }
 
-//Telur connections í Connections töflunni
+//Counts the connections in the Connections table.
 int ConnectionDataBase::countConnections()
 {
     int counter = 0;
@@ -69,7 +69,7 @@ int ConnectionDataBase::countConnections()
     return counter;
 }
 
-
+//Deletes a connection between scientists and computers.
 void ConnectionDataBase::deleteLink(int compID, int sciID)
 {
 

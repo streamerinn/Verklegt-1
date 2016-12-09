@@ -3,7 +3,7 @@
 #include <limits>
 #include <iomanip>
 #include "consoleui.h"
-#include "windows.h"
+//#include "windows.h"
 
 using namespace std;
 
@@ -24,24 +24,24 @@ void ConsoleUI::WelcomeMenu()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
-/***** Menu með 3D layout, virkar hugsanlega ekki að birta litina í iOS eða forritið jafnvel crashar *****/
+/***** Menu with 3D layout, the colors probably won't work for iOS or the program might crash *****/
 void ConsoleUI::features()
 {
     cout << TAB << "----------------------------------------------------------------------------" << endl;
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0b);
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0b);
     cout << TAB << " _____    _____   ____________   ______  _____   _____   _____" << endl;
     cout << TAB << "|\\ __/\\  /\\__ /| |\\ _________/| |\\ ___/\\|\\__ /| |\\ __/\\ /\\__ /|" << endl;
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0d);
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0d);
     cout << TAB << "| |  \\ \\/ /  | | | |   ______|/ | |   \\  |  | | | |  | | |  | |" << endl;
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0c);
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0c);
     cout << TAB << "| |   \\  /   | | | |  |___/|    | |    \\ |  | | | |  | | |  | |" << endl;
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0e);
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0e);
     cout << TAB << "| |    \\/    | | | |   ___|/__  | |  |\\ \\|  | | | |  | | |  | |" << endl;
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x05);
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x05);
     cout << TAB << "| |  |\\__/|  | | | |  |______/| | |  | \\    | | | |  |___|  | |" << endl;
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0a);
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0a);
     cout << TAB << " \\|__|    |__|/   \\|_________|/  \\|__|/ \\___|/   \\|_________|/" << endl;
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0f);
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0f);
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << TAB << "The list below shows you all possible features on what you can do." << endl;
     cout << endl;
@@ -531,7 +531,7 @@ void ConsoleUI::displayScientistComputerConnections()
     cout << TAB << "-------------------------------------------------------------------------------------" << endl << endl;
 }
 
-/*** sýnir hvaðaa scientists eru tengdir við ákveðna tölvu ***/
+/*** Shows what scientist is connected to a specific computer ***/
 void ConsoleUI::displayComputerScientistConnections()
 {
     bool computerExists = false;
@@ -610,7 +610,7 @@ void ConsoleUI::displayComputerScientistConnections()
     cout << TAB << "-------------------------------------------------------------------------------------" << endl << endl;
 }
 
-/*** Sýnir allar tölvur tengdar við scientist ***/
+/*** Shows all the computers that are connected to a scientistS ***/
 void ConsoleUI::listScientistConnections()
 {
     cout << setw(55) << "CONNECTIONS" << endl;
@@ -643,7 +643,7 @@ void ConsoleUI::listScientistConnections()
     cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
 
-/*** Sýnir alla scientista tengda við tölvu ***/
+/*** Shows all scientists connected to a computer ***/
 void ConsoleUI::listComputerConnections()
 {
     cout << setw(55) << "CONNECTIONS" << endl;
@@ -687,7 +687,7 @@ void ConsoleUI::readComputers()
     int tempMade = 0;
     string tempType;
 
-    // Get name
+    // Get name.
     cout << TAB << "Please enter a computer name: ";
     ws(cin);
     getline(cin, tempComputerName);
@@ -952,7 +952,7 @@ void ConsoleUI::deleteOptions()
     cout << TAB << "Press 1 to delete a scientist. " << endl;
     cout << TAB << "Press 2 to delete a computer. " << endl;
     cout << TAB << "Press 3 to delete a link between scientist and computer. " << endl;
-
+    cout << TAB;
     cin >> deleteButton;
 
     if(deleteButton == '1')
@@ -1455,7 +1455,7 @@ void ConsoleUI::link()
     coService.getIDs(IDs);
 }
 
-/*** Leitar að tölvu í gagnagrunni. ***/
+/*** Searches for a computer in the database. ***/
 void ConsoleUI::searchComputer()
 {
     string name;
@@ -1474,7 +1474,7 @@ void ConsoleUI::searchComputer()
     }
 }
 
-/*** Leitar að árinu sem tölva var byggð.***/
+/*** Searches for the year the computer was built in. ***/
 void ConsoleUI::searchBuiltYear()
 {
     int year = 0;
@@ -1506,7 +1506,7 @@ void ConsoleUI::searchBuiltYear()
     }
 }
 
-/*** Leitar að týpu tölvu.***/
+/*** Searches for computer type. ***/
 void ConsoleUI::searchComputerType()
 {
     char type;

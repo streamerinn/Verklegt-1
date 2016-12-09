@@ -25,7 +25,7 @@ ComputerDatabase::~ComputerDatabase()
     db.close();
 }
 
-//Checkar hvort database-inn er tengdur eða ekki
+//Athugar hvort database-inn sé tengdur eða ekki
 bool ComputerDatabase::connectionCheck(QString name)
 {
     bool connected;
@@ -40,7 +40,7 @@ bool ComputerDatabase::connectionCheck(QString name)
     return connected;
 }
 
-//Tekur upplýsingar úr database og skilar þeim í vector
+//Takes information from database and returns them into a vector.
 vector<Computer> ComputerDatabase::computerDB()
 {
     vector<Computer> computerVector;
@@ -73,7 +73,7 @@ vector<Computer> ComputerDatabase::computerDB()
 
 }
 
-//Bætir nýrri tölvu í Computers töfluna
+//Adds a new computer to the Computers table.
 void ComputerDatabase::insertRow(Computer computer)
 {
     QSqlQuery query(db);
@@ -124,7 +124,7 @@ vector<Computer> ComputerDatabase::computersConnectedToScientist(int scientistsI
     return connectedComputer;
 }
 
-//Eyðir tölvu úr Computers töflunni
+//Deletes a computer from the Computers table.
 void ComputerDatabase::deleteComputer(int id)
 {
     QString Compid;
@@ -242,6 +242,7 @@ vector<Computer> ComputerDatabase::getType(char type)
   return temp2;
 }
 
+//Returns informations about whether the computer was built or not.
 vector<Computer> ComputerDatabase::getBuilt(char built)
 {
     vector<Computer> temp4;
