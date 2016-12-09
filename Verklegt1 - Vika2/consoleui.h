@@ -34,7 +34,7 @@ private:
     void display(vector<Scientist> scientists);
     void displayComputers(vector<Computer> computers);
     void displayScientistConnections(vector<Scientist> scientists);
-    void listScientistConnections(vector<Scientist> scientists);
+
     void displayConnections();
     void readComputers();
     void readScientists();
@@ -69,6 +69,8 @@ private:
 
     void displayScientistComputerConnections();
     void displayComputerScientistConnections();
+    void listScientistConnections();
+    void listComputerConnections();
 };
 
 #endif // CONSOLEUI_H

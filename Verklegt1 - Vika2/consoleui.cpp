@@ -188,23 +188,56 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     }
 }
 
-void ConsoleUI::listScientistConnections(vector<Scientist> scientists)
+// Sýnir allar tölvur tengdar við scientist
+void ConsoleUI::listScientistConnections()
 {
     cout << setw(55) << "CONNECTIONS" << endl;
     cout << TAB << setw(15) << "Scientist" <<setw(20) << "Computer" << endl;
     cout << "\t___________________________________________________________________________" << endl;
-    for(size_t i = 0; i < scientists.size(); i++)
+
+    vector<Scientist> aScientist = sService.getScientists();
+
+    for(size_t i = 1; i <= aScientist.size(); i++ )
     {
-        cout << TAB << setw(15) << scientists[i].getName() << endl;
-        for(size_t j = 0; j < cService.getComputersID().size(); j++)
+        vector<Computer> itsComputers = cService.getScientistID(aScientist[i].getID());
+        if(itsComputers.size() != 0)
         {
-            if(scientists[i].getID() == cService.getComputersID()[j].getID())
+            cout << TAB << setw(15) << aScientist[i].getName() << setw(20);
+            //displayComputers(itsComputers);
+            for(size_t j = 0; j < itsComputers.size(); j++)
             {
-                cout << TAB << setw(20) << endl;
+                cout << itsComputers[j].getComputerName() << endl;
             }
         }
+
     }
-    cout << "\t---------------------------------------------------------------------------" << endl;
+         cout << "\t---------------------------------------------------------------------------" << endl << endl;
+}
+
+// Sýnir alla scientist tengdar við tölvu
+void ConsoleUI::listComputerConnections()
+{
+    cout << setw(55) << "CONNECTIONS" << endl;
+    cout << TAB << setw(15) << "Scientist" <<setw(20) << "Computer" << endl;
+    cout << "\t___________________________________________________________________________" << endl;
+
+    vector<Computer> aComputer = cService.getComputers();
+
+    for(size_t i = 1; i <= aComputer.size(); i++ )
+    {
+        vector<Scientist> itsComputers = sService.getComputerID(aComputer[i].getID());
+        if(itsComputers.size() != 0)
+        {
+            cout << TAB << setw(15) << aComputer[i].getComputerName() << TAB;
+            //displayComputers(itsComputers);
+            for(size_t j = 0; j < itsComputers.size(); j++)
+            {
+                cout << itsComputers[j].getName() << " ";
+            }
+        }
+
+    }
+         cout << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
 
 void ConsoleUI::displayScientistComputerConnections()
@@ -1518,7 +1551,8 @@ void ConsoleUI::listingAndSorting()
 
             cout << "Press 1 to see all computers connected to a specific scientist" << endl;
             cout << "Press 2 to see all scientists connected to a specific computer" << endl;
-            cout << "Press 3 to see all scientists and their connections" << endl;
+            cout << "Press 3 to see all scientists with connections and their connections" << endl;
+            cout << "Press 4 to see all computers with connections and their connections" << endl;
             ws(cin);
             getline(cin, connectionOption);
 
@@ -1532,7 +1566,11 @@ void ConsoleUI::listingAndSorting()
             }
             else if(connectionOption == "3")
             {
-                listScientistConnections(temp);
+                listScientistConnections();
+            }
+            else if(connectionOption == "4")
+            {
+                listComputerConnections();
             }
         }
         else if(choice == "q" || choice == "Q")
