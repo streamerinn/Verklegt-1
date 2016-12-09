@@ -15,7 +15,6 @@ public:
 
     void getIDs(vector<int> IDs);
     int getConnections();
-    vector<Scientist> idName();
 
 private:
     ConnectionDataBase connections;
