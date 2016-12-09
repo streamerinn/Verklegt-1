@@ -24,7 +24,7 @@ void ConsoleUI::WelcomeMenu()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
-//Menu með updated MAXIMUM THREEDEE
+// Menu með 3D layout
 void ConsoleUI::features()
 {
     cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -70,7 +70,7 @@ void ConsoleUI::readComputers()
     int tempMade = 0;
     string tempType;
 
-    // Get name.
+    // Get name
     cout << TAB << "Please enter a computer name: ";
     getline(cin, tempComputerName);
     while(tempComputerName.empty())
@@ -86,7 +86,6 @@ void ConsoleUI::readComputers()
     temp.setName(tempComputerName);
 
     // Get computer type.
-
     bool validType = false;
     int type;
 
@@ -204,14 +203,8 @@ void ConsoleUI::listScientistConnections(vector<Scientist> scientists)
             }
         }
     }
-
-
-
-
-         cout << "\t---------------------------------------------------------------------------" << endl;
+    cout << "\t---------------------------------------------------------------------------" << endl;
 }
-
-
 
 void ConsoleUI::displayScientistComputerConnections()
 {
@@ -260,7 +253,6 @@ void ConsoleUI::displayScientistComputerConnections()
                 cout << TAB << "Please enter the correct number: ";
                 cin >> SOption;
 
-
                 if(SOption > temp1.size() || SOption < 1 || !cin)
                 {
                     cout << TAB << "That is not a valid number, please try again" << endl;
@@ -286,7 +278,6 @@ void ConsoleUI::displayScientistComputerConnections()
     displayComputers(connectedComputers);
 
 }
-
 
 // sýnir hvaða scientists eru tengdir við ákveðna tölvu
 void ConsoleUI::displayComputerScientistConnections()
@@ -370,8 +361,7 @@ void ConsoleUI::searchComputer()
     vector<Computer> temp = cService.searchComputerName(name);
     if(temp.size() == 0)
     {
-        cout << TAB << "There are no computers with the name" << name << " in our database. Please try again!";
-
+        cout << TAB << "There are no computers with the name " << name << " in our database." << endl;
     }
     else
     {
@@ -983,8 +973,6 @@ void ConsoleUI::editOptions()
     int birth;
     int death;
 
-
-
     cout << TAB << "Press 1 to edit a scientist. " << endl;
     cout << TAB << "Press 2 to edit a computer. " << endl;
     cout << TAB;
@@ -1098,8 +1086,6 @@ void ConsoleUI::editOptions()
                     }
                 }
             }while(birth > 2016 && birth < 0);
-
-
 
         cout << TAB << "Enter death date, enter 0 if still alive: ";
         cin >> death;
@@ -1299,8 +1285,6 @@ void ConsoleUI::displaySortOptions()
 
 void ConsoleUI::listingAndSorting()
 {
-    cout << "remove me" << endl;
-
     string choice = "/0";
 
     while(choice != "q" && choice != "Q")

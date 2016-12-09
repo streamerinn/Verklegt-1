@@ -31,7 +31,6 @@ private:
     ComputerService cService;
     ConnectionService coService;
 
-
     void display(vector<Scientist> scientists);
     void displayComputers(vector<Computer> computers);
     void displayScientistConnections(vector<Scientist> scientists);
@@ -52,9 +51,6 @@ private:
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
 
-
-
-
     void searchComputer();
     void searchBuiltYear();
     void searchComputerType();
@@ -68,11 +64,7 @@ private:
     void editOptions();
     void editName();
 
-
-
-
     void stats();
-
     void link();
 
     void displayScientistComputerConnections();
