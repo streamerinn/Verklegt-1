@@ -1,8 +1,21 @@
 #include "scientistservice.h"
 #include <iostream>
 
+
+ScientistService::ScientistService()
+{
+    scientists = data.scientistDB();
+}
+
+void ScientistService::setScientistVector()
+{
+    scientists = data.scientistDB();
+}
+
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
 //struct sér um að raða eftir nöfnum og aldur.
+
+//raðar í stafrófsröð
 struct ScientistComparisonAlpha
 {
     bool operator() (Scientist i, Scientist j)
@@ -15,13 +28,14 @@ struct ScientistComparisonAlpha
         return (iName<jName);
     }
 };
-
+//raðar í öfuga stafrófsröð
 struct ScientistComparisonReversedAlpha
 {
     bool operator() (Scientist i, Scientist j)
     {
         string iName = i.getName();
         string jName = j.getName();
+        //trasform breitir bæði leitarstreng og nafni í lágstafi til að hægt sé að bera saman og finna
         transform(iName.begin(), iName.end(), iName.begin(), ::tolower);
         transform(jName.begin(), jName.end(), jName.begin(), ::tolower);
 
@@ -29,18 +43,19 @@ struct ScientistComparisonReversedAlpha
     }
 };
 
-
-
+//raðar eftir aldri, yngsti til elsta
 struct ScientistComparisonYoung
 {
     bool operator() (Scientist i, Scientist j)
     {
         int iAge = i.getDateOfDeath()-i.getDateOfBirth();
         int jAge = j.getDateOfDeath()-j.getDateOfBirth();
+
         return (iAge<jAge);
     }
 };
 
+//raðar eftir aldri, elsta til yngsta
 struct ScientistComparisonOld
 {
     bool operator() (Scientist i, Scientist j)
@@ -51,15 +66,9 @@ struct ScientistComparisonOld
     }
 };
 
-ScientistService::ScientistService()
-{
-    scientists = data.scientistDB();
-}
-
 vector<Scientist> ScientistService::getScientistsAlpha()
 {
     ScientistComparisonAlpha cmp;
-
     sort(scientists.begin(), scientists.end(), cmp);
 
     return scientists;
@@ -68,7 +77,6 @@ vector<Scientist> ScientistService::getScientistsAlpha()
 vector<Scientist> ScientistService::getScientistsReversedAlpha()
 {
     ScientistComparisonReversedAlpha cmpRev;
-
     sort(scientists.begin(), scientists.end(), cmpRev);
 
     return scientists;
@@ -77,8 +85,7 @@ vector<Scientist> ScientistService::getScientistsReversedAlpha()
 vector<Scientist> ScientistService::getScientistsYoung()
 {
     ScientistComparisonYoung cmpYoung;
-
-    std::sort(scientists.begin(), scientists.end(), cmpYoung);
+    sort(scientists.begin(), scientists.end(), cmpYoung);
 
     return scientists;
 }
@@ -91,14 +98,11 @@ vector<Scientist> ScientistService::getScientists()
 vector<Scientist> ScientistService::getScientistsOld()
 {
     ScientistComparisonOld cmpOld;
-
-    std::sort(scientists.begin(), scientists.end(), cmpOld);
+    sort(scientists.begin(), scientists.end(), cmpOld);
 
     return scientists;
 }
 
-//Skilar einum scientist inn í vectorinn.
-//Skilar einum scientist í database, þar sem hann verður sendur inn í textaskrá.
 void ScientistService::create(Scientist scientist)
 {
     data.insertRow(scientist);
@@ -189,34 +193,23 @@ vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
     return temp4;
 }
 
-int ScientistService::searchID(string scientistName)
-{
-    int scientistID = 0;
-
-    for(size_t i = 0; i < scientists.size(); i++)
-    {
-        if(scientists[i].getName() == scientistName)
-        {
-            scientistID = scientists[i].getID();
-        }
-    }
-    return scientistID;
-}
-
 void ScientistService::deleteScientist(int id)
 {
     // kalla bara a database fallið sem sér um að deletea
     data.deleteScientist(id);
+    setScientistVector();
 }
 
 void ScientistService::editScientist(int id, string gender, string name, int birth, int death)
 {
     data.editScientist(id, gender, name, birth, death);
+    setScientistVector();
 }
 
 vector<Scientist> ScientistService::getComputerID(int CID)
 {
     vector<Scientist> scientistsConnected;
     scientistsConnected = data.scientistsConnectedToComputers(CID);
+
     return scientistsConnected;
 }

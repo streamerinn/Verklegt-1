@@ -16,7 +16,9 @@ int ConnectionService::getConnections()
     return connections.countConnections();
 }
 
+
 void ConnectionService::deleteLink(int Compid, int sciID)
 {
     connections.deleteLink(Compid, sciID);
 }
+

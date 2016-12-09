@@ -19,8 +19,11 @@ class ComputerService
 public:
     ComputerService();
 
+    void setComputerVector();
+
     void create(Computer computer);
 
+    // Display föll
     vector<Computer> getComputers();
     vector<Computer> getComputersAlpha();
     vector<Computer> getComputersReversedAlpha();
@@ -29,23 +32,22 @@ public:
     vector<Computer> getComputersBuiltOrNot();
     vector<Computer> getComputersID();
 
+    // search föll
     vector<Computer> searchComputerName(string name);
     vector<Computer> searchYearOfBuild(int buildYear);
     vector<Computer> searchType(const char type);
     vector<Computer> searchBuilt(char built);
-
     vector<Computer> searchRandomComputer();
-
-
-    int searchID(string computerName);
 
     // sendir ID og sækir Tölvur connectaðar við ID-ið
     vector<Computer> getScientistID(int SID);
 
-    int getConnections(); // returns how many connections there are
+    // sækir fjölda connections
+    int getConnections();
 
+    // Breytir upplýsingum í database
     void deleteComputer(int id);
-    void editComputer(string name, int id, int buildYear,int built, string type);
+    void editComputer(string name, int id, int buildYear,int built, string type); // sendir nýjar upplýsingar um computer database
 
 private:
     vector<Computer> computers;

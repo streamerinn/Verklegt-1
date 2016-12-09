@@ -3,6 +3,12 @@
 //Constructor
 ComputerService::ComputerService()
 {
+   // computers = data.computerDB();
+    setComputerVector();
+}
+
+void ComputerService::setComputerVector()
+{
     computers = data.computerDB();
 }
 
@@ -39,6 +45,7 @@ struct ComputerComparisonYoung
     {
         int iYearBuilt = i.getYearBuilt();
         int jYearBuilt = j.getYearBuilt();
+
         return (iYearBuilt<jYearBuilt);
     }
 };
@@ -49,6 +56,7 @@ struct ComputerComparisonOld
     {
         int iYearBuilt = i.getYearBuilt();
         int jYearBuilt = j.getYearBuilt();
+
         return (jYearBuilt<iYearBuilt);
     }
 };
@@ -59,6 +67,7 @@ struct ComputerComparisonID
     {
         int iID = i.getID();
         int jID = j.getID();
+
         return (iID<jID);
     }
 };
@@ -66,7 +75,6 @@ struct ComputerComparisonID
 vector<Computer> ComputerService::getComputersID()
 {
     ComputerComparisonID cmp;
-
     sort(computers.begin(), computers.end(), cmp);
 
     return computers;
@@ -75,7 +83,6 @@ vector<Computer> ComputerService::getComputersID()
 vector<Computer> ComputerService::getComputersAlpha()
 {
     ComputerComparisonAlpha cmp;
-
     sort(computers.begin(), computers.end(), cmp);
 
     return computers;
@@ -84,7 +91,6 @@ vector<Computer> ComputerService::getComputersAlpha()
 vector<Computer> ComputerService::getComputersReversedAlpha()
 {
     ComputerComparisonReversedAlpha cmpRev;
-
     sort(computers.begin(), computers.end(), cmpRev);
 
     return computers;
@@ -93,7 +99,6 @@ vector<Computer> ComputerService::getComputersReversedAlpha()
 vector<Computer> ComputerService::getComputersYoung()
 {
     ComputerComparisonYoung cmpYoung;
-
     sort(computers.begin(), computers.end(), cmpYoung);
 
     return computers;
@@ -107,8 +112,7 @@ vector<Computer> ComputerService::getComputers()
 vector<Computer> ComputerService::getComputersOld()
 {
     ComputerComparisonOld cmpOld;
-
-    std::sort(computers.begin(), computers.end(), cmpOld);
+    sort(computers.begin(), computers.end(), cmpOld);
 
     return computers;
 }
@@ -128,7 +132,6 @@ vector<Computer> ComputerService::searchComputerName(string computerName)
 
 vector<Computer> ComputerService::searchType(const char type)
 {
-
     return data.getType(type);
 }
 
@@ -150,37 +153,25 @@ vector<Computer> ComputerService::searchRandomComputer()
 
 vector<Computer> ComputerService::searchBuilt(char built)
 {
-
     return data.getBuilt(built);
-}
-
-int ComputerService::searchID(string computerName)
-{
-    int computerID = 0;
-
-    for(size_t i = 0; i < computers.size(); i++)
-    {
-        if(computers[i].getComputerName() == computerName)
-        {
-            computerID = computers[i].getID();
-        }
-    }
-    return computerID;
 }
 
 void ComputerService::deleteComputer(int id)
 {
     data.deleteComputer(id);
+    setComputerVector();
 }
 
 void ComputerService::editComputer(string name,int id, int buildYear, int built, string type)
 {
     data.editComputer(name, id, buildYear ,built, type);
+    setComputerVector();
 }
 
 vector<Computer> ComputerService::getScientistID(int SID)
 {
     vector<Computer> computersConnected;
     computersConnected = data.computersConnectedToScientist(SID);
+
     return computersConnected;
 }

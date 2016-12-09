@@ -11,7 +11,6 @@ using namespace std;
 class Scientist
 {
 public:
-
     // constructorar
     Scientist();
     Scientist(int id, string name, string gender, int dateOfBirth, int dateOfDeath);
@@ -32,7 +31,6 @@ public:
     void setDateOfDeath(int death);
 
 private:
-
     vector<Scientist> _scientists;
     int _id;
     string _name;

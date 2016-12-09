@@ -24,7 +24,7 @@ void ConsoleUI::WelcomeMenu()
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
 }
-//Menu með updated MAXIMUM THREEDEE
+/***** Menu með 3D layout, virkar hugsanlega ekki að birta litina í iOS eða forritið jafnvel crashar *****/
 void ConsoleUI::features()
 {
     cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -71,7 +71,7 @@ void ConsoleUI::readComputers()
     int tempMade = 0;
     string tempType;
 
-    // Get name.
+    // Get name
     cout << TAB << "Please enter a computer name: ";
     ws(cin);
     getline(cin, tempComputerName);
@@ -88,7 +88,6 @@ void ConsoleUI::readComputers()
     temp.setName(tempComputerName);
 
     // Get computer type.
-
     bool validType = false;
     int type;
 
@@ -175,7 +174,7 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     cout << "\t___________________________________________________________________________" << endl;
     for(size_t i = 0; i < computers.size(); i++)
     {
-    cout << TAB << setw(15) << computers[i].getComputerName() << setw(20) << computers[i].getType();
+        cout << TAB << setw(15) << computers[i].getComputerName() << setw(20) << computers[i].getType();
         if(computers[i].getBuilt()==1)
             cout << setw(20) << "Yes";
         else
@@ -186,7 +185,7 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
         else
             cout << setw(20) << computers[i].getYearBuilt() << endl;
 
-         cout << "\t---------------------------------------------------------------------------" << endl;
+        cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
     }
 }
 
@@ -212,12 +211,11 @@ void ConsoleUI::listScientistConnections()
             }
         }
         cout << endl;
-
     }
-         cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
+    cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
 
-// Sýnir alla scientist tengdar við tölvu
+// Sýnir alla scientista tengda við tölvu
 void ConsoleUI::listComputerConnections()
 {
     cout << setw(55) << "CONNECTIONS" << endl;
@@ -248,12 +246,9 @@ void ConsoleUI::listComputerConnections()
             }
         }
         cout << endl;
-
     }
-         cout << TAB << "---------------------------------------------------------------------------" << endl << endl;
+    cout << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
-
-
 
 void ConsoleUI::displayScientistComputerConnections()
 {
@@ -263,8 +258,6 @@ void ConsoleUI::displayScientistComputerConnections()
     string scientistOption;
     size_t SOption;
     int scientistID = 0;
-
-    //vector<Computer> connectedComputers;
 
     while(scientistExists == false)
     {
@@ -302,7 +295,6 @@ void ConsoleUI::displayScientistComputerConnections()
                 cout << TAB << "Please enter the correct number: ";
                 cin >> SOption;
 
-
                 if(SOption > temp1.size() || SOption < 1 || !cin)
                 {
                     cout << TAB << "That is not a valid number, please try again" << endl;
@@ -326,11 +318,9 @@ void ConsoleUI::displayScientistComputerConnections()
     vector<Computer> connectedComputers = cService.getScientistID(scientistID);
 
     displayComputers(connectedComputers);
-
 }
 
-
-// sýnir hvaða scientists eru tengdir við ákveðna tölvu
+// sýnir hvaðaa scientists eru tengdir við ákveðna tölvu
 void ConsoleUI::displayComputerScientistConnections()
 {
     bool computerExists = false;
@@ -413,7 +403,6 @@ void ConsoleUI::searchComputer()
     if(temp.size() == 0)
     {
         cout << TAB << "There are no computers with the name " << name << " in our database. Please try again!";
-
     }
     else
     {
@@ -496,16 +485,13 @@ void ConsoleUI::searchBuilt()
     vector<Computer> temp = cService.searchBuilt(built);
 
     displayComputers(temp);
- }
-
+}
 
 void ConsoleUI::searchRandomComputer()
 {
     vector<Computer> temp = cService.searchRandomComputer();
     displayComputers(temp);
-
 }
-
 
 // Tengja saman scientis(t) við computer(s) og vice versa
 void ConsoleUI::link()
@@ -528,144 +514,134 @@ void ConsoleUI::link()
 
     vector<int> IDs;
 
-    //while((scientistExists == false) || (computerName == false))
-    //{
     while(scientistExists == false)
+    {
+        cout << TAB << "Please enter a scientist name or press Q to return to main menu: ";
+        ws(cin);
+        getline(cin, scientistName);
         {
-            cout << TAB << "Please enter a scientist name or press Q to return to main menu: ";
-            ws(cin);
-            getline(cin, scientistName);
-            {
-                if(scientistName == "q" || scientistName == "Q")
-                {
-                    return features();
-                }
-            }
-            vector<Scientist> temp1 = sService.searchName(scientistName);
-            if(temp1.size() == 0)
-            {
-                cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again or press Q to quit: " << endl;
-            }
-            else if(temp1.size() > 1)
-            {
-                cout << TAB << "There is more than one " << scientistName << ". Which one is correct?" << endl;
-                cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
-
-                for(size_t i = 0; i < temp1.size(); i++)
-                {
-
-                    if(temp1[i].getDateOfDeath() == 0)
-                    {
-                        cout << TAB << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender() << setw(15) << temp1[i].getDateOfBirth();
-                        cout << setw(15) << "Alive" << endl;
-                    }
-                    else
-                    {
-                        cout << TAB  << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender();
-                        cout << setw(15) << temp1[i].getDateOfBirth() << setw(15) << temp1[i].getDateOfDeath() << endl;
-                    }
-                    cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
-                }
-
-                while(correctSOption == false)
-                {
-                    cout << TAB << "Please enter the correct number: ";
-                    cin >> SOption;
-
-
-                    if(SOption > temp1.size() || SOption < 1 || !cin)
-                    {
-                        cout << TAB << "That is not a valid number, please try again" << endl;
-                        cin.clear();
-                        cin.ignore();
-                    }
-                    else
-                    {
-                        scientistID = temp1[SOption-1].getID();
-                        correctSOption = true;
-                        scientistExists = true;
-                    }
-                }
-            }
-            else
-            {
-                scientistID = temp1[0].getID();
-                scientistExists = true;
-            }
-        }
-
-        while(computerExists == false)
-        {
-            cout << TAB << "Please enter a computer name or press Q to return to main menu: ";
-            ws(cin);
-            getline(cin, computerName);
-            if(computerName == "Q" || computerName == "q")
+            if(scientistName == "q" || scientistName == "Q")
             {
                 return features();
             }
-            vector<Computer> temp2 = cService.searchComputerName(computerName);
-            if(temp2.size() == 0)
+        }
+        vector<Scientist> temp1 = sService.searchName(scientistName);
+        if(temp1.size() == 0)
+        {
+            cout << TAB << "There is no scientist with the name " << scientistName << " in our data, please try again or press Q to quit: " << endl;
+        }
+        else if(temp1.size() > 1)
+        {
+            cout << TAB << "There is more than one " << scientistName << ". Which one is correct?" << endl;
+            cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+
+            for(size_t i = 0; i < temp1.size(); i++)
             {
-                cout << TAB << "There is no computer with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
-            }
-            else if(temp2.size() > 1)
-            {
-                cout << TAB << "There is more than one " << computerName << ". Which one is correct?" << endl;
+                if(temp1[i].getDateOfDeath() == 0)
+                {
+                    cout << TAB << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender() << setw(15) << temp1[i].getDateOfBirth();
+                    cout << setw(15) << "Alive" << endl;
+                }
+                else
+                {
+                    cout << TAB  << i+1 << setw(15) << temp1[i].getName() << setw(15) << temp1[i].getGender();
+                    cout << setw(15) << temp1[i].getDateOfBirth() << setw(15) << temp1[i].getDateOfDeath() << endl;
+                }
                 cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
-
-                for(size_t i = 0; i < temp2.size(); i++)
-                {
-                    cout << TAB << i+1 << setw(15) << temp2[i].getComputerName() << setw(20) << temp2[i].getType();
-
-                    if(temp2[i].getBuilt()==1)
-                        cout << setw(20) << "Yes";
-                    else
-                        cout << setw(20) << "No";
-
-                    if(temp2[i].getBuilt()== 0)
-                        cout << setw(20) << "N/A" << endl;
-                    else
-                        cout << setw(20) << temp2[i].getYearBuilt() << endl;
-                }
-
-                while(correctCOption == false)
-                {
-                    cout << TAB << "Please enter the correct number: ";
-                    cin >> COption;
-
-                    if(COption > temp2.size() || COption < 1 || !cin)
-                    {
-                        cout << TAB << "That is not a valid number, please try again" << endl;
-                        cin.clear();
-                        cin.ignore();
-                    }
-                    else
-                    {
-                        computerID = temp2[COption-1].getID();
-                        correctCOption = true;
-                        computerExists = true;
-                    }
-                }
             }
 
-            else
+            while(correctSOption == false)
             {
-                computerID = temp2[0].getID();
-                computerExists = true;
+                cout << TAB << "Please enter the correct number: ";
+                cin >> SOption;
+
+                if(SOption > temp1.size() || SOption < 1 || !cin)
+                {
+                    cout << TAB << "That is not a valid number, please try again" << endl;
+                    cin.clear();
+                    cin.ignore();
+                }
+                else
+                {
+                    scientistID = temp1[SOption-1].getID();
+                    correctSOption = true;
+                    scientistExists = true;
+                }
+            }
+        }
+        else
+        {
+            scientistID = temp1[0].getID();
+            scientistExists = true;
+        }
+    }
+
+    while(computerExists == false)
+    {
+        cout << TAB << "Please enter a computer name or press Q to return to main menu: ";
+        ws(cin);
+        getline(cin, computerName);
+        if(computerName == "Q" || computerName == "q")
+        {
+            return features();
+        }
+        vector<Computer> temp2 = cService.searchComputerName(computerName);
+        if(temp2.size() == 0)
+        {
+            cout << TAB << "There is no computer with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
+        }
+        else if(temp2.size() > 1)
+        {
+            cout << TAB << "There is more than one " << computerName << ". Which one is correct?" << endl;
+            cout << TAB <<"-------------------------------------------------------------------------------------" << endl;
+
+            for(size_t i = 0; i < temp2.size(); i++)
+            {
+                cout << TAB << i+1 << setw(15) << temp2[i].getComputerName() << setw(20) << temp2[i].getType();
+
+                if(temp2[i].getBuilt()==1)
+                    cout << setw(20) << "Yes";
+                else
+                    cout << setw(20) << "No";
+
+                if(temp2[i].getBuilt()== 0)
+                    cout << setw(20) << "N/A" << endl;
+                else
+                    cout << setw(20) << temp2[i].getYearBuilt() << endl;
+            }
+
+            while(correctCOption == false)
+            {
+                cout << TAB << "Please enter the correct number: ";
+                cin >> COption;
+
+                if(COption > temp2.size() || COption < 1 || !cin)
+                {
+                    cout << TAB << "That is not a valid number, please try again" << endl;
+                    cin.clear();
+                    cin.ignore();
+                }
+                else
+                {
+                    computerID = temp2[COption-1].getID();
+                    correctCOption = true;
+                    computerExists = true;
+                }
             }
         }
 
-        // sækir ID-in
-        //scientistID = sService.searchID(scientistName);
-        //computerID = cService.searchID(computerName);
-        //scientistID = temp1[SOption-1];
-        //computerID = temp2[COption-1];
+        else
+        {
+            computerID = temp2[0].getID();
+            computerExists = true;
+        }
+    }
 
-        IDs.push_back(scientistID);
-        IDs.push_back(computerID);
+    IDs.push_back(scientistID);
+    IDs.push_back(computerID);
 
-        // sendir ID-in í connection service
-        coService.getIDs(IDs);
+    // sendir ID-in í connection service
+    coService.getIDs(IDs);
 }
 
 void ConsoleUI::readScientists()
@@ -682,7 +658,6 @@ void ConsoleUI::readScientists()
         if(tempName.empty())
         {
             cout << TAB << "You cannot enter an empty name. Please try again: ";
-            ws(cin);
             getline(cin, tempName);
         }
     }
@@ -737,7 +712,8 @@ void ConsoleUI::readScientists()
             cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
             cin >> tempDateOfBirth;
         }
-     }while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
+    }
+    while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
 
     do
     {
@@ -751,10 +727,11 @@ void ConsoleUI::readScientists()
             cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
             cin >> tempDateOfBirth;
         }
-     }while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
+    }
+    while(tempDateOfBirth > 2016 || tempDateOfBirth < 0);
 
-     do
-     {
+    do
+    {
         if(!cin)
         {
             while((!cin))
@@ -765,7 +742,8 @@ void ConsoleUI::readScientists()
                 cin >> tempDateOfBirth;
             }
         }
-    }while(tempDateOfBirth > 2016 && tempDateOfBirth < 0);
+    }
+    while(tempDateOfBirth > 2016 && tempDateOfBirth < 0);
 
     temp.setDateOfBirth(tempDateOfBirth);
 
@@ -799,7 +777,8 @@ void ConsoleUI::readScientists()
             break;
         }
 
-    }while((tempDateOfBirth > tempDateOfDeath) || ((tempDateOfDeath > 2016) && (tempDateOfDeath != 0)));
+    }
+    while((tempDateOfBirth > tempDateOfDeath) || ((tempDateOfDeath > 2016) && (tempDateOfDeath != 0)));
 
     temp.setDateOfDeath(tempDateOfDeath);
     cout << endl;
@@ -850,7 +829,6 @@ void ConsoleUI::display(vector<Scientist> scientists)
                 cout << TAB << setw(15) << scientists[i].getName() << setw(15) << scientists[i].getGender();
                 cout << setw(15) << setw(15) << scientists[i].getDateOfBirth() << setw(15) << scientists[i].getDateOfDeath() << setw(20) << "age when died " << tempAge << endl;
             }
-
             cout << TAB << setw(15) <<"-------------------------------------------------------------------------------------" << endl;
         }
     }
@@ -868,7 +846,6 @@ void ConsoleUI::displayListOfComputersReversedAlpha()
     displayComputers(computers);
 }
 
-
 void ConsoleUI::displayListOfComputersYoung()
 {
     vector<Computer> computers = cService.getComputersYoung();
@@ -881,7 +858,6 @@ void ConsoleUI::displayListOfComputersOld()
     displayComputers(computers);
 }
 
-
 void ConsoleUI::displayListOfScientistsAlpha()
 {
     vector<Scientist> scientists = sService.getScientistsAlpha();
@@ -893,7 +869,6 @@ void ConsoleUI::displayListOfScientistsReversedAlpha()
     vector<Scientist> scientists = sService.getScientistsReversedAlpha();
     display(scientists);
 }
-
 
 void ConsoleUI::displayListOfScientistsYoung()
 {
@@ -909,20 +884,20 @@ void ConsoleUI::displayListOfScientistsOld()
 
 void ConsoleUI::searchName()
 {
-     string name;
-     cout << TAB << "Enter the name of the scientist you want to find: ";
-     ws(cin);
-     getline(cin, name);
+    string name;
+    cout << TAB << "Enter the name of the scientist you want to find: ";
+    ws(cin);
+    getline(cin, name);
 
-     vector<Scientist> temp = sService.searchName(name);
-     if(temp.size() == 0)
-     {
-         cout << TAB << "There is no scientist with the name " << name << " in our data, please try again: " << endl;
-     }
-     else
-     {
-         display(temp);
-     }
+    vector<Scientist> temp = sService.searchName(name);
+    if(temp.size() == 0)
+    {
+        cout << TAB << "There is no scientist with the name " << name << " in our data, please try again: " << endl;
+    }
+    else
+    {
+        display(temp);
+    }
 }
 
 void ConsoleUI::searchDateOfBirth()
@@ -979,7 +954,6 @@ void ConsoleUI::deleteOptions()
     vector<Scientist> scientists = sService.getScientists();
     vector<Computer> computers = cService.getComputers();
 
-
     cout << TAB << "Press 1 to delete a scientist. " << endl;
     cout << TAB << "Press 2 to delete a computer. " << endl;
     cout << TAB << "Press 3 to delete a link. " << endl;
@@ -991,12 +965,9 @@ void ConsoleUI::deleteOptions()
 
         for (size_t i = 0; i < scientists.size(); i++)
         {
-
             cout << TAB << scientists[i].getID() << " " << scientists[i].getName() << endl;
-
         }
         cout << endl;
-
 
         cout << TAB << "Enter ID of scientist to delete: ";
         cin >> id;
@@ -1013,37 +984,17 @@ void ConsoleUI::deleteOptions()
             }
         }
 
-        //if (id > scientists.size())
-        //{
-          //  while(id > scientists.size())
-           // {
-             //   cout << TAB << "No such Id exists. Please try again: ";
-               // cin >> id;
-            //}
-
-        //}
-
-
-
-
-
-
         sService.deleteScientist(id);
         cout << TAB << "deleted";
     }
 
     else if(deleteButton == '2')
     {
-
         for (size_t i = 0; i < computers.size(); i++)
         {
-
             cout << TAB << computers[i].getID() << " " << computers[i].getComputerName() << endl;
-
         }
         cout << endl;
-
-
 
         cout << TAB << "Enter ID of computer to delete: ";
         cin >> id;
@@ -1056,32 +1007,17 @@ void ConsoleUI::deleteOptions()
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
                 cout << TAB << "That is not a valid option. Please try again!";
                 cin >> id;
-
             }
         }
 
-        //else if (id > computers.size())
-        //{
-          //  while(id > computers.size())
-            //{
-              //  cout << TAB << "No such Id exists. Please try again: ";
-                //cin >> id;
-            //}
-
-        //}
-
-
-
-
-
         cService.deleteComputer(id);
         cout << TAB << "deleted";
-
     }
     else if(deleteButton =='3')
     {
         for (size_t i = 0; i < computers.size(); i++)
         {
+
 
             cout << TAB << computers[i].getID() << " " << computers[i].getComputerName() << endl;
             cout << TAB << scientists[i].getID() << " " << scientists[i].getName() << endl;
@@ -1100,14 +1036,8 @@ void ConsoleUI::deleteOptions()
 
 }
 
-void ConsoleUI::editName()
-{
-    /*
-    cout << "Please enter your current name: ";
-    cin >> name;
-    if(name == )
-    */
-}
+
+
 
 void ConsoleUI::editOptions()
 {
@@ -1124,7 +1054,6 @@ void ConsoleUI::editOptions()
     bool validType = false;
     bool validBuilt = false;
 
-
     //Scientist
     string Sname;
     bool validGender = false;
@@ -1136,7 +1065,6 @@ void ConsoleUI::editOptions()
     vector<Scientist> scientists = sService.getScientists();
     vector<Computer> computers = cService.getComputers();
 
-
     cout << TAB << "Press 1 to edit a scientist. " << endl;
     cout << TAB << "Press 2 to edit a computer. " << endl;
     cout << TAB;
@@ -1144,12 +1072,9 @@ void ConsoleUI::editOptions()
     // #Edit scientist:
     if(editButton == '1')
     {
-
         for (size_t i = 0; i < scientists.size(); i++)
         {
-
             cout << TAB << scientists[i].getID() << " " << scientists[i].getName() << endl;
-
         }
         cout << endl;
 
@@ -1164,139 +1089,125 @@ void ConsoleUI::editOptions()
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
                 cout << TAB << "That is not a valid option. Please try again!";
                 cin >> id;
-
             }
         }
-
-
-
-
-
-
         cout << TAB << "Enter new Name: ";
         ws(cin);
         getline(cin,Sname);
         do
+        {
+            if(Sname.empty())
             {
-                if(Sname.empty())
-                {
-                    cout << TAB << "You cannot enter an empty name. Please try again: ";
-                    ws(cin);
-                    getline(cin, Sname);
-                }
+                cout << TAB << "You cannot enter an empty name. Please try again: ";
+                ws(cin);
+                getline(cin, Sname);
             }
-            while(Sname.empty());
-
+        }
+        while(Sname.empty());
 
         cout << TAB << "Enter new Gender(M/F): ";
 
-
         while(validGender ==false)
         {
-        ws(cin);
-        getline(cin,tempGender);
+            ws(cin);
+            getline(cin,tempGender);
 
-                if(tempGender != "M" && tempGender != "m" && tempGender != "F" && tempGender != "f")
-                {
-                   cout << TAB << tempGender << " is not a valid option" << endl;
-                   cout << TAB <<"Please enter a valid option: ";
-                }
-               if(tempGender == "M"||tempGender== "m")
-               {
-                   gender = "Male";
-                   validGender = true;
-               }
-               else if(tempGender == "F" || tempGender == "f")
-               {
-                   gender = "Female";
-                   validGender = true;
-               }
+            if(tempGender != "M" && tempGender != "m" && tempGender != "F" && tempGender != "f")
+            {
+                cout << TAB << tempGender << " is not a valid option" << endl;
+                cout << TAB <<"Please enter a valid option: ";
+            }
+            if(tempGender == "M"||tempGender== "m")
+            {
+                gender = "Male";
+                validGender = true;
+            }
+            else if(tempGender == "F" || tempGender == "f")
+            {
+                gender = "Female";
+                validGender = true;
+            }
         }
-
-
 
         cout << TAB << "Enter new birth year: ";
         cin >> birth;
 
         do
+        {
+            if(birth > 2016)
             {
-                if(birth > 2016)
-                {
-                    cout << TAB << "Invalid date. Please try again: ";
-                    cin >> birth;
-                }
-                else if(birth < 0)
-                {
-                    cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
-                    cin >> birth;
-                }
-             }while(birth > 2016 || birth < 0);
-
-            do
+                cout << TAB << "Invalid date. Please try again: ";
+                cin >> birth;
+            }
+            else if(birth < 0)
             {
-                if(birth > 2016)
+                cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
+                cin >> birth;
+            }
+        }
+        while(birth > 2016 || birth < 0);
+
+        do
+        {
+            if(birth > 2016)
+            {
+                cout << TAB << "Invalid date. Please try again: ";
+                cin >> birth;
+            }
+            else if(birth < 0)
+            {
+                cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
+                cin >> birth;
+            }
+        }
+        while(birth > 2016 || birth < 0);
+
+        do
+        {
+            if(!cin)
+            {
+                while((!cin))
                 {
-                    cout << TAB << "Invalid date. Please try again: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    cout << TAB << "That is not a date, please try again: ";
                     cin >> birth;
                 }
-                else if(birth < 0)
-                {
-                    cout << TAB << "A person cannot have a negative date of birth. Please try again: ";
-                    cin >> birth;
-                }
-             }while(birth > 2016 || birth < 0);
-
-             do
-             {
-                if(!cin)
-                {
-                    while((!cin))
-                    {
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                        cout << TAB << "That is not a date, please try again: ";
-                        cin >> birth;
-                    }
-                }
-            }while(birth > 2016 && birth < 0);
-
-
+            }
+        }
+        while(birth > 2016 && birth < 0);
 
         cout << TAB << "Enter death date, enter 0 if still alive: ";
         cin >> death;
 
         do
+        {
+            if(!cin)
             {
-                if(!cin)
+                while((!cin))
                 {
-                    while((!cin))
-                    {
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                        cout << TAB << "Invalid date, that is not a year, try again: ";
-                        cin >> death;
-                    }
-                }
-                else if((birth > death) && (death != 0))
-                {
-                    cout << TAB << "Not possible. A person cannot die before it is born, try again: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    cout << TAB << "Invalid date, that is not a year, try again: ";
                     cin >> death;
                 }
-                else if(death > 2016 && (death != 0))
-                {
-                    cout << TAB << "Not possibe. A person cannot die beyond the current year, try again: ";
-                    cin >> death;
-                }
-                else
-                {
-                    break;
-                }
-
-            }while((birth > death) || ((death > 2016) && (death != 0)));
-
-
-
-
+            }
+            else if((birth > death) && (death != 0))
+            {
+                cout << TAB << "Not possible. A person cannot die before it is born, try again: ";
+                cin >> death;
+            }
+            else if(death > 2016 && (death != 0))
+            {
+                cout << TAB << "Not possibe. A person cannot die beyond the current year, try again: ";
+                cin >> death;
+            }
+            else
+            {
+                break;
+            }
+        }
+        while((birth > death) || ((death > 2016) && (death != 0)));
 
         sService.editScientist(id, gender, Sname, birth, death);
         cout << TAB << "Information updated!";
@@ -1307,61 +1218,28 @@ void ConsoleUI::editOptions()
 
         for (size_t i = 0; i < computers.size(); i++)
         {
-
             cout << TAB << computers[i].getID() << " " << computers[i].getComputerName() << endl;
-
         }
         cout << endl;
-
 
         cout << TAB << "Enter ID of computer to edit: ";
         cin >> id;
 
-
-
-          if(!cin)
-          {
-              while(!cin)
-              {
-                  cin.clear();
-                  cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                  cout << TAB << "That is not a valid option. Please try again!";
-                  cin >> id;
-
-              }
-          }
-
-
-
+        if(!cin)
+        {
+            while(!cin)
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << TAB << "That is not a valid option. Please try again!";
+                cin >> id;
+            }
+        }
 
         cout << TAB << "Enter new name of computer: ";
 
-        //getline(cin,name);
         ws(cin);
         getline(cin, name);
-
-        //while(name.empty())
-        //    {
-          //      if(name.empty())
-            //    {
-              //      cout << TAB << "You cannot enter an empty computer name. Please try again: ";
-                //    ws(cin);
-                  //  getline(cin, name);
-                //}
-            //}
-
-
-
-        //do
-            //{
-               // if(name.empty())
-                //{
-                  //  cout << TAB << "You cannot enter an empty name. Please try again: ";
-                   // ws(cin);
-                   // getline(cin, name);
-                //}
-            //}
-            //while(name.empty());
 
         cout << TAB << "Enter new build year: ";
         cin >> buildYear;
@@ -1390,61 +1268,50 @@ void ConsoleUI::editOptions()
                 cout << TAB <<"Please enter a valid option: ";
             }
 
-           if(type == 1)
-          {
-            tempType = "Mechanical";
-            validType = true;
-          }
+            if(type == 1)
+            {
+                tempType = "Mechanical";
+                validType = true;
+            }
 
-         else if(type == 2)
-        {
-            tempType = "Electronic";
-            validType = true;
-         }
+            else if(type == 2)
+            {
+                tempType = "Electronic";
+                validType = true;
+            }
 
-        else if(type == 3)
-       {
-            tempType = "Transistor";
-            validType = true;
-       }
-    }
-
-
-      cout << TAB << "Enter if built or not(Y/N): ";
-      while (validBuilt == false)
-    {
-          cout << TAB;
-          ws(cin);
-          getline(cin, tempBuilt);
-
-        if(tempBuilt == "y" || tempBuilt == "Y")
-        {
-            built = 1;
-            validBuilt = true;
+            else if(type == 3)
+            {
+                tempType = "Transistor";
+                validType = true;
+            }
         }
 
-        else if(tempBuilt == "n" || tempBuilt == "N")
+        cout << TAB << "Enter if built or not(Y/N): ";
+        while (validBuilt == false)
         {
+            cout << TAB;
+            ws(cin);
+            getline(cin, tempBuilt);
 
-            built = 0;
-            validBuilt = true;
+            if(tempBuilt == "y" || tempBuilt == "Y")
+            {
+                built = 1;
+                validBuilt = true;
+            }
+
+            else if(tempBuilt == "n" || tempBuilt == "N")
+            {
+
+                built = 0;
+                validBuilt = true;
+            }
+
+            else if (tempBuilt != "n" || tempBuilt != "N" || tempBuilt != "Y" || tempBuilt != "y")
+            {
+                cout << TAB << "Not a valid option. Please try again!";
+            }
         }
-
-        else if (tempBuilt != "n" || tempBuilt != "N" || tempBuilt != "Y" || tempBuilt != "y")
-        {
-            cout << TAB << "Not a valid option. Please try again!";
-        }
-    }
-
-
-
-
-
-
-
-
-
-
         cService.editComputer(name, id, buildYear, built, tempType);
     }
 }
@@ -1477,7 +1344,6 @@ void ConsoleUI::stats()
     cout << TAB << computers.size() << " computers" << endl;
     cout << TAB << totalConnections << " connections" << endl;
     cout << TAB << "----------------------------" << endl << endl;
-
 }
 
 void ConsoleUI::displayComputerSortOptions()
@@ -1510,7 +1376,6 @@ void ConsoleUI::displaySortOptions()
 
 void ConsoleUI::listingAndSorting()
 {
-
     string choice = "/0";
 
     while(choice != "q" && choice != "Q")
@@ -1521,19 +1386,16 @@ void ConsoleUI::listingAndSorting()
         ws(cin);
         getline(cin, choice);
 
-
         if(choice == "h" || choice == "H")
         {
             features();
         }
-
         else if(choice == "1")
         {
             cout << endl;
             cout << TAB << ">>> Reading Scientist(s) <<<" << endl << endl;
             readScientists();
         }
-
         else if(choice == "2")
         {
             char sort;
@@ -1562,7 +1424,6 @@ void ConsoleUI::listingAndSorting()
                 features();
             }
         }
-
         else if(choice == "3")
         {
             string searchOptions;
@@ -1601,7 +1462,6 @@ void ConsoleUI::listingAndSorting()
                 features();
             }
         }
-
         else if(choice == "4")
         {
             stats();
@@ -1683,12 +1543,10 @@ void ConsoleUI::listingAndSorting()
                 features();
             }
         }
-
         else if(choice == "8")
         {
             cout << TAB << ">>> Linking scientists and computers <<<" << endl;
             link();
-
         }
         else if(choice == "9")
         {
@@ -1712,10 +1570,11 @@ void ConsoleUI::listingAndSorting()
         {
             string connectionOption = "/0";
 
-            cout << "Press 1 to see all computers connected to a specific scientist" << endl;
-            cout << "Press 2 to see all scientists connected to a specific computer" << endl;
-            cout << "Press 3 to see all scientists with connections and their connections" << endl;
-            cout << "Press 4 to see all computers with connections and their connections" << endl;
+            cout << TAB << "Press 1 to see all computers connected to a specific scientist" << endl;
+            cout << TAB << "Press 2 to see all scientists connected to a specific computer" << endl;
+            cout << TAB << "Press 3 to see all scientists with connections and their connections" << endl;
+            cout << TAB << "Press 4 to see all computers with connections and their connections" << endl;
+            cout << TAB;
             ws(cin);
             getline(cin, connectionOption);
 
@@ -1746,4 +1605,3 @@ void ConsoleUI::listingAndSorting()
         }
     }
 }
-

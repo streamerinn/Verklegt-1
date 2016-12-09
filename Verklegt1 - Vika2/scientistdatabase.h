@@ -9,16 +9,20 @@ using namespace std;
 class ScientistDatabase
 {
 public:
+    // Constructorar
     ScientistDatabase();
     ~ScientistDatabase();
 
-    vector<Scientist> scientistDB();
-    vector<Scientist> scientistsConnectedToComputers(int computerID);
+    // Athugar connection við database
     bool connectionCheck(QString name);
-    void insertRow(Scientist scientist);
 
+    vector<Scientist> scientistDB();
+    vector<Scientist> scientistsConnectedToComputers(int computerID);   
+
+    // Breytir upplýsingum í database
     void deleteScientist(int id);
     void editScientist(int id, string gender, string name, int birth, int death);
+    void insertRow(Scientist scientist); // bætir við nýjum scientist
 
 private:
     QSqlDatabase db;
