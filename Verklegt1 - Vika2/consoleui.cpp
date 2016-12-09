@@ -954,9 +954,10 @@ void ConsoleUI::deleteOptions()
     vector<Scientist> scientists = sService.getScientists();
     vector<Computer> computers = cService.getComputers();
 
+
     cout << TAB << "Press 1 to delete a scientist. " << endl;
     cout << TAB << "Press 2 to delete a computer. " << endl;
-    cout << TAB << "Press 3 to delete a link. " << endl;
+    cout << TAB << "Press 3 to delete a link between scientist and computer. " << endl;
 
     cin >> deleteButton;
 
@@ -1015,20 +1016,27 @@ void ConsoleUI::deleteOptions()
     }
     else if(deleteButton =='3')
     {
-        for (size_t i = 0; i < computers.size(); i++)
-        {
 
+        listComputerConnections();
 
-            cout << TAB << computers[i].getID() << " " << computers[i].getComputerName() << endl;
-            cout << TAB << scientists[i].getID() << " " << scientists[i].getName() << endl;
-
-        }
-        cout << endl;
 
         cout << TAB << "Enter ScientistID: ";
         cin >> scientistID;
         cout << TAB << "Enter ComputerID: ";
         cin >> computerID;
+
+        if(!cin)
+        {
+            while(!cin)
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << TAB << "That is not a valid option. Please try again!";
+                cin >> id;
+
+            }
+        }
+
 
         coService.deleteLink(computerID, scientistID);
 
