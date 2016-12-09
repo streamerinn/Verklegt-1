@@ -932,6 +932,10 @@ void ConsoleUI::deleteOptions()
     char deleteButton;
     int id;
 
+    vector<Scientist> scientists = sService.getScientists();
+    vector<Computer> computers = cService.getComputers();
+
+
     cout << TAB << "Press 1 to delete a scientist. " << endl;
     cout << TAB << "Press 2 to delete a computer. " << endl;
     cout << TAB;
@@ -939,17 +943,95 @@ void ConsoleUI::deleteOptions()
 
     if(deleteButton == '1')
     {
+
+        for (size_t i = 0; i < scientists.size(); i++)
+        {
+
+            cout << TAB << scientists[i].getID() << " " << scientists[i].getName() << endl;
+
+        }
+        cout << endl;
+
+
         cout << TAB << "Enter ID of scientist to delete: ";
         cin >> id;
+
+        if(!cin)
+        {
+            while(!cin)
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << TAB << "That is not a valid option. Please try again!";
+                cin >> id;
+
+            }
+        }
+
+        //if (id > scientists.size())
+        //{
+          //  while(id > scientists.size())
+           // {
+             //   cout << TAB << "No such Id exists. Please try again: ";
+               // cin >> id;
+            //}
+
+        //}
+
+
+
+
+
+
         sService.deleteScientist(id);
+        cout << TAB << "deleted";
     }
 
     else if(deleteButton == '2')
     {
+
+        for (size_t i = 0; i < computers.size(); i++)
+        {
+
+            cout << TAB << computers[i].getID() << " " << computers[i].getComputerName() << endl;
+
+        }
+        cout << endl;
+
+
+
         cout << TAB << "Enter ID of computer to delete: ";
         cin >> id;
+
+        if(!cin)
+        {
+            while(!cin)
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << TAB << "That is not a valid option. Please try again!";
+                cin >> id;
+
+            }
+        }
+
+        //else if (id > computers.size())
+        //{
+          //  while(id > computers.size())
+            //{
+              //  cout << TAB << "No such Id exists. Please try again: ";
+                //cin >> id;
+            //}
+
+        //}
+
+
+
+
+
         cService.deleteComputer(id);
-        //cout << cService.deleteComputer(id);
+        cout << TAB << "deleted";
+
     }
 }
 
@@ -971,11 +1053,12 @@ void ConsoleUI::editOptions()
     //Computer
     string name;
     int buildYear;
-    char tempBuilt;
+    string tempBuilt;
     int built;
     int type;
     string tempType;
     bool validType = false;
+    bool validBuilt = false;
 
 
     //Scientist
@@ -986,6 +1069,8 @@ void ConsoleUI::editOptions()
     int birth;
     int death;
 
+    vector<Scientist> scientists = sService.getScientists();
+    vector<Computer> computers = cService.getComputers();
 
 
     cout << TAB << "Press 1 to edit a scientist. " << endl;
@@ -995,6 +1080,15 @@ void ConsoleUI::editOptions()
     // #Edit scientist:
     if(editButton == '1')
     {
+
+        for (size_t i = 0; i < scientists.size(); i++)
+        {
+
+            cout << TAB << scientists[i].getID() << " " << scientists[i].getName() << endl;
+
+        }
+        cout << endl;
+
         cout << TAB << "Enter ID of scientist to edit: ";
         cin >> id;
 
@@ -1141,10 +1235,19 @@ void ConsoleUI::editOptions()
 
 
         sService.editScientist(id, gender, Sname, birth, death);
+        cout << TAB << "Information updated!";
     }
 
     else if(editButton == '2')
     {
+
+        for (size_t i = 0; i < computers.size(); i++)
+        {
+
+            cout << TAB << computers[i].getID() << " " << computers[i].getComputerName() << endl;
+
+        }
+        cout << endl;
 
 
         cout << TAB << "Enter ID of computer to edit: ";
@@ -1243,21 +1346,33 @@ void ConsoleUI::editOptions()
     }
 
 
-
-
-
       cout << TAB << "Enter if built or not(Y/N): ";
-      cin >> tempBuilt;
-      if(tempBuilt == 'y' || tempBuilt == 'Y')
-     {
-       built = 1;
-     }
+      while (validBuilt == false)
+    {
+          cout << TAB;
+          ws(cin);
+          getline(cin, tempBuilt);
 
-      else if(tempBuilt == 'n' || tempBuilt == 'N')
-      {
+        if(tempBuilt == "y" || tempBuilt == "Y")
+        {
+            built = 1;
+            validBuilt = true;
+        }
 
-          built = 0;
-      }
+        else if(tempBuilt == "n" || tempBuilt == "N")
+        {
+
+            built = 0;
+            validBuilt = true;
+        }
+
+        else if (tempBuilt != "n" || tempBuilt != "N" || tempBuilt != "Y" || tempBuilt != "y")
+        {
+            cout << TAB << "Not a valid option. Please try again!";
+        }
+    }
+
+
 
 
 
@@ -1331,7 +1446,7 @@ void ConsoleUI::displaySortOptions()
 
 void ConsoleUI::listingAndSorting()
 {
-    cout << "remove me" << endl;
+
 
     string choice = "/0";
 
