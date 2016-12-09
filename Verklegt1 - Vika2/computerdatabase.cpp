@@ -130,21 +130,9 @@ void ComputerDatabase::deleteComputer(int id)
         QSqlQuery query(db);
         query.prepare("DELETE FROM Computers where ID = (:Compid)");
         query.bindValue(":Compid", Compid);
-
-        if(!query.exec())
-        {
-            qDebug() << query.lastError();
-        }
-        else
-        {
-            //query.exec();
-            qDebug("Deleted!");
-        }
-
-        // herna er verið ad replacea "?" med ID breytunni
+        query.exec();
 
 
-        // execute query
 
 }
 
@@ -179,18 +167,18 @@ void ComputerDatabase::editComputer(string name,int id, int buildYear, int built
 
 
     //query.prepare("UPDATE Computers SET name =", [build year] = +buildYears+ ", type =" +types+", builts =" +builts+";");
-    //query.exec();
+    query.exec();
 
-    if(!query.exec())
-    {
-      qDebug() << query.lastError();
-    }
-    else
-    {
+    //if(!query.exec())
+    //{
+      //qDebug() << query.lastError();
+    //}
+    //else
+    //{
         //query.exec();
-    qDebug("Updated!");
+    //qDebug("Updated!");
 
-    }
+    //}
 
 
 
