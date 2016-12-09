@@ -1,6 +1,7 @@
 #include "computerdatabase.h"
 
 //Constructor
+//**********CONSTRUCTOR****************
 ComputerDatabase::ComputerDatabase()
 {
     connectionName = "computerDB";
@@ -16,12 +17,14 @@ ComputerDatabase::ComputerDatabase()
         db = QSqlDatabase::database(connectionName);
     }
 }
-//Destructor
+
+//**********DESTRUCTOR****************
 ComputerDatabase::~ComputerDatabase()
 {
     QSqlDatabase::removeDatabase(dbName);
     db.close();
 }
+
 //Checkar hvort database-inn er tengdur eða ekki
 bool ComputerDatabase::connectionCheck(QString name)
 {
@@ -36,6 +39,7 @@ bool ComputerDatabase::connectionCheck(QString name)
     }
     return connected;
 }
+
 //Tekur upplýsingar úr database og skilar þeim í vector
 vector<Computer> ComputerDatabase::computerDB()
 {
@@ -53,7 +57,6 @@ vector<Computer> ComputerDatabase::computerDB()
         int yearBuilt;
         int built = query.value("built").toUInt();
 
-
         if(!query.value("yearBuilt").isNull())
         {
             yearBuilt = query.value("yearBuilt").toUInt();
@@ -63,13 +66,13 @@ vector<Computer> ComputerDatabase::computerDB()
             yearBuilt = 0;
         }
 
-
         computerVector.push_back(Computer(id, computerName, type, yearBuilt, built));
     }
 
     return computerVector;
 
 }
+
 //Bætir nýrri tölvu í Computers töfluna
 void ComputerDatabase::insertRow(Computer computer)
 {
@@ -120,29 +123,24 @@ vector<Computer> ComputerDatabase::computersConnectedToScientist(int scientistsI
     }
     return connectedComputer;
 }
+
 //Eyðir tölvu úr Computers töflunni
 void ComputerDatabase::deleteComputer(int id)
-
 {
     QString Compid;
     Compid = QString::number(id);
 
-        QSqlQuery query(db);
-        query.prepare("DELETE FROM Computers where ID = (:Compid)");
-        query.bindValue(":Compid", Compid);
-        query.exec();
-
-
-
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM Computers where ID = (:Compid)");
+    query.bindValue(":Compid", Compid);
+    query.exec();
 }
 
 //Breytir tölvu í Computers töflunni
 void ComputerDatabase::editComputer(string name,int id, int buildYear, int built, string type)
 {
-    //vector<Computer> temp1;
     QString Compid;
     QString buildYears;
-    //QString builts(built);
     QString types;
     QString names;
     QString builts;
@@ -150,53 +148,17 @@ void ComputerDatabase::editComputer(string name,int id, int buildYear, int built
     names = QString::fromStdString(name);
     Compid = QString::number(id);
     buildYears = QString::number(buildYear);
-    //builts()  //QString::char(built);
     types = QString::fromStdString(type);
     builts = QString::number(built);
 
-
-
     QSqlQuery query(db);
-    //query.prepare("UPDATE Computers where ID = (:Compid);");
     query.prepare("UPDATE Computers SET name = (:names), yearBuilt = (:buildYears), type = (:types), built = (:built) WHERE id = (:Compid)");
-   query.bindValue(":Compid", Compid);
-   query.bindValue(":names", names);
-   query.bindValue(":buildYears",buildYears);
-   query.bindValue(":types",types);
+    query.bindValue(":Compid", Compid);
+    query.bindValue(":names", names);
+    query.bindValue(":buildYears",buildYears);
+    query.bindValue(":types",types);
     query.bindValue(":built",builts);
-
-
-    //query.prepare("UPDATE Computers SET name =", [build year] = +buildYears+ ", type =" +types+", builts =" +builts+";");
     query.exec();
-
-    //if(!query.exec())
-    //{
-      //qDebug() << query.lastError();
-    //}
-    //else
-    //{
-        //query.exec();
-    //qDebug("Updated!");
-
-    //}
-
-
-
-
-        //int id = query.value("id").toInt();
-        //string name = query.value("name").toString().toStdString();
-        //string type = query.value("type").toString().toStdString();
-        //int yearBuilt = query.value("build year").toInt();
-        //bool wasBuilt = query.value("built").toBool();
-
-        //Computer computer(id, name, type, yearBuilt, wasBuilt);
-
-        //temp1.push_back(computer);
-
-
-
-    //return temp1;
-
 }
 
 
@@ -212,7 +174,6 @@ vector<Computer> ComputerDatabase::getYearBuilt(int a)
 
     while(query.next())
     {
-
         int id = query.value("id").toInt();
         string name = query.value("name").toString().toStdString();
         string type = query.value("type").toString().toStdString();
@@ -220,8 +181,7 @@ vector<Computer> ComputerDatabase::getYearBuilt(int a)
         bool built = query.value("built").toBool();
 
         Computer computer(id, name, type, yearBuilt, built);
-
-          temp1.push_back(computer);
+        temp1.push_back(computer);
     }
     return temp1;
 }
@@ -230,27 +190,23 @@ vector<Computer> ComputerDatabase::getYearBuilt(int a)
 vector<Computer> ComputerDatabase::getType(char type)
 {
     QSqlQuery query(db);
+    vector<Computer> temp2;
 
-
-   vector<Computer> temp2;
-
-   if(type == 'M'||type == 'm')
+    if(type == 'M'||type == 'm')
     {
-       query.exec("SELECT * FROM Computers WHERE type = 'Mechanical';");
-       while(query.next())
-           {
+        query.exec("SELECT * FROM Computers WHERE type = 'Mechanical';");
+        while(query.next())
+        {
+            int id = query.value("id").toInt();
+            string name = query.value("name").toString().toStdString();
+            string type = query.value("type").toString().toStdString();
+            int yearBuilt = query.value("yearBuilt").toInt();
+            int built = query.value("built").toInt();
 
-               int id = query.value("id").toInt();
-               string name = query.value("name").toString().toStdString();
-               string type = query.value("type").toString().toStdString();
-               int yearBuilt = query.value("yearBuilt").toInt();
-               int built = query.value("built").toInt();
-
-
-               Computer computer(id, name, type, yearBuilt, built);
-               temp2.push_back(computer);
-           }
-}
+            Computer computer(id, name, type, yearBuilt, built);
+            temp2.push_back(computer);
+        }
+    }
 
     else if(type == 'E'||type == 'e')
     {
@@ -283,50 +239,49 @@ vector<Computer> ComputerDatabase::getType(char type)
            temp2.push_back(computer);
        }
   }
-    return temp2;
+  return temp2;
 }
 
 vector<Computer> ComputerDatabase::getBuilt(char built)
 {
     vector<Computer> temp4;
-
     QSqlQuery query(db);
 
-    if((built == 'Y'||built == 'y')/*&& build == 1)*/)
+    if((built == 'Y'||built == 'y'))
     {
-      query.exec("SELECT * FROM Computers WHERE built = '1';");
+        query.exec("SELECT * FROM Computers WHERE built = '1';");
 
-      while(query.next())
-      {
-        int id = query.value("id").toInt();
-        string name = query.value("name").toString().toStdString();
-        string type = query.value("type").toString().toStdString();
-        int yearBuilt = query.value("yearBuilt").toInt();
-        int built = query.value("built").toUInt();
+        while(query.next())
+        {
+            int id = query.value("id").toInt();
+            string name = query.value("name").toString().toStdString();
+            string type = query.value("type").toString().toStdString();
+            int yearBuilt = query.value("yearBuilt").toInt();
+            int built = query.value("built").toUInt();
 
-        Computer computer(id, name, type, yearBuilt, built);
-
-          temp4.push_back(computer);
-      }
+            Computer computer(id, name, type, yearBuilt, built);
+            temp4.push_back(computer);
+        }
     }
+
     else if(built =='N'||built =='n'/*build ==0*/)
     {
-
         query.exec("SELECT * FROM Computers WHERE built = '0';");
 
         while(query.next())
         {
-          int id = query.value("id").toInt();
-          string name = query.value("name").toString().toStdString();
-          string type = query.value("type").toString().toStdString();
-          int yearBuilt = query.value("yearBuilt").toInt();
-          int built = query.value("built").toUInt();
+            int id = query.value("id").toInt();
+            string name = query.value("name").toString().toStdString();
+            string type = query.value("type").toString().toStdString();
+            int yearBuilt = query.value("yearBuilt").toInt();
+            int built = query.value("built").toUInt();
 
-          Computer computer(id, name, type, yearBuilt, built);
-           temp4.push_back(computer);
+            Computer computer(id, name, type, yearBuilt, built);
+            temp4.push_back(computer);
         }
     }
-    return temp4;
+
+return temp4;
 }
 
 
@@ -334,14 +289,14 @@ vector<Computer> ComputerDatabase::getName (string name)
 {
 
    vector<Computer> temp;
+   QSqlQuery query(db);
+
    QString computerName;
    computerName = QString::fromStdString(name);
 
-   QSqlQuery query(db);
-   query.exec("SELECT * FROM Computers WHERE name LIKE '%" + computerName+ "%';");
-
-   while (query.next())
-   {
+    query.exec("SELECT * FROM Computers WHERE name LIKE '%" + computerName+ "%';");
+    while (query.next())
+    {
        int id = query.value("id").toInt();
        string name = query.value("name").toString().toStdString();
        string type = query.value("type").toString().toStdString();

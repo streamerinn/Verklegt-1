@@ -15,7 +15,8 @@ public:
 
     void getIDs(vector<int> IDs);
     int getConnections();
-    vector<Scientist> idName();
+    void deleteLink(int Compid, int sciID);
+
 
 private:
     ConnectionDataBase connections;

@@ -973,13 +973,17 @@ void ConsoleUI::deleteOptions()
     char deleteButton;
     int id;
 
+    int scientistID;
+    int computerID;
+
     vector<Scientist> scientists = sService.getScientists();
     vector<Computer> computers = cService.getComputers();
 
 
     cout << TAB << "Press 1 to delete a scientist. " << endl;
     cout << TAB << "Press 2 to delete a computer. " << endl;
-    cout << TAB;
+    cout << TAB << "Press 3 to delete a link. " << endl;
+
     cin >> deleteButton;
 
     if(deleteButton == '1')
@@ -1074,8 +1078,27 @@ void ConsoleUI::deleteOptions()
         cout << TAB << "deleted";
 
     }
-}
+    else if(deleteButton =='3')
+    {
+        for (size_t i = 0; i < computers.size(); i++)
+        {
 
+            cout << TAB << computers[i].getID() << " " << computers[i].getComputerName() << endl;
+            cout << TAB << scientists[i].getID() << " " << scientists[i].getName() << endl;
+
+        }
+        cout << endl;
+
+        cout << TAB << "Enter ScientistID: ";
+        cin >> scientistID;
+        cout << TAB << "Enter ComputerID: ";
+        cin >> computerID;
+
+        coService.deleteLink(computerID, scientistID);
+
+    }
+
+}
 
 void ConsoleUI::editName()
 {
@@ -1683,6 +1706,7 @@ void ConsoleUI::listingAndSorting()
             {
                 editOptions();
             }
+
         }
         else if(choice == "10")
         {

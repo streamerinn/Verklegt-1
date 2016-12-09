@@ -17,6 +17,7 @@ ConnectionDataBase::ConnectionDataBase()
         db = QSqlDatabase::database(connectionName);
     }
 }
+
 //Destructor
 ConnectionDataBase::~ConnectionDataBase()
 {
@@ -38,6 +39,7 @@ bool ConnectionDataBase::connectionCheck(QString name)
     }
     return connected;
 }
+
 //Bætir við connection í Connections töfluna
 void ConnectionDataBase::insertRow(vector<int> IDs)
 {
@@ -45,12 +47,13 @@ void ConnectionDataBase::insertRow(vector<int> IDs)
 
     QString scientists = QString::number(IDs[0]);
     QString computers = QString::number(IDs[1]);
-    //cout << "INSERT INTO Connections (scientistsID, computersID) VALUES (" << scientists.toStdString()<< ", " << computers.toStdString() << ")" << endl;
+
     query.prepare("INSERT INTO Connections (scientistsID, computersID) VALUES (:scientists, :computers)");
     query.bindValue(":scientists", scientists);
     query.bindValue(":computers", computers);
     query.exec();
 }
+
 //Telur connections í Connections töflunni
 int ConnectionDataBase::countConnections()
 {
@@ -63,31 +66,27 @@ int ConnectionDataBase::countConnections()
     {
         counter++;
     }
-
     return counter;
 }
 
-vector<Scientist> ConnectionDataBase::getidName()
+
+void ConnectionDataBase::deleteLink(int compID, int sciID)
 {
 
-    vector<Scientist> temp;
+    QString ComputerID;
+    QString ScientistID;
+    ComputerID = QString::number(compID);
+    ScientistID = QString::number(sciID);
+
     QSqlQuery query(db);
-    query.exec("SELECT * FROM Scientists;");
-    while (query.next())
-    {
-        int id = query.value("id").toInt();
-        string name = query.value("name").toString().toStdString();
-        string gender = query.value("gender").toString().toStdString();
-        int dateOfBirth = query.value("birthDate").toInt();
-        int dateOfDeath = query.value("deathDate").toInt();
-
-        Scientist scientist (id, name, gender, dateOfBirth, dateOfDeath);
-        temp.push_back(scientist);
+    query.prepare("DELETE FROM Connections WHERE scientistsID = (:ScientistID) AND computersID = (:ComputerID) ");
+    query.bindValue(":ComputerID", ComputerID);
+    query.bindValue(":ScientistID", ScientistID);
+    query.exec();
 
 
-    }
-
-    return temp;
 }
+
+
 
 

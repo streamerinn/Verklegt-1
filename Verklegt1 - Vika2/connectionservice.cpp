@@ -16,8 +16,7 @@ int ConnectionService::getConnections()
     return connections.countConnections();
 }
 
-vector<Scientist> ConnectionService::idName()
+void ConnectionService::deleteLink(int Compid, int sciID)
 {
-
-    return connections.getidName();
+    connections.deleteLink(Compid, sciID);
 }
