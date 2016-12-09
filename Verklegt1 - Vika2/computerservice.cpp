@@ -173,9 +173,9 @@ void ComputerService::deleteComputer(int id)
     data.deleteComputer(id);
 }
 
-void ComputerService::editComputer(string name,int id, int buildYear, /*bool built,*/ string type)
+void ComputerService::editComputer(string name,int id, int buildYear, int built, string type)
 {
-    data.editComputer(name, id, buildYear /*built*/, type);
+    data.editComputer(name, id, buildYear ,built, type);
 }
 
 vector<Computer> ComputerService::getScientistID(int SID)
