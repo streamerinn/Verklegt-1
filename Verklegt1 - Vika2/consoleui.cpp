@@ -193,7 +193,7 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
 void ConsoleUI::listScientistConnections()
 {
     cout << setw(55) << "CONNECTIONS" << endl;
-    cout << TAB << setw(15) << "Scientist" <<setw(20) << "Computer" << endl;
+    cout << TAB << setw(15) << "Scientists" <<setw(20) << "Computers" << endl;
     cout << "\t___________________________________________________________________________" << endl;
 
     vector<Scientist> aScientist = sService.getScientists();
@@ -203,14 +203,21 @@ void ConsoleUI::listScientistConnections()
         vector<Computer> itsComputers = cService.getScientistID(aScientist[i].getID());
         if(itsComputers.size() != 0)
         {
-            cout << TAB << setw(15) << aScientist[i].getName() << setw(20);
-            //displayComputers(itsComputers);
+            cout << TAB << aScientist[i].getID() << setw(10) << " " << aScientist[i].getName() << setw(25);
             for(size_t j = 0; j < itsComputers.size(); j++)
             {
-                cout << itsComputers[j].getComputerName() << ", ";
+                cout << itsComputers[j].getID() << " " << itsComputers[j].getComputerName();
+                if(itsComputers.size() > 1)
+                {
+                    cout << ", ";
+                }
+                else
+                {
+                    cout << " ";
+                }
             }
+            cout << endl;
         }
-        cout << endl;
     }
     cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
@@ -219,7 +226,7 @@ void ConsoleUI::listScientistConnections()
 void ConsoleUI::listComputerConnections()
 {
     cout << setw(55) << "CONNECTIONS" << endl;
-    cout << TAB << setw(15) << "Scientist" <<setw(20) << "Computer" << endl;
+    cout << TAB << setw(15) << "Computers" <<setw(20) << "Scientists" << endl;
     cout << "\t___________________________________________________________________________" << endl;
 
     vector<Computer> aComputer = cService.getComputers();
@@ -229,11 +236,10 @@ void ConsoleUI::listComputerConnections()
         vector<Scientist> itsScientists = sService.getComputerID(aComputer[i].getID());
         if(itsScientists.size() != 0)
         {
-            cout << TAB << setw(15) << aComputer[i].getComputerName() << setw(20);
-            //displayComputers(itsComputers);
+            cout << TAB << aComputer[i].getID() << setw(10) << " " << aComputer[i].getComputerName() << setw(25);
             for(size_t j = 0; j < itsScientists.size(); j++)
             {
-                cout << itsScientists[j].getName();
+                cout << itsScientists[j].getID() << " " << itsScientists[j].getName();
 
                 if(itsScientists.size() > 1)
                 {
@@ -244,10 +250,10 @@ void ConsoleUI::listComputerConnections()
                     cout << " ";
                 }
             }
+            cout << endl;
         }
-        cout << endl;
     }
-    cout << TAB << "---------------------------------------------------------------------------" << endl << endl;
+    cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
 
 void ConsoleUI::displayScientistComputerConnections()
@@ -317,7 +323,15 @@ void ConsoleUI::displayScientistComputerConnections()
     }
     vector<Computer> connectedComputers = cService.getScientistID(scientistID);
 
-    displayComputers(connectedComputers);
+    if(connectedComputers.size() == 0)
+    {
+        cout << TAB << scientistName << " is not connected to any one";
+    }
+    else
+    {
+        displayComputers(connectedComputers);
+    }
+    cout << TAB << "-------------------------------------------------------------------------------------" << endl << endl;
 }
 
 // sýnir hvaðaa scientists eru tengdir við ákveðna tölvu
@@ -388,7 +402,15 @@ void ConsoleUI::displayComputerScientistConnections()
     }
     vector<Scientist> connectedScientists = sService.getComputerID(computerID);
 
-    display(connectedScientists);
+    if(connectedScientists.size() == 0)
+    {
+        cout << TAB << computerName << " is not connected to any one";
+    }
+    else
+    {
+        display(connectedScientists);
+    }
+    cout << TAB << "-------------------------------------------------------------------------------------" << endl << endl;
 }
 
 // Leitar að tölvu í gagnagrunni.
@@ -1602,6 +1624,7 @@ void ConsoleUI::listingAndSorting()
             {
                 listComputerConnections();
             }
+
         }
         else if(choice == "q" || choice == "Q")
         {
