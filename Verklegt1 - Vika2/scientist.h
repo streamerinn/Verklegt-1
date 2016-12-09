@@ -25,7 +25,6 @@ public:
     // set functions
     void setID(int id);
     void setName(string name);
-    void setsecondName(string secondName);
     void setGender(string gender);
     void setDateOfBirth(int birth);
     void setDateOfDeath(int death);

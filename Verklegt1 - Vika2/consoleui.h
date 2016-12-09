@@ -8,9 +8,6 @@
 #include "scientist.h"
 #include "computerservice.h"
 #include "computer.h"
-
-#include "computer.h"
-#include "computerservice.h"
 #include "connectionservice.h"
 
 using namespace std;
