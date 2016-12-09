@@ -1,6 +1,14 @@
 #include "scientistservice.h"
 #include <iostream>
 
+
+void ScientistService::setScientistVector()
+{
+    scientists = data.scientistDB();
+}
+
+
+
 //þarf að búa til struct því, hann kann ekki að bera saman tvö tilvik af Scientist.
 //struct sér um að raða eftir nöfnum og aldur.
 struct ScientistComparisonAlpha
@@ -53,7 +61,8 @@ struct ScientistComparisonOld
 
 ScientistService::ScientistService()
 {
-    scientists = data.scientistDB();
+    //scientists = data.scientistDB();
+    setScientistVector();
 }
 
 vector<Scientist> ScientistService::getScientistsAlpha()
@@ -189,29 +198,17 @@ vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
     return temp4;
 }
 
-int ScientistService::searchID(string scientistName)
-{
-    int scientistID = 0;
-
-    for(size_t i = 0; i < scientists.size(); i++)
-    {
-        if(scientists[i].getName() == scientistName)
-        {
-            scientistID = scientists[i].getID();
-        }
-    }
-    return scientistID;
-}
-
 void ScientistService::deleteScientist(int id)
 {
     // kalla bara a database fallið sem sér um að deletea
     data.deleteScientist(id);
+    setScientistVector();
 }
 
 void ScientistService::editScientist(int id, string gender, string name, int birth, int death)
 {
     data.editScientist(id, gender, name, birth, death);
+    setScientistVector();
 }
 
 vector<Scientist> ScientistService::getComputerID(int CID)

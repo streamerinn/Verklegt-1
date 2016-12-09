@@ -11,11 +11,13 @@ using namespace std;
 class ConnectionService
 {
 public:
+    // Consturctor
     ConnectionService();
 
+    // Get föll
     void getIDs(vector<int> IDs);
     int getConnections();
-    vector<Scientist> idName();
+    //vector<Scientist> idName();
 
 private:
     ConnectionDataBase connections;

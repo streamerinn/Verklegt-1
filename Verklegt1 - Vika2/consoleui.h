@@ -31,52 +31,56 @@ private:
     ComputerService cService;
     ConnectionService coService;
 
+    /*** Display föll ***/
 
     void display(vector<Scientist> scientists);
     void displayComputers(vector<Computer> computers);
     void displayScientistConnections(vector<Scientist> scientists);
-
     void displayConnections();
-    void readComputers();
-    void readScientists();
 
+    // Displayer upplýsingar um hvernig það er hægt að sorta
+    void displaySortOptions(); // Scientist
+    void displayComputerSortOptions(); // Computer
+
+    // Display allan listann af Scientists
     void displayListOfComputersAlpha();
     void displayListOfComputersReversedAlpha();
     void displayListOfComputersYoung();
     void displayListOfComputersOld();
 
-    void displaySortOptions();
-    void displayComputerSortOptions();
+    // Display allan listann af Computerss
     void displayListOfScientistsAlpha();
     void displayListOfScientistsReversedAlpha();
     void displayListOfScientistsYoung();
     void displayListOfScientistsOld();
 
+    // Less inn upplýsingar um Scientist/Computer sem á að búa til
+    void readComputers();
+    void readScientists();
 
+    // Föll sem breyta upplýsingum í database
+    void deleteOptions();
+    void editOptions();
+    void link(); // connectar scientist við computer
 
-
+    // Search möbuleikar fyrir computers
     void searchComputer();
     void searchBuiltYear();
     void searchComputerType();
     void searchRandomComputer();
     void searchBuilt();
+
+    // Search möbuleikar fyrir scientists
     void searchName();
     void searchDateOfBirth();
     void searchGender();
     void searchRandomScientist();
-    void deleteOptions();
-    void editOptions();
-    void editName();
-
-
-
 
     void stats();
 
-    void link();
-
     void displayScientistComputerConnections();
     void displayComputerScientistConnections();
+
     void listScientistConnections();
     void listComputerConnections();
 };

@@ -3,6 +3,12 @@
 //Constructor
 ComputerService::ComputerService()
 {
+   // computers = data.computerDB();
+    setComputerVector();
+}
+
+void ComputerService::setComputerVector()
+{
     computers = data.computerDB();
 }
 
@@ -150,32 +156,19 @@ vector<Computer> ComputerService::searchRandomComputer()
 
 vector<Computer> ComputerService::searchBuilt(char built)
 {
-
     return data.getBuilt(built);
-}
-
-int ComputerService::searchID(string computerName)
-{
-    int computerID = 0;
-
-    for(size_t i = 0; i < computers.size(); i++)
-    {
-        if(computers[i].getComputerName() == computerName)
-        {
-            computerID = computers[i].getID();
-        }
-    }
-    return computerID;
 }
 
 void ComputerService::deleteComputer(int id)
 {
     data.deleteComputer(id);
+    setComputerVector();
 }
 
 void ComputerService::editComputer(string name,int id, int buildYear, int built, string type)
 {
     data.editComputer(name, id, buildYear ,built, type);
+    setComputerVector();
 }
 
 vector<Computer> ComputerService::getScientistID(int SID)

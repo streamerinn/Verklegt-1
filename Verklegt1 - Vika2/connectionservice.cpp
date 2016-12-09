@@ -16,8 +16,8 @@ int ConnectionService::getConnections()
     return connections.countConnections();
 }
 
-vector<Scientist> ConnectionService::idName()
+/*vector<Scientist> ConnectionService::idName()
 {
 
     return connections.getidName();
-}
+}*/

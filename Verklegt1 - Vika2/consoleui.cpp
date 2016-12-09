@@ -995,14 +995,14 @@ void ConsoleUI::deleteOptions()
 }
 
 
-void ConsoleUI::editName()
+/*void ConsoleUI::editName()
 {
     /*
     cout << "Please enter your current name: ";
     cin >> name;
     if(name == )
-    */
-}
+
+}*/
 
 void ConsoleUI::editOptions()
 {

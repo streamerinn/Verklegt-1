@@ -9,7 +9,6 @@ using namespace std;
 class Computer
 {
 public:
-
     // constructorar
     Computer();
     Computer(int id, string computerName, string type, int yearBuilt, int built);
@@ -28,10 +27,7 @@ public:
     void setYearBuilt(int yearbuilt);
     void setBuilt(int built);
 
-
-
  private:
-
     vector<Computer> _computers;
 
     int _id;
