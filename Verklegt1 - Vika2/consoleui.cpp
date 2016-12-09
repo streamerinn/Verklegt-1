@@ -55,6 +55,7 @@ void ConsoleUI::features()
     cout << TAB << "Press 7 to search for a computer. " << endl;
     cout << TAB << "Press 8 to link Scientists and computers." << endl;
     cout << TAB << "Press 9 to delete or edit a scientist or a computer." << endl;
+    cout << TAB << "Press 10 to view connections" << endl;
     cout << TAB << "Press Q to quit the program." << endl;
     cout << TAB << "----------------------------------------------------------------------------" << endl;
     cout << endl;
@@ -189,27 +190,67 @@ void ConsoleUI::displayComputers(vector<Computer> computers)
     }
 }
 
-void ConsoleUI::listScientistConnections(vector<Scientist> scientists)
+// Sýnir allar tölvur tengdar við scientist
+void ConsoleUI::listScientistConnections()
 {
     cout << setw(55) << "CONNECTIONS" << endl;
     cout << TAB << setw(15) << "Scientist" <<setw(20) << "Computer" << endl;
     cout << "\t___________________________________________________________________________" << endl;
-    for(size_t i = 0; i < scientists.size(); i++)
+
+    vector<Scientist> aScientist = sService.getScientists();
+
+    for(size_t i = 1; i <= aScientist.size(); i++ )
     {
-        cout << TAB << setw(15) << scientists[i].getName() << endl;
-        for(size_t j = 0; j < cService.getComputersID().size(); j++)
+        vector<Computer> itsComputers = cService.getScientistID(aScientist[i].getID());
+        if(itsComputers.size() != 0)
         {
-            if(scientists[i].getID() == cService.getComputersID()[j].getID())
+            cout << TAB << setw(15) << aScientist[i].getName() << setw(20);
+            //displayComputers(itsComputers);
+            for(size_t j = 0; j < itsComputers.size(); j++)
             {
-                cout << TAB << setw(20) << endl;
+                cout << itsComputers[j].getComputerName() << ", ";
             }
         }
+        cout << endl;
+
     }
+         cout << endl << TAB << "---------------------------------------------------------------------------" << endl << endl;
+}
 
+// Sýnir alla scientist tengdar við tölvu
+void ConsoleUI::listComputerConnections()
+{
+    cout << setw(55) << "CONNECTIONS" << endl;
+    cout << TAB << setw(15) << "Scientist" <<setw(20) << "Computer" << endl;
+    cout << "\t___________________________________________________________________________" << endl;
 
+    vector<Computer> aComputer = cService.getComputers();
 
+    for(size_t i = 1; i <= aComputer.size(); i++ )
+    {
+        vector<Scientist> itsScientists = sService.getComputerID(aComputer[i].getID());
+        if(itsScientists.size() != 0)
+        {
+            cout << TAB << setw(15) << aComputer[i].getComputerName() << setw(20);
+            //displayComputers(itsComputers);
+            for(size_t j = 0; j < itsScientists.size(); j++)
+            {
+                cout << itsScientists[j].getName();
 
-         cout << "\t---------------------------------------------------------------------------" << endl;
+                if(itsScientists.size() > 1)
+                {
+                    cout << ", ";
+                }
+                else
+                {
+                    cout << " ";
+                }
+            }
+        }
+        cout << endl;
+
+    }
+         cout << TAB << "---------------------------------------------------------------------------" << endl << endl;
 }
 
 
@@ -227,7 +268,7 @@ void ConsoleUI::displayScientistComputerConnections()
 
     while(scientistExists == false)
     {
-        cout << TAB << "Pleas enter a scientist name: ";
+        cout << TAB << "Please enter a scientist name: ";
         ws(cin);
         getline(cin, scientistName);
         vector<Scientist> temp1 = sService.searchName(scientistName);
@@ -364,14 +405,14 @@ void ConsoleUI::displayComputerScientistConnections()
 void ConsoleUI::searchComputer()
 {
     string name;
-    cout << TAB << "Enter the name of the Computer you want to find: ";
+    cout << TAB << "Enter the name of the computer you want to find: ";
     ws(cin);
     getline(cin, name);
 
     vector<Computer> temp = cService.searchComputerName(name);
     if(temp.size() == 0)
     {
-        cout << TAB << "There are no computers with the name" << name << " in our database. Please try again!";
+        cout << TAB << "There are no computers with the name " << name << " in our database. Please try again!";
 
     }
     else
@@ -384,7 +425,7 @@ void ConsoleUI::searchComputer()
 void ConsoleUI::searchBuiltYear()
 {
     int year = 0;
-    cout << TAB << "Enter the Computers built year: ";
+    cout << TAB << "Enter the computers built year: ";
     cin >> year;
 
     while(year > 2016 || year < 0)
@@ -404,7 +445,7 @@ void ConsoleUI::searchBuiltYear()
 
     if (temp.size() == 0)
     {
-        cout << TAB << "There are no Computers in our database built " << year << "." << endl;
+        cout << TAB << "There are no computers in our database built " << year << "." << endl;
     }
     else
     {
@@ -565,7 +606,7 @@ void ConsoleUI::link()
             vector<Computer> temp2 = cService.searchComputerName(computerName);
             if(temp2.size() == 0)
             {
-                cout << TAB << "There is no scientist with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
+                cout << TAB << "There is no computer with the name " << computerName << " in our data, please try again or press Q to quit: " << endl;
             }
             else if(temp2.size() > 1)
             {
@@ -1447,7 +1488,6 @@ void ConsoleUI::displaySortOptions()
 void ConsoleUI::listingAndSorting()
 {
 
-
     string choice = "/0";
 
     while(choice != "q" && choice != "Q")
@@ -1583,11 +1623,11 @@ void ConsoleUI::listingAndSorting()
 
             cout << endl;
             cout << TAB << "What do you want to search for?" << endl;
-            cout << TAB << "Press 1 to search by Computer's name." << endl;
+            cout << TAB << "Press 1 to search by computer's name." << endl;
             cout << TAB << "Press 2 to search for all computers built in a specific year." << endl;
             cout << TAB << "Press 3 to search for all computers of a specific type." << endl;
-            cout << TAB << "Press 4 to search for a random Computer." << endl;
-            cout << TAB << "Press 5 to search for a built Computer." << endl;
+            cout << TAB << "Press 4 to search for a random computer." << endl;
+            cout << TAB << "Press 5 to search for a built computer." << endl;
             cout << TAB << "Press any other number to go BACK to the menu." << endl;
             cout << TAB << "" << endl;
             cout << TAB << "----------------------------------------------------------------------------" << endl;
@@ -1623,7 +1663,7 @@ void ConsoleUI::listingAndSorting()
 
         else if(choice == "8")
         {
-            cout << TAB << ">>> Linking Scientists and Computers <<<" << endl;
+            cout << TAB << ">>> Linking scientists and computers <<<" << endl;
             link();
 
         }
@@ -1650,7 +1690,8 @@ void ConsoleUI::listingAndSorting()
 
             cout << "Press 1 to see all computers connected to a specific scientist" << endl;
             cout << "Press 2 to see all scientists connected to a specific computer" << endl;
-            cout << "Press 3 to see all scientists and their connections" << endl;
+            cout << "Press 3 to see all scientists with connections and their connections" << endl;
+            cout << "Press 4 to see all computers with connections and their connections" << endl;
             ws(cin);
             getline(cin, connectionOption);
 
@@ -1664,7 +1705,11 @@ void ConsoleUI::listingAndSorting()
             }
             else if(connectionOption == "3")
             {
-                listScientistConnections(temp);
+                listScientistConnections();
+            }
+            else if(connectionOption == "4")
+            {
+                listComputerConnections();
             }
         }
         else if(choice == "q" || choice == "Q")
