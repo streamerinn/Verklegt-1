@@ -22,7 +22,9 @@ SOURCES += main.cpp\
     connectionservice.cpp \
     scientist.cpp \
     scientistdatabase.cpp \
-    scientistservice.cpp
+    scientistservice.cpp \
+    addscientistdialog.cpp \
+    scientisttabledialog.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -32,7 +34,11 @@ HEADERS  += mainwindow.h \
     connectionservice.h \
     scientist.h \
     scientistdatabase.h \
-    scientistservice.h
+    scientistservice.h \
+    addscientistdialog.h \
+    scientisttabledialog.h
 
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    addscientistdialog.ui \
+    scientisttabledialog.ui
