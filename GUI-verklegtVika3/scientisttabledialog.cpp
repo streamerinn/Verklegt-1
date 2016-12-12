@@ -6,6 +6,7 @@ ScientistTableDialog::ScientistTableDialog(QWidget *parent) :
     ui(new Ui::ScientistTableDialog)
 {
     ui->setupUi(this);
+    displayAllScientists();
 }
 
 ScientistTableDialog::~ScientistTableDialog()

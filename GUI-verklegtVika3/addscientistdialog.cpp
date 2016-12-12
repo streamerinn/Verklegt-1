@@ -1,6 +1,8 @@
 #include "addscientistdialog.h"
 #include "ui_addscientistdialog.h"
 
+#include <string>
+
 AddScientistDialog::AddScientistDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddScientistDialog)
@@ -16,6 +18,7 @@ AddScientistDialog::~AddScientistDialog()
 void AddScientistDialog::on_AddScientist_clicked()
 {
     QString name = ui->InputScientistName->text();
+    QString gender = "Male";
     QString yearOfBirth = ui->InputScientistYearOfBirth->text();
     QString yearOfDeath = ui->InputScientistYearOfDeath->text();
 
@@ -54,10 +57,21 @@ void AddScientistDialog::on_AddScientist_clicked()
         cout << "Invalid Date" << endl;
     }
 
-    if(yearOfDeath > yearOfBirth)
+    if(yearOfDeath < yearOfBirth)
     {
         cout << "A person cannot die before its born" << endl;
     }
+
+    //bool success = scientistService.create(Scientist(name.toStdString(), gender.toStdString(), yearOfBirth.toInt(), yearOfDeath.toInt()));
+
+    /*if(success)
+    {
+
+    }
+    else
+    {
+        cout << "failed to create scientist";
+    }*/
 
 
 }

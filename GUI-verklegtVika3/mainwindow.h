@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 
-#include "scientistservice.h"
+//#include "scientistservice.h"
 #include "scientist.h"
 #include "computer.h"
 #include "scientisttabledialog.h"
