@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "scientistservice.h"
 #include "scientist.h"
+#include "computer.h"
 #include <vector>
 #include <QString>
 
@@ -23,14 +24,21 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_ScientistSearch_textChanged();
+
+
+    void on_button_computers_clicked();
+
+    void on_button_scientist_clicked();
+
+    void on_button_linked_clicked();
 
 private:
-    void displayAllScientists();
-    void displayScientists(vector<Scientist> scientists);
-    ScientistService scientistService;
+
 
     Ui::MainWindow *ui;
+    Computer *computers;
+    Scientist *scientists;
+
 };
 
 #endif // MAINWINDOW_H
