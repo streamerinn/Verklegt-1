@@ -8,6 +8,7 @@
 
 #include "scientist.h"
 #include "scientistservice.h"
+#include "addscientistdialog.h"
 
 namespace Ui {
 class ScientistTableDialog;
@@ -24,6 +25,9 @@ public:
     void on_ScientistSearch_textChanged();
 
     void on_comboBox_currentIndexChanged(int index);
+
+private slots:
+    void on_AddANewScientist_clicked();
 
 private:
     void displayAllScientists();

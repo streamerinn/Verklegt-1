@@ -39,6 +39,12 @@ HEADERS  += mainwindow.h \
     scientisttabledialog.h
 
 
+
 FORMS    += mainwindow.ui \
     addscientistdialog.ui \
     scientisttabledialog.ui
+
+
+RESOURCES += resource.qrc
+
+

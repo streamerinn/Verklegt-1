@@ -5,6 +5,9 @@
 #include <QString>
 #include <iostream>
 
+#include "scientist.h"
+#include "scientistservice.h"
+
 using namespace std;
 
 namespace Ui
@@ -25,6 +28,9 @@ private slots:
 
 private:
     Ui::AddScientistDialog *ui;
+
+    ScientistService scientistService;
+
 };
 
 #endif // ADDSCIENTISTDIALOG_H

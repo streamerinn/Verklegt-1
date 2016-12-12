@@ -52,3 +52,9 @@ void ScientistTableDialog::on_ScientistSearch_textChanged()
     displayScientists(scientists);
 
 }
+
+void ScientistTableDialog::on_AddANewScientist_clicked()
+{
+    AddScientistDialog addScientistDialog;
+    int addScientistReturnValue = addScientistDialog.exec();
+}
