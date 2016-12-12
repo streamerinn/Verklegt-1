@@ -9,29 +9,25 @@ using namespace std;
 class Computer
 {
 public:
-
     // constructorar
     Computer();
     Computer(int id, string computerName, string type, int yearBuilt, int built);
 
-    // gett föll
+    // get functions
     int getID();
     string getComputerName();
     string getType();
     int getYearBuilt();
     int getBuilt();
 
-    // sett föll
+    // set functions
     void setID(int id);
     void setName(string computerName);
     void setType(string type);
     void setYearBuilt(int yearbuilt);
     void setBuilt(int built);
 
-
-
  private:
-
     vector<Computer> _computers;
 
     int _id;

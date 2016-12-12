@@ -1,6 +1,6 @@
 #include "scientistdatabase.h"
 #include <sstream>
-//#include <iostream>
+
 
 using namespace std;
 
@@ -9,6 +9,7 @@ ScientistDatabase::ScientistDatabase()
 {
     QString connectionName = "scientistDB";
     dbName = "Skil2DB.sqlite";
+
     if(!connectionCheck(connectionName))
     {
         db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -20,13 +21,15 @@ ScientistDatabase::ScientistDatabase()
         db = QSqlDatabase::database(connectionName);
     }
 }
+
 //Destructor
 ScientistDatabase::~ScientistDatabase()
 {
     QSqlDatabase::removeDatabase(dbName);
     db.close();
 }
-//Notað til að checka hvort database-inn sé tengdur
+
+//Used to check if the database is connected or not.
 bool ScientistDatabase::connectionCheck(QString name)
 {
     bool connected;
@@ -40,15 +43,14 @@ bool ScientistDatabase::connectionCheck(QString name)
     }
     return connected;
 }
-//Tekur upplýsingar úr Scientists töflunni og skilar þeim í vector
+
+// Takes information from Scientists tablet and returns them to a vector.
 vector<Scientist> ScientistDatabase::scientistDB()
 {
     vector<Scientist> sVector;
-
     QSqlQuery query(db);
 
     query.exec("SELECT * FROM Scientists");
-
     while(query.next())
     {
         int id = query.value("id").toUInt();
@@ -65,13 +67,12 @@ vector<Scientist> ScientistDatabase::scientistDB()
         {
             dateOfDeath = 0;
         }
-
         sVector.push_back(Scientist(id, name, gender, dateOfBirth, dateOfDeath));
     }
-
     return sVector;
 }
-//Bætir scientist í Scientists töfluna
+
+// Adds a scientist to the Scientists table.
 void ScientistDatabase::insertRow(Scientist scientist)
 {
     QSqlQuery query(db);
@@ -88,62 +89,42 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.bindValue(":died", death);
     query.exec();
 }
-//Eyðir scientist úr Scientists töflunni
+
+// Delets a scientist from the Scientists table.
 void ScientistDatabase::deleteScientist(int id)
 {
-
     QString Sid;
     Sid = QString::number(id);
     QSqlQuery query(db);
 
     query.prepare("DELETE FROM Scientists where ID = (:Sid)");
-    //query.prepare("DELETE FROM SQLITE_SEQUENCE where name = 'Scientists'");
     query.bindValue(":Sid", Sid);
     query.exec();
-
-
 }
-//  Til að breyta scientist
+
+// Used to edit a scientist.
 void ScientistDatabase::editScientist(int id, string gender, string name, int birth, int death)
 {
-    //id = id-1;
-
     QString Sid;
     QString birthYear;
-    //QString builts(built);
     QString deaths;
     QString names;
     QString genders;
+    QSqlQuery query(db);
 
     names = QString::fromStdString(name);
     Sid = QString::number(id);
-
     birthYear = QString::number(birth);
-    //builts()  //QString::char(built);
     genders = QString::fromStdString(gender);
     deaths = QString::number(death);
 
-    QSqlQuery query(db);
-    //query.prepare("UPDATE Computers where ID = (:Compid);");
     query.prepare("UPDATE Scientists SET name = (:name), birthDate = (:birthYear), deathDate = (:deaths), gender = (:genders) WHERE id = (:Sid)");
-   query.bindValue(":Sid", Sid);
-   query.bindValue(":name", names);
-   query.bindValue(":birthYear",birthYear);
-   query.bindValue(":deaths",deaths);
-   query.bindValue(":genders",genders);
-
-
-    //query.prepare("UPDATE Computers SET name =", [build year] = +buildYears+ ", type =" +types+", builts =" +builts+";");
-
-    if(!query.exec())
-    {
-        qDebug() << query.lastError();
-    }
-    else
-    {
-        //query.exec();
-        qDebug("Updated!");
-    }
+    query.bindValue(":Sid", Sid);
+    query.bindValue(":name", names);
+    query.bindValue(":birthYear",birthYear);
+    query.bindValue(":deaths",deaths);
+    query.bindValue(":genders",genders);
+    query.exec();
 }
 
 vector<Scientist> ScientistDatabase::scientistsConnectedToComputers(int computerID)
@@ -171,7 +152,6 @@ vector<Scientist> ScientistDatabase::scientistsConnectedToComputers(int computer
         {
             deathDate = 0;
         }
-
         connectedScientist.push_back(Scientist(id, name, gender, birthDate, deathDate));
     }
     return connectedScientist;

@@ -3,10 +3,15 @@
 //Constructor
 ComputerService::ComputerService()
 {
+    setComputerVector();
+}
+
+void ComputerService::setComputerVector()
+{
     computers = data.computerDB();
 }
 
-//Sér um að raða eftir nöfnum og aldri
+//Sorts its contents in alphabetical order
 struct ComputerComparisonAlpha
 {
     bool operator() (Computer i, Computer j)
@@ -19,7 +24,7 @@ struct ComputerComparisonAlpha
         return (iName<jName);
     }
 };
-//Raðar nöfnum í öfuga stafrófsröð
+//Sorts its contents in reverse alphabetical order
 struct ComputerComparisonReversedAlpha
 {
     bool operator() (Computer i, Computer j)
@@ -32,7 +37,7 @@ struct ComputerComparisonReversedAlpha
         return (jName<iName);
     }
 };
-//Raðar eftir byggingarári, nýlegast fyrst
+//Sorts the list by building year, newest first
 struct ComputerComparisonYoung
 {
     bool operator() (Computer i, Computer j)
@@ -43,7 +48,8 @@ struct ComputerComparisonYoung
         return (iYearBuilt<jYearBuilt);
     }
 };
-//Raðar eftir byggingarári, elst fyrst
+
+//Sorts the list by building year, oldest first
 struct ComputerComparisonOld
 {
     bool operator() (Computer i, Computer j)
@@ -111,8 +117,8 @@ vector<Computer> ComputerService::getComputersOld()
     return computers;
 }
 
-//Skilar einni computer inn í vectorinn.
-//Skilar einni computer í database, þar sem hann verður sendur inn í textaskrá.
+//Returns one computer into the vector.
+//Returns one computer in the database.
 void ComputerService::create(Computer computer)
 {
     data.insertRow(computer);
@@ -138,8 +144,8 @@ vector<Computer> ComputerService::searchRandomComputer()
 {
     vector<Computer> temp3;
     srand(time(0));
-                   // Virkni sem býr til slembitölur með hjálp time.
-                   // Ástæðan fyrir að nota %(scientist.size() - 1) er til að ná í allt "range-ið" úr vektornum.
+                    //Creates random numbers with the help of time.
+                   // The reason to use %(scientist.size() - 1) is to get all the range from the vector.
     temp3.push_back(computers[1+(rand()%(computers.size() - 1))]);
 
     return temp3;
@@ -150,28 +156,16 @@ vector<Computer> ComputerService::searchBuilt(char built)
     return data.getBuilt(built);
 }
 
-int ComputerService::searchID(string computerName)
-{
-    int computerID = 0;
-
-    for(size_t i = 0; i < computers.size(); i++)
-    {
-        if(computers[i].getComputerName() == computerName)
-        {
-            computerID = computers[i].getID();
-        }
-    }
-    return computerID;
-}
-
 void ComputerService::deleteComputer(int id)
 {
     data.deleteComputer(id);
+    setComputerVector();
 }
 
 void ComputerService::editComputer(string name,int id, int buildYear, int built, string type)
 {
     data.editComputer(name, id, buildYear ,built, type);
+    setComputerVector();
 }
 
 vector<Computer> ComputerService::getScientistID(int SID)

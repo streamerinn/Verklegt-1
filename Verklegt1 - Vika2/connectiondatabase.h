@@ -10,16 +10,23 @@ using namespace std;
 class ConnectionDataBase
 {
 public:
+    // Constructor functions
     ConnectionDataBase();
     ~ConnectionDataBase();
 
     bool connectionCheck(QString name);
+
+    // Retrieves informations from database.
     int getscientistID(int scientistID);
     int getcomputerID(int computerID);
-    void insertRow(vector<int> IDs);
-    int countConnections();
 
-    vector<Scientist> getidName();
+    // Adds informations to the database.
+    void insertRow(vector<int> IDs);
+
+    int countConnections();
+    void deleteLink(int compID, int sciID);
+
+
 
 private:
     QSqlDatabase db;

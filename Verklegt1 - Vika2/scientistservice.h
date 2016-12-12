@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 
-//include til þess að útfæra randum number generator.
+//include to implement random number generator.
 #include <cstdlib>
 #include <ctime>
 
@@ -18,26 +18,28 @@ class ScientistService
 public:
     ScientistService();
 
-    void create(Scientist scientist);
+    void setScientistVector();
 
+    // Returns Scientists in a specific order.
     vector<Scientist> getScientists();
     vector<Scientist> getScientistsAlpha();
     vector<Scientist> getScientistsReversedAlpha();
     vector<Scientist> getScientistsYoung();
     vector<Scientist> getScientistsOld();
 
+    // Search functions
     vector<Scientist> searchName(string name);
     vector<Scientist> searchGender(char gender);
     vector<Scientist> searchDateOfBirth(int birthYear);
     vector<Scientist> searchDateOfDeath(int deathYear);
-
     vector<Scientist> searchRandom();
 
-    int searchID(string scientistName);
-
+    // Changes information in the database.
     void deleteScientist(int id);
-    void editScientist(int id, string gender,string name, int birth, int death);
+    void editScientist(int id, string gender,string name, int birth, int death); // sendir nýjar upplýsingar um scientist database
+    void create(Scientist scientist);
 
+    // Retrieves ID of a computer, sends it to the database and then retrieves the scientists that are connected to the ID.
     vector<Scientist> getComputerID(int CID);
 
 private:

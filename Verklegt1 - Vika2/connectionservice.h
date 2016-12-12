@@ -11,10 +11,16 @@ using namespace std;
 class ConnectionService
 {
 public:
+    // Constructor
     ConnectionService();
 
+    // Get functions
     void getIDs(vector<int> IDs);
     int getConnections();
+    //delete functions
+    void deleteLink(int Compid, int sciID);
+
+
 
 private:
     ConnectionDataBase connections;
