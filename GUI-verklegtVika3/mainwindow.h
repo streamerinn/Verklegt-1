@@ -22,6 +22,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_ScientistSearch_textChanged();
+
 private:
     void displayAllScientists();
     void displayScientists(vector<Scientist> scientists);

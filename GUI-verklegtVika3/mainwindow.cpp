@@ -35,6 +35,24 @@ void MainWindow::displayAllScientists()
 
 void MainWindow::displayScientists(vector<Scientist> scientists)
 {
+    ui->ScientistTable->clear();
+
+    for(unsigned int i = 0; i < scientists.size(); i++)
+    {
+        ui->ScientistTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
+        ui->ScientistTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientists[i].getGender())));
+        ui->ScientistTable->setItem(i, 2, new QTableWidgetItem(QString::number(scientists[i].getDateOfBirth())));
+        ui->ScientistTable->setItem(i, 3, new QTableWidgetItem(QString::number(scientists[i].getDateOfDeath())));
+    }
 
 }
 
+
+void MainWindow::on_ScientistSearch_textChanged()
+{
+    string userInput = ui->ScientistSearch->text().toStdString();
+
+    vector<Scientist> scientists = scientistService.searchName(userInput);
+    displayScientists(scientists);
+
+}
