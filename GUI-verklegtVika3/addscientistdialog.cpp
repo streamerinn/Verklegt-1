@@ -2,12 +2,16 @@
 #include "ui_addscientistdialog.h"
 
 #include <string>
+#include <QString>
 
 AddScientistDialog::AddScientistDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddScientistDialog)
 {
     ui->setupUi(this);
+    ui->PickGender->addItem("Male");
+    ui->PickGender->addItem("Female");
+
 }
 
 AddScientistDialog::~AddScientistDialog()
@@ -18,49 +22,102 @@ AddScientistDialog::~AddScientistDialog()
 void AddScientistDialog::on_AddScientist_clicked()
 {
     QString name = ui->InputScientistName->text();
-    QString gender = "Male";
+    QString gender = ui->PickGender->currentText();
     QString yearOfBirth = ui->InputScientistYearOfBirth->text();
     QString yearOfDeath = ui->InputScientistYearOfDeath->text();
 
+    QRegExp validName("\\d*");
+    QRegExp validInput("\\d*");
+
+    bool emptyError = false;
+    bool invalidInput = false;
+    bool birthError = false;
+
+    ui->label_name_error->setText("");
+    ui->label_birth_error->setText("");
+    ui->label_Death_error->setText("");
+    ui->label_gender_error->setText("");
+
+
     if(name.isEmpty())
     {
-        cout << "Pleas enter a name" << endl;
+        ui->label_name_error->setText("<span style='color: red'>Name cannot be empty!</span>");
+        emptyError = true;
+    }
+
+    else if(validName.exactMatch(name))
+    {
+        ui->label_name_error->setText("<span style='color: red'>Invalid name!</span>");
     }
 
     if(yearOfBirth.isEmpty())
     {
-        cout << "Please enter a year of birth" << endl;
+        ui->label_birth_error->setText("<span style='color: red'>Birth Date cannot be empty!</span>");
+        emptyError = true;
     }
 
     if(yearOfDeath.isEmpty())
     {
-        cout << "Pleas enter a year of death" << endl;
+        ui->label_Death_error->setText("<span style='color: red'>Year of death cannot be empty!</span>");
+        emptyError = true;
     }
 
-    else if(yearOfBirth.toInt() < 0)
+    else if(yearOfDeath.toInt() < yearOfBirth.toInt())
     {
-        cout << "Year of birth cannot be a negative number" << endl;
+        ui->label_Death_error->setText("<span style='color: red'>A person cannot die before its born!</span>");
     }
 
-    else if(yearOfBirth.toInt() > 2016)
+    if(!validInput.exactMatch(yearOfBirth))
     {
-        cout << "A person cannot be born in the future" << endl;
+        ui->label_birth_error->setText("<span style='color: red'>Invalid Birthyear</span>");
+        invalidInput = true;
+    }
+
+    if(!validInput.exactMatch(yearOfDeath))
+    {
+        ui->label_Death_error->setText("<span style='color: red'>Invalid Deathyear</span>");
+        invalidInput = true;
+    }
+
+    if(yearOfBirth.toInt() < 0)
+    {
+        ui->label_birth_error->setText("<span style='color: red'>Year of birth cannot be a negative number</span>");
+        birthError = true;
+    }
+
+    if(yearOfBirth.toInt() > 2016)
+    {
+        ui->label_birth_error->setText("<span style='color: red'>A person cannot be born in the future</span>");
+        birthError = true;
     }
 
     if(yearOfDeath.toInt() < 0)
     {
-        cout << "Year of death cannot be a negative number" << endl;
+        ui->label_Death_error->setText("<span style='color: red'>Year of Death cannot be a negative number!</span>");
     }
 
-    else if(yearOfDeath.toInt() > 2016)
+
+    if(yearOfDeath.toInt() > 2016)
     {
-        cout << "Invalid Date" << endl;
+        ui->label_Death_error->setText("<span style='color: red'>Invalid date!</span>");
     }
 
-    if(yearOfDeath < yearOfBirth)
+   if (emptyError)
+   {
+        return;
+   }
+
+    if (birthError)
     {
-        cout << "A person cannot die before its born" << endl;
+        return;
     }
+
+    if (invalidInput)
+    {
+        return;
+    }
+
+
 
     //bool success = scientistService.create(Scientist(name.toStdString(), gender.toStdString(), yearOfBirth.toInt(), yearOfDeath.toInt()));
 
@@ -74,6 +131,11 @@ void AddScientistDialog::on_AddScientist_clicked()
     }*/
 
 
+
+
 }
+
+
+
 
 

@@ -35,6 +35,11 @@ void MainWindow::on_button_scientist_clicked()
 
     ScientistTableDialog scientistTableDialog;
     scientistTableDialog.exec();
+
+    //scientistTable = new ScientistTableDialog(this);
+    //scientistTable->show();
+    //this->hide();
+
 }
 
 void MainWindow::on_button_linked_clicked()
