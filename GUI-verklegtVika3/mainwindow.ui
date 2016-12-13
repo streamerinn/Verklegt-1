@@ -40,7 +40,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="resource.qrc">
+          <iconset resource="aukaefni.qrc">
            <normaloff>:/images/pictures/viso.png</normaloff>:/images/pictures/viso.png</iconset>
          </property>
          <property name="iconSize">
@@ -63,8 +63,8 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../build-GUI-Verklegt3-Desktop_Qt_5_7_0_MinGW_32bit-Debug/pics/linking.png</normaloff>../build-GUI-Verklegt3-Desktop_Qt_5_7_0_MinGW_32bit-Debug/pics/linking.png</iconset>
+          <iconset resource="aukaefni.qrc">
+           <normaloff>:/images/pictures/linking.png</normaloff>:/images/pictures/linking.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -83,7 +83,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="resource.qrc">
+          <iconset resource="aukaefni.qrc">
            <normaloff>:/images/pictures/comp.png</normaloff>:/images/pictures/comp.png</iconset>
          </property>
          <property name="iconSize">
@@ -133,7 +133,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="resource.qrc"/>
+  <include location="aukaefni.qrc"/>
  </resources>
  <connections/>
 </ui>

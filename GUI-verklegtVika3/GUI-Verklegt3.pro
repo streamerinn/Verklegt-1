@@ -51,6 +51,7 @@ FORMS    += mainwindow.ui \
     computertabledialog.ui
 
 
-RESOURCES += resource.qrc
+RESOURCES += aukaefni.qrc \
+
 
 
