@@ -51,3 +51,8 @@ void ConnectionDialog::displayScientists(vector<Scientist> scientists)
         }
     }
 }
+
+void ConnectionDialog::on_SearchScientistName_textChanged(const QString &arg1)
+{
+
+}

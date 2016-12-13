@@ -23,6 +23,9 @@ public:
     explicit ConnectionDialog(QWidget *parent = 0);
     ~ConnectionDialog();
 
+private slots:
+    void on_SearchScientistName_textChanged(const QString &arg1);
+
 private:
     Ui::ConnectionDialog *ui;
 

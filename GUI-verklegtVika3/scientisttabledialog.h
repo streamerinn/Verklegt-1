@@ -22,12 +22,12 @@ public:
     explicit ScientistTableDialog(QWidget *parent = 0);
     ~ScientistTableDialog();
 
-    void on_ScientistSearch_textChanged();
-
     void on_comboBox_currentIndexChanged(int index);
 
 private slots:
     void on_AddANewScientist_clicked();
+
+    void on_ScientistSearch_textChanged();
 
 private:
     void displayAllScientists();

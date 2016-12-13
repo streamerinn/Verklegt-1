@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ComputerTableDialog</class>
+ <widget class="QDialog" name="ComputerTableDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>523</width>
+    <height>430</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>505</width>
+     <height>120</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Computers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ComputerSearch">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>135</y>
+     <width>505</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Search</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="ComputerTable">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>161</y>
+     <width>501</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>501</width>
+     <height>231</height>
+    </size>
+   </property>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Type</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Build Year</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Built</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="AddANewComputer">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>398</y>
+     <width>505</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add a new computer</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
