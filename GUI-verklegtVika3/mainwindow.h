@@ -35,10 +35,10 @@ private slots:
     void on_button_linked_clicked();
 
 private:
+    //ScientistTableDialog *scientistTable;
 
     Ui::MainWindow *ui;
-    Computer *computers;
-    Scientist *scientists;
+
 
 };
 

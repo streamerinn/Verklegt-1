@@ -59,3 +59,17 @@ void ScientistTableDialog::on_AddANewScientist_clicked()
     AddScientistDialog addScientistDialog;
     int addScientistReturnValue = addScientistDialog.exec();
 }
+
+
+
+void ScientistTableDialog::on_button_home_clicked()
+{
+    //this->hide();
+
+   //QWidget *parent = this->parentWidget();
+   //parent->show();
+
+
+
+
+}

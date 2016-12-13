@@ -2,5 +2,9 @@
     <qresource prefix="/images">
         <file>pictures/comp.png</file>
         <file>pictures/viso.png</file>
+        <file>pictures/addscientistdialog.cpp</file>
+        <file>pictures/512px-Home_Icon.svg.png</file>
+        <file>C:/Users/Snorri/Desktop/Tölvunarfræði/HR/1. ár/Haust 2016/Verklegt námskeið 1/computer/linking.png</file>
+        <file>../build-GUI-Verklegt3-Desktop_Qt_5_7_0_MinGW_32bit-Debug/pics/linking.png</file>
     </qresource>
 </RCC>
