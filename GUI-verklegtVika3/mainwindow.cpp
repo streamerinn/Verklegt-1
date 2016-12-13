@@ -21,6 +21,9 @@ void MainWindow::on_button_computers_clicked()
     //Computer computers;
     //computers->show();
     //this->hide();
+
+    ComputerTableDialog computerTableDialog;
+    computerTableDialog.exec();
 }
 
 void MainWindow::on_button_scientist_clicked()

@@ -6,6 +6,7 @@
 #include "scientist.h"
 #include "computer.h"
 #include "scientisttabledialog.h"
+#include "computertabledialog.h"
 
 #include <vector>
 #include <QString>

@@ -23,8 +23,6 @@ public:
     explicit ScientistTableDialog(QWidget *parent = 0);
     ~ScientistTableDialog();
 
-    void on_ScientistSearch_textChanged();
-
     void on_comboBox_currentIndexChanged(int index);
 
 private slots:
@@ -32,7 +30,11 @@ private slots:
 
 
 
+
     void on_button_home_clicked();
+
+    void on_ScientistSearch_textChanged();
+//>>>>>>> 8d1cace0c4b831a9cf648a1e2b9b00c312f69c4b
 
 private:
     void displayAllScientists();

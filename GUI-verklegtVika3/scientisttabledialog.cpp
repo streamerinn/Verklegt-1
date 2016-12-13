@@ -7,6 +7,7 @@ ScientistTableDialog::ScientistTableDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     displayAllScientists();
+    on_ScientistSearch_textChanged();
 }
 
 ScientistTableDialog::~ScientistTableDialog()
@@ -44,20 +45,18 @@ void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
 
 }
 
-
-void ScientistTableDialog::on_ScientistSearch_textChanged()
-{
-    string userInput = ui->ScientistSearch->text().toStdString();
-
-    vector<Scientist> scientists = scientistService.searchName(userInput);
-    displayScientists(scientists);
-
-}
-
 void ScientistTableDialog::on_AddANewScientist_clicked()
 {
     AddScientistDialog addScientistDialog;
     int addScientistReturnValue = addScientistDialog.exec();
+}
+
+void ScientistTableDialog::on_ScientistSearch_textChanged()
+{
+    string input = ui->ScientistSearch->text().toStdString();
+
+    vector<Scientist> scientists = scientistService.searchName(input);
+    displayScientists(scientists);
 }
 
 

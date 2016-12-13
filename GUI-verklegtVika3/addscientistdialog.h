@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QString>
 #include <iostream>
+#include <QRegExp>
 
 #include "scientist.h"
 #include "scientistservice.h"

@@ -124,7 +124,22 @@
      </property>
     </widget>
    </item>
-  </layout>
+
+  <item row="5" column="0">
+    <widget class="QComboBox" name="PickGender">
+     <item>
+      <property name="text">
+       <string>Male</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Female</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+ </layout>
  </widget>
  <resources/>
  <connections/>
