@@ -42,8 +42,8 @@ void MainWindow::on_button_scientist_clicked()
 
 }
 
-void MainWindow::on_button_linked_clicked()
+void MainWindow::on_button_link_clicked()
 {
-
+    ConnectionDialog connectionDialog;
+    connectionDialog.exec();
 }
-

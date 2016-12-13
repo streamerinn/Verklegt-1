@@ -6,6 +6,7 @@ ConnectionDialog::ConnectionDialog(QWidget *parent) :
     ui(new Ui::ConnectionDialog)
 {
     ui->setupUi(this);
+    displayAllConnections();
 }
 
 ConnectionDialog::~ConnectionDialog()

@@ -7,6 +7,7 @@
 #include "computer.h"
 #include "scientisttabledialog.h"
 #include "computertabledialog.h"
+#include "connectiondialog.h"
 
 #include <vector>
 #include <QString>
@@ -34,6 +35,8 @@ private slots:
     void on_button_scientist_clicked();
 
     void on_button_linked_clicked();
+
+    void on_button_link_clicked();
 
 private:
     //ScientistTableDialog *scientistTable;
