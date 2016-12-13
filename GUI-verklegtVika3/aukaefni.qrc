@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>pictures/viso.png</file>
+        <file>pictures/comp.png</file>
+        <file>pictures/linking.png</file>
+    </qresource>
+</RCC>
