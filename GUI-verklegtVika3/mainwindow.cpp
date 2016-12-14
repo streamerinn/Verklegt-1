@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QDebug>
+#include <QMenuBar>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -57,7 +58,7 @@ void MainWindow::on_colorDial_valueChanged()
             this->setStyleSheet("");
             break;
         case 1:
-            this->setStyleSheet("*{background-color:red}");
+            this->setStyleSheet("*{background-color:gray}");
             break;
         case 2:
             this->setStyleSheet("*{background-color:yellow}");

@@ -55,6 +55,27 @@ void AddANewComputerDialog::on_pushButton_clicked()
         invalidInput = true;
     }
 
+    string computerName = name.toStdString();
+
+    string Ctype = type.toStdString();
+    int CbuildYear = buildYear.toInt();
+    string Cbuilt = built.toStdString();
+
+    int tempBuilt;
+
+    if (Cbuilt == "Yes")
+    {
+        tempBuilt = 1;
+    }
+    else if (Cbuilt =="No")
+    {
+        tempBuilt = 0;
+    }
+
+
+    Computer computer(computerName, Ctype, CbuildYear, tempBuilt);
+    computerservice.create(computer);
+    close();
 
 
 

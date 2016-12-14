@@ -117,9 +117,20 @@ void AddScientistDialog::on_AddScientist_clicked()
         return;
     }
 
+    string scientistName = name.toStdString();
+
+    string scientistGender = gender.toStdString();
+    int SyearOfBirth = yearOfBirth.toInt();
+    int SyearOfDeath = yearOfDeath.toInt();
+
+    Scientist scientist(scientistName, scientistGender, SyearOfBirth, SyearOfDeath);
 
 
-    //bool success = scientistService.create(Scientist(name.toStdString(), gender.toStdString(), yearOfBirth.toInt(), yearOfDeath.toInt()));
+
+
+
+    scientistService.create(scientist);
+    close();
 
     /*if(success)
     {

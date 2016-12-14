@@ -14,6 +14,7 @@ public:
     // constructors
     Scientist();
     Scientist(int id, string name, string gender, int dateOfBirth, int dateOfDeath);
+    Scientist(string name, string gender, int dateOfBirth, int dateOfDeath);
 
     // get functions
     int getID();
