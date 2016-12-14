@@ -26,6 +26,8 @@ public:
 private slots:
     void on_SearchScientistName_textChanged(const QString &arg1);
 
+    void on_SearchScientistName_2_textChanged(const QString &arg1);
+
 private:
     Ui::ConnectionDialog *ui;
 
@@ -34,6 +36,7 @@ private:
 
     void displayAllConnections();
     void displayScientists(vector<Scientist> scientists);
+    void displayComputers(vector<Computer> computers);
 };
 
 #endif // CONNECTIONDIALOG_H

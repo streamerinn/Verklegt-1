@@ -34,8 +34,6 @@ private slots:
 
     void on_button_scientist_clicked();
 
-    void on_button_linked_clicked();
-
     void on_button_link_clicked();
 
 private:
