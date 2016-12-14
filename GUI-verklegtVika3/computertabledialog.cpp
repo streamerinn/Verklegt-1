@@ -53,3 +53,11 @@ void ComputerTableDialog::on_ComputerSearch_textChanged()
     displayComputers(computers);
 
 }
+
+void ComputerTableDialog::on_AddANewComputer_clicked()
+{
+
+    AddANewComputerDialog addANewComputer;
+
+    int addComputerReturnValue = addANewComputer.exec();
+}
