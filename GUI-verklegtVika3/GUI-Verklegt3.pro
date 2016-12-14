@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     connectiondialog.cpp \
     computertabledialog.cpp \
     aboutdialog.cpp \
-    addanewcomputerdialog.cpp
+    addanewcomputerdialog.cpp \
+    editdeletscientist.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -44,7 +45,8 @@ HEADERS  += mainwindow.h \
     connectiondialog.h \
     computertabledialog.h \
     aboutdialog.h \
-    addanewcomputerdialog.h
+    addanewcomputerdialog.h \
+    editdeletscientist.h
 
 
 
@@ -54,7 +56,8 @@ FORMS    += mainwindow.ui \
     connectiondialog.ui \
     computertabledialog.ui \
     aboutdialog.ui \
-    addanewcomputerdialog.ui
+    addanewcomputerdialog.ui \
+    editdeletscientist.ui
 
 
 RESOURCES += aukaefni.qrc \

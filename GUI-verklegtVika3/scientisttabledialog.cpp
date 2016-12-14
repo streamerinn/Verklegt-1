@@ -64,4 +64,8 @@ void ScientistTableDialog::on_ScientistSearch_textChanged()
     displayScientists(scientists);
 }
 
-
+void ScientistTableDialog::on_editDelete_clicked()
+{
+    EditDeletScientist editDeletScientist(this);
+    editDeletScientist.exec();
+}
