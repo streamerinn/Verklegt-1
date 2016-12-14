@@ -22,7 +22,7 @@ void MainWindow::on_button_computers_clicked()
     //computers->show();
     //this->hide();
 
-    ComputerTableDialog computerTableDialog;
+    ComputerTableDialog computerTableDialog(this);
     computerTableDialog.exec();
 }
 
@@ -33,7 +33,7 @@ void MainWindow::on_button_scientist_clicked()
     //scientists->show();
     //this->hide();
 
-    ScientistTableDialog scientistTableDialog;
+    ScientistTableDialog scientistTableDialog(this);
     scientistTableDialog.exec();
 
     //scientistTable = new ScientistTableDialog(this);
@@ -44,6 +44,32 @@ void MainWindow::on_button_scientist_clicked()
 
 void MainWindow::on_button_link_clicked()
 {
-    ConnectionDialog connectionDialog;
+    ConnectionDialog connectionDialog(this);
     connectionDialog.exec();
+}
+
+void MainWindow::on_colorDial_valueChanged()
+{
+    this->setAutoFillBackground(true);
+
+        switch (ui->colorDial->value()) {
+        case 0:
+            this->setStyleSheet("");
+            break;
+        case 1:
+            this->setStyleSheet("*{background-color:red}");
+            break;
+        case 2:
+            this->setStyleSheet("*{background-color:yellow}");
+            break;
+        case 3:
+            this->setStyleSheet("*{background-color:blue}");
+            break;
+        case 4:
+            this->setStyleSheet("*{background-color:green}");
+            break;
+        default:
+            this->setStyleSheet("");
+            break;
+        }
 }

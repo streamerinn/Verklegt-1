@@ -9,7 +9,6 @@
 #include "scientist.h"
 #include "scientistservice.h"
 #include "addscientistdialog.h"
-#include "mainwindow.h"
 
 namespace Ui {
 class ScientistTableDialog;
@@ -40,7 +39,6 @@ private:
     void displayAllScientists();
     void displayScientists(vector<Scientist> scientists);
     ScientistService scientistService;
-    //MainWindow *mainwindow;
 
 
     Ui::ScientistTableDialog *ui;

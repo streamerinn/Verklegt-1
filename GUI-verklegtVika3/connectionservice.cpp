@@ -22,3 +22,11 @@ void ConnectionService::deleteLink(int Compid, int sciID)
     connections.deleteLink(Compid, sciID);
 }
 
+vector<Scientist> ConnectionService::getConnectionIDs()
+{
+    vector<Scientist> connectionIDs;
+
+    connectionIDs = connections.getConnectionIDs();
+
+    return connectionIDs;
+}

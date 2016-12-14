@@ -36,6 +36,8 @@ private slots:
 
     void on_button_link_clicked();
 
+    void on_colorDial_valueChanged();
+
 private:
     //ScientistTableDialog *scientistTable;
 

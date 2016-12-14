@@ -16,22 +16,15 @@ ConnectionDialog::~ConnectionDialog()
 
 void ConnectionDialog::displayAllConnections()
 {
-    vector<Scientist> scientists = scientistService.getScientists();
-    ui->ConnectionTable->setRowCount(scientists.size());
+    vector<Scientist> bothIDs = connectionService.getConnectionIDs();
 
-    qDebug() << scientists.size() << endl;
-
-    for(unsigned int i = 0; i < scientists.size(); i++)
+    ui->ConnectionTable->setRowCount(bothIDs.size()/2);
+    for(unsigned int i = 0; i < bothIDs.size(); i += 2)
     {
-        vector<Computer> computersConnected = computerService.getScientistID(scientists[i].getID());
-        for(unsigned int j = 0; j < computersConnected.size(); j++)
-        {
-            ui->ConnectionTable->setItem(i, 0, new QTableWidgetItem(QString::number(scientists[i].getID())));
-            ui->ConnectionTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
-
-            ui->ConnectionTable->setItem(j, 2, new QTableWidgetItem(QString::number(computersConnected[j].getID())));
-            ui->ConnectionTable->setItem(j, 3, new QTableWidgetItem(QString::fromStdString(computersConnected[j].getComputerName())));
-        }
+        ui->ConnectionTable->setItem(i/2, 0, new QTableWidgetItem(QString::number(bothIDs[i].getID())));
+        ui->ConnectionTable->setItem(i/2, 1, new QTableWidgetItem(QString::fromStdString(bothIDs[i].getName())));
+        ui->ConnectionTable->setItem(i/2, 2, new QTableWidgetItem(QString::number(bothIDs[i+1].getID())));
+        ui->ConnectionTable->setItem(i/2, 3, new QTableWidgetItem(QString::fromStdString(bothIDs[i+1].getName())));
     }
 }
 
@@ -39,23 +32,19 @@ void ConnectionDialog::displayScientists(vector<Scientist> scientists)
 {
     ui->ConnectionTable->clear();
 
-    for(unsigned int i = 0; i < scientists.size(); i++)
+    ui->ConnectionTable->setRowCount(scientists.size()/2);
+    for(unsigned int i = 0; i < scientists.size(); i += 2)
     {
-        vector<Computer> computersConnected = computerService.getScientistID(scientists[i].getID());
-        for(unsigned int j = 0; j < computersConnected.size(); j++)
-        {
-            ui->ConnectionTable->setItem(i, 0, new QTableWidgetItem(QString::number(scientists[i].getID())));
-            ui->ConnectionTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
-
-            ui->ConnectionTable->setItem(i, 2, new QTableWidgetItem(QString::number(computersConnected[j].getID())));
-            ui->ConnectionTable->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(computersConnected[j].getComputerName())));
-        }
+        ui->ConnectionTable->setItem(i/2, 0, new QTableWidgetItem(QString::number(scientists[i].getID())));
+        ui->ConnectionTable->setItem(i/2, 1, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
+        ui->ConnectionTable->setItem(i/2, 2, new QTableWidgetItem(QString::number(scientists[i+1].getID())));
+        ui->ConnectionTable->setItem(i/2, 3, new QTableWidgetItem(QString::fromStdString(scientists[i+1].getName())));
     }
 }
 
 void ConnectionDialog::displayComputers(vector<Computer> computers)
 {
-    // eitthvað rugl í gangi, search virkar ekki
+    /*// eitthvað rugl í gangi, search virkar ekki
     ui->ConnectionTable->clear();
 
     for(unsigned int i = 0; i < computers.size(); i++)
@@ -63,16 +52,16 @@ void ConnectionDialog::displayComputers(vector<Computer> computers)
         vector<Scientist> scientistsConnected = scientistService.getComputerID(computers[i].getID());
         for(unsigned int j = 0; j < scientistsConnected.size(); j++)
         {
-            ui->ConnectionTable->setItem(j, 0, new QTableWidgetItem(QString::number(scientistsConnected[i].getID())));
-            ui->ConnectionTable->setItem(j, 1, new QTableWidgetItem(QString::fromStdString(scientistsConnected[i].getName())));
+            ui->ConnectionTable->setItem(i, 0, new QTableWidgetItem(QString::number(scientistsConnected[i].getID())));
+            ui->ConnectionTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientistsConnected[i].getName())));
 
-            ui->ConnectionTable->setItem(i, 2, new QTableWidgetItem(QString::number(computers[j].getID())));
-            ui->ConnectionTable->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(computers[j].getComputerName())));
+            ui->ConnectionTable->setItem(j, 2, new QTableWidgetItem(QString::number(computers[j].getID())));
+            ui->ConnectionTable->setItem(j, 3, new QTableWidgetItem(QString::fromStdString(computers[j].getComputerName())));
         }
-    }
+    }*/
 }
 
-void ConnectionDialog::on_SearchScientistName_textChanged(const QString &arg1)
+void ConnectionDialog::on_SearchScientistName_textChanged()
 {
     string input = ui->SearchScientistName->text().toStdString();
 
@@ -80,10 +69,11 @@ void ConnectionDialog::on_SearchScientistName_textChanged(const QString &arg1)
     displayScientists(scientists);
 }
 
-void ConnectionDialog::on_SearchScientistName_2_textChanged(const QString &arg1)
+void ConnectionDialog::on_SearchComputerName_textChanged()
 {
-    string input = ui->SearchComputerName->text().toStdString();
+    /*string input = ui->SearchComputerName->text().toStdString();
 
     vector<Computer> computers = computerService.searchComputerName(input);
-    displayComputers(computers);
+    displayComputers(computers);*/
 }
+

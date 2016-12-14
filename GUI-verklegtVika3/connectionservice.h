@@ -17,6 +17,8 @@ public:
     // Get functions
     void getIDs(vector<int> IDs);
     int getConnections();
+    vector<Scientist> getConnectionIDs();
+
     //delete functions
     void deleteLink(int Compid, int sciID);
 
