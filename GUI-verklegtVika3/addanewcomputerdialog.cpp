@@ -36,6 +36,8 @@ void AddANewComputerDialog::on_pushButton_clicked()
     bool emptyError = false;
     bool invalidInput = false;
 
+    qDebug() << "-" << name <<"--" << name.length();
+
     if(name.isEmpty())
     {
         ui->label_error_computer_name_2->setText("<span style='color: red'>Name cannot be empty!</span>");
@@ -72,6 +74,16 @@ void AddANewComputerDialog::on_pushButton_clicked()
         tempBuilt = 0;
     }
 
+    if(emptyError)
+    {
+        return;
+    }
+
+    if (invalidInput)
+    {
+        return;
+    }
+
 
     Computer computer(computerName, Ctype, CbuildYear, tempBuilt);
     computerservice.create(computer);
@@ -86,15 +98,7 @@ void AddANewComputerDialog::on_pushButton_clicked()
     //}
 
 
-    if(emptyError)
-    {
-        return;
-    }
 
-    if (invalidInput)
-    {
-        return;
-    }
 
 
 

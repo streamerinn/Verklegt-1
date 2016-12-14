@@ -11,7 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Ca$:H</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -33,6 +36,16 @@ background-color: yellow;
      </widget>
     </item>
     <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Current database stats</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="listStats"/>
+    </item>
+    <item>
      <widget class="QWidget" name="horizontalWidget" native="true">
       <property name="styleSheet">
        <string notr="true">height: 100px;</string>
@@ -44,6 +57,8 @@ background-color: yellow;
           <bool>true</bool>
          </property>
          <property name="styleSheet">
+
+!-->
           <string notr="true">
 
 #button_scientist:hover
@@ -55,6 +70,9 @@ border-style-color: black;
 }
 
 </string>
+-->
+          <string notr="true"/>
+
          </property>
          <property name="text">
           <string/>
@@ -80,7 +98,7 @@ border-style-color: black;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(225, 225, 225);</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string/>
@@ -103,7 +121,7 @@ border-style-color: black;
           <bool>true</bool>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(225, 225, 225);</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string/>
@@ -121,15 +139,19 @@ border-style-color: black;
         </widget>
        </item>
        <item>
-        <widget class="QDial" name="colorDial">
+        <widget class="QPushButton" name="toggle_theme">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(225, 225, 225);</string>
+          <string notr="true"/>
          </property>
-         <property name="maximum">
-          <number>4</number>
-         </property>
-         <property name="notchesVisible">
-          <bool>true</bool>
+         <property name="text">
+          <string>Toggle Theme</string>
          </property>
         </widget>
        </item>
@@ -147,24 +169,30 @@ border-style-color: black;
      <height>21</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <property name="autoFillBackground">
+    <bool>false</bool>
    </property>
-   <widget class="QMenu" name="menuScientists">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
     <property name="title">
      <string>File</string>
     </property>
     <addaction name="actionExit"/>
    </widget>
-   <widget class="QMenu" name="menuComputers">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
     <addaction name="separator"/>
     <addaction name="actionAbout"/>
    </widget>
-   <addaction name="menuScientists"/>
-   <addaction name="menuComputers"/>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <action name="actionExit">
    <property name="text">
@@ -181,5 +209,22 @@ border-style-color: black;
  <resources>
   <include location="aukaefni.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>263</x>
+     <y>220</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

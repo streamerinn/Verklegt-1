@@ -27,6 +27,7 @@ SOURCES += main.cpp\
     scientisttabledialog.cpp \
     connectiondialog.cpp \
     computertabledialog.cpp \
+    aboutdialog.cpp \
     addanewcomputerdialog.cpp
 
 HEADERS  += mainwindow.h \
@@ -42,6 +43,7 @@ HEADERS  += mainwindow.h \
     scientisttabledialog.h \
     connectiondialog.h \
     computertabledialog.h \
+    aboutdialog.h \
     addanewcomputerdialog.h
 
 
@@ -51,6 +53,7 @@ FORMS    += mainwindow.ui \
     scientisttabledialog.ui \
     connectiondialog.ui \
     computertabledialog.ui \
+    aboutdialog.ui \
     addanewcomputerdialog.ui
 
 

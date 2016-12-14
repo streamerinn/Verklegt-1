@@ -37,7 +37,7 @@ void ConnectionDialog::displayAllConnections()
 
 void ConnectionDialog::displayScientists(vector<Scientist> scientists)
 {
-    ui->ConnectionTable->clear();
+    ui->ConnectionTable->clearContents();
 
     for(unsigned int i = 0; i < scientists.size(); i++)
     {

@@ -11,11 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Scientists</string>
   </property>
   <property name="windowIcon">
    <iconset resource="aukaefni.qrc">
     <normaloff>:/images/pictures/viso.png</normaloff>:/images/pictures/viso.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -28,7 +31,7 @@
    <item row="1" column="0">
     <widget class="QLineEdit" name="ScientistSearch">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string>Search</string>
@@ -38,7 +41,7 @@
    <item row="3" column="0">
     <widget class="QPushButton" name="AddANewScientist">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(225, 225, 225);</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Add a new scientist</string>
@@ -59,8 +62,14 @@
        <height>231</height>
       </size>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::SingleSelection</enum>
@@ -71,6 +80,12 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>true</bool>
+     </attribute>
      <column>
       <property name="text">
        <string>Name</string>

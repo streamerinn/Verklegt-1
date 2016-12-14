@@ -9,9 +9,6 @@ AddScientistDialog::AddScientistDialog(QWidget *parent) :
     ui(new Ui::AddScientistDialog)
 {
     ui->setupUi(this);
-    ui->PickGender->addItem("Male");
-    ui->PickGender->addItem("Female");
-
 }
 
 AddScientistDialog::~AddScientistDialog()
