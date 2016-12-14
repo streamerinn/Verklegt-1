@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>527</width>
-    <height>441</height>
+    <width>550</width>
+    <height>450</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>550</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Ca$:H</string>
@@ -43,10 +49,29 @@ background-color: yellow;
      </widget>
     </item>
     <item>
-     <widget class="QListWidget" name="listStats"/>
+     <widget class="QListWidget" name="listStats">
+      <property name="minimumSize">
+       <size>
+        <width>480</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QWidget" name="horizontalWidget" native="true">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">height: 100px;</string>
       </property>
@@ -55,6 +80,18 @@ background-color: yellow;
         <widget class="QPushButton" name="button_scientist">
          <property name="enabled">
           <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>104</width>
+           <height>108</height>
+          </size>
          </property>
          <property name="styleSheet">
 
@@ -91,6 +128,12 @@ border-style-color: black;
        </item>
        <item>
         <widget class="QPushButton" name="button_link">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="baseSize">
           <size>
            <width>0</width>
@@ -120,6 +163,18 @@ border-style-color: black;
          <property name="enabled">
           <bool>true</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>104</width>
+           <height>108</height>
+          </size>
+         </property>
          <property name="styleSheet">
           <string notr="true"/>
          </property>
@@ -140,6 +195,18 @@ border-style-color: black;
        </item>
        <item>
         <widget class="QPushButton" name="toggle_theme">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>104</width>
+           <height>108</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>10</pointsize>
@@ -165,7 +232,7 @@ border-style-color: black;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>527</width>
+     <width>550</width>
      <height>21</height>
     </rect>
    </property>
