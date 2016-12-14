@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resource.qrc">
+   <iconset resource="aukaefni.qrc">
     <normaloff>:/images/pictures/viso.png</normaloff>:/images/pictures/viso.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -25,17 +25,23 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QPushButton" name="AddANewScientist">
-     <property name="text">
-      <string>Add a new scientist</string>
+   <item row="1" column="0">
+    <widget class="QLineEdit" name="ScientistSearch">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>Search</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLineEdit" name="ScientistSearch">
-     <property name="placeholderText">
-      <string>Search</string>
+   <item row="3" column="0">
+    <widget class="QPushButton" name="AddANewScientist">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(225, 225, 225);</string>
+     </property>
+     <property name="text">
+      <string>Add a new scientist</string>
      </property>
     </widget>
    </item>
@@ -52,6 +58,9 @@
        <width>501</width>
        <height>231</height>
       </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="sortingEnabled">
       <bool>true</bool>
@@ -78,42 +87,10 @@
      </column>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QPushButton" name="AddANewScientist">
-     <property name="text">
-      <string>Add a new scientist</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLineEdit" name="ScientistSearch">
-     <property name="placeholderText">
-      <string>Search</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Scientists&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" alignment="Qt::AlignLeft">
-    <widget class="QPushButton" name="button_home">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="resource.qrc">
-       <normaloff>:/images/pictures/512px-Home_Icon.svg.png</normaloff>:/images/pictures/512px-Home_Icon.svg.png</iconset>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <resources>
-  <include location="resource.qrc"/>
+  <include location="aukaefni.qrc"/>
  </resources>
  <connections/>
 </ui>

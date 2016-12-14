@@ -41,6 +41,9 @@
    </item>
    <item>
     <widget class="QLineEdit" name="InputScientistName">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
      <property name="placeholderText">
       <string/>
      </property>
@@ -65,7 +68,21 @@
     </layout>
    </item>
    <item>
-    <widget class="QComboBox" name="PickGender"/>
+    <widget class="QComboBox" name="PickGender">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Male</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Female</string>
+      </property>
+     </item>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -87,6 +104,9 @@
    </item>
    <item>
     <widget class="QLineEdit" name="InputScientistYearOfBirth">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
      <property name="placeholderText">
       <string/>
      </property>
@@ -112,6 +132,9 @@
    </item>
    <item>
     <widget class="QLineEdit" name="InputScientistYearOfDeath">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
      <property name="placeholderText">
       <string/>
      </property>
@@ -119,27 +142,15 @@
    </item>
    <item>
     <widget class="QPushButton" name="AddScientist">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(225, 225, 225);</string>
+     </property>
      <property name="text">
       <string>Add</string>
      </property>
     </widget>
    </item>
-
-  <item row="5" column="0">
-    <widget class="QComboBox" name="PickGender">
-     <item>
-      <property name="text">
-       <string>Male</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Female</string>
-      </property>
-     </item>
-    </widget>
-   </item>
- </layout>
+  </layout>
  </widget>
  <resources/>
  <connections/>
