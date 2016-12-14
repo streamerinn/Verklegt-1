@@ -48,6 +48,12 @@ void MainWindow::on_button_link_clicked()
     connectionDialog.exec();
 }
 
+void MainWindow::on_actionAbout_triggered()
+{
+    AboutDialog aboutDialog(this);
+    aboutDialog.exec();
+}
+
 void MainWindow::on_colorDial_valueChanged()
 {
     this->setAutoFillBackground(true);
