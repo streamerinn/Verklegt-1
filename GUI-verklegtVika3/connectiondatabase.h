@@ -4,6 +4,7 @@
 #include <QtSql>
 #include <vector>
 #include"scientist.h"
+#include <QDebug>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ public:
     // Retrieves informations from database.
     int getscientistID(int scientistID);
     int getcomputerID(int computerID);
+    vector<Scientist> getConnectionIDs();
 
     // Adds informations to the database.
     void insertRow(vector<int> IDs);

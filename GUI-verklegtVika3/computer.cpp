@@ -19,6 +19,16 @@ Computer::Computer(int id, string computerName, string type, int yearBuilt, int 
     _built = built;
 }
 
+    Computer::Computer(string computerName, string type, int yearBuilt, int built)
+    {
+
+        _computerName = computerName;
+        _type = type;
+        _yearBuilt = yearBuilt;
+        _built = built;
+
+    }
+
 //Getters
 int Computer::getID()
 {

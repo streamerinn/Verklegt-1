@@ -5,6 +5,7 @@
 #include "scientist.h"
 #include "scientistservice.h"
 #include "computerservice.h"
+#include "connectionservice.h"
 
 #include <QDialog>
 #include <vector>
@@ -24,16 +25,20 @@ public:
     ~ConnectionDialog();
 
 private slots:
-    void on_SearchScientistName_textChanged(const QString &arg1);
+    void on_SearchScientistName_textChanged();
+
+    void on_SearchComputerName_textChanged();
 
 private:
     Ui::ConnectionDialog *ui;
 
     ScientistService scientistService;
     ComputerService computerService;
+    ConnectionService connectionService;
 
     void displayAllConnections();
     void displayScientists(vector<Scientist> scientists);
+    void displayComputers(vector<Computer> computers);
 };
 
 #endif // CONNECTIONDIALOG_H

@@ -84,7 +84,34 @@ void ConnectionDataBase::deleteLink(int compID, int sciID)
     query.bindValue(":ScientistID", ScientistID);
     query.exec();
 
+}
 
+vector<Scientist> ConnectionDataBase::getConnectionIDs()
+{
+    vector<int> connectionIDs;
+    vector<Scientist> bothScientistsAndComputers;
+
+    QSqlQuery query(db);
+    query.exec("Select Scientists.id, Scientists.name, Computers.id, Computers.name FROM Scientists , Computers , Connections WHERE Connections.scientistsID = Scientists.id AND Connections.computersID = Computers.id");
+
+    while (query.next())
+    {
+        Scientist scientist;
+        Scientist computer;
+
+        scientist.setID(query.value(0).toUInt());
+        computer.setID(query.value(2).toUInt());
+
+        scientist.setName(query.value(1).toString().toStdString());
+        computer.setName(query.value(3).toString().toStdString());
+
+        qDebug() << QString::fromStdString(scientist.getName())<< endl;
+
+        bothScientistsAndComputers.push_back(scientist);
+        bothScientistsAndComputers.push_back(computer);
+    }
+
+    return  bothScientistsAndComputers;
 }
 
 

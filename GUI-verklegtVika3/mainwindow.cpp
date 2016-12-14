@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QDebug>
+#include <QMenuBar>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -75,6 +76,30 @@ void MainWindow::on_toggle_theme_clicked()
 
 void MainWindow::stats()
 {
+
+    /*this->setAutoFillBackground(true);
+
+        switch (ui->colorDial->value()) {
+        case 0:
+            this->setStyleSheet("");
+            break;
+        case 1:
+            this->setStyleSheet("*{background-color:gray}");
+            break;
+        case 2:
+            this->setStyleSheet("*{background-color:yellow}");
+            break;
+        case 3:
+            this->setStyleSheet("*{background-color:blue}");
+            break;
+        case 4:
+            this->setStyleSheet("*{background-color:green}");
+            break;
+        default:
+            this->setStyleSheet("");
+            break;
+        }*/
+
     size_t dead;
     vector<Scientist> males = sService.searchGender('M');
     vector<Scientist> females = sService.searchGender('F');
@@ -108,4 +133,5 @@ void MainWindow::stats()
         ui->listStats->addItem(QString::number(totalConnections) + " Connection");
     else
         ui->listStats->addItem(QString::number(totalConnections) + " Connections");
+
 }

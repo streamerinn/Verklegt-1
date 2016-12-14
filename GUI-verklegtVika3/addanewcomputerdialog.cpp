@@ -36,6 +36,8 @@ void AddANewComputerDialog::on_pushButton_clicked()
     bool emptyError = false;
     bool invalidInput = false;
 
+    qDebug() << "-" << name <<"--" << name.length();
+
     if(name.isEmpty())
     {
         ui->label_error_computer_name_2->setText("<span style='color: red'>Name cannot be empty!</span>");
@@ -55,15 +57,22 @@ void AddANewComputerDialog::on_pushButton_clicked()
         invalidInput = true;
     }
 
+    string computerName = name.toStdString();
 
+    string Ctype = type.toStdString();
+    int CbuildYear = buildYear.toInt();
+    string Cbuilt = built.toStdString();
 
+    int tempBuilt;
 
-    //if (type.isEmpty())
-    //{
-      //  ui->label_error_computer_type->setText("<span style='color: red'>Name cannot be empty!</span>");
-
-    //}
-
+    if (Cbuilt == "Yes")
+    {
+        tempBuilt = 1;
+    }
+    else if (Cbuilt =="No")
+    {
+        tempBuilt = 0;
+    }
 
     if(emptyError)
     {
@@ -74,6 +83,22 @@ void AddANewComputerDialog::on_pushButton_clicked()
     {
         return;
     }
+
+
+    Computer computer(computerName, Ctype, CbuildYear, tempBuilt);
+    computerservice.create(computer);
+    close();
+
+
+
+    //if (type.isEmpty())
+    //{
+      //  ui->label_error_computer_type->setText("<span style='color: red'>Name cannot be empty!</span>");
+
+    //}
+
+
+
 
 
 

@@ -43,6 +43,7 @@ void ComputerTableDialog::displayComputers(vector<Computer> computers)
         ui->ComputerTable->setItem(i, 3, new QTableWidgetItem(QString::number(computers[i].getBuilt())));
     }
 
+
 }
 
 void ComputerTableDialog::on_ComputerSearch_textChanged()
@@ -60,4 +61,13 @@ void ComputerTableDialog::on_AddANewComputer_clicked()
     AddANewComputerDialog addANewComputer(this);
 
     int addComputerReturnValue = addANewComputer.exec();
+
+    //vector<Computer> computers = computerService.getComputers();
+
+    //displayComputers(computers);
+}
+
+void ComputerTableDialog::on_button_remove_computer_clicked()
+{
+
 }

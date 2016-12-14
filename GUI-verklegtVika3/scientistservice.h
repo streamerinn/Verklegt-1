@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <string>
 
 //include to implement random number generator.
 #include <cstdlib>
