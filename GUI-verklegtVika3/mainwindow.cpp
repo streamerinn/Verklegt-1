@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     darktheme = false;
+    stats();
 }
 
 MainWindow::~MainWindow()
@@ -70,4 +71,41 @@ void MainWindow::on_toggle_theme_clicked()
         darktheme = false;
     }
 
+}
+
+void MainWindow::stats()
+{
+    size_t dead;
+    vector<Scientist> males = sService.searchGender('M');
+    vector<Scientist> females = sService.searchGender('F');
+    vector<Scientist> alive = sService.searchDateOfDeath(0);
+    vector<Scientist> total = sService.getScientists();
+    vector<Computer> computers = cService.getComputers();
+
+    int totalConnections = coService.getConnections();
+    dead = total.size() - alive.size();
+
+    ui->listStats->clear();
+    if(males.size() == 1)
+        ui->listStats->addItem(QString::number(males.size()) + " Male");
+    else
+        ui->listStats->addItem(QString::number(males.size()) + " Males");
+
+    if(females.size() == 1)
+        ui->listStats->addItem(QString::number(females.size()) + " Female");
+    else
+        ui->listStats->addItem(QString::number(females.size()) + " Females");
+
+    ui->listStats->addItem(QString::number(alive.size()) + " Alive");
+    ui->listStats->addItem(QString::number(dead) + " Dead");
+
+    if(computers.size() == 1)
+        ui->listStats->addItem(QString::number(computers.size()) + " Computer");
+    else
+        ui->listStats->addItem(QString::number(computers.size()) + " Computers");
+
+    if(totalConnections == 1)
+        ui->listStats->addItem(QString::number(totalConnections) + " Connection");
+    else
+        ui->listStats->addItem(QString::number(totalConnections) + " Connections");
 }
