@@ -57,7 +57,7 @@ void ComputerTableDialog::on_ComputerSearch_textChanged()
 void ComputerTableDialog::on_AddANewComputer_clicked()
 {
 
-    AddANewComputerDialog addANewComputer;
+    AddANewComputerDialog addANewComputer(this);
 
     int addComputerReturnValue = addANewComputer.exec();
 }
