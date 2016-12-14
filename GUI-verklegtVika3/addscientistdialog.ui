@@ -7,8 +7,26 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>307</height>
+    <height>300</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>400</width>
+    <height>300</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Add Scientist</string>
@@ -41,6 +59,12 @@
    </item>
    <item>
     <widget class="QLineEdit" name="InputScientistName">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>25</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -69,6 +93,12 @@
    </item>
    <item>
     <widget class="QComboBox" name="PickGender">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>25</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -104,6 +134,12 @@
    </item>
    <item>
     <widget class="QLineEdit" name="InputScientistYearOfBirth">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>25</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -132,6 +168,12 @@
    </item>
    <item>
     <widget class="QLineEdit" name="InputScientistYearOfDeath">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>25</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -142,6 +184,12 @@
    </item>
    <item>
     <widget class="QPushButton" name="AddScientist">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
