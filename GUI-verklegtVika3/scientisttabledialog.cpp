@@ -58,3 +58,5 @@ void ScientistTableDialog::on_ScientistSearch_textChanged()
     vector<Scientist> scientists = scientistService.searchName(input);
     displayScientists(scientists);
 }
+
+

@@ -9,6 +9,7 @@
 #include "computertabledialog.h"
 #include "connectiondialog.h"
 #include "aboutdialog.h"
+#include "connectionservice.h"
 
 #include <vector>
 #include <QString>
@@ -43,6 +44,12 @@ private slots:
 
 private:
     //ScientistTableDialog *scientistTable;
+
+    ScientistService sService;
+    ComputerService cService;
+    ConnectionService coService;
+
+        void stats();
 
     Ui::MainWindow *ui;
 

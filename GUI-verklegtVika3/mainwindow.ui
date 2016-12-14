@@ -23,6 +23,16 @@
      </widget>
     </item>
     <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Current database stats</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="listStats"/>
+    </item>
+    <item>
      <widget class="QWidget" name="horizontalWidget" native="true">
       <property name="styleSheet">
        <string notr="true">height: 100px;</string>
