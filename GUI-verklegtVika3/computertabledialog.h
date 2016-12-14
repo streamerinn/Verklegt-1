@@ -8,6 +8,7 @@
 
 #include "computer.h"
 #include "computerservice.h"
+#include "addanewcomputerdialog.h"
 
 namespace Ui {
 class ComputerTableDialog;
@@ -23,6 +24,8 @@ public:
 
 private slots:
     void on_ComputerSearch_textChanged();
+
+    void on_AddANewComputer_clicked();
 
 private:
     ComputerService computerService;
