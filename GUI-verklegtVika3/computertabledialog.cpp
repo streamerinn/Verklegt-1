@@ -33,7 +33,7 @@ void ComputerTableDialog::displayAllComputers()
 
 void ComputerTableDialog::displayComputers(vector<Computer> computers)
 {
-    ui->ComputerTable->clear();
+    ui->ComputerTable->clearContents();
 
     for(unsigned int i = 0; i < computers.size(); i++)
     {

@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    darktheme = false;
 }
 
 MainWindow::~MainWindow()
@@ -54,28 +54,20 @@ void MainWindow::on_actionAbout_triggered()
     aboutDialog.exec();
 }
 
-void MainWindow::on_colorDial_valueChanged()
+void MainWindow::on_toggle_theme_clicked()
 {
-    this->setAutoFillBackground(true);
+    if(!darktheme)
+    {
+        this->setStyleSheet("*{background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
+                            "QHeaderView::section {background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
+                            "QTableWidget QTableCornerButton::section {background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
+                            "QMenu {selection-background-color: rgb(51, 153, 255);}");
+        darktheme = true;
+    }
+    else
+    {
+        this->setStyleSheet("");
+        darktheme = false;
+    }
 
-        switch (ui->colorDial->value()) {
-        case 0:
-            this->setStyleSheet("");
-            break;
-        case 1:
-            this->setStyleSheet("*{background-color:red}");
-            break;
-        case 2:
-            this->setStyleSheet("*{background-color:yellow}");
-            break;
-        case 3:
-            this->setStyleSheet("*{background-color:blue}");
-            break;
-        case 4:
-            this->setStyleSheet("*{background-color:green}");
-            break;
-        default:
-            this->setStyleSheet("");
-            break;
-        }
 }

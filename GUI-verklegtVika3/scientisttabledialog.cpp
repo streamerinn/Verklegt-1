@@ -33,7 +33,7 @@ void ScientistTableDialog::displayAllScientists()
 
 void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
 {
-    ui->ScientistTable->clear();
+    ui->ScientistTable->clearContents();
 
     for(unsigned int i = 0; i < scientists.size(); i++)
     {

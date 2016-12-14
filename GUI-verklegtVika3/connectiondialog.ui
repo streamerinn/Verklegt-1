@@ -24,7 +24,7 @@
    <item row="1" column="0">
     <widget class="QLineEdit" name="SearchScientistName">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string>Search scientist name</string>
@@ -34,7 +34,7 @@
    <item row="1" column="1">
     <widget class="QLineEdit" name="SearchScientistName_2">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string>Search computer name</string>
@@ -44,7 +44,7 @@
    <item row="2" column="0" colspan="2">
     <widget class="QTableWidget" name="ConnectionTable">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
      </property>
      <property name="sortingEnabled">
       <bool>true</bool>
@@ -79,7 +79,7 @@
    <item row="3" column="0" colspan="2">
     <widget class="QPushButton" name="pushButton">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(225, 225, 225);</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Edit</string>
