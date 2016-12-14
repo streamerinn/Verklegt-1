@@ -8,6 +8,8 @@
 #include "scientisttabledialog.h"
 #include "computertabledialog.h"
 #include "connectiondialog.h"
+#include "aboutdialog.h"
+#include "connectionservice.h"
 
 #include <vector>
 #include <QString>
@@ -28,6 +30,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    bool darktheme;
+
 private slots:
 
     void on_button_computers_clicked();
@@ -38,10 +42,21 @@ private slots:
 
     void on_colorDial_valueChanged();
 
+    void on_actionAbout_triggered();
+
+    void on_toggle_theme_clicked();
+
 private:
     //ScientistTableDialog *scientistTable;
 
+    ScientistService sService;
+    ComputerService cService;
+    ConnectionService coService;
+
+        void stats();
+
     Ui::MainWindow *ui;
+
 
 
 };

@@ -33,7 +33,7 @@ void ScientistTableDialog::displayAllScientists()
 
 void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
 {
-    ui->ScientistTable->clear();
+    ui->ScientistTable->clearContents();
 
     for(unsigned int i = 0; i < scientists.size(); i++)
     {
@@ -47,7 +47,7 @@ void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
 
 void ScientistTableDialog::on_AddANewScientist_clicked()
 {
-    AddScientistDialog addScientistDialog;
+    AddScientistDialog addScientistDialog(this);
     int addScientistReturnValue = addScientistDialog.exec();
 }
 
@@ -60,15 +60,3 @@ void ScientistTableDialog::on_ScientistSearch_textChanged()
 }
 
 
-
-void ScientistTableDialog::on_button_home_clicked()
-{
-    //this->hide();
-
-   //QWidget *parent = this->parentWidget();
-   //parent->show();
-
-
-
-
-}

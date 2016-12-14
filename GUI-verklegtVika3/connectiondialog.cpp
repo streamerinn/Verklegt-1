@@ -30,7 +30,7 @@ void ConnectionDialog::displayAllConnections()
 
 void ConnectionDialog::displayScientists(vector<Scientist> scientists)
 {
-    ui->ConnectionTable->clear();
+    ui->ConnectionTable->clearContents();
 
     ui->ConnectionTable->setRowCount(scientists.size()/2);
     for(unsigned int i = 0; i < scientists.size(); i += 2)

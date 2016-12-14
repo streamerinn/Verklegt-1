@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Add Scientist</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -42,7 +42,7 @@
    <item>
     <widget class="QLineEdit" name="InputScientistName">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string/>
@@ -70,7 +70,7 @@
    <item>
     <widget class="QComboBox" name="PickGender">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
      </property>
      <item>
       <property name="text">
@@ -105,7 +105,7 @@
    <item>
     <widget class="QLineEdit" name="InputScientistYearOfBirth">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string/>
@@ -133,7 +133,7 @@
    <item>
     <widget class="QLineEdit" name="InputScientistYearOfDeath">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string/>
@@ -143,7 +143,7 @@
    <item>
     <widget class="QPushButton" name="AddScientist">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(225, 225, 225);</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Add</string>

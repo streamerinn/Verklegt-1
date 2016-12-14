@@ -12,6 +12,8 @@ public:
     // constructorar
     Computer();
     Computer(int id, string computerName, string type, int yearBuilt, int built);
+    Computer(string computerName, string type, int yearBuilt, int built);
+
 
     // get functions
     int getID();
@@ -35,6 +37,7 @@ public:
     string _type;
     int _yearBuilt;
     int _built;
+    string tempBuilt;
 };
 
 

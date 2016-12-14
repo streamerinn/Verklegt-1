@@ -33,7 +33,7 @@ void ComputerTableDialog::displayAllComputers()
 
 void ComputerTableDialog::displayComputers(vector<Computer> computers)
 {
-    ui->ComputerTable->clear();
+    ui->ComputerTable->clearContents();
 
     for(unsigned int i = 0; i < computers.size(); i++)
     {
@@ -42,6 +42,7 @@ void ComputerTableDialog::displayComputers(vector<Computer> computers)
         ui->ComputerTable->setItem(i, 2, new QTableWidgetItem(QString::number(computers[i].getYearBuilt())));
         ui->ComputerTable->setItem(i, 3, new QTableWidgetItem(QString::number(computers[i].getBuilt())));
     }
+
 
 }
 
@@ -60,4 +61,13 @@ void ComputerTableDialog::on_AddANewComputer_clicked()
     AddANewComputerDialog addANewComputer;
 
     int addComputerReturnValue = addANewComputer.exec();
+
+    //vector<Computer> computers = computerService.getComputers();
+
+    //displayComputers(computers);
+}
+
+void ComputerTableDialog::on_button_remove_computer_clicked()
+{
+
 }
