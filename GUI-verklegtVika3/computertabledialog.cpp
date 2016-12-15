@@ -5,6 +5,7 @@ ComputerTableDialog::ComputerTableDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ComputerTableDialog)
 {
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllComputers();
     on_ComputerSearch_textChanged();

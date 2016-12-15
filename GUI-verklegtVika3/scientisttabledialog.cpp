@@ -5,6 +5,9 @@ ScientistTableDialog::ScientistTableDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ScientistTableDialog)
 {
+    // Fjarlægir '?' hjálp takkann
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
     ui->setupUi(this);
     displayAllScientists();
     on_ScientistSearch_textChanged();

@@ -5,6 +5,7 @@ EditDeletScientist::EditDeletScientist(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditDeletScientist)
 {
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllScientists();
     on_ScientistSearch_textChanged();
