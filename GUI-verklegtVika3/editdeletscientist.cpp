@@ -8,7 +8,6 @@ EditDeletScientist::EditDeletScientist(QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllScientists();
-    //on_ScientistSearch_textChanged();
 }
 
 EditDeletScientist::~EditDeletScientist()
