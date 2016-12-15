@@ -3,12 +3,26 @@
 
 #include <QDebug>
 #include <QMenuBar>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    /**** Tooltips ****/
+    ui->button_computers->setToolTip("<font color = '#245066'><b>Add/Remove computer(s)</b></font>");
+    ui->button_scientist->setToolTip("<font color = '#245066'><b>Add/Edit scientist(s)</b></font>");
+    ui->button_link->setToolTip("<font color = '#245066'><b>Manage connection(s)</b></font>");
+    //ui->toggle_theme->setToolTip("Change theme")
+
+    /**** Digital klukka ****/
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()),this,SLOT (displayClock()));
+    timer->start();
+
+    /**** Breyta lita þemu ****/
     darktheme = false;
     stats();
 }
@@ -63,7 +77,8 @@ void MainWindow::on_toggle_theme_clicked()
         this->setStyleSheet("*{background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
                             "QHeaderView::section {background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
                             "QTableWidget QTableCornerButton::section {background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
-                            "QMenu {selection-background-color: rgb(51, 153, 255);}");
+                            "QMenu {selection-background-color: rgb(80, 238, 255);}"
+                            "QPushButton {color: rgb(80, 238, 255); background-color: rgb(56, 56, 56);}");
         darktheme = true;
     }
     else
@@ -76,30 +91,6 @@ void MainWindow::on_toggle_theme_clicked()
 
 void MainWindow::stats()
 {
-
-    /*this->setAutoFillBackground(true);
-
-        switch (ui->colorDial->value()) {
-        case 0:
-            this->setStyleSheet("");
-            break;
-        case 1:
-            this->setStyleSheet("*{background-color:gray}");
-            break;
-        case 2:
-            this->setStyleSheet("*{background-color:yellow}");
-            break;
-        case 3:
-            this->setStyleSheet("*{background-color:blue}");
-            break;
-        case 4:
-            this->setStyleSheet("*{background-color:green}");
-            break;
-        default:
-            this->setStyleSheet("");
-            break;
-        }*/
-
     size_t dead;
     vector<Scientist> males = sService.searchGender('M');
     vector<Scientist> females = sService.searchGender('F');
@@ -133,5 +124,11 @@ void MainWindow::stats()
         ui->listStats->addItem(QString::number(totalConnections) + " Connection");
     else
         ui->listStats->addItem(QString::number(totalConnections) + " Connections");
+}
 
+void MainWindow::displayClock()
+{
+    QTime time = QTime::currentTime();
+    QString timeText = time.toString("hh : mm : ss");
+    ui->digitalClock->setText(timeText);
 }

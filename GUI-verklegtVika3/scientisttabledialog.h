@@ -9,6 +9,7 @@
 #include "scientist.h"
 #include "scientistservice.h"
 #include "addscientistdialog.h"
+#include "editdeletscientist.h"
 
 namespace Ui {
 class ScientistTableDialog;
@@ -35,6 +36,7 @@ private slots:
     void on_ScientistSearch_textChanged();
 //>>>>>>> 8d1cace0c4b831a9cf648a1e2b9b00c312f69c4b
 
+    void on_editDelete_clicked();
 
 private:
     void displayAllScientists();
