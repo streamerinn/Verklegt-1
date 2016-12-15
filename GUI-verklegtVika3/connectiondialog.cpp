@@ -48,12 +48,9 @@ void ConnectionDialog::on_SearchScientistName_textChanged()
     string input = ui->SearchScientistName->text().toStdString();
 
     vector<Scientist> scientists = connectionService.searchScientistName(input);
-    qDebug() << scientists.size() <<endl;
-    qDebug() << QString::fromStdString(input) << endl;
 
     displayScientists(scientists);
 
-    qDebug() << "wut" << endl;
 
 }
 
@@ -62,12 +59,9 @@ void ConnectionDialog::on_SearchComputerName_textChanged()
     string input = ui->SearchComputerName->text().toStdString();
 
     vector<Scientist> scientists = connectionService.searchComputerName(input);
-    qDebug() << scientists.size() <<endl;
-    qDebug() << QString::fromStdString(input) << endl;
 
     displayScientists(scientists);
 
-    qDebug() << "wut" << endl;
 }
 
 void ConnectionDialog::on_addButton_clicked()
@@ -79,7 +73,6 @@ void ConnectionDialog::on_addButton_clicked()
 
 void ConnectionDialog::on_deleteButton_clicked()
 {
-    qDebug() << "database check";
     DeleteConnection deleteConnection;
     deleteConnection.exec();
     displayAllConnections();
