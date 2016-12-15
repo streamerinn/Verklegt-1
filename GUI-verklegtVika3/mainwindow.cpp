@@ -63,7 +63,8 @@ void MainWindow::on_toggle_theme_clicked()
         this->setStyleSheet("*{background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
                             "QHeaderView::section {background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
                             "QTableWidget QTableCornerButton::section {background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
-                            "QMenu {selection-background-color: rgb(51, 153, 255);}");
+                            "QMenu {selection-background-color: rgb(80, 238, 255);}"
+                            "QPushButton {color: rgb(80, 238, 255); background-color: rgb(56, 56, 56);}");
         darktheme = true;
     }
     else
@@ -76,30 +77,6 @@ void MainWindow::on_toggle_theme_clicked()
 
 void MainWindow::stats()
 {
-
-    /*this->setAutoFillBackground(true);
-
-        switch (ui->colorDial->value()) {
-        case 0:
-            this->setStyleSheet("");
-            break;
-        case 1:
-            this->setStyleSheet("*{background-color:gray}");
-            break;
-        case 2:
-            this->setStyleSheet("*{background-color:yellow}");
-            break;
-        case 3:
-            this->setStyleSheet("*{background-color:blue}");
-            break;
-        case 4:
-            this->setStyleSheet("*{background-color:green}");
-            break;
-        default:
-            this->setStyleSheet("");
-            break;
-        }*/
-
     size_t dead;
     vector<Scientist> males = sService.searchGender('M');
     vector<Scientist> females = sService.searchGender('F');
