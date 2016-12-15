@@ -3,7 +3,12 @@
 //Constructor
 ConnectionService::ConnectionService()
 {
+    getConnectionVector();
+}
 
+void ConnectionService::getConnectionVector()
+{
+    bothComputersAndScientists = connections.getConnectionIDs();
 }
 
 void ConnectionService::getIDs(vector<int> IDs)
@@ -22,15 +27,13 @@ void ConnectionService::deleteLink(int Compid, int sciID)
     qDebug() << Compid;
     qDebug() << sciID;
     connections.deleteLink(Compid, sciID);
+    getConnectionVector();
 }
 
 vector<Scientist> ConnectionService::getConnectionIDs()
 {
-    vector<Scientist> connectionIDs;
-
-    connectionIDs = connections.getConnectionIDs();
-
-    return connectionIDs;
+    getConnectionVector();
+    return bothComputersAndScientists;
 }
 
 vector<Scientist> ConnectionService::searchScientistName(string scientistName)

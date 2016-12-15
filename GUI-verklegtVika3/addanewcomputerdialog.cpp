@@ -8,8 +8,11 @@ AddANewComputerDialog::AddANewComputerDialog(QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     ui->input_computer_type->addItem("Mechanical");
-    ui->input_computer_type->addItem("Electronical");
+    ui->input_computer_type->addItem("Electromechanical");
     ui->input_computer_type->addItem("Transistor");
+    ui->input_computer_type->addItem("Digital");
+    ui->input_computer_type->addItem("Electronic");
+    ui->input_computer_type->addItem("Other");
 
     ui->input_if_built->addItem("Yes");
     ui->input_if_built->addItem("No");

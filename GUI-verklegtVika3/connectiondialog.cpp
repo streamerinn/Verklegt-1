@@ -74,6 +74,7 @@ void ConnectionDialog::on_addButton_clicked()
 {
     AddConnection addConnection;
     int addConnectionReturnValue = addConnection.exec();
+    displayAllConnections();
 }
 
 void ConnectionDialog::on_deleteButton_clicked()
@@ -81,6 +82,8 @@ void ConnectionDialog::on_deleteButton_clicked()
     qDebug() << "database check";
     DeleteConnection deleteConnection;
     deleteConnection.exec();
+    displayAllConnections();
+
 }
 
 
