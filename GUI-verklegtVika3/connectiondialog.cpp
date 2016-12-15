@@ -43,38 +43,43 @@ void ConnectionDialog::displayScientists(vector<Scientist> scientists)
     }
 }
 
-void ConnectionDialog::displayComputers(vector<Computer> computers)
-{
-    /*// eitthvað rugl í gangi, search virkar ekki
-    ui->ConnectionTable->clear();
-
-    for(unsigned int i = 0; i < computers.size(); i++)
-    {
-        vector<Scientist> scientistsConnected = scientistService.getComputerID(computers[i].getID());
-        for(unsigned int j = 0; j < scientistsConnected.size(); j++)
-        {
-            ui->ConnectionTable->setItem(i, 0, new QTableWidgetItem(QString::number(scientistsConnected[i].getID())));
-            ui->ConnectionTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientistsConnected[i].getName())));
-
-            ui->ConnectionTable->setItem(j, 2, new QTableWidgetItem(QString::number(computers[j].getID())));
-            ui->ConnectionTable->setItem(j, 3, new QTableWidgetItem(QString::fromStdString(computers[j].getComputerName())));
-        }
-    }*/
-}
-
 void ConnectionDialog::on_SearchScientistName_textChanged()
 {
     string input = ui->SearchScientistName->text().toStdString();
 
-    vector<Scientist> scientists = scientistService.searchName(input);
+    vector<Scientist> scientists = connectionService.searchScientistName(input);
+    qDebug() << scientists.size() <<endl;
+    qDebug() << QString::fromStdString(input) << endl;
+
     displayScientists(scientists);
+
+    qDebug() << "wut" << endl;
+
 }
 
 void ConnectionDialog::on_SearchComputerName_textChanged()
 {
-    /*string input = ui->SearchComputerName->text().toStdString();
+    string input = ui->SearchComputerName->text().toStdString();
 
-    vector<Computer> computers = computerService.searchComputerName(input);
-    displayComputers(computers);*/
+    vector<Scientist> scientists = connectionService.searchComputerName(input);
+    qDebug() << scientists.size() <<endl;
+    qDebug() << QString::fromStdString(input) << endl;
+
+    displayScientists(scientists);
+
+    qDebug() << "wut" << endl;
+}
+
+void ConnectionDialog::on_addButton_clicked()
+{
+    AddConnection addConnection;
+    int addConnectionReturnValue = addConnection.exec();
+}
+
+void ConnectionDialog::on_deleteButton_clicked()
+{
+    qDebug() << "database check";
+    DeleteConnection deleteConnection;
+    deleteConnection.exec();
 }
 

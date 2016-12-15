@@ -155,7 +155,6 @@
  </widget>
  <tabstops>
   <tabstop>ComputerSearch</tabstop>
-  <tabstop>ComputerTable</tabstop>
   <tabstop>AddANewComputer</tabstop>
  </tabstops>
  <resources>

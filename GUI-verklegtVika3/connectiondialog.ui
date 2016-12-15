@@ -30,72 +30,6 @@
     <normaloff>:/images/pictures/linking.png</normaloff>:/images/pictures/linking.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>480</width>
-       <height>120</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>120</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Connections&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLineEdit" name="SearchScientistName">
-     <property name="minimumSize">
-      <size>
-       <width>238</width>
-       <height>25</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>25</height>
-      </size>
-     </property>
-     <property name="placeholderText">
-      <string>Search scientist name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="SearchComputerName">
-     <property name="minimumSize">
-      <size>
-       <width>238</width>
-       <height>25</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>25</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="placeholderText">
-      <string>Search computer name</string>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="0" colspan="2">
     <widget class="QTableWidget" name="ConnectionTable">
      <property name="minimumSize">
@@ -139,15 +73,10 @@
        <string>Computer Name</string>
       </property>
      </column>
-     <column>
-      <property name="text">
-       <string/>
-      </property>
-     </column>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" alignment="Qt::AlignHCenter">
-    <widget class="QPushButton" name="pushButton">
+   <item row="4" column="0" colspan="2" alignment="Qt::AlignHCenter">
+    <widget class="QPushButton" name="addButton">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -170,7 +99,71 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>Edit</string>
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>480</width>
+       <height>120</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>120</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Connections&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLineEdit" name="SearchScientistName">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="placeholderText">
+      <string>Search scientist name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="SearchComputerName">
+     <property name="minimumSize">
+      <size>
+       <width>238</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="placeholderText">
+      <string>Search computer name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QPushButton" name="deleteButton">
+     <property name="text">
+      <string>Delete</string>
      </property>
     </widget>
    </item>

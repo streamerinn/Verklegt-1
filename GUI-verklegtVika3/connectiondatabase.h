@@ -23,7 +23,7 @@ public:
     vector<Scientist> getConnectionIDs();
 
     // Adds informations to the database.
-    void insertRow(vector<int> IDs);
+    bool insertRow(vector<int> IDs);
 
     int countConnections();
     void deleteLink(int compID, int sciID);
