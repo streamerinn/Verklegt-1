@@ -10,7 +10,6 @@ ScientistTableDialog::ScientistTableDialog(QWidget *parent) :
 
     ui->setupUi(this);
     displayAllScientists();
-   // on_ScientistSearch_textChanged(); <- þarf ekki
 }
 
 ScientistTableDialog::~ScientistTableDialog()
@@ -27,12 +26,23 @@ void ScientistTableDialog::displayAllScientists()
 
     for(unsigned int i = 0; i < scientists.size(); i++)
     {
-       ui->ScientistTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
-       ui->ScientistTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientists[i].getGender())));
-       ui->ScientistTable->setItem(i, 2, new QTableWidgetItem(QString::number(scientists[i].getDateOfBirth())));
-       ui->ScientistTable->setItem(i, 3, new QTableWidgetItem(QString::number(scientists[i].getDateOfDeath())));
-
+        ui->ScientistTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
+        ui->ScientistTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientists[i].getGender())));
+        ui->ScientistTable->setItem(i, 2, new QTableWidgetItem(QString::number(scientists[i].getDateOfBirth())));
+        if(scientists[i].getDateOfDeath() == 0)
+            ui->ScientistTable->setItem(i, 3, new QTableWidgetItem("Alive"));
+        else
+            ui->ScientistTable->setItem(i, 3, new QTableWidgetItem(QString::number(scientists[i].getDateOfDeath())));
     }
+    QString stylesheet = "::section{"
+                             "spacing: 10px;"
+                            "background-color: gray;"
+                            "color: white;}";
+    ui->ScientistTable->horizontalHeader()->setStyleSheet(stylesheet);
+    ui->ScientistTable->verticalHeader()->setStyleSheet(stylesheet);
+
+
+
 }
 
 void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
@@ -45,7 +55,6 @@ void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
         ui->ScientistTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
         ui->ScientistTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientists[i].getGender())));
         ui->ScientistTable->setItem(i, 2, new QTableWidgetItem(QString::number(scientists[i].getDateOfBirth())));
-        ui->ScientistTable->setItem(i, 3, new QTableWidgetItem(QString::number(scientists[i].getDateOfDeath())));
         if(scientists[i].getDateOfDeath() == 0)
             ui->ScientistTable->setItem(i, 3, new QTableWidgetItem("Alive"));
         else

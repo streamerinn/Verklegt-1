@@ -31,6 +31,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(226, 226, 226);</string>
+  </property>
   <widget class="QLabel" name="label_header">
    <property name="geometry">
     <rect>
@@ -77,6 +80,10 @@
      <height>25</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
+   </property>
    <property name="placeholderText">
     <string>Search scientist</string>
    </property>
@@ -115,6 +122,10 @@
      <height>16777215</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
+   </property>
    <property name="readOnly">
     <bool>true</bool>
    </property>
@@ -136,6 +147,10 @@
    </property>
    <property name="focusPolicy">
     <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+</string>
    </property>
    <property name="editTriggers">
     <set>QAbstractItemView::NoEditTriggers</set>
@@ -178,6 +193,10 @@
      <width>120</width>
      <height>16777215</height>
     </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -227,6 +246,10 @@
      <height>25</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
+   </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
@@ -267,6 +290,10 @@
      <width>120</width>
      <height>25</height>
     </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="editScientist">
