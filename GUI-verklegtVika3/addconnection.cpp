@@ -4,6 +4,7 @@
 
 #include <string>
 #include <QString>
+#include <QPixmap>
 
 AddConnection::AddConnection(QWidget *parent) :
     QDialog(parent),
@@ -11,13 +12,14 @@ AddConnection::AddConnection(QWidget *parent) :
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
+    QPixmap pix("/Users/irisdogg/Desktop/Verklegt-1/GUI-verklegtVika3/addConnection.png");
+    ui->connectionPic->setPixmap(pix.scaled(300,100));
 }
 
 AddConnection::~AddConnection()
 {
     delete ui;
 }
-
 
 void AddConnection::on_addButton_clicked()
 {
@@ -28,30 +30,29 @@ void AddConnection::on_addButton_clicked()
 
     if (SciID.isEmpty())
     {
-        qDebug() << "scientist id missing";
-        return;
+        ui->addCheck->setText("<span style = 'color:red'>Connection failed!</span>");
     }
 
     if (CompID.isEmpty())
     {
-        qDebug() << "computer id missing";
-        return;
-    }
-
-    int newSciID = SciID.toInt();
-    int newCompID = CompID.toInt();
-
-    idVector.push_back(newSciID);
-    idVector.push_back(newCompID);
-
-    bool success = connectionService.insertRow(idVector);
-
-    if(success)
-    {
-        qDebug() << "Connection added";
+        ui->addCheck->setText("<span style = 'color:red'>Connection failed!</span>");
     }
     else
     {
-        qDebug() << "Connection add error";
+        int newSciID = SciID.toInt();
+        int newCompID = CompID.toInt();
+
+        idVector.push_back(newSciID);
+        idVector.push_back(newCompID);
+
+        bool success = connectionService.insertRow(idVector);
+
+        if(success)
+        {
+            ui->addCheck->setText("Connection added");
+        }
+
+        close();
     }
 }
+

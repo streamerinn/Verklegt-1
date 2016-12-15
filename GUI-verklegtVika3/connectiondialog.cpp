@@ -83,3 +83,4 @@ void ConnectionDialog::on_deleteButton_clicked()
     deleteConnection.exec();
 }
 
+

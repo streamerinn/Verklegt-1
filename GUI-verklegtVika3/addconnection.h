@@ -19,6 +19,7 @@ public:
 private slots:
     void on_addButton_clicked();
 
+
 private:
     Ui::AddConnection *ui;
     ConnectionService connectionService;
