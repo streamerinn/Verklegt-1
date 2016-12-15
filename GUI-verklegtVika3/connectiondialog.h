@@ -38,7 +38,7 @@ private:
 
     void displayAllConnections();
     void displayScientists(vector<Scientist> scientists);
-    void displayComputers(vector<Computer> computers);
+
 };
 
 #endif // CONNECTIONDIALOG_H
