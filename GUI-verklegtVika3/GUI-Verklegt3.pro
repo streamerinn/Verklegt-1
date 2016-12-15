@@ -50,7 +50,7 @@ HEADERS  += mainwindow.h \
     aboutdialog.h \
     addanewcomputerdialog.h \
     editdeletscientist.h \
-    editdeletecomputer.h\
+    editdeletecomputer.h \
     addconnection.h \
     deleteconnection.h \
     musicdialog.h

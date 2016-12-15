@@ -133,3 +133,9 @@ void MainWindow::displayClock()
     ui->digitalClock->setText(timeText);
 }
 
+
+void MainWindow::on_toolButton_clicked()
+{
+    MusicDialog musicDialog(this);
+    musicDialog.exec();
+}

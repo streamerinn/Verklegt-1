@@ -6,5 +6,6 @@
         <file>pictures/rickvanderzwet-Quaver-1.png</file>
         <file>addConnection.png</file>
         <file>deleteConnection.png</file>
+        <file>pictures/nyan-cat.png</file>
     </qresource>
 </RCC>
