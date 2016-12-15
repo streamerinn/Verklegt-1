@@ -22,8 +22,6 @@ void ScientistTableDialog::displayAllScientists()
     vector<Scientist> scientists = scientistService.getScientists();
     ui->ScientistTable->setRowCount(scientists.size());
 
-    qDebug() << scientists.size() << endl;
-
     for(unsigned int i = 0; i < scientists.size(); i++)
     {
         ui->ScientistTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));

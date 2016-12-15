@@ -21,8 +21,6 @@ void ComputerTableDialog::displayAllComputers()
     vector<Computer> computers = computerService.getComputers();
     ui->ComputerTable->setRowCount(computers.size());
 
-    qDebug() << computers.size() << endl;
-
     displayComputers(computers);
 }
 

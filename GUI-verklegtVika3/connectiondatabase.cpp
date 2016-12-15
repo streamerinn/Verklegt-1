@@ -108,8 +108,6 @@ vector<Scientist> ConnectionDataBase::getConnectionIDs()
         scientist.setName(query.value(1).toString().toStdString());
         computer.setName(query.value(3).toString().toStdString());
 
-        qDebug() << QString::fromStdString(scientist.getName())<< endl;
-
         bothScientistsAndComputers.push_back(scientist);
         bothScientistsAndComputers.push_back(computer);
     }
