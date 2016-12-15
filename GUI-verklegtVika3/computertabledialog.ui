@@ -57,7 +57,7 @@
       <string notr="true"/>
      </property>
      <property name="placeholderText">
-      <string>Search</string>
+      <string>Search Name</string>
      </property>
     </widget>
    </item>

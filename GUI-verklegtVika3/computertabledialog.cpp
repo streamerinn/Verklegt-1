@@ -22,13 +22,7 @@ void ComputerTableDialog::displayAllComputers()
 
     qDebug() << computers.size() << endl;
 
-    for(unsigned int i = 0; i < computers.size(); i++)
-    {
-        ui->ComputerTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(computers[i].getComputerName())));
-        ui->ComputerTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(computers[i].getType())));
-        ui->ComputerTable->setItem(i, 2, new QTableWidgetItem(QString::number(computers[i].getYearBuilt())));
-        ui->ComputerTable->setItem(i, 3, new QTableWidgetItem(QString::number(computers[i].getBuilt())));
-    }
+    displayComputers(computers);
 }
 
 void ComputerTableDialog::displayComputers(vector<Computer> computers)
@@ -39,8 +33,16 @@ void ComputerTableDialog::displayComputers(vector<Computer> computers)
     {
         ui->ComputerTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(computers[i].getComputerName())));
         ui->ComputerTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(computers[i].getType())));
-        ui->ComputerTable->setItem(i, 2, new QTableWidgetItem(QString::number(computers[i].getYearBuilt())));
-        ui->ComputerTable->setItem(i, 3, new QTableWidgetItem(QString::number(computers[i].getBuilt())));
+        if(computers[i].getBuilt() == 1)
+        {
+            ui->ComputerTable->setItem(i, 2, new QTableWidgetItem(QString::number(computers[i].getYearBuilt())));
+            ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("Yes"));
+        }
+        else
+        {
+            ui->ComputerTable->setItem(i, 2, new QTableWidgetItem("N/A"));
+            ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("No"));
+        }
     }
 }
 
