@@ -14,6 +14,7 @@ EditDeletScientist::~EditDeletScientist()
 {
     delete ui;
 }
+
 void EditDeletScientist::displayAllScientists()
 {
     vector<Scientist> scientists = scientistService1.getScientists();
@@ -34,6 +35,7 @@ void EditDeletScientist::displayScientists(vector<Scientist> scientists)
     }
 
 }
+
 void EditDeletScientist::on_ScientistSearch_textChanged()
 {
     string input = ui->ScientistSearch->text().toStdString();
@@ -41,7 +43,7 @@ void EditDeletScientist::on_ScientistSearch_textChanged()
     vector<Scientist> scientists = scientistService1.searchName(input);
     displayScientists(scientists);
 }
-
+//function that activates textboxes when a cell in the table name is clicked
 void EditDeletScientist::on_Names_cellClicked(int row, int column)
 {
     vector<Scientist> scientists = scientistService1.getScientists();
@@ -50,6 +52,7 @@ void EditDeletScientist::on_Names_cellClicked(int row, int column)
     {
         if(nafn.toStdString()==scientists[i].getName())
         {
+            //getting information about chosen scientist
             QString gender = QString::fromStdString(scientists[i].getGender());
             QString born = QString::number(scientists[i].getDateOfBirth());
             QString died = QString::number(scientists[i].getDateOfDeath());
@@ -72,9 +75,9 @@ void EditDeletScientist::on_Names_cellClicked(int row, int column)
     }
 }
 
- //sÃ¦kja uppl. Ãºr kÃ¶ssum og senda Ã¾Ã¦r Ã­ fÃ¶ll
 void EditDeletScientist::on_editScientist_clicked()
 {
+  //making appropriate varables from textboxes and buttons
   string name = ui->txtName->text().toStdString();
   int born = ui->txtBorn->text().toInt();
   int died = ui->txtDied->text().toInt();
@@ -92,14 +95,14 @@ void EditDeletScientist::on_editScientist_clicked()
   scientistService1.editScientist(ID,gender,name,born,died);
   displayAllScientists();
 }
-
+//Delete scientist
 void EditDeletScientist::on_Delete_clicked()
 {
     int ID = ui->txtID->text().toInt();
 
     scientistService1.deleteScientist(ID);
     displayAllScientists();
-
+    //clear all information about deleted scientist
     ui->txtID->clear();
     ui->txtName->clear();
     ui->txtBorn->clear();

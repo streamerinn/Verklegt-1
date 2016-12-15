@@ -14,7 +14,7 @@
    <string>Scientists</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="aukaefni.qrc">
+   <iconset>
     <normaloff>:/images/pictures/viso.png</normaloff>:/images/pictures/viso.png</iconset>
   </property>
   <property name="styleSheet">
