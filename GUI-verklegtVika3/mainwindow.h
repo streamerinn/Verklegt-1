@@ -40,8 +40,6 @@ private slots:
 
     void on_button_link_clicked();
 
-    void on_colorDial_valueChanged();
-
     void on_actionAbout_triggered();
 
     void on_toggle_theme_clicked();

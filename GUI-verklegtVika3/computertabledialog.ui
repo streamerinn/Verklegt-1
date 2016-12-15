@@ -144,34 +144,10 @@
      </property>
     </widget>
    </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QPushButton" name="button_remove_computer">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>480</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>480</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(129, 129, 129);</string>
-     </property>
+   <item>
+    <widget class="QPushButton" name="editDelete">
      <property name="text">
-      <string>Remove Selected Computer</string>
+      <string>Edit Or Delete Computer</string>
      </property>
     </widget>
    </item>
@@ -181,7 +157,6 @@
   <tabstop>ComputerSearch</tabstop>
   <tabstop>ComputerTable</tabstop>
   <tabstop>AddANewComputer</tabstop>
-  <tabstop>button_remove_computer</tabstop>
  </tabstops>
  <resources>
   <include location="aukaefni.qrc"/>
