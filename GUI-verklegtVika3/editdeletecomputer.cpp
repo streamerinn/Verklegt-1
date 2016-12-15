@@ -33,6 +33,13 @@ void EditDeleteComputer::displayCpu(vector<Computer> computers)
     {
         ui->Names->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(computers[i].getComputerName())));
     }
+
+    QString stylesheet = "::section{"
+                             "spacing: 10px;"
+                            "background-color: gray;"
+                            "color: white;}";
+    ui->Names->horizontalHeader()->setStyleSheet(stylesheet);
+    ui->Names->verticalHeader()->setStyleSheet(stylesheet);
 }
 
 void EditDeleteComputer::on_searchComputer_textChanged()

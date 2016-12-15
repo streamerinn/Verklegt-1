@@ -24,6 +24,14 @@ void EditDeletScientist::displayAllScientists()
     {
        ui->Names->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
     }
+
+    QString stylesheet = "::section{"
+                             "spacing: 10px;"
+                            "background-color: gray;"
+                            "color: white;}";
+    ui->Names->horizontalHeader()->setStyleSheet(stylesheet);
+    ui->Names->verticalHeader()->setStyleSheet(stylesheet);
+
 }
 
 void EditDeletScientist::displayScientists(vector<Scientist> scientists)
@@ -33,7 +41,6 @@ void EditDeletScientist::displayScientists(vector<Scientist> scientists)
     {
         ui->Names->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
     }
-
 }
 
 void EditDeletScientist::on_ScientistSearch_textChanged()
@@ -65,7 +72,7 @@ void EditDeletScientist::on_Names_cellClicked(int row, int column)
             {
                 ui->Male->setChecked(true);
             }
-            else
+            else if(scientists[i].getGender()=="Female")
             {
                 ui->Female->setChecked(true);
             }
