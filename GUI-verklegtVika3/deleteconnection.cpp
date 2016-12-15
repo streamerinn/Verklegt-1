@@ -5,6 +5,7 @@ DeleteConnection::DeleteConnection(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DeleteConnection)
 {
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
 }
 
