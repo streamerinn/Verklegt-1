@@ -16,11 +16,14 @@ DeleteConnection::~DeleteConnection()
 
 void DeleteConnection::on_deleteButton_clicked()
 {
-    QString sciID = ui->sciID->text();
-    QString compID = ui->compID->text();
+    QString sciID = ui->insertSciID->text();
+    QString compID = ui->insertCompID->text();
 
     int tempSci = sciID.toInt();
     int tempComp = compID.toInt();
+
+    qDebug() << tempSci;
+    qDebug() << tempComp;
 
     connectionService.deleteLink(tempComp,tempSci);
 }

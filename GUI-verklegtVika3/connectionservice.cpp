@@ -3,7 +3,7 @@
 //Constructor
 ConnectionService::ConnectionService()
 {
-     bothComputersAndScientists = connections.getConnectionIDs();
+
 }
 
 void ConnectionService::getIDs(vector<int> IDs)
@@ -19,6 +19,8 @@ int ConnectionService::getConnections()
 
 void ConnectionService::deleteLink(int Compid, int sciID)
 {
+    qDebug() << Compid;
+    qDebug() << sciID;
     connections.deleteLink(Compid, sciID);
 }
 
@@ -67,4 +69,16 @@ vector<Scientist> ConnectionService::searchComputerName(string computerName)
         }
     }
     return returnComputer;
+}
+
+
+bool ConnectionService::insertRow(vector<int> IDs)
+{
+    bool success = connections.insertRow(IDs);
+
+    if(success)
+    {
+        return true;
+    }
+    return false;
 }

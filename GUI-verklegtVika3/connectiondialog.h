@@ -6,6 +6,8 @@
 #include "scientistservice.h"
 #include "computerservice.h"
 #include "connectionservice.h"
+#include "addconnection.h"
+#include "deleteconnection.h"
 
 #include <QDialog>
 #include <vector>
@@ -28,6 +30,10 @@ private slots:
     void on_SearchScientistName_textChanged();
 
     void on_SearchComputerName_textChanged();
+
+    void on_deleteButton_clicked();
+
+    void on_addButton_clicked();
 
 private:
     Ui::ConnectionDialog *ui;

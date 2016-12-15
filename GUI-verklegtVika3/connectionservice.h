@@ -19,6 +19,7 @@ public:
     void getIDs(vector<int> IDs);
     int getConnections();
     vector<Scientist> getConnectionIDs();
+    bool insertRow(vector<int> IDs);
 
     // delete functions
     void deleteLink(int Compid, int sciID);

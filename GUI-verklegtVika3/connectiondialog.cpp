@@ -69,3 +69,17 @@ void ConnectionDialog::on_SearchComputerName_textChanged()
 
     qDebug() << "wut" << endl;
 }
+
+void ConnectionDialog::on_addButton_clicked()
+{
+    AddConnection addConnection;
+    int addConnectionReturnValue = addConnection.exec();
+}
+
+void ConnectionDialog::on_deleteButton_clicked()
+{
+    qDebug() << "database check";
+    DeleteConnection deleteConnection;
+    deleteConnection.exec();
+}
+

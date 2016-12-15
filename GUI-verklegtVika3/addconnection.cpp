@@ -22,8 +22,8 @@ void AddConnection::on_addButton_clicked()
 {
     vector<int> idVector;
 
-    QString SciID  = ui->ScientistID->text();
-    QString CompID = ui->ComputerID->text();
+    QString SciID  = ui->insertSciID->text();
+    QString CompID = ui->insertCompID->text();
 
     if (SciID.isEmpty())
     {

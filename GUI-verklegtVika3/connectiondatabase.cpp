@@ -41,7 +41,7 @@ bool ConnectionDataBase::connectionCheck(QString name)
 }
 
 //Adds a connection to the Connections table.
-void ConnectionDataBase::insertRow(vector<int> IDs)
+bool ConnectionDataBase::insertRow(vector<int> IDs)
 {
     QSqlQuery query(db);
 
@@ -52,6 +52,8 @@ void ConnectionDataBase::insertRow(vector<int> IDs)
     query.bindValue(":scientists", scientists);
     query.bindValue(":computers", computers);
     query.exec();
+
+    return true;
 }
 
 //Counts the connections in the Connections table.
@@ -72,7 +74,6 @@ int ConnectionDataBase::countConnections()
 //Deletes a connection between scientists and computers.
 void ConnectionDataBase::deleteLink(int compID, int sciID)
 {
-
     QString ComputerID;
     QString ScientistID;
     ComputerID = QString::number(compID);
