@@ -29,14 +29,6 @@ Scientist::Scientist(string name, string gender, int dateOfBirth, int dateOfDeat
     _dateOfDeath = dateOfDeath;
 }
 
-Scientist::Scientist(string name, string gender, int dateOfBirth, int dateOfDeath, string image)
-{
-    _name = name;
-    _gender = gender;
-    _dateOfBirth = dateOfBirth;
-    _dateOfDeath = dateOfDeath;
- }
-
 int Scientist::getID()
 {
     return _id;

@@ -124,29 +124,11 @@ void AddScientistDialog::on_AddScientist_clicked()
     string scientistGender = gender.toStdString();
     int SyearOfBirth = yearOfBirth.toInt();
     int SyearOfDeath = yearOfDeath.toInt();
-
-    string ScImage = image.toStdString();
-
-    Scientist scientist(scientistName, scientistGender, SyearOfBirth, SyearOfDeath, ScImage);
-
-
-
-
+    Scientist scientist(scientistName, scientistGender, SyearOfBirth, SyearOfDeath);
 
     scientistService.create(scientist);
     close();
-
-
-
-
-
-
 }
-
-
-
-
-
 
 void AddScientistDialog::on_browse_button_clicked()
 {
@@ -170,7 +152,4 @@ void AddScientistDialog::on_browse_button_clicked()
    {
        ui->insert_image->setText("/images/build-GUI-Verklegt3-Desktop_Qt_5_7_0_MinGW_32bit-Debug/images/default.jpg");
    }
-
-
-
 }
