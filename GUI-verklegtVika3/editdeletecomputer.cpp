@@ -61,7 +61,10 @@ void EditDeleteComputer::on_Names_cellClicked(int row, int column)
             ui->txtName->setText(nafn);
             ui->txtType->setText(Type);
             ui->txtYearBuilt->setText(yearbuilt);
-            ui->txtMade->setText(built);
+            if(computers[i].getBuilt()==1)
+                ui->txtMade->setText("Yes");
+            else
+                ui->txtMade->setText("No");
 
             break;
         }
@@ -72,9 +75,8 @@ void EditDeleteComputer::on_Delete_clicked()
 {
     int ID = ui->txtID->text().toInt();
 
-    ComputerDatabase test;
-
-    test.deleteComputer(ID);
+    computerservice.deleteComputer(ID);
+    displayAllCpu();
     ui->txtID->clear();
     ui->txtName->clear();
     ui->txtYearBuilt->clear();
@@ -87,10 +89,10 @@ void EditDeleteComputer::on_editComputer_clicked()
     string name = ui->txtName->text().toStdString();
     string type = ui->txtType->text().toStdString();
     int yearbuilt = ui->txtYearBuilt->text().toInt();
-    int built = ui->txtMade->text().toInt();
     int ID = ui->txtID->text().toInt();
+    int built = ui->txtMade->text().toInt();
 
-    ComputerDatabase test;
+    computerservice.editComputer(name,ID,yearbuilt,built,type);
+    displayAllCpu();
 
-    test.editComputer(name,ID,yearbuilt,built,type);
 }

@@ -8,7 +8,7 @@ EditDeletScientist::EditDeletScientist(QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllScientists();
-    on_ScientistSearch_textChanged();
+    //on_ScientistSearch_textChanged();
 }
 
 EditDeletScientist::~EditDeletScientist()
@@ -74,18 +74,17 @@ void EditDeletScientist::on_editScientist_clicked()
   int died = ui->txtDied->text().toInt();
   int ID = ui->txtID->text().toInt();
 
-  ScientistDatabase test;
-
-  test.editScientist(ID,gender,name,born,died);
+  scientistService1.editScientist(ID,gender,name,born,died);
+  displayAllScientists();
 }
 
 void EditDeletScientist::on_Delete_clicked()
 {
     int ID = ui->txtID->text().toInt();
 
-    ScientistDatabase test;
+    scientistService1.deleteScientist(ID);
+    displayAllScientists();
 
-    test.deleteScientist(ID);
     ui->txtID->clear();
     ui->txtName->clear();
     ui->txtGender->clear();
