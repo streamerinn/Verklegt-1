@@ -56,10 +56,18 @@ void EditDeletScientist::on_Names_cellClicked(int row, int column)
             QString died = QString::number(scientists[i].getDateOfDeath());
             QString ID = QString::number(scientists[i].getID());
             ui->txtName->setText(nafn);
-            ui->txtGender->setText(gender);
             ui->txtBorn->setText(born);
             ui->txtDied->setText(died);
             ui->txtID->setText(ID);
+            if(scientists[i].getGender()=="Male")
+            {
+                ui->Male->setChecked(true);
+            }
+            else
+            {
+                ui->Female->setChecked(true);
+            }
+
             break;
         }
     }
@@ -69,10 +77,18 @@ void EditDeletScientist::on_Names_cellClicked(int row, int column)
 void EditDeletScientist::on_editScientist_clicked()
 {
   string name = ui->txtName->text().toStdString();
-  string gender = ui->txtGender->text().toStdString();
   int born = ui->txtBorn->text().toInt();
   int died = ui->txtDied->text().toInt();
   int ID = ui->txtID->text().toInt();
+  string gender;
+  if(ui->Female->isChecked())
+  {
+      gender = "Female";
+  }
+  else if(ui->Male->isChecked())
+  {
+      gender = "Male";
+  }
 
   scientistService1.editScientist(ID,gender,name,born,died);
   displayAllScientists();
@@ -87,8 +103,11 @@ void EditDeletScientist::on_Delete_clicked()
 
     ui->txtID->clear();
     ui->txtName->clear();
-    ui->txtGender->clear();
     ui->txtBorn->clear();
     ui->txtDied->clear();
+    ui->Male->setAutoExclusive(false);
+    ui->Male->setChecked(false);
+    ui->Female->setAutoExclusive(false);
+    ui->Female->setChecked(false);
 }
 
