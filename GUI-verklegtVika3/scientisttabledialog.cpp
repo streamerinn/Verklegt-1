@@ -31,6 +31,7 @@ void ScientistTableDialog::displayAllScientists()
        ui->ScientistTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientists[i].getGender())));
        ui->ScientistTable->setItem(i, 2, new QTableWidgetItem(QString::number(scientists[i].getDateOfBirth())));
        ui->ScientistTable->setItem(i, 3, new QTableWidgetItem(QString::number(scientists[i].getDateOfDeath())));
+
     }
 }
 

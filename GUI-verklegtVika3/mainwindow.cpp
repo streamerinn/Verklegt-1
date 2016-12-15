@@ -78,7 +78,7 @@ void MainWindow::on_toggle_theme_clicked()
                             "QHeaderView::section {background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
                             "QTableWidget QTableCornerButton::section {background-color: rgb(36, 36, 36); color: rgb(249, 249, 249);}"
                             "QMenu {selection-background-color: rgb(80, 238, 255);}"
-                            "QPushButton {color: rgb(80, 238, 255); background-color: rgb(56, 56, 56);}");
+                            "QPushButton {color: rgb(80, 238, 255); background-color: rgb(36, 36, 36);}");
         darktheme = true;
     }
     else

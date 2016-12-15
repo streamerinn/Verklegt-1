@@ -23,6 +23,9 @@ void AddScientistDialog::on_AddScientist_clicked()
     QString gender = ui->PickGender->currentText();
     QString yearOfBirth = ui->InputScientistYearOfBirth->text();
     QString yearOfDeath = ui->InputScientistYearOfDeath->text();
+    QString image = ui->insert_image->text();
+
+
 
     QRegExp validName("\\d*");
     QRegExp validInput("\\d*");
@@ -63,6 +66,7 @@ void AddScientistDialog::on_AddScientist_clicked()
     else if(yearOfDeath.toInt() < yearOfBirth.toInt())
     {
         ui->label_Death_error->setText("<span style='color: red'>A person cannot die before its born!</span>");
+        birthError = true;
     }
 
     if(!validInput.exactMatch(yearOfBirth))
@@ -121,7 +125,9 @@ void AddScientistDialog::on_AddScientist_clicked()
     int SyearOfBirth = yearOfBirth.toInt();
     int SyearOfDeath = yearOfDeath.toInt();
 
-    Scientist scientist(scientistName, scientistGender, SyearOfBirth, SyearOfDeath);
+    string ScImage = image.toStdString();
+
+    Scientist scientist(scientistName, scientistGender, SyearOfBirth, SyearOfDeath, ScImage);
 
 
 
@@ -130,14 +136,7 @@ void AddScientistDialog::on_AddScientist_clicked()
     scientistService.create(scientist);
     close();
 
-    /*if(success)
-    {
 
-    }
-    else
-    {
-        cout << "failed to create scientist";
-    }*/
 
 
 
@@ -148,3 +147,25 @@ void AddScientistDialog::on_AddScientist_clicked()
 
 
 
+
+void AddScientistDialog::on_browse_button_clicked()
+{
+
+   QString filename = QFileDialog::getOpenFileName(
+                       this,
+                        "Open Document",
+                        QDir::currentPath(),
+                        "Images (*.png *.jpg");
+
+   if(!filename.isNull())
+   {
+       ui->insert_image->setText(filename.toUtf8());
+   }
+   else
+   {
+       ui->insert_image->setText("/images/build-GUI-Verklegt3-Desktop_Qt_5_7_0_MinGW_32bit-Debug/images/default.jpg");
+   }
+
+
+
+}
