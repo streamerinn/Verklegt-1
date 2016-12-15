@@ -30,7 +30,7 @@ SOURCES += main.cpp\
     aboutdialog.cpp \
     addanewcomputerdialog.cpp \
     editdeletscientist.cpp \
-    editdeletecomputer.cpp\
+    editdeletecomputer.cpp \
     addconnection.cpp \
     deleteconnection.cpp
 
@@ -50,7 +50,7 @@ HEADERS  += mainwindow.h \
     aboutdialog.h \
     addanewcomputerdialog.h \
     editdeletscientist.h \
-    editdeletecomputer.h\
+    editdeletecomputer.h \
     addconnection.h \
     deleteconnection.h
 
