@@ -5,6 +5,7 @@ EditDeleteComputer::EditDeleteComputer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditDeleteComputer)
 {
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllCpu();
     on_searchComputer_textChanged();

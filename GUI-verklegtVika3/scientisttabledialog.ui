@@ -18,7 +18,20 @@
     <normaloff>:/images/pictures/viso.png</normaloff>:/images/pictures/viso.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">
+
+#ScientistTableDialog
+{
+
+font-size: 30%;
+	background-color: rgb(226, 226, 226);
+alternate-background-color: rgb(0, 0, 0);
+border: 3px solid gray;
+border-radius: 20px;
+
+
+
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="4" column="0" alignment="Qt::AlignHCenter">
@@ -70,7 +83,7 @@
       </size>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Scientists&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Scientists&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
@@ -101,7 +114,18 @@
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">#ScientistTable
+{
+
+font-size: 30%;
+	background-color: rgb(212, 212, 212);
+alternate-background-color: rgb(0, 0, 0);
+border: 3px solid gray;
+border-radius: 20px;
+
+
+
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -146,6 +170,13 @@
       <property name="text">
        <string>Year Of Death</string>
       </property>
+      <property name="background">
+       <color>
+        <red>150</red>
+        <green>150</green>
+        <blue>150</blue>
+       </color>
+      </property>
      </column>
     </widget>
    </item>
@@ -170,7 +201,18 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">#ScientistSearch
+{
+
+font-size: 30%;
+	background-color: rgb(212, 212, 212);
+alternate-background-color: rgb(0, 0, 0);
+border: 3px solid gray;
+border-radius: 20px;
+
+
+
+}</string>
      </property>
      <property name="placeholderText">
       <string>Search</string>

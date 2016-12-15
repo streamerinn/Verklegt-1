@@ -6,6 +6,7 @@
 #include <iostream>
 #include <QRegExp>
 #include <QTime>
+#include <QPixmap>
 
 #include <QFileDialog>
 #include <QIODevice>

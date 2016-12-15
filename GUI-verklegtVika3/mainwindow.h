@@ -46,6 +46,8 @@ private slots:
 
     void displayClock();
 
+
+
 private:
     //ScientistTableDialog *scientistTable;
 
