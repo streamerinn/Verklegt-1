@@ -3,7 +3,6 @@
         <file>pictures/viso.png</file>
         <file>pictures/comp.png</file>
         <file>pictures/linking.png</file>
-        <file>../build-GUI-Verklegt3-Desktop_Qt_5_7_0_MinGW_32bit-Debug/images/default.jpg</file>
         <file>pictures/default.jpg</file>
     </qresource>
 </RCC>
