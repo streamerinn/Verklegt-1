@@ -28,6 +28,8 @@ public:
     vector<Scientist> searchScientistName(string scientistName);
     vector<Scientist> searchComputerName(string computerName);
 
+    void getConnectionVector();
+
 
 private:
     ConnectionDataBase connections;
