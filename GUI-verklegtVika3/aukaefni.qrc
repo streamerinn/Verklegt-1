@@ -7,5 +7,6 @@
         <file>addConnection.png</file>
         <file>deleteConnection.png</file>
         <file>pictures/nyan-cat.png</file>
+        <file>pictures/NyanCat.mp3</file>
     </qresource>
 </RCC>
