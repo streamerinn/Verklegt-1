@@ -1,8 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
-//#include "scientistservice.h"
 #include "scientist.h"
 #include "computer.h"
 #include "scientisttabledialog.h"
@@ -47,22 +45,16 @@ private slots:
 
     void displayClock();
 
-
-
     void on_toolButton_clicked();
 
 private:
-    //ScientistTableDialog *scientistTable;
-
     ScientistService sService;
     ComputerService cService;
     ConnectionService coService;
 
-        void stats();
+    void stats();
 
     Ui::MainWindow *ui;
-
-
 
 };
 

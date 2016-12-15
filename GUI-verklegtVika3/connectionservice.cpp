@@ -24,8 +24,6 @@ int ConnectionService::getConnections()
 
 void ConnectionService::deleteLink(int Compid, int sciID)
 {
-    qDebug() << Compid;
-    qDebug() << sciID;
     connections.deleteLink(Compid, sciID);
     getConnectionVector();
 }

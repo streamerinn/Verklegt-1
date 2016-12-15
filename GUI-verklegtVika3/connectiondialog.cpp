@@ -64,6 +64,7 @@ void ConnectionDialog::on_SearchComputerName_textChanged()
 
 }
 
+//Opens a new window with add connection options
 void ConnectionDialog::on_addButton_clicked()
 {
     AddConnection addConnection;
@@ -71,6 +72,7 @@ void ConnectionDialog::on_addButton_clicked()
     displayAllConnections();
 }
 
+//Opens a new window with delete connection options
 void ConnectionDialog::on_deleteButton_clicked()
 {
     DeleteConnection deleteConnection;

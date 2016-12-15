@@ -7,7 +7,7 @@ MusicDialog::MusicDialog(QWidget *parent) :
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
-
+    show();
     player = new QMediaPlayer(this);
 
     connect(player, &QMediaPlayer::positionChanged, this, &MusicDialog::on_PositionChanged);
@@ -34,13 +34,11 @@ void MusicDialog::on_StartButton_clicked()
 {
     // Load the file
 
-    player->setMedia(QUrl::fromLocalFile("NyanCat.mp3"));
+    player->setMedia(QUrl("qrc:/images/pictures/NyanCat.mp3"));
     player->play();
 
-    //musicDialog->show();
-
-    //QCursor customCursor(QPixmap(":/images/pictures/nyan-cat.png"));
-    //setCursor(customCursor);
+    // Engage nyan-cat cursor when music player starts
+    QApplication::setOverrideCursor(QPixmap(":/images/pictures/nyan-cat.png"));
 
 }
 
@@ -48,10 +46,8 @@ void MusicDialog::on_StopButton_clicked()
 {
     player->stop();
 
-    //QCursor customCursor(QPixmap(":/images/pictures/nyan-cat.png"));
-
-
-    //QApplication::restoreOverrideCursor();
+    // Restore normal cursor on stop
+    QApplication::restoreOverrideCursor();
 }
 
 void MusicDialog::on_PositionChanged(qint64 position)

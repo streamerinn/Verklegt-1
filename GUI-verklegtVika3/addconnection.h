@@ -23,8 +23,6 @@ private slots:
 
     void on_idTable_activated();
 
-
-
 private:
     Ui::AddConnection *ui;
     ConnectionService connectionService;

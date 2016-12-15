@@ -90,6 +90,8 @@ void ConnectionDataBase::deleteLink(int compID, int sciID)
 vector<Scientist> ConnectionDataBase::getConnectionIDs()
 {
     vector<int> connectionIDs;
+
+    //Scientist vector is used so we don't need a new class.
     vector<Scientist> bothScientistsAndComputers;
 
     QSqlQuery query(db);
