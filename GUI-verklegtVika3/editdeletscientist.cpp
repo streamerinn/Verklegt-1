@@ -24,6 +24,14 @@ void EditDeletScientist::displayAllScientists()
     {
        ui->Names->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
     }
+
+    QString stylesheet = "::section{"
+                             "spacing: 10px;"
+                            "background-color: gray;"
+                            "color: white;}";
+    ui->Names->horizontalHeader()->setStyleSheet(stylesheet);
+    ui->Names->verticalHeader()->setStyleSheet(stylesheet);
+
 }
 
 void EditDeletScientist::displayScientists(vector<Scientist> scientists)

@@ -33,6 +33,15 @@ void ScientistTableDialog::displayAllScientists()
        ui->ScientistTable->setItem(i, 3, new QTableWidgetItem(QString::number(scientists[i].getDateOfDeath())));
 
     }
+    QString stylesheet = "::section{"
+                             "spacing: 10px;"
+                            "background-color: gray;"
+                            "color: white;}";
+    ui->ScientistTable->horizontalHeader()->setStyleSheet(stylesheet);
+    ui->ScientistTable->verticalHeader()->setStyleSheet(stylesheet);
+
+
+
 }
 
 void ScientistTableDialog::displayScientists(vector<Scientist> scientists)

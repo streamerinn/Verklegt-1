@@ -44,6 +44,14 @@ void ComputerTableDialog::displayComputers(vector<Computer> computers)
             ui->ComputerTable->setItem(i, 2, new QTableWidgetItem("N/A"));
             ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("No"));
         }
+
+        QString stylesheet = "::section{"
+                                 "spacing: 10px;"
+                                "background-color: gray;"
+                                "color: white;}";
+        ui->ComputerTable->horizontalHeader()->setStyleSheet(stylesheet);
+        ui->ComputerTable->verticalHeader()->setStyleSheet(stylesheet);
+
     }
 }
 
