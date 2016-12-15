@@ -40,9 +40,6 @@ void ScientistTableDialog::displayAllScientists()
                             "color: white;}";
     ui->ScientistTable->horizontalHeader()->setStyleSheet(stylesheet);
     ui->ScientistTable->verticalHeader()->setStyleSheet(stylesheet);
-
-
-
 }
 
 void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
@@ -66,7 +63,7 @@ void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
 void ScientistTableDialog::on_AddANewScientist_clicked()
 {
     AddScientistDialog addScientistDialog(this);
-    int addScientistReturnValue = addScientistDialog.exec();
+    addScientistDialog.exec();
 }
 
 void ScientistTableDialog::on_ScientistSearch_textChanged()

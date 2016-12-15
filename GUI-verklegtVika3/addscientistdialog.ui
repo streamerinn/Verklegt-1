@@ -31,6 +31,10 @@
   <property name="windowTitle">
    <string>Add Scientist</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(226, 226, 226);
+	</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label_header">
@@ -66,7 +70,8 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
      </property>
      <property name="placeholderText">
       <string/>
@@ -100,7 +105,8 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
      </property>
      <item>
       <property name="text">
@@ -141,7 +147,8 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
      </property>
      <property name="placeholderText">
       <string/>
@@ -175,7 +182,8 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
      </property>
      <property name="placeholderText">
       <string/>
@@ -212,25 +220,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Add An Image&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_5">
-     <item>
-      <widget class="QLineEdit" name="insert_image"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="browse_button">
-       <property name="text">
-        <string>Browse</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <layout class="QHBoxLayout" name="horizontalLayout_5"/>
    </item>
   </layout>
  </widget>

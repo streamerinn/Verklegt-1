@@ -15,7 +15,6 @@ public:
     Scientist();
     Scientist(int id, string name, string gender, int dateOfBirth, int dateOfDeath);
     Scientist(string name, string gender, int dateOfBirth, int dateOfDeath);
-    Scientist(string name, string gender, int dateOfBirth, int dateOfDeath, string image);
 
     // get functions
     int getID();

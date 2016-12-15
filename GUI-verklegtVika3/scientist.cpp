@@ -32,18 +32,6 @@ Scientist::Scientist(string name, string gender, int dateOfBirth, int dateOfDeat
 
 }
 
-Scientist::Scientist(string name, string gender, int dateOfBirth, int dateOfDeath, string image)
-{
-
-    _name = name;
-    _gender = gender;
-    _dateOfBirth = dateOfBirth;
-    _dateOfDeath = dateOfDeath;
-    _image = image;
-
- }
-
-
 
 int Scientist::getID()
 {

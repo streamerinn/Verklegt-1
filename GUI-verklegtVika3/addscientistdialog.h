@@ -33,11 +33,8 @@ public:
 private slots:
     void on_AddScientist_clicked();
 
-    void on_browse_button_clicked();
-
 private:
     Ui::AddScientistDialog *ui;
-
     ScientistService scientistService;
 
 };
