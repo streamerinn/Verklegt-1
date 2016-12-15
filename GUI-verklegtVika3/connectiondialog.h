@@ -6,6 +6,8 @@
 #include "scientistservice.h"
 #include "computerservice.h"
 #include "connectionservice.h"
+#include "addconnection.h"
+#include "deleteconnection.h"
 
 #include <QDialog>
 #include <vector>
@@ -29,6 +31,10 @@ private slots:
 
     void on_SearchComputerName_textChanged();
 
+    void on_deleteButton_clicked();
+
+    void on_addButton_clicked();
+
 private:
     Ui::ConnectionDialog *ui;
 
@@ -38,7 +44,7 @@ private:
 
     void displayAllConnections();
     void displayScientists(vector<Scientist> scientists);
-    void displayComputers(vector<Computer> computers);
+
 };
 
 #endif // CONNECTIONDIALOG_H

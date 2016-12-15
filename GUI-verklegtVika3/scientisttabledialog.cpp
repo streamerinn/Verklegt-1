@@ -10,7 +10,7 @@ ScientistTableDialog::ScientistTableDialog(QWidget *parent) :
 
     ui->setupUi(this);
     displayAllScientists();
-    on_ScientistSearch_textChanged();
+   // on_ScientistSearch_textChanged(); <- þarf ekki
 }
 
 ScientistTableDialog::~ScientistTableDialog()

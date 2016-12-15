@@ -9,6 +9,7 @@
 #include "computer.h"
 #include "computerservice.h"
 #include "addanewcomputerdialog.h"
+#include "editdeletecomputer.h"
 
 namespace Ui {
 class ComputerTableDialog;
@@ -28,6 +29,8 @@ private slots:
     void on_AddANewComputer_clicked();
 
     void on_button_remove_computer_clicked();
+
+    void on_editDelete_clicked();
 
 private:
     ComputerService computerService;

@@ -8,7 +8,7 @@ ComputerTableDialog::ComputerTableDialog(QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllComputers();
-    on_ComputerSearch_textChanged();
+    //on_ComputerSearch_textChanged(); <- þarf ekki
 }
 
 ComputerTableDialog::~ComputerTableDialog()
@@ -71,4 +71,11 @@ void ComputerTableDialog::on_AddANewComputer_clicked()
 void ComputerTableDialog::on_button_remove_computer_clicked()
 {
 
+}
+
+
+void ComputerTableDialog::on_editDelete_clicked()
+{
+    EditDeleteComputer editDeleteComputer(this);
+    editDeleteComputer.exec();
 }

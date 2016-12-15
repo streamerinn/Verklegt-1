@@ -5,10 +5,9 @@ EditDeletScientist::EditDeletScientist(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditDeletScientist)
 {
-    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllScientists();
-    //on_ScientistSearch_textChanged();
+    on_ScientistSearch_textChanged();
 }
 
 EditDeletScientist::~EditDeletScientist()
@@ -65,8 +64,8 @@ void EditDeletScientist::on_Names_cellClicked(int row, int column)
     }
 }
 
- //sÃ¦kja uppl. Ãºr kÃ¶ssum og senda Ã¾Ã¦r Ã­ fÃ¶ll
-void EditDeletScientist::on_editScientist_clicked()
+ //sækja uppl. úr kössum og senda þær í föll
+void EditDeletScientist::on_pushButton_clicked()
 {
   string name = ui->txtName->text().toStdString();
   string gender = ui->txtGender->text().toStdString();
@@ -74,21 +73,23 @@ void EditDeletScientist::on_editScientist_clicked()
   int died = ui->txtDied->text().toInt();
   int ID = ui->txtID->text().toInt();
 
-  scientistService1.editScientist(ID,gender,name,born,died);
-  displayAllScientists();
+  ScientistDatabase test;
+
+  test.editScientist(ID,gender,name,born,died);
 }
 
-void EditDeletScientist::on_Delete_clicked()
+void EditDeletScientist::on_DeleteScientist_clicked()
 {
     int ID = ui->txtID->text().toInt();
 
-    scientistService1.deleteScientist(ID);
-    displayAllScientists();
+    ScientistDatabase test;
 
+    test.deleteScientist(ID);
     ui->txtID->clear();
     ui->txtName->clear();
     ui->txtGender->clear();
     ui->txtBorn->clear();
     ui->txtDied->clear();
 }
+
 
