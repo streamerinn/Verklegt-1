@@ -40,7 +40,6 @@ private:
     int _dateOfBirth;
     int _dateOfDeath;
     string _image;
-
 };
 
 #endif // SCIENTIST_H

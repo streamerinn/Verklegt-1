@@ -14,6 +14,7 @@ AddConnection::AddConnection(QWidget *parent) :
     ui->setupUi(this);
     QPixmap pix(":/images/addConnection.png");
     ui->connectionPic->setPixmap(pix.scaled(300,100));
+    on_idTable_activated();
 }
 
 AddConnection::~AddConnection()
@@ -53,6 +54,31 @@ void AddConnection::on_addButton_clicked()
         }
 
         close();
+    }
+}
+
+
+void AddConnection::on_idTable_activated()
+{
+    vector<Scientist> scientistInfo = scientistServie.getScientists();
+    vector<Computer> computerInfo = computerService.getComputers();
+
+    ui->idTable->setRowCount(scientistInfo.size());
+    ui->idTable->setRowCount(computerInfo.size());
+
+
+    for(unsigned int i = 0; i < scientistInfo.size(); i++)
+    {
+        ui->idTable->setItem(i, 0, new QTableWidgetItem(QString::number(scientistInfo[i].getID())));
+        ui->idTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(scientistInfo[i].getName())));
+
+    }
+
+    for(unsigned int i = 0; i < computerInfo.size(); i++)
+    {
+        ui->idTable->setItem(i, 2, new QTableWidgetItem(QString::number(computerInfo[i].getID())));
+        ui->idTable->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(computerInfo[i].getComputerName())));
+
     }
 }
 

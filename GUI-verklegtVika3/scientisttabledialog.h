@@ -28,13 +28,7 @@ public:
 private slots:
     void on_AddANewScientist_clicked();
 
-
-
-
-    //void on_button_home_clicked();
-
     void on_ScientistSearch_textChanged();
-//>>>>>>> 8d1cace0c4b831a9cf648a1e2b9b00c312f69c4b
 
     void on_editDelete_clicked();
 
@@ -42,8 +36,6 @@ private:
     void displayAllScientists();
     void displayScientists(vector<Scientist> scientists);
     ScientistService scientistService;
-
-
     Ui::ScientistTableDialog *ui;
 };
 

@@ -15,6 +15,7 @@ public:
     ConnectionDataBase();
     ~ConnectionDataBase();
 
+    //Adds a connection to the Connections table.
     bool connectionCheck(QString name);
 
     // Retrieves informations from database.

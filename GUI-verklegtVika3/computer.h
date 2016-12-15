@@ -14,7 +14,6 @@ public:
     Computer(int id, string computerName, string type, int yearBuilt, int built);
     Computer(string computerName, string type, int yearBuilt, int built);
 
-
     // get functions
     int getID();
     string getComputerName();
@@ -31,7 +30,6 @@ public:
 
  private:
     vector<Computer> _computers;
-
     int _id;
     string _computerName;
     string _type;

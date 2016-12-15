@@ -81,7 +81,7 @@ void EditDeletScientist::on_Names_cellClicked(int row, int column)
     }
 }
 
- //sÃ¦kja uppl. Ãºr kÃ¶ssum og senda Ã¾Ã¦r Ã­ fÃ¶ll
+ //sækja uppl. úr klasa og senda áfram í­ fall
 void EditDeletScientist::on_editScientist_clicked()
 {
   string name = ui->txtName->text().toStdString();
