@@ -179,7 +179,6 @@
  </widget>
  <tabstops>
   <tabstop>ComputerSearch</tabstop>
-  <tabstop>ComputerTable</tabstop>
   <tabstop>AddANewComputer</tabstop>
   <tabstop>button_remove_computer</tabstop>
  </tabstops>
