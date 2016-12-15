@@ -46,6 +46,8 @@ private slots:
 
     void on_toggle_theme_clicked();
 
+    void displayClock();
+
 private:
     //ScientistTableDialog *scientistTable;
 

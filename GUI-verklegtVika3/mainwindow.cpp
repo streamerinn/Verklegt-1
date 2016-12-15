@@ -3,12 +3,26 @@
 
 #include <QDebug>
 #include <QMenuBar>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    /**** Tooltips ****/
+    ui->button_computers->setToolTip("<font color = '#245066'><b>Add computer(s)</b></font>");
+    ui->button_scientist->setToolTip("<font color = '#245066'><b>Add/Delete scientist(s)</b></font>");
+    ui->button_link->setToolTip("<font color = '#245066'><b>Manage connection(s)</b></font>");
+    //ui->toggle_theme->setToolTip("Change theme")
+
+    /**** Digital klukka ****/
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()),this,SLOT (displayClock()));
+    timer->start();
+
+    /**** Breyta lita þemu ****/
     darktheme = false;
     stats();
 }
@@ -110,4 +124,11 @@ void MainWindow::stats()
         ui->listStats->addItem(QString::number(totalConnections) + " Connection");
     else
         ui->listStats->addItem(QString::number(totalConnections) + " Connections");
+}
+
+void MainWindow::displayClock()
+{
+    QTime time = QTime::currentTime();
+    QString timeText = time.toString("hh : mm : ss");
+    ui->digitalClock->setText(timeText);
 }
