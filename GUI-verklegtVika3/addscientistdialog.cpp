@@ -121,12 +121,9 @@ void AddScientistDialog::on_AddScientist_clicked()
     string scientistGender = gender.toStdString();
     int SyearOfBirth = yearOfBirth.toInt();
     int SyearOfDeath = yearOfDeath.toInt();
-
     Scientist scientist(scientistName, scientistGender, SyearOfBirth, SyearOfDeath);
+
     scientistService.create(scientist);
     close();
-
 }
-
-
 

@@ -20,7 +20,7 @@ public:
     int getID();
     string getName();
     string getGender();
-    string getImage();
+
     int getDateOfBirth();
     int getDateOfDeath();
 
@@ -30,7 +30,6 @@ public:
     void setGender(string gender);
     void setDateOfBirth(int birth);
     void setDateOfDeath(int death);
-    void setImage (string image);
 
 private:
     vector<Scientist> _scientists;
@@ -39,7 +38,7 @@ private:
     string _gender;
     int _dateOfBirth;
     int _dateOfDeath;
-    string _image;
+
 };
 
 #endif // SCIENTIST_H

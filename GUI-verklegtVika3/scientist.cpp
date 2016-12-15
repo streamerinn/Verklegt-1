@@ -23,15 +23,11 @@ Scientist::Scientist(int id, string name, string gender, int dateOfBirth, int da
 
 Scientist::Scientist(string name, string gender, int dateOfBirth, int dateOfDeath)
 {
-
-
     _name = name;
     _gender = gender;
     _dateOfBirth = dateOfBirth;
     _dateOfDeath = dateOfDeath;
-
 }
-
 
 int Scientist::getID()
 {
@@ -53,11 +49,6 @@ int Scientist::getDateOfBirth()
     return _dateOfBirth;
 }
 
-string Scientist::getImage()
-{
-    return _image;
-}
-
 int Scientist::getDateOfDeath()
 {
     return _dateOfDeath;
@@ -72,13 +63,6 @@ void Scientist::setName(string name)
 {
     _name = name;
 }
-
-void Scientist::setImage (string image)
-{
-    _image = image;
-
-}
-
 
 void Scientist::setGender(string gender)
 {
