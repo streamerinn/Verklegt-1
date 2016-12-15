@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Connections</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="aukaefni.qrc">
+    <normaloff>:/images/pictures/linking.png</normaloff>:/images/pictures/linking.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label">
@@ -106,6 +110,9 @@
        <height>16777215</height>
       </size>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -168,23 +175,9 @@
     </widget>
    </item>
   </layout>
-  <widget class="QLineEdit" name="SearchScientistName">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>171</y>
-     <width>133</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="placeholderText">
-    <string>Search computer name</string>
-   </property>
-  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="aukaefni.qrc"/>
+ </resources>
  <connections/>
 </ui>

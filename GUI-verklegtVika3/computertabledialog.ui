@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Computers</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="aukaefni.qrc">
+    <normaloff>:/images/pictures/comp.png</normaloff>:/images/pictures/comp.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label_2">
@@ -80,6 +84,9 @@
        <width>16777215</width>
        <height>16777215</height>
       </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -170,6 +177,14 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>ComputerSearch</tabstop>
+  <tabstop>ComputerTable</tabstop>
+  <tabstop>AddANewComputer</tabstop>
+  <tabstop>button_remove_computer</tabstop>
+ </tabstops>
+ <resources>
+  <include location="aukaefni.qrc"/>
+ </resources>
  <connections/>
 </ui>

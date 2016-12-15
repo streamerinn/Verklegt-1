@@ -94,6 +94,9 @@
        <height>16777215</height>
       </size>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
@@ -180,6 +183,11 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>ScientistSearch</tabstop>
+  <tabstop>AddANewScientist</tabstop>
+  <tabstop>editDelete</tabstop>
+ </tabstops>
  <resources>
   <include location="aukaefni.qrc"/>
  </resources>

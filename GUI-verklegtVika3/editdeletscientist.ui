@@ -10,198 +10,254 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>400</width>
+    <height>300</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>180</y>
-     <width>35</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Gender</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>200</y>
-     <width>35</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Born</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>230</y>
-     <width>35</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Died</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Delete">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>274</y>
-     <width>106</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Delete Scientist</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>150</y>
-     <width>35</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Name</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtDied">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>228</y>
-     <width>106</width>
-     <height>17</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtBorn">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>205</y>
-     <width>106</width>
-     <height>17</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtGender">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>182</y>
-     <width>106</width>
-     <height>17</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtID">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>135</y>
-     <width>106</width>
-     <height>17</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="editScientist">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>251</y>
-     <width>106</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Edit Scientist</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtName">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>158</y>
-     <width>106</width>
-     <height>18</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="ScientistSearch">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>60</y>
-     <width>229</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="placeholderText">
-    <string>Search scientist</string>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="Names">
-   <property name="geometry">
-    <rect>
-     <x>162</x>
-     <y>89</y>
-     <width>229</width>
-     <height>161</height>
-    </rect>
-   </property>
-   <property name="columnCount">
-    <number>1</number>
-   </property>
-   <column/>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>140</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ID</string>
-   </property>
-  </widget>
-  <zorder>label_3</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
-  <zorder>Delete</zorder>
-  <zorder>label</zorder>
-  <zorder>label_2</zorder>
-  <zorder>txtDied</zorder>
-  <zorder>txtBorn</zorder>
-  <zorder>txtGender</zorder>
-  <zorder>txtID</zorder>
-  <zorder>editScientist</zorder>
-  <zorder>txtName</zorder>
-  <zorder>ScientistSearch</zorder>
-  <zorder>Names</zorder>
-  <zorder>label_5</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_2</zorder>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="3">
+    <widget class="QLabel" name="label_header">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>382</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>382</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Edit / Delete Scientist&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLineEdit" name="ScientistSearch">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="placeholderText">
+      <string>Search scientist</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="txtID">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>120</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" rowspan="7">
+    <widget class="QTableWidget" name="Names">
+     <property name="minimumSize">
+      <size>
+       <width>182</width>
+       <height>194</height>
+      </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
+     <property name="columnCount">
+      <number>1</number>
+     </property>
+     <column/>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="txtName">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>120</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Gender</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="txtGender">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>120</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Born</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="txtBorn">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>120</width>
+       <height>25</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="maximumSize">
+      <size>
+       <width>25</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Died</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="txtDied">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>120</width>
+       <height>25</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QPushButton" name="editScientist">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>120</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Edit Scientist</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QPushButton" name="Delete">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>120</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Delete Scientist</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
+ <tabstops>
+  <tabstop>ScientistSearch</tabstop>
+  <tabstop>txtID</tabstop>
+  <tabstop>txtName</tabstop>
+  <tabstop>txtGender</tabstop>
+  <tabstop>txtBorn</tabstop>
+  <tabstop>txtDied</tabstop>
+  <tabstop>editScientist</tabstop>
+  <tabstop>Delete</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
