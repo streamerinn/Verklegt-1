@@ -8,7 +8,7 @@ DeleteConnection::DeleteConnection(QWidget *parent) :
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
-    QPixmap pix("/Users/irisdogg/Desktop/Verklegt-1/GUI-verklegtVika3/deleteConnection.png");
+    QPixmap pix(":/images/deleteConnection.png");
     ui->deletePic->setPixmap(pix.scaled(300,100));
 }
 

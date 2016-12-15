@@ -5,5 +5,7 @@
         <file>pictures/linking.png</file>
         <file>pictures/default.jpg</file>
         <file>pictures/rickvanderzwet-Quaver-1.png</file>
+        <file>addConnection.png</file>
+        <file>deleteConnection.png</file>
     </qresource>
 </RCC>
