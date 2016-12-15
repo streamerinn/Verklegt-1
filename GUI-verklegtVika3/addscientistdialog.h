@@ -5,6 +5,11 @@
 #include <QString>
 #include <iostream>
 #include <QRegExp>
+#include <QTime>
+
+#include <QFileDialog>
+#include <QIODevice>
+#include <QByteArray>
 
 #include "scientist.h"
 #include "scientistservice.h"
@@ -26,6 +31,8 @@ public:
 
 private slots:
     void on_AddScientist_clicked();
+
+    void on_browse_button_clicked();
 
 private:
     Ui::AddScientistDialog *ui;

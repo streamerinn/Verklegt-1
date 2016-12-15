@@ -81,12 +81,14 @@ void ScientistDatabase::insertRow(Scientist scientist)
     QString gender = QString::fromStdString(scientist.getGender());
     QString birth = QString::number(scientist.getDateOfBirth());
     QString death = QString::number(scientist.getDateOfDeath());
+    QString image = QString::fromStdString(scientist.getImage());
 
-    query.prepare("INSERT INTO Scientists (name, gender, birthDate, deathDate) VALUES (:name, :gender, :born, :died)");
+    query.prepare("INSERT INTO Scientists (name, gender, birthDate, deathDate, PhotoName) VALUES (:name, :gender, :born, :died, :photo)");
     query.bindValue(":name", name);
     query.bindValue(":gender", gender);
     query.bindValue(":born", birth);
     query.bindValue(":died", death);
+    query.bindValue(":photo", image);
     query.exec();
 }
 
