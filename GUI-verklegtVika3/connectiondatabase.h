@@ -28,8 +28,6 @@ public:
     int countConnections();
     void deleteLink(int compID, int sciID);
 
-
-
 private:
     QSqlDatabase db;
     QString dbName;
