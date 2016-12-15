@@ -12,7 +12,7 @@ AddConnection::AddConnection(QWidget *parent) :
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
-    QPixmap pix("/Users/irisdogg/Desktop/Verklegt-1/GUI-verklegtVika3/addConnection.png");
+    QPixmap pix(":/images/addConnection.png");
     ui->connectionPic->setPixmap(pix.scaled(300,100));
 }
 
