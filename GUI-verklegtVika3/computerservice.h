@@ -7,7 +7,6 @@
 #include <vector>
 #include <algorithm>
 #include <QString>
-
 #include <cstdlib>
 #include <ctime>
 
@@ -25,10 +24,6 @@ public:
 
     // Display functions
     vector<Computer> getComputers();
-    vector<Computer> getComputersAlpha();
-    vector<Computer> getComputersReversedAlpha();
-    vector<Computer> getComputersYoung();
-    vector<Computer> getComputersOld();
     vector<Computer> getComputersBuiltOrNot();
     vector<Computer> getComputersID();
 

@@ -23,9 +23,6 @@ void AddScientistDialog::on_AddScientist_clicked()
     QString gender = ui->PickGender->currentText();
     QString yearOfBirth = ui->InputScientistYearOfBirth->text();
     QString yearOfDeath = ui->InputScientistYearOfDeath->text();
-    QString image = ui->insert_image->text();
-
-
 
     QRegExp validName("\\d*");
     QRegExp validInput("\\d*");
@@ -130,26 +127,3 @@ void AddScientistDialog::on_AddScientist_clicked()
     close();
 }
 
-void AddScientistDialog::on_browse_button_clicked()
-{
-
-   QString filename = QFileDialog::getOpenFileName(
-                       this,
-                        "Open Document",
-                        QDir::currentPath(),
-                        "Images (*.png *.jpg");
-
-   if(!filename.isNull())
-   {
-       QPixmap pixmap(filename);
-       ui->insert_image->setText(filename.toUtf8());
-        QByteArray inByteArray;
-       QBuffer inbuffer( &inByteArray);
-       inbuffer.open(QIODevice::WriteOnly);
-       pixmap.save( &inbuffer, "JPG");
-   }
-   else
-   {
-       ui->insert_image->setText("/images/build-GUI-Verklegt3-Desktop_Qt_5_7_0_MinGW_32bit-Debug/images/default.jpg");
-   }
-}

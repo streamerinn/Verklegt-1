@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">	background-color: rgb(226, 226, 226);
+</string>
+  </property>
   <widget class="QPushButton" name="editComputer">
    <property name="geometry">
     <rect>
@@ -21,6 +25,11 @@
      <width>121</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">hover{
+background-color: rgb(212, 212, 212);
+	border: 2px solid gray;}</string>
    </property>
    <property name="text">
     <string>Edit Computer</string>
@@ -48,6 +57,10 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="txtName">
    <property name="geometry">
@@ -58,6 +71,10 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="txtID">
    <property name="geometry">
@@ -67,6 +84,10 @@
      <width>113</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
    </property>
    <property name="readOnly">
     <bool>true</bool>
@@ -80,6 +101,10 @@
      <width>151</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
    </property>
    <property name="placeholderText">
     <string>Search Computer</string>
@@ -165,6 +190,9 @@
    <property name="columnCount">
     <number>1</number>
    </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
    <column/>
   </widget>
   <widget class="QGroupBox" name="groupBox">

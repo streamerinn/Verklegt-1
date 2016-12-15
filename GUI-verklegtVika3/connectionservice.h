@@ -2,10 +2,10 @@
 #define CONNECTIONSERVICE_H
 
 #include <connectiondatabase.h>
-#include "scientist.h"
 #include <vector>
 #include <algorithm>
 
+#include "scientist.h"
 
 using namespace std;
 

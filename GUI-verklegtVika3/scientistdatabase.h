@@ -28,7 +28,6 @@ private:
     QSqlDatabase db;
     QString dbName;
     QString connectionName;
-
 };
 
 #endif // SCIENTISTDATABASE_H

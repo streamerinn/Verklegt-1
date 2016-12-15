@@ -38,6 +38,7 @@ private:
     string _gender;
     int _dateOfBirth;
     int _dateOfDeath;
+
 };
 
 #endif // SCIENTIST_H

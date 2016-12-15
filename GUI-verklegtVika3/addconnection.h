@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "connectionservice.h"
+#include "scientistservice.h"
+#include "computerservice.h"
 
 namespace Ui {
 class AddConnection;
@@ -19,10 +21,13 @@ public:
 private slots:
     void on_addButton_clicked();
 
+    void on_idTable_activated();
 
 private:
     Ui::AddConnection *ui;
     ConnectionService connectionService;
+    ScientistService scientistServie;
+    ComputerService computerService;
 };
 
 #endif // ADDCONNECTION_H

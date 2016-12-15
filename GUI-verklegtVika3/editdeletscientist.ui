@@ -158,6 +158,12 @@
    <property name="columnCount">
     <number>1</number>
    </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>true</bool>
+   </attribute>
    <column/>
   </widget>
   <widget class="QLabel" name="label">
