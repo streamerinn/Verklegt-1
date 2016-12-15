@@ -4,14 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
 QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = GUI-Verklegt3
 TEMPLATE = app
-
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -32,7 +31,8 @@ SOURCES += main.cpp\
     editdeletscientist.cpp \
     editdeletecomputer.cpp \
     addconnection.cpp \
-    deleteconnection.cpp
+    deleteconnection.cpp \
+    musicdialog.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -52,7 +52,9 @@ HEADERS  += mainwindow.h \
     editdeletscientist.h \
     editdeletecomputer.h \
     addconnection.h \
-    deleteconnection.h
+    deleteconnection.h \
+    musicdialog.h
+
 
 
 
@@ -66,10 +68,14 @@ FORMS    += mainwindow.ui \
     editdeletscientist.ui \
     editdeletecomputer.ui\
     addconnection.ui \
-    deleteconnection.ui
+    deleteconnection.ui \
+    musicdialog.ui
+
 
 
 RESOURCES += aukaefni.qrc
+
+DISTFILES += New folder.zip
 
 
 
