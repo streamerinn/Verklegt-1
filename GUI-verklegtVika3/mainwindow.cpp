@@ -110,5 +110,4 @@ void MainWindow::stats()
         ui->listStats->addItem(QString::number(totalConnections) + " Connection");
     else
         ui->listStats->addItem(QString::number(totalConnections) + " Connections");
-
 }
