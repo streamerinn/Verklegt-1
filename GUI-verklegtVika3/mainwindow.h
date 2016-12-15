@@ -10,6 +10,7 @@
 #include "connectiondialog.h"
 #include "aboutdialog.h"
 #include "connectionservice.h"
+#include "musicdialog.h"
 
 #include <vector>
 #include <QString>
@@ -47,6 +48,8 @@ private slots:
     void displayClock();
 
 
+
+    void on_toolButton_clicked();
 
 private:
     //ScientistTableDialog *scientistTable;
