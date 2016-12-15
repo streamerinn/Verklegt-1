@@ -9,6 +9,7 @@ AddConnection::AddConnection(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddConnection)
 {
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
 }
 
