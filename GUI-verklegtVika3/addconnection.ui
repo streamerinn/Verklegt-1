@@ -11,12 +11,16 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Add connection</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="aukaefni.qrc">
+    <normaloff>:/images/pictures/linking.png</normaloff>:/images/pictures/linking.png</iconset>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>100</x>
      <y>20</y>
      <width>161</width>
      <height>31</height>
@@ -112,6 +116,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="aukaefni.qrc"/>
+ </resources>
  <connections/>
 </ui>

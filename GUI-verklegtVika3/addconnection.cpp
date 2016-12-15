@@ -37,20 +37,22 @@ void AddConnection::on_addButton_clicked()
     {
         ui->addCheck->setText("<span style = 'color:red'>Connection failed!</span>");
     }
-
-    int newSciID = SciID.toInt();
-    int newCompID = CompID.toInt();
-
-    idVector.push_back(newSciID);
-    idVector.push_back(newCompID);
-
-    bool success = connectionService.insertRow(idVector);
-
-    if(success)
+    else
     {
-        ui->addCheck->setText("Connection added");
-    }
+        int newSciID = SciID.toInt();
+        int newCompID = CompID.toInt();
 
-    close();
+        idVector.push_back(newSciID);
+        idVector.push_back(newCompID);
+
+        bool success = connectionService.insertRow(idVector);
+
+        if(success)
+        {
+            ui->addCheck->setText("Connection added");
+        }
+
+        close();
+    }
 }
 
