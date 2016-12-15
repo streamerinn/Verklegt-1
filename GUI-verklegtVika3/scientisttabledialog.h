@@ -35,6 +35,7 @@ private slots:
     void on_ScientistSearch_textChanged();
 //>>>>>>> 8d1cace0c4b831a9cf648a1e2b9b00c312f69c4b
 
+
 private:
     void displayAllScientists();
     void displayScientists(vector<Scientist> scientists);
