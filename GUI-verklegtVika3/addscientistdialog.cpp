@@ -159,7 +159,12 @@ void AddScientistDialog::on_browse_button_clicked()
 
    if(!filename.isNull())
    {
+       QPixmap pixmap(filename);
        ui->insert_image->setText(filename.toUtf8());
+        QByteArray inByteArray;
+       QBuffer inbuffer( &inByteArray);
+       inbuffer.open(QIODevice::WriteOnly);
+       pixmap.save( &inbuffer, "JPG");
    }
    else
    {

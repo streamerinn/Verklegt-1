@@ -132,3 +132,4 @@ void MainWindow::displayClock()
     QString timeText = time.toString("hh : mm : ss");
     ui->digitalClock->setText(timeText);
 }
+
