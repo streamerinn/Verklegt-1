@@ -5,6 +5,7 @@ AddANewComputerDialog::AddANewComputerDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddANewComputerDialog)
 {
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     ui->input_computer_type->addItem("Mechanical");
     ui->input_computer_type->addItem("Electronical");

@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     /**** Tooltips ****/
-    ui->button_computers->setToolTip("<font color = '#245066'><b>Add computer(s)</b></font>");
-    ui->button_scientist->setToolTip("<font color = '#245066'><b>Add/Delete scientist(s)</b></font>");
+    ui->button_computers->setToolTip("<font color = '#245066'><b>Add/Remove computer(s)</b></font>");
+    ui->button_scientist->setToolTip("<font color = '#245066'><b>Add/Edit scientist(s)</b></font>");
     ui->button_link->setToolTip("<font color = '#245066'><b>Manage connection(s)</b></font>");
     //ui->toggle_theme->setToolTip("Change theme")
 

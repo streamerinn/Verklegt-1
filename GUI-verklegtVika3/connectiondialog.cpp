@@ -5,6 +5,7 @@ ConnectionDialog::ConnectionDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ConnectionDialog)
 {
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllConnections();
 }
