@@ -18,19 +18,19 @@
     <rect>
      <x>130</x>
      <y>20</y>
-     <width>131</width>
+     <width>161</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Add Connection</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;Add Connection&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="insertSciID">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>110</y>
+     <x>20</x>
+     <y>220</y>
      <width>113</width>
      <height>21</height>
     </rect>
@@ -40,7 +40,7 @@
    <property name="geometry">
     <rect>
      <x>250</x>
-     <y>110</y>
+     <y>220</y>
      <width>113</width>
      <height>21</height>
     </rect>
@@ -49,8 +49,8 @@
   <widget class="QLabel" name="scientistID">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>70</y>
+     <x>30</x>
+     <y>190</y>
      <width>111</width>
      <height>16</height>
     </rect>
@@ -62,8 +62,8 @@
   <widget class="QLabel" name="computerID">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>70</y>
+     <x>270</x>
+     <y>190</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -76,13 +76,39 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>230</y>
+     <y>250</y>
      <width>113</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
     <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="addCheck">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>280</y>
+     <width>191</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="connectionPic">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>351</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

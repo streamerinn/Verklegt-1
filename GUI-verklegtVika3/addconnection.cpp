@@ -4,6 +4,7 @@
 
 #include <string>
 #include <QString>
+#include <QPixmap>
 
 AddConnection::AddConnection(QWidget *parent) :
     QDialog(parent),
@@ -11,13 +12,14 @@ AddConnection::AddConnection(QWidget *parent) :
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
+    QPixmap pix("/Users/irisdogg/Desktop/Verklegt-1/GUI-verklegtVika3/addConnection.png");
+    ui->connectionPic->setPixmap(pix.scaled(300,100));
 }
 
 AddConnection::~AddConnection()
 {
     delete ui;
 }
-
 
 void AddConnection::on_addButton_clicked()
 {
@@ -28,14 +30,12 @@ void AddConnection::on_addButton_clicked()
 
     if (SciID.isEmpty())
     {
-        qDebug() << "scientist id missing";
-        return;
+        ui->addCheck->setText("<span style = 'color:red'>Connection failed!</span>");
     }
 
     if (CompID.isEmpty())
     {
-        qDebug() << "computer id missing";
-        return;
+        ui->addCheck->setText("<span style = 'color:red'>Connection failed!</span>");
     }
 
     int newSciID = SciID.toInt();
@@ -48,10 +48,9 @@ void AddConnection::on_addButton_clicked()
 
     if(success)
     {
-        qDebug() << "Connection added";
+        ui->addCheck->setText("Connection added");
     }
-    else
-    {
-        qDebug() << "Connection add error";
-    }
+
+    close();
 }
+
