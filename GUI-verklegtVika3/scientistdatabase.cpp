@@ -67,6 +67,7 @@ vector<Scientist> ScientistDatabase::scientistDB()
         {
             dateOfDeath = 0;
         }
+
         sVector.push_back(Scientist(id, name, gender, dateOfBirth, dateOfDeath));
     }
     return sVector;
@@ -88,6 +89,7 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.bindValue(":born", birth);
     query.bindValue(":died", death);
     query.exec();
+
 }
 
 // Delets a scientist from the Scientists table.
