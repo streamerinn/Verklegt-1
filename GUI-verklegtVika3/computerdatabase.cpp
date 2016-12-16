@@ -65,12 +65,10 @@ vector<Computer> ComputerDatabase::computerDB()
         {
             yearBuilt = 0;
         }
-
         computerVector.push_back(Computer(id, computerName, type, yearBuilt, built));
     }
 
     return computerVector;
-
 }
 
 //Adds a new computer to the Computers table.
@@ -89,7 +87,6 @@ void ComputerDatabase::insertRow(Computer computer)
     query.bindValue(":yearBuilt", yearBuilt);
     query.bindValue(":built", built);
     query.exec();
-
 }
 
 vector<Computer> ComputerDatabase::computersConnectedToScientist(int scientistsID)
@@ -225,7 +222,7 @@ vector<Computer> ComputerDatabase::getType(char type)
    }
 
     else if(type == 'T'||type == 't')
-   {
+    {
        query.exec("SELECT * FROM Computers WHERE type = 'Transistor';");
        while(query.next())
        {
@@ -251,7 +248,6 @@ vector<Computer> ComputerDatabase::getBuilt(char built)
     if((built == 'Y'||built == 'y'))
     {
         query.exec("SELECT * FROM Computers WHERE built = '1';");
-
         while(query.next())
         {
             int id = query.value("id").toInt();
@@ -268,7 +264,6 @@ vector<Computer> ComputerDatabase::getBuilt(char built)
     else if(built =='N'||built =='n'/*build ==0*/)
     {
         query.exec("SELECT * FROM Computers WHERE built = '0';");
-
         while(query.next())
         {
             int id = query.value("id").toInt();

@@ -90,6 +90,7 @@ void ScientistDatabase::insertRow(Scientist scientist)
     query.bindValue(":died", death);
     query.exec();
 
+
 }
 
 // Delets a scientist from the Scientists table.

@@ -28,8 +28,6 @@ private slots:
 
     void on_AddANewComputer_clicked();
 
-    void on_button_remove_computer_clicked();
-
     void on_editDelete_clicked();
 
 private:

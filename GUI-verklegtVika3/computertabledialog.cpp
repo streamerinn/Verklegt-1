@@ -10,7 +10,7 @@ ComputerTableDialog::ComputerTableDialog(QWidget *parent) :
     displayAllComputers();
     //on_ComputerSearch_textChanged(); <- þarf ekki
 }
-
+//*******DESTRUCTOR*********************
 ComputerTableDialog::~ComputerTableDialog()
 {
     delete ui;
@@ -43,6 +43,7 @@ void ComputerTableDialog::displayComputers(vector<Computer> computers)
             ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("No"));
         }
 
+        // Used to color the horizontal header and vertical header in the Computertable
         QString stylesheet = "::section{"
                                  "spacing: 10px;"
                                 "background-color: gray;"
@@ -66,19 +67,10 @@ void ComputerTableDialog::on_AddANewComputer_clicked()
 {
 
     AddANewComputerDialog addANewComputer(this);
+    addANewComputer.exec();
 
-    int addComputerReturnValue = addANewComputer.exec();
-
-    //vector<Computer> computers = computerService.getComputers();
-
-    //displayComputers(computers);
-}
-
-void ComputerTableDialog::on_button_remove_computer_clicked()
-{
 
 }
-
 
 void ComputerTableDialog::on_editDelete_clicked()
 {

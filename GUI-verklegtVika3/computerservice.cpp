@@ -6,6 +6,7 @@ ComputerService::ComputerService()
     setComputerVector();
 }
 
+//Stillir vektor af aftur þegar búið að stilla database
 void ComputerService::setComputerVector()
 {
     computers = data.computerDB();
@@ -67,6 +68,7 @@ void ComputerService::editComputer(string name,int id, int buildYear, int built,
     setComputerVector();
 }
 
+//Nær í ID hjá vísindamanni og nafn og notað til að linka
 vector<Computer> ComputerService::getScientistID(int SID)
 {
     vector<Computer> computersConnected;

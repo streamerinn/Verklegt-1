@@ -34,6 +34,8 @@ void EditDeleteComputer::displayCpu(vector<Computer> computers)
         ui->Names->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(computers[i].getComputerName())));
     }
 
+    // Used to color the horizontal header and vertical header in the edit delete computer
+    //from the default white color
     QString stylesheet = "::section{"
                              "spacing: 10px;"
                             "background-color: gray;"
@@ -54,15 +56,13 @@ void EditDeleteComputer::on_searchComputer_textChanged()
 void EditDeleteComputer::on_Names_cellClicked(int row, int column)
 {
     vector<Computer> computers = computerservice.getComputers();
-    QString nafn =ui->Names->item(row,column)->text();
+    QString nafn = ui->Names->item(row,column)->text();
     for(unsigned int i = 0; i < computers.size(); i++)
     {
         if(nafn.toStdString()==computers[i].getComputerName())
         {
             QString ID = QString::number(computers[i].getID());
-            QString Type = QString::fromStdString(computers[i].getType());
             QString yearbuilt = QString::number(computers[i].getYearBuilt());
-            QString built = QString::number(computers[i].getBuilt());
 
             ui->txtID->setText(ID);
             ui->txtName->setText(nafn);
