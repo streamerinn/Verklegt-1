@@ -8,8 +8,6 @@ EditDeleteComputer::EditDeleteComputer(QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllCpu();
-    on_searchComputer_textChanged();
-
 }
 
 EditDeleteComputer::~EditDeleteComputer()
@@ -35,15 +33,15 @@ void EditDeleteComputer::displayCpu(vector<Computer> computers)
     {
         ui->Names->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(computers[i].getComputerName())));
     }
+
     QString stylesheet = "::section{"
                              "spacing: 10px;"
                             "background-color: gray;"
                             "color: white;}";
     ui->Names->horizontalHeader()->setStyleSheet(stylesheet);
     ui->Names->verticalHeader()->setStyleSheet(stylesheet);
-
-
 }
+
 void EditDeleteComputer::on_searchComputer_textChanged()
 {
     string input = ui->searchComputer->text().toStdString();
@@ -52,6 +50,7 @@ void EditDeleteComputer::on_searchComputer_textChanged()
     displayCpu(computers);
 }
 
+//shows information about computer when computer name is clicked
 void EditDeleteComputer::on_Names_cellClicked(int row, int column)
 {
     vector<Computer> computers = computerservice.getComputers();
@@ -68,6 +67,7 @@ void EditDeleteComputer::on_Names_cellClicked(int row, int column)
             ui->txtID->setText(ID);
             ui->txtName->setText(nafn);
             ui->txtYearBuilt->setText(yearbuilt);
+            //setting values to radio buttons
             if(computers[i].getBuilt()==1)
                 ui->Yes->setChecked(true);
             else
@@ -108,6 +108,7 @@ void EditDeleteComputer::on_Delete_clicked()
 
     computerservice.deleteComputer(ID);
     displayAllCpu();
+    //clear all information
     ui->txtID->clear();
     ui->txtName->clear();
     ui->txtYearBuilt->clear();
@@ -135,7 +136,6 @@ void EditDeleteComputer::on_editComputer_clicked()
     int yearbuilt = ui->txtYearBuilt->text().toInt();
     int ID = ui->txtID->text().toInt();
     int built;
-
     if(ui->Yes->isChecked())
         built = 1;
     else
@@ -165,9 +165,6 @@ void EditDeleteComputer::on_editComputer_clicked()
     {
         type = "Other";
     }
-
-
     computerservice.editComputer(name,ID,yearbuilt,built,type);
     displayAllCpu();
-
 }

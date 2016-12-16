@@ -47,12 +47,6 @@ void AddANewComputerDialog::on_pushButton_clicked()
 
     }
 
-    if (buildYear.isEmpty())
-    {
-        ui->label_error_build_year_2->setText("<span style='color: red'>Build Year cannot be empty!</span>");
-        emptyError = true;
-    }
-
     if(!validInput.exactMatch(buildYear))
     {
         ui->label_error_build_year_2->setText("<span style='color: red'>Invalid Buildyear</span>");
@@ -74,6 +68,12 @@ void AddANewComputerDialog::on_pushButton_clicked()
     else if (Cbuilt =="No")
     {
         tempBuilt = 0;
+    }
+
+    if (buildYear.isEmpty() && Cbuilt == "Yes")
+    {
+        ui->label_error_build_year_2->setText("<span style='color: red'>Build Year cannot be empty!</span>");
+        emptyError = true;
     }
 
     if(emptyError)

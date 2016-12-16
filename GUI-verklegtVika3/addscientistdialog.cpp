@@ -56,8 +56,8 @@ void AddScientistDialog::on_AddScientist_clicked()
 
     if(yearOfDeath.isEmpty())
     {
-        ui->label_Death_error->setText("<span style='color: red'>Year of death cannot be empty!</span>");
-        emptyError = true;
+        ui->label_Death_error->setText("<span style='color: green'>Scientist is alive</span>");
+        emptyError = false;
     }
 
     else if(yearOfDeath.toInt() < yearOfBirth.toInt())
@@ -121,12 +121,9 @@ void AddScientistDialog::on_AddScientist_clicked()
     string scientistGender = gender.toStdString();
     int SyearOfBirth = yearOfBirth.toInt();
     int SyearOfDeath = yearOfDeath.toInt();
-
     Scientist scientist(scientistName, scientistGender, SyearOfBirth, SyearOfDeath);
+
     scientistService.create(scientist);
     close();
-
 }
-
-
 
