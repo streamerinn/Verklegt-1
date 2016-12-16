@@ -1,5 +1,6 @@
 #include "addscientistdialog.h"
 #include "ui_addscientistdialog.h"
+#include "scientisttabledialog.h"
 
 #include <string>
 #include <QString>
@@ -35,7 +36,6 @@ void AddScientistDialog::on_AddScientist_clicked()
     ui->label_birth_error->setText("");
     ui->label_Death_error->setText("");
     ui->label_gender_error->setText("");
-
 
     if(name.isEmpty())
     {
@@ -95,16 +95,15 @@ void AddScientistDialog::on_AddScientist_clicked()
         ui->label_Death_error->setText("<span style='color: red'>Year of Death cannot be a negative number!</span>");
     }
 
-
     if(yearOfDeath.toInt() > 2016)
     {
         ui->label_Death_error->setText("<span style='color: red'>Invalid date!</span>");
     }
 
-   if (emptyError)
-   {
+    if (emptyError)
+    {
         return;
-   }
+    }
 
     if (birthError)
     {
@@ -124,6 +123,7 @@ void AddScientistDialog::on_AddScientist_clicked()
     Scientist scientist(scientistName, scientistGender, SyearOfBirth, SyearOfDeath);
 
     scientistService.create(scientist);
+
     close();
 }
 

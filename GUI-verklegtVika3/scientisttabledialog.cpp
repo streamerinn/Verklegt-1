@@ -44,7 +44,6 @@ void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
 {
     ui->ScientistTable->clearContents();
 
-
     for(unsigned int i = 0; i < scientists.size(); i++)
     {
         ui->ScientistTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(scientists[i].getName())));
@@ -55,7 +54,6 @@ void ScientistTableDialog::displayScientists(vector<Scientist> scientists)
         else
             ui->ScientistTable->setItem(i, 3, new QTableWidgetItem(QString::number(scientists[i].getDateOfDeath())));
     }
-
 }
 
 void ScientistTableDialog::on_AddANewScientist_clicked()
