@@ -22,6 +22,7 @@ public:
     ~AddANewComputerDialog();
 
 private slots:
+    // Adds a new computer
     void on_pushButton_clicked();
 
 private:

@@ -22,6 +22,7 @@ void ComputerService::create(Computer computer)
 {
     data.insertRow(computer);
     computers.push_back(computer);
+    setComputerVector();
 }
 
 vector<Computer> ComputerService::searchComputerName(string computerName)

@@ -78,8 +78,7 @@ void ConnectionDialog::on_SearchComputerName_textChanged()
 void ConnectionDialog::on_addButton_clicked()
 {
     AddConnection addConnection;
-    int addConnectionReturnValue = addConnection.exec();
-    displayAllConnections();
+    addConnection.exec();
 }
 
 //Opens a new window with delete connection options
@@ -87,8 +86,6 @@ void ConnectionDialog::on_deleteButton_clicked()
 {
     DeleteConnection deleteConnection;
     deleteConnection.exec();
-    displayAllConnections();
-
 }
 
 

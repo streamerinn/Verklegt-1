@@ -28,9 +28,9 @@ private slots:
 
     void on_AddANewComputer_clicked();
 
-    void on_button_remove_computer_clicked();
+    void on_button_remove_computer_clicked(); // <- eiða
 
-    void on_editDelete_clicked();
+    void on_editDelete_clicked(); // <- eiða
 
 private:
     ComputerService computerService;

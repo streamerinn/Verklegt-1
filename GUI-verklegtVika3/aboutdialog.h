@@ -16,6 +16,7 @@ public:
     ~AboutDialog();
 
 private slots:
+    // Opens the about screen
     void on_pushButton_clicked();
 
 private:

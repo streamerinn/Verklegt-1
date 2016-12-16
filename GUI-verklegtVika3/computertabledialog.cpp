@@ -8,7 +8,6 @@ ComputerTableDialog::ComputerTableDialog(QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllComputers();
-    //on_ComputerSearch_textChanged(); <- þarf ekki
 }
 
 ComputerTableDialog::~ComputerTableDialog()
@@ -21,7 +20,29 @@ void ComputerTableDialog::displayAllComputers()
     vector<Computer> computers = computerService.getComputers();
     ui->ComputerTable->setRowCount(computers.size());
 
-    displayComputers(computers);
+    for(unsigned int i = 0; i < computers.size(); i++)
+    {
+        ui->ComputerTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(computers[i].getComputerName())));
+        ui->ComputerTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(computers[i].getType())));
+        if(computers[i].getBuilt() == 1)
+        {
+            ui->ComputerTable->setItem(i, 2, new QTableWidgetItem(QString::number(computers[i].getYearBuilt())));
+            ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("Yes"));
+        }
+        else
+        {
+            ui->ComputerTable->setItem(i, 2, new QTableWidgetItem("N/A"));
+            ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("No"));
+        }
+
+        QString stylesheet = "::section{"
+                                 "spacing: 10px;"
+                                "background-color: gray;"
+                                "color: white;}";
+        ui->ComputerTable->horizontalHeader()->setStyleSheet(stylesheet);
+        ui->ComputerTable->verticalHeader()->setStyleSheet(stylesheet);
+
+    }
 }
 
 void ComputerTableDialog::displayComputers(vector<Computer> computers)
@@ -66,21 +87,8 @@ void ComputerTableDialog::on_AddANewComputer_clicked()
 {
 
     AddANewComputerDialog addANewComputer(this);
-
-    int addComputerReturnValue = addANewComputer.exec();
-
-    displayAllComputers();
-
-    //vector<Computer> computers = computerService.getComputers();
-
-    //displayComputers(computers);
+    addANewComputer.exec();
 }
-
-void ComputerTableDialog::on_button_remove_computer_clicked()
-{
-
-}
-
 
 void ComputerTableDialog::on_editDelete_clicked()
 {

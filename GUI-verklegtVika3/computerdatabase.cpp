@@ -289,25 +289,25 @@ return temp4;
 vector<Computer> ComputerDatabase::getName (string name)
 {
 
-   vector<Computer> temp;
-   QSqlQuery query(db);
+    vector<Computer> temp;
+    QSqlQuery query(db);
 
-   QString computerName;
-   computerName = QString::fromStdString(name);
+    QString computerName;
+    computerName = QString::fromStdString(name);
 
     query.exec("SELECT * FROM Computers WHERE name LIKE '%" + computerName+ "%';");
     while (query.next())
     {
-       int id = query.value("id").toInt();
-       string name = query.value("name").toString().toStdString();
-       string type = query.value("type").toString().toStdString();
-       int yearBuilt = query.value("yearBuilt").toInt();
-       int built = query.value("built").toInt();
+        int id = query.value("id").toInt();
+        string name = query.value("name").toString().toStdString();
+        string type = query.value("type").toString().toStdString();
+        int yearBuilt = query.value("yearBuilt").toInt();
+        int built = query.value("built").toInt();
 
-       Computer computer(id, name, type, yearBuilt, built);
-       temp.push_back(computer);
-   }
- return temp;
+        Computer computer(id, name, type, yearBuilt, built);
+        temp.push_back(computer);
+    }
+    return temp;
 }
 
 

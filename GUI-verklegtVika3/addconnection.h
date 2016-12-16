@@ -19,8 +19,10 @@ public:
     ~AddConnection();
 
 private slots:
+    // Addss a new connection
     void on_addButton_clicked();
 
+    // Displays the ID table
     void on_idTable_activated();
 
 private:

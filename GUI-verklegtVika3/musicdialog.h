@@ -21,6 +21,7 @@ public:
 private slots:
     void on_VolumeSlider_sliderMoved(int position);
 
+    // Sets where in the audio phile you want to play
     void on_ProgressSlider_sliderMoved(int position);
 
     void on_StartButton_clicked();

@@ -89,21 +89,7 @@ void AddANewComputerDialog::on_pushButton_clicked()
 
     Computer computer(computerName, Ctype, CbuildYear, tempBuilt);
     computerservice.create(computer);
+
     close();
-
-
-
-    //if (type.isEmpty())
-    //{
-      //  ui->label_error_computer_type->setText("<span style='color: red'>Name cannot be empty!</span>");
-
-    //}
-
-
-
-
-
-
-
 
 }
