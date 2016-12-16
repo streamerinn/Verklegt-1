@@ -4,7 +4,6 @@
 
 #include <string>
 #include <QString>
-#include <QPixmap>
 
 AddConnection::AddConnection(QWidget *parent) :
     QDialog(parent),
@@ -12,21 +11,7 @@ AddConnection::AddConnection(QWidget *parent) :
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
-    QPixmap pix(":/images/addConnection.png");
-    ui->connectionPic->setPixmap(pix.scaled(300,100));
     on_idTable_activated();
-
-    // Colors the vertical and Horizontal headers in the Connection table,
-    // from the default white color
-    QString stylesheet = "::section{"
-                             "spacing: 10px;"
-                            "background-color: gray;"
-                            "color: white;}";
-    ui->idTable->horizontalHeader()->setStyleSheet(stylesheet);
-    ui->idTable->verticalHeader()->setStyleSheet(stylesheet);
-
-
-
 }
 
 AddConnection::~AddConnection()
@@ -65,8 +50,6 @@ void AddConnection::on_addButton_clicked()
         {
             ui->addCheck->setText("Connection added");
         }
-
-        close();
     }
 }
 

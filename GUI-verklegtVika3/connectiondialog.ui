@@ -30,7 +30,7 @@
     <normaloff>:/images/pictures/linking.png</normaloff>:/images/pictures/linking.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(226, 226, 226);</string>
+   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="sizeConstraint">
@@ -41,7 +41,7 @@
      <property name="minimumSize">
       <size>
        <width>485</width>
-       <height>150</height>
+       <height>203</height>
       </size>
      </property>
      <property name="maximumSize">
@@ -54,8 +54,7 @@
       <enum>Qt::ClickFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
      <property name="sortingEnabled">
       <bool>true</bool>
@@ -137,16 +136,26 @@
       </size>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Connections&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Connections&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLineEdit" name="SearchScientistName">
+     <property name="minimumSize">
+      <size>
+       <width>238</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>25</height>
+      </size>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 1px solid gray;
-	</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string>Search scientist name</string>
@@ -168,9 +177,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 1px solid gray;
-	</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string>Search computer name</string>
@@ -179,6 +186,24 @@
    </item>
    <item row="5" column="0" colspan="2">
     <widget class="QPushButton" name="deleteButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>480</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>480</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string>Delete</string>
      </property>

@@ -30,14 +30,13 @@
     <normaloff>:/images/pictures/comp.png</normaloff>:/images/pictures/comp.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(226, 226, 226);
-	</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="sizeConstraint">
     <enum>QLayout::SetFixedSize</enum>
    </property>
-   <item>
+   <item alignment="Qt::AlignTop">
     <widget class="QLabel" name="label_2">
      <property name="minimumSize">
       <size>
@@ -45,8 +44,14 @@
        <height>120</height>
       </size>
      </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Computers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Computers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
@@ -65,8 +70,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string>Search Name</string>
@@ -84,7 +88,7 @@
      <property name="minimumSize">
       <size>
        <width>480</width>
-       <height>150</height>
+       <height>203</height>
       </size>
      </property>
      <property name="maximumSize">
@@ -97,18 +101,7 @@
       <enum>Qt::ClickFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">#ComputerTable
-{
-
-
-	background-color: rgb(212, 212, 212);
-alternate-background-color: rgb(0, 0, 0);
-border: 2px solid gray;
-
-
-
-
-}</string>
+      <string notr="true"/>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -180,6 +173,18 @@ border: 2px solid gray;
    </item>
    <item>
     <widget class="QPushButton" name="editDelete">
+     <property name="minimumSize">
+      <size>
+       <width>480</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>480</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string>Edit Or Delete Computer</string>
      </property>

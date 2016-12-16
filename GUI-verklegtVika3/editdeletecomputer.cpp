@@ -33,15 +33,6 @@ void EditDeleteComputer::displayCpu(vector<Computer> computers)
     {
         ui->Names->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(computers[i].getComputerName())));
     }
-
-    // Used to color the horizontal header and vertical header in the edit delete computer
-    //from the default white color
-    QString stylesheet = "::section{"
-                             "spacing: 10px;"
-                            "background-color: gray;"
-                            "color: white;}";
-    ui->Names->horizontalHeader()->setStyleSheet(stylesheet);
-    ui->Names->verticalHeader()->setStyleSheet(stylesheet);
 }
 
 void EditDeleteComputer::on_searchComputer_textChanged()

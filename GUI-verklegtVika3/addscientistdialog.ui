@@ -32,8 +32,7 @@
    <string>Add Scientist</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(226, 226, 226);
-	</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -70,8 +69,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string/>
@@ -105,8 +103,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
      <item>
       <property name="text">
@@ -147,8 +144,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string/>
@@ -182,8 +178,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string/>
@@ -205,22 +200,6 @@
       <string>Add</string>
      </property>
     </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_5"/>
    </item>
   </layout>
  </widget>

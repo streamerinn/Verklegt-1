@@ -12,8 +12,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>110</width>
-    <height>0</height>
+    <width>500</width>
+    <height>450</height>
    </size>
   </property>
   <property name="baseSize">
@@ -26,23 +26,11 @@
    <string>Scientists</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="aukaefni.qrc">
     <normaloff>:/images/pictures/viso.png</normaloff>:/images/pictures/viso.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-
-#ScientistTableDialog
-{
-
-font-size: 30%;
-	background-color: rgb(226, 226, 226);
-alternate-background-color: rgb(0, 0, 0);
-
-
-
-
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="sizeConstraint">
@@ -69,7 +57,7 @@ alternate-background-color: rgb(0, 0, 0);
       </size>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Scientists&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Scientists&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
@@ -94,18 +82,7 @@ alternate-background-color: rgb(0, 0, 0);
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">#ScientistSearch
-{
-
-font-size: 30%;
-	background-color: rgb(212, 212, 212);
-alternate-background-color: rgb(0, 0, 0);
-border: 2px solid gray;
-
-
-
-
-}</string>
+      <string notr="true"/>
      </property>
      <property name="placeholderText">
       <string>Search</string>
@@ -139,18 +116,7 @@ border: 2px solid gray;
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">#ScientistTable
-{
-
-
-	background-color: rgb(212, 212, 212);
-alternate-background-color: rgb(0, 0, 0);
-border: 2px solid gray;
-
-
-
-
-}</string>
+      <string notr="true"/>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>

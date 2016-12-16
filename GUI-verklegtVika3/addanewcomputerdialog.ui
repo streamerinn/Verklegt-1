@@ -36,13 +36,13 @@
     <normaloff>:/images/pictures/comp.png</normaloff>:/images/pictures/comp.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(226, 226, 226);</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label_addComputer_header">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(226, 226, 226);</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Add a new computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -76,8 +76,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
     </widget>
    </item>
@@ -108,8 +107,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
     </widget>
    </item>
@@ -140,8 +138,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
     </widget>
    </item>
@@ -172,8 +169,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(212, 212, 212);
-	border: 2px solid gray;</string>
+      <string notr="true"/>
      </property>
     </widget>
    </item>

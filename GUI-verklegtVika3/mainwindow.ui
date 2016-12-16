@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>550</width>
-    <height>499</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>550</width>
-    <height>450</height>
+    <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -26,9 +26,7 @@
    <string>Ca$:H</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(226, 226, 226);
-
-</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -71,37 +69,7 @@ background-color: yellow;
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">#toggle_theme
-{
-border-style:none;
-}
-
-
-
-#toggle_theme:hover
-{
- 
-
-
-
-
-border: 3px;
-
-border-style: solid;
-border-radius: 7;
-
-
-
-
-
-padding: 3px;
-padding-left: 5px;
-padding-right: 5px;
-	border-color: rgb(152, 152, 152);
-
-
-
-}</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Toggle Theme</string>
@@ -200,18 +168,7 @@ padding-right: 5px;
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="styleSheet">
-         <string notr="true">#listStats
-{
-
-font-size: 30%;
-	background-color: rgb(212, 212, 212);
-alternate-background-color: rgb(0, 0, 0);
-border: 3px solid gray;
-border-radius: 20px;
-
-
-
-}</string>
+         <string notr="true"/>
         </property>
         <property name="flow">
          <enum>QListView::TopToBottom</enum>
@@ -450,17 +407,9 @@ padding-right: 5px;
      </layout>
     </item>
    </layout>
-   <zorder>label_2</zorder>
-   <zorder>listStats</zorder>
-   <zorder>toolButton</zorder>
-   <zorder>toggle_theme</zorder>
-   <zorder></zorder>
-   <zorder>horizontalWidget</zorder>
-   <zorder>label</zorder>
    <zorder></zorder>
    <zorder></zorder>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
+   <zorder></zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

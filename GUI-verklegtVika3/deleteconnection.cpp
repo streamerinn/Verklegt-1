@@ -1,6 +1,5 @@
 #include "deleteconnection.h"
 #include "ui_deleteconnection.h"
-#include <QPixmap>
 
 DeleteConnection::DeleteConnection(QWidget *parent) :
     QDialog(parent),
@@ -8,8 +7,6 @@ DeleteConnection::DeleteConnection(QWidget *parent) :
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
-    QPixmap pix(":/images/deleteConnection.png");
-    ui->deletePic->setPixmap(pix.scaled(300,100));
 }
 
 DeleteConnection::~DeleteConnection()
