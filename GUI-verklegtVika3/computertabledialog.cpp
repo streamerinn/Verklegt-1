@@ -69,6 +69,8 @@ void ComputerTableDialog::on_AddANewComputer_clicked()
 
     int addComputerReturnValue = addANewComputer.exec();
 
+    displayAllComputers();
+
     //vector<Computer> computers = computerService.getComputers();
 
     //displayComputers(computers);
