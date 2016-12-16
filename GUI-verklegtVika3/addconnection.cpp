@@ -16,6 +16,8 @@ AddConnection::AddConnection(QWidget *parent) :
     ui->connectionPic->setPixmap(pix.scaled(300,100));
     on_idTable_activated();
 
+    // Colors the vertical and Horizontal headers in the Connection table,
+    // from the default white color
     QString stylesheet = "::section{"
                              "spacing: 10px;"
                             "background-color: gray;"
@@ -32,6 +34,7 @@ AddConnection::~AddConnection()
     delete ui;
 }
 
+//adds connection to the database
 void AddConnection::on_addButton_clicked()
 {
     vector<int> idVector;
@@ -67,7 +70,7 @@ void AddConnection::on_addButton_clicked()
     }
 }
 
-
+// shows list of Scientists who are linked with computers and their ID
 void AddConnection::on_idTable_activated()
 {
     vector<Scientist> scientistInfo = scientistServie.getScientists();

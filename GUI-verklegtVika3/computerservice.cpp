@@ -6,6 +6,7 @@ ComputerService::ComputerService()
     setComputerVector();
 }
 
+//Stillir vektor af aftur þegar búið að stilla database
 void ComputerService::setComputerVector()
 {
     computers = data.computerDB();
@@ -40,17 +41,6 @@ vector<Computer> ComputerService::searchYearOfBuild(int buildYear)
     return data.getYearBuilt(buildYear);
 }
 
-vector<Computer> ComputerService::searchRandomComputer()
-{
-    vector<Computer> temp3;
-    srand(time(0));
-                    //Creates random numbers with the help of time.
-                   // The reason to use %(scientist.size() - 1) is to get all the range from the vector.
-    temp3.push_back(computers[1+(rand()%(computers.size() - 1))]);
-
-    return temp3;
-}
-
 vector<Computer> ComputerService::searchBuilt(char built)
 {
     return data.getBuilt(built);
@@ -68,6 +58,7 @@ void ComputerService::editComputer(string name,int id, int buildYear, int built,
     setComputerVector();
 }
 
+//Nær í ID hjá vísindamanni og nafn og notað til að linka
 vector<Computer> ComputerService::getScientistID(int SID)
 {
     vector<Computer> computersConnected;

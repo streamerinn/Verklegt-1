@@ -31,7 +31,6 @@ void EditDeletScientist::displayAllScientists()
                             "color: white;}";
     ui->Names->horizontalHeader()->setStyleSheet(stylesheet);
     ui->Names->verticalHeader()->setStyleSheet(stylesheet);
-
 }
 
 void EditDeletScientist::displayScientists(vector<Scientist> scientists)
@@ -109,6 +108,7 @@ void EditDeletScientist::on_Delete_clicked()
 
     scientistService1.deleteScientist(ID);
     displayAllScientists();
+
     //clear all information about deleted scientist
     ui->txtID->clear();
     ui->txtName->clear();

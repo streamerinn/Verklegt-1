@@ -10,6 +10,7 @@ ComputerTableDialog::ComputerTableDialog(QWidget *parent) :
     displayAllComputers();
 }
 
+//*******DESTRUCTOR*********************
 ComputerTableDialog::~ComputerTableDialog()
 {
     delete ui;
@@ -20,29 +21,7 @@ void ComputerTableDialog::displayAllComputers()
     vector<Computer> computers = computerService.getComputers();
     ui->ComputerTable->setRowCount(computers.size());
 
-    for(unsigned int i = 0; i < computers.size(); i++)
-    {
-        ui->ComputerTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(computers[i].getComputerName())));
-        ui->ComputerTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(computers[i].getType())));
-        if(computers[i].getBuilt() == 1)
-        {
-            ui->ComputerTable->setItem(i, 2, new QTableWidgetItem(QString::number(computers[i].getYearBuilt())));
-            ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("Yes"));
-        }
-        else
-        {
-            ui->ComputerTable->setItem(i, 2, new QTableWidgetItem("N/A"));
-            ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("No"));
-        }
-
-        QString stylesheet = "::section{"
-                                 "spacing: 10px;"
-                                "background-color: gray;"
-                                "color: white;}";
-        ui->ComputerTable->horizontalHeader()->setStyleSheet(stylesheet);
-        ui->ComputerTable->verticalHeader()->setStyleSheet(stylesheet);
-
-    }
+    displayComputers(computers);
 }
 
 void ComputerTableDialog::displayComputers(vector<Computer> computers)
@@ -64,6 +43,7 @@ void ComputerTableDialog::displayComputers(vector<Computer> computers)
             ui->ComputerTable->setItem(i, 3, new QTableWidgetItem("No"));
         }
 
+        // Used to color the horizontal header and vertical header in the Computertable
         QString stylesheet = "::section{"
                                  "spacing: 10px;"
                                 "background-color: gray;"

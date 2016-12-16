@@ -166,16 +166,6 @@ vector<Scientist> ScientistService::searchDateOfBirth(int birthYear)
     return temp1;
 }
 
-vector<Scientist> ScientistService::searchRandom()
-{
-    vector<Scientist> temp3;
-    srand(time(0));
-                          //Creates random numbers with the help of time.
-                          // The reason to use %(scientist.size() - 1) is to get all the range from the vector.
-    temp3.push_back(scientists[1+(rand()%(scientists.size() - 1))]);
-
-    return temp3;
-}
 
 vector<Scientist> ScientistService::searchDateOfDeath(int deathYear)
 {

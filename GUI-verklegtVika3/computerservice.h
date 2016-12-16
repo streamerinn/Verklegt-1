@@ -32,7 +32,6 @@ public:
     vector<Computer> searchYearOfBuild(int buildYear);
     vector<Computer> searchType(const char type);
     vector<Computer> searchBuilt(char built);
-    vector<Computer> searchRandomComputer();
 
     // Sends an ID and retrieves computers connected to the ID.
     vector<Computer> getScientistID(int SID);

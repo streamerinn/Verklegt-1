@@ -33,7 +33,6 @@ public:
     vector<Scientist> searchGender(char gender);
     vector<Scientist> searchDateOfBirth(int birthYear);
     vector<Scientist> searchDateOfDeath(int deathYear);
-    vector<Scientist> searchRandom();
 
     // Changes information in the database.
     void deleteScientist(int id);
