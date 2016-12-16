@@ -27,6 +27,13 @@ void ConnectionDialog::displayAllConnections()
         ui->ConnectionTable->setItem(i/2, 2, new QTableWidgetItem(QString::number(bothIDs[i+1].getID())));
         ui->ConnectionTable->setItem(i/2, 3, new QTableWidgetItem(QString::fromStdString(bothIDs[i+1].getName())));
     }
+    QString stylesheet = "::section{"
+                             "spacing: 10px;"
+                            "background-color: gray;"
+                            "color: white;}";
+    ui->ConnectionTable->horizontalHeader()->setStyleSheet(stylesheet);
+    ui->ConnectionTable->verticalHeader()->setStyleSheet(stylesheet);
+
 }
 
 void ConnectionDialog::displayScientists(vector<Scientist> scientists)
@@ -41,6 +48,9 @@ void ConnectionDialog::displayScientists(vector<Scientist> scientists)
         ui->ConnectionTable->setItem(i/2, 2, new QTableWidgetItem(QString::number(scientists[i+1].getID())));
         ui->ConnectionTable->setItem(i/2, 3, new QTableWidgetItem(QString::fromStdString(scientists[i+1].getName())));
     }
+
+
+
 }
 
 void ConnectionDialog::on_SearchScientistName_textChanged()

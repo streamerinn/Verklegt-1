@@ -15,6 +15,16 @@ AddConnection::AddConnection(QWidget *parent) :
     QPixmap pix(":/images/addConnection.png");
     ui->connectionPic->setPixmap(pix.scaled(300,100));
     on_idTable_activated();
+
+    QString stylesheet = "::section{"
+                             "spacing: 10px;"
+                            "background-color: gray;"
+                            "color: white;}";
+    ui->idTable->horizontalHeader()->setStyleSheet(stylesheet);
+    ui->idTable->verticalHeader()->setStyleSheet(stylesheet);
+
+
+
 }
 
 AddConnection::~AddConnection()
