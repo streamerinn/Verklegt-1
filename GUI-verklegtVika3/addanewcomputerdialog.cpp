@@ -89,7 +89,6 @@ void AddANewComputerDialog::on_pushButton_clicked()
 
     Computer computer(computerName, Ctype, CbuildYear, tempBuilt);
     computerservice.create(computer);
-
     close();
 
 }
