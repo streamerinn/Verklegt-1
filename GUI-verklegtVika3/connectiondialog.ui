@@ -29,12 +29,18 @@
    <iconset resource="aukaefni.qrc">
     <normaloff>:/images/pictures/linking.png</normaloff>:/images/pictures/linking.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(226, 226, 226);</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetFixedSize</enum>
+   </property>
    <item row="2" column="0" colspan="2">
     <widget class="QTableWidget" name="ConnectionTable">
      <property name="minimumSize">
       <size>
-       <width>480</width>
+       <width>485</width>
        <height>150</height>
       </size>
      </property>
@@ -48,11 +54,18 @@
       <enum>Qt::ClickFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(212, 212, 212);
+	border: 2px solid gray;</string>
      </property>
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>118</number>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
      <column>
       <property name="text">
        <string>Scientist ID</string>
@@ -131,7 +144,9 @@
    <item row="1" column="0">
     <widget class="QLineEdit" name="SearchScientistName">
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(212, 212, 212);
+	border: 1px solid gray;
+	</string>
      </property>
      <property name="placeholderText">
       <string>Search scientist name</string>
@@ -153,7 +168,9 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(212, 212, 212);
+	border: 1px solid gray;
+	</string>
      </property>
      <property name="placeholderText">
       <string>Search computer name</string>
