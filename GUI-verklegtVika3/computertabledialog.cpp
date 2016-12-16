@@ -8,7 +8,7 @@ ComputerTableDialog::ComputerTableDialog(QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->setupUi(this);
     displayAllComputers();
-    //on_ComputerSearch_textChanged(); <- þarf ekki
+    //on_ComputerSearch_textChanged(); //<- þarf ekki
 }
 //*******DESTRUCTOR*********************
 ComputerTableDialog::~ComputerTableDialog()
